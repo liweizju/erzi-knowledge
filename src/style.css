@@ -23,11 +23,13 @@
   --color-inspiration: #8b5cf6;
   --color-reading: #10b981;
   --color-reflection: #f97316;
+  --color-diary: #e879a0;
 
   --color-tech-bg: #eff6ff;
   --color-inspiration-bg: #f5f3ff;
   --color-reading-bg: #ecfdf5;
   --color-reflection-bg: #fff7ed;
+  --color-diary-bg: #fdf2f8;
 
   --max-width: 720px;
   --spacing-page: 24px;
@@ -158,6 +160,10 @@ body {
 .note-category--reflection {
   color: var(--color-reflection);
   background: var(--color-reflection-bg);
+}
+.note-category--diary {
+  color: var(--color-diary);
+  background: var(--color-diary-bg);
 }
 
 .note-date {

@@ -29,6 +29,11 @@ const CATEGORIES = {
     label: '反思与整理',
     color: '#f09383',
     priority: 4
+  },
+  'diary': {
+    label: '二子日记',
+    color: '#e879a0',
+    priority: 5
   }
 };
 
