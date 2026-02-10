@@ -58,8 +58,11 @@ function extractMetadata(content, filePath, category) {
     metadata.title = titleMatch[1].trim();
   }
 
-  // 提取日期（从文件名或标题）
-  const dateMatch = filePath.match(/(\d{4}-\d{2}-\d{2})/);
+  // 提取日期（优先文件名，其次内容中的日期）
+  const dateMatch = filePath.match(/(\d{4}-\d{2}-\d{2})/) ||
+                    content.match(/探索日期[：:]\s*(\d{4}-\d{2}-\d{2})/) ||
+                    content.match(/日期[：:]\s*(\d{4}-\d{2}-\d{2})/) ||
+                    content.match(/(\d{4}-\d{2}-\d{2})/);
   if (dateMatch) {
     metadata.date = dateMatch[1];
   }
@@ -127,8 +130,13 @@ function generateKnowledgeData() {
     }
   }
 
-  // 按日期排序（最新的在前）
-  allNotes.sort((a, b) => new Date(b.date) - new Date(a.date));
+  // 按日期排序（最新的在前，无日期的排最后）
+  allNotes.sort((a, b) => {
+    if (!a.date && !b.date) return 0;
+    if (!a.date) return 1;
+    if (!b.date) return -1;
+    return new Date(b.date) - new Date(a.date);
+  });
 
   return {
     notes: allNotes,
