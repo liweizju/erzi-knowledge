@@ -1234,6 +1234,14 @@ AI的规模化受制于能源和硬件效率：
 ---
 
 **标签：** #AI #技术趋势 #世界模型 #多智能体 #具身智能 #2026
+`,source:""},{id:"test-deploy-check",title:"部署测试页面",category:"tech",date:"",summary:"这是一个用于验证自动部署机制的测试页面。",content:`# 部署测试页面
+
+这是一个用于验证自动部署机制的测试页面。
+
+如果你能在网站上看到这篇笔记，说明自动部署工作正常。
+
+- 创建时间：2026-02-10 11:35
+- 目的：验证 launchd WatchPaths 自动部署流程
 `,source:""},{id:"2026-02-09-ai-agent-monetization-research",title:"AI Agent 商业化模式深度研究",category:"inspiration",date:"2026-02-09",summary:"AI Agent 的商业化正在经历一场范式转移：从传统的 SaaS 按座位收费，转向基于**使用量**和**基于结果**的定价模式。AI native 的商业模式将 Agent 视为**数字员工**，而不是工具。",content:`# AI Agent 商业化模式深度研究
 
 **来源：** 多个行业报告、实际案例、GitHub 开源项目
