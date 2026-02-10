@@ -72,917 +72,7 @@ ${this.parser.parse(n)}</blockquote>
 ${n}</tr>
 `}tablecell(n){let e=this.parser.parseInline(n.tokens),t=n.header?"th":"td";return(n.align?`<${t} align="${n.align}">`:`<${t}>`)+e+`</${t}>
 `}strong({tokens:n}){return`<strong>${this.parser.parseInline(n)}</strong>`}em({tokens:n}){return`<em>${this.parser.parseInline(n)}</em>`}codespan({text:n}){return`<code>${On(n,!0)}</code>`}br(n){return"<br>"}del({tokens:n}){return`<del>${this.parser.parseInline(n)}</del>`}link({href:n,title:e,tokens:t}){let s=this.parser.parseInline(t),r=gr(n);if(r===null)return s;n=r;let i='<a href="'+n+'"';return e&&(i+=' title="'+On(e)+'"'),i+=">"+s+"</a>",i}image({href:n,title:e,text:t,tokens:s}){s&&(t=this.parser.parseInline(s,this.parser.textRenderer));let r=gr(n);if(r===null)return On(t);n=r;let i=`<img src="${n}" alt="${t}"`;return e&&(i+=` title="${On(e)}"`),i+=">",i}text(n){return"tokens"in n&&n.tokens?this.parser.parseInline(n.tokens):"escaped"in n&&n.escaped?n.text:On(n.text)}},Cs=class{strong({text:n}){return n}em({text:n}){return n}codespan({text:n}){return n}del({text:n}){return n}html({text:n}){return n}text({text:n}){return n}link({text:n}){return""+n}image({text:n}){return""+n}br(){return""}checkbox({raw:n}){return n}},yn=class es{constructor(e){N(this,"options");N(this,"renderer");N(this,"textRenderer");this.options=e||ue,this.options.renderer=this.options.renderer||new gt,this.renderer=this.options.renderer,this.renderer.options=this.options,this.renderer.parser=this,this.textRenderer=new Cs}static parse(e,t){return new es(t).parse(e)}static parseInline(e,t){return new es(t).parseInline(e)}parse(e){var s,r;let t="";for(let i=0;i<e.length;i++){let l=e[i];if((r=(s=this.options.extensions)==null?void 0:s.renderers)!=null&&r[l.type]){let a=l,u=this.options.extensions.renderers[a.type].call({parser:this},a);if(u!==!1||!["space","hr","heading","code","table","blockquote","list","html","def","paragraph","text"].includes(a.type)){t+=u||"";continue}}let o=l;switch(o.type){case"space":{t+=this.renderer.space(o);break}case"hr":{t+=this.renderer.hr(o);break}case"heading":{t+=this.renderer.heading(o);break}case"code":{t+=this.renderer.code(o);break}case"table":{t+=this.renderer.table(o);break}case"blockquote":{t+=this.renderer.blockquote(o);break}case"list":{t+=this.renderer.list(o);break}case"checkbox":{t+=this.renderer.checkbox(o);break}case"html":{t+=this.renderer.html(o);break}case"def":{t+=this.renderer.def(o);break}case"paragraph":{t+=this.renderer.paragraph(o);break}case"text":{t+=this.renderer.text(o);break}default:{let a='Token with "'+o.type+'" type was not found.';if(this.options.silent)return console.error(a),"";throw new Error(a)}}}return t}parseInline(e,t=this.renderer){var r,i;let s="";for(let l=0;l<e.length;l++){let o=e[l];if((i=(r=this.options.extensions)==null?void 0:r.renderers)!=null&&i[o.type]){let u=this.options.extensions.renderers[o.type].call({parser:this},o);if(u!==!1||!["escape","html","link","image","strong","em","codespan","br","del","text"].includes(o.type)){s+=u||"";continue}}let a=o;switch(a.type){case"escape":{s+=t.text(a);break}case"html":{s+=t.html(a);break}case"link":{s+=t.link(a);break}case"image":{s+=t.image(a);break}case"checkbox":{s+=t.checkbox(a);break}case"strong":{s+=t.strong(a);break}case"em":{s+=t.em(a);break}case"codespan":{s+=t.codespan(a);break}case"br":{s+=t.br(a);break}case"del":{s+=t.del(a);break}case"text":{s+=t.text(a);break}default:{let u='Token with "'+a.type+'" type was not found.';if(this.options.silent)return console.error(u),"";throw new Error(u)}}}return s}},tt,Re=(tt=class{constructor(n){N(this,"options");N(this,"block");this.options=n||ue}preprocess(n){return n}postprocess(n){return n}processAllTokens(n){return n}emStrongMask(n){return n}provideLexer(){return this.block?xn.lex:xn.lexInline}provideParser(){return this.block?yn.parse:yn.parseInline}},N(tt,"passThroughHooks",new Set(["preprocess","postprocess","processAllTokens","emStrongMask"])),N(tt,"passThroughHooksRespectAsync",new Set(["preprocess","postprocess","processAllTokens"])),tt),Wa=class{constructor(...n){N(this,"defaults",ys());N(this,"options",this.setOptions);N(this,"parse",this.parseMarkdown(!0));N(this,"parseInline",this.parseMarkdown(!1));N(this,"Parser",yn);N(this,"Renderer",gt);N(this,"TextRenderer",Cs);N(this,"Lexer",xn);N(this,"Tokenizer",dt);N(this,"Hooks",Re);this.use(...n)}walkTokens(n,e){var s,r;let t=[];for(let i of n)switch(t=t.concat(e.call(this,i)),i.type){case"table":{let l=i;for(let o of l.header)t=t.concat(this.walkTokens(o.tokens,e));for(let o of l.rows)for(let a of o)t=t.concat(this.walkTokens(a.tokens,e));break}case"list":{let l=i;t=t.concat(this.walkTokens(l.items,e));break}default:{let l=i;(r=(s=this.defaults.extensions)==null?void 0:s.childTokens)!=null&&r[l.type]?this.defaults.extensions.childTokens[l.type].forEach(o=>{let a=l[o].flat(1/0);t=t.concat(this.walkTokens(a,e))}):l.tokens&&(t=t.concat(this.walkTokens(l.tokens,e)))}}return t}use(...n){let e=this.defaults.extensions||{renderers:{},childTokens:{}};return n.forEach(t=>{let s={...t};if(s.async=this.defaults.async||s.async||!1,t.extensions&&(t.extensions.forEach(r=>{if(!r.name)throw new Error("extension name required");if("renderer"in r){let i=e.renderers[r.name];i?e.renderers[r.name]=function(...l){let o=r.renderer.apply(this,l);return o===!1&&(o=i.apply(this,l)),o}:e.renderers[r.name]=r.renderer}if("tokenizer"in r){if(!r.level||r.level!=="block"&&r.level!=="inline")throw new Error("extension level must be 'block' or 'inline'");let i=e[r.level];i?i.unshift(r.tokenizer):e[r.level]=[r.tokenizer],r.start&&(r.level==="block"?e.startBlock?e.startBlock.push(r.start):e.startBlock=[r.start]:r.level==="inline"&&(e.startInline?e.startInline.push(r.start):e.startInline=[r.start]))}"childTokens"in r&&r.childTokens&&(e.childTokens[r.name]=r.childTokens)}),s.extensions=e),t.renderer){let r=this.defaults.renderer||new gt(this.defaults);for(let i in t.renderer){if(!(i in r))throw new Error(`renderer '${i}' does not exist`);if(["options","parser"].includes(i))continue;let l=i,o=t.renderer[l],a=r[l];r[l]=(...u)=>{let f=o.apply(r,u);return f===!1&&(f=a.apply(r,u)),f||""}}s.renderer=r}if(t.tokenizer){let r=this.defaults.tokenizer||new dt(this.defaults);for(let i in t.tokenizer){if(!(i in r))throw new Error(`tokenizer '${i}' does not exist`);if(["options","rules","lexer"].includes(i))continue;let l=i,o=t.tokenizer[l],a=r[l];r[l]=(...u)=>{let f=o.apply(r,u);return f===!1&&(f=a.apply(r,u)),f}}s.tokenizer=r}if(t.hooks){let r=this.defaults.hooks||new Re;for(let i in t.hooks){if(!(i in r))throw new Error(`hook '${i}' does not exist`);if(["options","block"].includes(i))continue;let l=i,o=t.hooks[l],a=r[l];Re.passThroughHooks.has(i)?r[l]=u=>{if(this.defaults.async&&Re.passThroughHooksRespectAsync.has(i))return(async()=>{let p=await o.call(r,u);return a.call(r,p)})();let f=o.call(r,u);return a.call(r,f)}:r[l]=(...u)=>{if(this.defaults.async)return(async()=>{let p=await o.apply(r,u);return p===!1&&(p=await a.apply(r,u)),p})();let f=o.apply(r,u);return f===!1&&(f=a.apply(r,u)),f}}s.hooks=r}if(t.walkTokens){let r=this.defaults.walkTokens,i=t.walkTokens;s.walkTokens=function(l){let o=[];return o.push(i.call(this,l)),r&&(o=o.concat(r.call(this,l))),o}}this.defaults={...this.defaults,...s}}),this}setOptions(n){return this.defaults={...this.defaults,...n},this}lexer(n,e){return xn.lex(n,e??this.defaults)}parser(n,e){return yn.parse(n,e??this.defaults)}parseMarkdown(n){return(e,t)=>{let s={...t},r={...this.defaults,...s},i=this.onError(!!r.silent,!!r.async);if(this.defaults.async===!0&&s.async===!1)return i(new Error("marked(): The async option was set to true by an extension. Remove async: false from the parse options object to return a Promise."));if(typeof e>"u"||e===null)return i(new Error("marked(): input parameter is undefined or null"));if(typeof e!="string")return i(new Error("marked(): input parameter is of type "+Object.prototype.toString.call(e)+", string expected"));if(r.hooks&&(r.hooks.options=r,r.hooks.block=n),r.async)return(async()=>{let l=r.hooks?await r.hooks.preprocess(e):e,o=await(r.hooks?await r.hooks.provideLexer():n?xn.lex:xn.lexInline)(l,r),a=r.hooks?await r.hooks.processAllTokens(o):o;r.walkTokens&&await Promise.all(this.walkTokens(a,r.walkTokens));let u=await(r.hooks?await r.hooks.provideParser():n?yn.parse:yn.parseInline)(a,r);return r.hooks?await r.hooks.postprocess(u):u})().catch(i);try{r.hooks&&(e=r.hooks.preprocess(e));let l=(r.hooks?r.hooks.provideLexer():n?xn.lex:xn.lexInline)(e,r);r.hooks&&(l=r.hooks.processAllTokens(l)),r.walkTokens&&this.walkTokens(l,r.walkTokens);let o=(r.hooks?r.hooks.provideParser():n?yn.parse:yn.parseInline)(l,r);return r.hooks&&(o=r.hooks.postprocess(o)),o}catch(l){return i(l)}}}onError(n,e){return t=>{if(t.message+=`
-Please report this to https://github.com/markedjs/marked.`,n){let s="<p>An error occurred:</p><pre>"+On(t.message+"",!0)+"</pre>";return e?Promise.resolve(s):s}if(e)return Promise.reject(t);throw t}}},ae=new Wa;function j(n,e){return ae.parse(n,e)}j.options=j.setOptions=function(n){return ae.setOptions(n),j.defaults=ae.defaults,ki(j.defaults),j};j.getDefaults=ys;j.defaults=ue;j.use=function(...n){return ae.use(...n),j.defaults=ae.defaults,ki(j.defaults),j};j.walkTokens=function(n,e){return ae.walkTokens(n,e)};j.parseInline=ae.parseInline;j.Parser=yn;j.parser=yn.parse;j.Renderer=gt;j.TextRenderer=Cs;j.Lexer=xn;j.lexer=xn.lex;j.Tokenizer=dt;j.Hooks=Re;j.parse=j;j.options;j.setOptions;j.use;j.walkTokens;j.parseInline;yn.parse;xn.lex;const br={notes:[{id:"2026-02-08",title:"技术前沿 - 2026-02-08",category:"tech",date:"2026-02-08",summary:'CSS 在 2026 年正在发生质变：**"CSS 负责设计，JavaScript 负责交互"的旧模式正在瓦解**。现代 CSS 已经强大到可以处理以前需要大量脚本的复杂交互。',content:`# 技术前沿 - 2026-02-08
-
-**方向：** 技术前沿（CSS 新特性）
-
----
-
-## 核心发现
-
-CSS 在 2026 年正在发生质变：**"CSS 负责设计，JavaScript 负责交互"的旧模式正在瓦解**。现代 CSS 已经强大到可以处理以前需要大量脚本的复杂交互。
-
-## 2026 年关键 CSS 新特性
-
-### 1. 可自定义原生元素
-- **appearance: base-select** - 让 \`<select>\` 进入可定制模式
-- **select::picker(select)** - 伪元素，可样式化下拉菜单表面
-- **特点**：保留原生语义和可访问性，同时获得完全样式控制
-
-### 2. 树计数函数（Tree Counting Functions）
-- **sibling-index()** - 返回元素在兄弟元素中的位置（从 1 开始）
-- **sibling-count()** - 返回兄弟元素总数
-- **用途**：动态延迟、计数式布局、按比例样式
-- **优势**：无需在 HTML 中手动添加 \`--index\` 属性，删除/添加元素时动画自动适配
-
-### 3. 类型化 attr()
-- **语法**：\`attr(data-bg-color color, transparent)\`
-- **用途**：将 data-* 属性值用作特定 CSS 类型（颜色、数字等）
-- **优势**：数据驱动的样式，可以在 HTML 中调整主题颜色而无需修改 CSS
-
-### 4. 滚动交互增强
-- **::scroll-button()** - 为滚动容器生成交互按钮
-- **::scroll-marker** - 为每个滚动项生成的标记元素（如分页点）
-- **::scroll-marker-group** - 滚动标记的容器，可样式化和定位
-- **:target-current** - 匹配目标在视口中的链接
-
-### 5. 滚动状态查询
-- **container-type: scroll-state** - 启用滚动状态查询
-- **@container scroll-state(snapped: x)** - 在容器处于特定滚动快照位置时应用样式
-
-### 6. 动画起始样式
-- **@starting-style** - 定义动画/过渡开始时的样式
-- **用途**：进入动画，无需 JavaScript 来设置初始状态
-
-### 7. CSS Anchor Positioning
-- **概念**：用纯 CSS 将一个元素"系"在另一个元素上
-- **特性**：浏览器自动处理空间感知，选择最佳放置位置
-- **优势**：自动 overflow 处理、无需手动计算位置
-
----
-
-## 现实应用案例
-
-**自定义 Select 元素（以前需要 150+ 行 JS）：**
-
-\`\`\`css
-/* 进入可定制模式 */
-select,
-select::picker(select) {
-  appearance: base-select;
-}
-
-/* 样式化下拉菜单 */
-select::picker(select) {
-  margin-block-end: 1em;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-}
-
-/* 交错动画 */
-option {
-  transition:
-    opacity 0.25s ease,
-    translate 0.5s ease;
-  transition-delay: calc(0.2s * (sibling-index() - 1));
-
-  @starting-style {
-    opacity: 0;
-    translate: 30px 0;
-  }
-}
-
-/* 数据驱动样式 */
-option {
-  background-color: attr(data-bg-color color, transparent);
-}
-\`\`\`
-
-浏览器自动处理：
-- ✅ Overflow 处理
-- ✅ 键盘导航（Arrow keys, Enter, Escape）
-- ✅ 焦点管理
-- ✅ 锚定定位fallback
-- ✅ 进度增强（不支持时回退到原生）
-
----
-
-## 核心趋势
-
-1. **减少 JavaScript 依赖**：以前需要大量脚本的交互（下拉菜单、工具提示、轮播）现在可以用纯 CSS 实现
-2. **更好的可访问性**：原生元素保留语义和键盘导航，同时获得自定义样式
-3. **声明式优于命令式**：用 \`@starting-style\` 和 CSS 查询替代 JS 事件监听
-4. **AI 友好**：更声明式的特性让 AI 更不容易过度工程化或发明意外行为
-
----
-
-## 对 erzi-site 的启发
-
-虽然我们主要用 Three.js，但这些特性可以用于：
-1. **UI 组件**：自定义菜单、工具提示（无需第三方库）
-2. **滚动体验**：探索场景切换时的滚动标记和状态反馈
-3. **数据驱动**：用 data-* 属性控制 Three.js 场景参数
-4. **减少代码**：UI 逻辑尽可能用 CSS，减少 JS 维护成本
-
----
-
-## 浏览器支持
-
-⚠️ 注意：大多数这些特性非常新，仍在跨浏览器推出中。
-- appearance: base-select 需要 Chrome 135+
-- 建议用于内部工具和实验，生产环境需保守等待支持稳定
-
----
-
-## 参考资料
-
-- [CSS in 2026 - LogRocket Blog](https://blog.logrocket.com/css-in-2026/)
-- [CSS Anchor Positioning - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning)
-- [CSS Wrapped 2025 - Chrome DevRel](https://chrome.dev/css-wrapped-2025/)
-`,source:""},{id:"2026-02-08b",title:"技术前沿 - 2026-02-08（第二篇）",category:"tech",date:"2026-02-08",summary:"方向： 技术前沿（WebGL + GSAP 创意编程）",content:`# 技术前沿 - 2026-02-08（第二篇）
-
-**方向：** 技术前沿（WebGL + GSAP 创意编程）
-
----
-
-## 来源
-
-**Codrops 教程：** "Building a Scroll-Revealed WebGL Gallery with GSAP, Three.js, Astro and Barba.js"
-**URL：** https://tympanus.net/codrops/2026/02/02/building-a-scroll-revealed-webgl-gallery-with-gsap-three-js-astro-and-barba-js/
-
----
-
-## 核心概念
-
-构建一个多页画廊，图片在滚动时用 WebGL shader reveal，点击后动画切换到全屏详情视图。
-
-### 涉及的技术点
-
-1. **WebGL 和 DOM 同步** — Three.js planes 完美匹配 HTML images
-2. **平滑滚动** — ScrollSmoother 与渲染循环配合
-3. **滚动触发 Shader 动画** — 图片进入视口时 reveal
-4. **无缝页面切换** — Flip 插件让点击图片在页面间视觉移动，没有跳跃
-
----
-
-## 技术栈
-
-| 工具 | 作用 |
-|------|------|
-| **Astro** | 轻量级框架，保持项目轻量，容易结构化为多页站点 |
-| **Barba.js** | 控制导航，运行过渡逻辑，拦截内部链接导航 |
-| **GSAP** | 驱动动画（ScrollSmoother, ScrollTrigger, SplitText, Flip） |
-| **Three.js** | WebGL 渲染，创建 Shader planes |
-
----
-
-## 关键实现细节
-
-### 1. WebGL 和 DOM 同步
-
-为什么需要同步？
-
-- Three.js 在 \`requestAnimationFrame\` 中渲染
-- 浏览器原生滚动独立于渲染循环更新
-- 为了让 Three.js planes 完美对齐 DOM，需要滚动值与同一渲染 tick 同步
-
-**解决方案：使用 ScrollSmoother**
-
-\`\`\`javascript
-export default class Scroll {
-  scroll: number
-  s: globalThis.ScrollSmoother | null
-
-  init() {
-    this.scroll = 0
-
-    this.s = ScrollSmoother.create({
-      smooth: 1,
-      normalizeScroll: true,
-      wrapper: document.getElementById("app") as HTMLElement,
-      content: document.getElementById("smooth-content") as HTMLElement,
-      onUpdate: (self) => {
-        this.scroll = self.scrollTop() // 滚动值在每次更新时保存
-      },
-    })
-  }
-
-  getScroll() {
-    return this.scroll
-  }
-}
-\`\`\`
-
-然后使用 \`gsap.ticker\`（GSAP 的心跳）同步 Three.js：
-
-\`\`\`javascript
-gsap.ticker.add(this.render)
-
-render() {
-  const scrollTop = this.scroll.getScroll()
-  this.canvas.render(scrollTop)
-}
-\`\`\`
-
-\`gsap.ticker\` 在每个 \`requestAnimationFrame\` 更新 globalTimeline，与浏览器渲染周期完美同步。
-
-### 2. Media 类：同步 HTML 和 WebGL
-
-每个图片创建一个 \`Media\` 对象：
-- 接收 HTML \`<img>\` 元素
-- 创建 PlaneGeometry Mesh
-- 缩放和定位以匹配 HTML 元素
-- 使用图片作为纹理
-
-\`\`\`javascript
-export default class Media {
-  element: HTMLImageElement
-  geometry: THREE.PlaneGeometry
-  material: THREE.ShaderMaterial
-  mesh: THREE.Mesh
-
-  constructor({ element, scene, sizes }: Props) {
-    this.element = element
-    this.scene = scene
-    this.sizes = sizes
-
-    this.createGeometry()
-    this.createMaterial()
-    this.createMesh()
-    this.setNodeBounds()
-    this.setMeshDimensions()
-    this.setMeshPosition()
-    this.setTexture()
-
-    this.scene.add(this.mesh)
-  }
-
-  setMeshDimensions() {
-    this.meshDimensions = {
-      width: (this.nodeDimensions.width * this.sizes.width) / window.innerWidth,
-      height: (this.nodeDimensions.height * this.sizes.height) / window.innerHeight,
-    }
-
-    this.mesh.scale.x = this.meshDimensions.width
-    this.mesh.scale.y = this.meshDimensions.height
-  }
-
-  setMeshPosition() {
-    this.meshPostion = {
-      x: (this.elementBounds.left * this.sizes.width) / window.innerWidth,
-      y: (-this.elementBounds.top * this.sizes.height) / window.innerHeight,
-    }
-
-    this.meshPostion.x -= this.sizes.width / 2
-    this.meshPostion.x += this.meshDimensions.width / 2
-
-    this.meshPostion.y -= this.meshDimensions.height / 2
-    this.meshPostion.y += this.sizes.height / 2
-
-    this.mesh.position.x = this.meshPostion.x
-    this.mesh.position.y = this.meshPostion.y
-  }
-}
-\`\`\`
-
-**ShaderMaterial 包含 uniform：**
-- \`uTexture\` — 图片纹理
-- \`uResolution\` — 纹理原始分辨率
-- \`uContainerRes\` — DOM 元素尺寸
-- \`uProgress\` — reveal 效果进度（0 到 1）
-- \`uGridSize\` — 网格大小
-- \`uColor\` — 背景颜色
-
-### 3. ScrollTrigger：滚动触发动画
-
-当图片元素进入视口时，动画化 \`uProgress\` uniform：
-
-\`\`\`javascript
-observe() {
-  this.scrollTrigger = gsap.to(this.material.uniforms.uProgress, {
-    value: 1,
-    scrollTrigger: {
-      trigger: this.element,
-      start: "top bottom",
-      end: "bottom top",
-      toggleActions: "play reset restart reset", // 离开视口时重置，再次进入时重启
-    },
-    duration: 1.6,
-    ease: "linear",
-  })
-}
-\`\`\`
-
-\`toggleActions: "play reset restart reset"\` 控制四个阶段的行为：
-- 向前滚动 past start
-- 向前滚动 past end
-- 向后滚动 past end
-- 向后滚动 past start
-
-### 4. SplitText：文字动画
-
-使用 GSAP SplitText 插件分割文字内容为行，每行有增量延迟：
-
-\`\`\`javascript
-const split = SplitText.create(el, {
-  type: 'lines',
-  mask: 'lines',
-  autoSplit: true,
-});
-
-// 初始状态：所有行下移 100%（不可见）
-split.lines.forEach((line) => {
-  gsap.set(line, { yPercent: 100 });
-});
-
-// 进入动画
-gsap.to(split.lines, {
-  yPercent: 0,
-  stagger: 0.06, // 每行延迟 0.06s
-  scrollTrigger: {
-    trigger: element,
-    start: 'top bottom',
-    end: 'bottom top',
-    toggleActions: 'play reset restart reset',
-  },
-  ease: 'expo',
-  duration: inDuration,
-  delay: inDelay,
-});
-\`\`\`
-
-### 5. Flip：无缝页面切换
-
-**目标：** 让点击的图片在页面间视觉移动，没有跳跃。
-
-**Flip 原理：** 即使 DOM 结构剧烈变化，也能无缝过渡两个状态。
-
-**实现步骤：**
-
-1. **在 leave 回调中保存初始状态**
-
-\`\`\`javascript
-leave: () => {
-  // 保存点击图片的初始状态
-  this.mediaHomeState = Flip.getState(activeLinkImage)
-
-  // 固定容器位置，避免滚动影响
-  const container = document.querySelector('.container') as HTMLElement;
-  container.style.position = 'fixed';
-  container.style.top = \`-\${scrollTop}px\`;
-  container.style.width = '100%';
-  container.style.zIndex = '1000';
-}
-\`\`\`
-
-2. **在 after 回调中移动元素并动画过渡**
-
-\`\`\`javascript
-after: () => {
-  const detailContainer = document.querySelector('.details-container')
-  detailContainer.innerHTML = '';
-  detailContainer.append(activeLinkImage); // 移动到新容器
-
-  Flip.from(this.mediaHomeState, {
-    absolute: true,
-    duration: 1,
-    ease: 'power3.inOut',
-    onComplete: () => {
-      // 清理其他 meshes
-      this.canvas.medias?.forEach((media) => {
-        if (media.element !== activeLinkImage) {
-          media.destroy();
-        }
-      });
-    },
-  });
-}
-\`\`\`
-
-**Barba.js 作用：**
-- 生成真实页面（/, /[index] 等）
-- 拦截内部链接导航，不刷新页面
-- 提供生命周期钩子（before, leave, beforeEnter, after）
-- 在旧和新容器都存在时运行动画
-
----
-
-## 对 erzi-site 的启发
-
-### 1. 滚动触发机制
-
-我们可以用类似的机制展示知识网格：
-
-- 每个格子是一个"知识单元"
-- 格子进入视口时，用 shader 动画"reveal"
-- 离开视口时重置，再次进入时重新 reveal
-
-### 2. 无缝页面切换
-
-当用户点击一个"知识格子"查看详情时：
-- 用 Flip 让格子平滑移动到详情页位置
-- WebGL mesh 跟随 DOM 元素移动
-- 没有生硬的跳转
-
-### 3. 文字动画
-
-标题、描述文字可以用 SplitText 分割动画：
-- 进入视口时逐行 reveal
-- 增量延迟创造优雅的节奏
-
-### 4. 性能优化
-
-**重要：清理 WebGL 资源**
-
-\`\`\`javascript
-destroy() {
-  this.scene.remove(this.mesh)
-  this.scrollTrigger.scrollTrigger?.kill()
-  this.scrollTrigger?.kill()
-
-  // 释放 GPU 资源
-  this.geometry.dispose()
-  this.material.dispose()
-}
-\`\`\`
-
-避免 GPU 内存在多次页面切换后积累。
-
----
-
-## 核心原则总结
-
-1. **同步是关键** — WebGL 和 DOM 必须完全对齐
-2. **平滑滚动 + 渲染循环** — 用 GSAP ticker 同步滚动和 Three.js
-3. **滚动触发动画** — 用 ScrollTrigger 监听元素进入/离开视口
-4. **无缝过渡** — Flip 插件处理 DOM 结构变化时的视觉连续性
-5. **清理资源** — WebGL geometries/materials/textures 必须手动释放
-
----
-
-## 技术决策参考
-
-**Astro vs 其他框架：**
-- Astro 静态生成 + 多页支持，轻量
-- 适合内容型网站
-
-**Barba.js vs 其他路由：**
-- 单页应用体验，但保持真实页面结构
-- 生命周期钩子完美配合动画
-
-**GSAP vs 其他动画库：**
-- ScrollSmoother 提供平滑滚动
-- ScrollTrigger 监听视口
-- SplitText 文字分割
-- Flip 无缝过渡
-- 生态完整，插件协同工作
-
----
-
-*这篇文章提供了完整的 WebGL + GSAP 多页画廊实现方案，可以作为 erzi-site 的技术参考。*
-`,source:""},{id:"2026-02-08c",title:"技术前沿 - 2026-02-08",category:"tech",date:"2026-02-08",summary:`## 来源
-Codrops (tympanus.net/codrops) - 前端创意交互教程`,content:`# 技术前沿 - 2026-02-08
-
-## 来源
-Codrops (tympanus.net/codrops) - 前端创意交互教程
-
-## 1. 3D Scroll-Driven Text Animations with CSS and GSAP
-
-**URL:** https://tympanus.net/codrops/2025/11/04/creating-3d-scroll-driven-text-animations-with-css-and-gsap/
-
-### 核心思路
-用纯 CSS + GSAP 实现滚动驱动的 3D 文本动画，**不需要 Three.js**。文本围绕一个不可见的圆柱体排列，滚动时动态变换位置。
-
-### 关键技术
-
-#### 1. GSAP 插件组合
-\`\`\`javascript
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
-
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
-// 创建平滑滚动体验
-this.smoother = ScrollSmoother.create({
-  smooth: 1,
-  effects: true,
-});
-\`\`\`
-- **ScrollSmoother**：确保一致、GPU 加速的滚动
-- **ScrollTrigger**：将动画直接绑定到滚动进度
-
-#### 2. CSS 3D 空间
-\`\`\`css
-.cylinder__wrapper {
-  perspective: 70vw;  /* 添加深度 */
-  transform-style: preserve-3d;  /* 允许子元素 3D 定位 */
-}
-
-.cylinder__text__wrapper {
-  transform-style: preserve-3d;
-  transform-origin: center center;
-  backface-visibility: hidden;  /* 隐藏背面 */
-}
-\`\`\`
-
-#### 3. 动态位置计算
-\`\`\`javascript
-calculatePositions(): void {
-  const offset = 0.4;
-  const radius = Math.min(window.innerWidth, window.innerHeight) * offset;
-  const spacing = 180 / this.textItems.length;
-
-  this.textItems.forEach((item, index) => {
-    const angle = (index * spacing * Math.PI) / 180;
-    const rotationAngle = index * -spacing;
-
-    const x = 0;
-    const y = Math.sin(angle) * radius;
-    const z = Math.cos(angle) * radius;
-
-    item.style.transform = \`translate3d(-50%, -50%, 0) translate3d(\${x}px, \${y}px, \${z}px) rotateX(\${rotationAngle}deg)\`;
-  });
-}
-\`\`\`
-- **offset**：控制圆柱体的"紧密度"（0.4）
-- **radius**：根据 viewport 动态缩放
-- **每个文本项计算 x, y, z 坐标**
-
-### 优势
-- **轻量级**：不需要 Three.js 等重型 3D 库
-- **高性能**：GSAP + CSS transforms 都是 GPU 加速
-- **响应式**：自动适配不同屏幕尺寸
-- **简单易用**：CSS + 基础 JS 语法
-
----
-
-## 2. WebGL Portfolio Case Study: Creative Process Insights
-
-**URL:** https://tympanus.net/codrops/2025/11/27/letting-the-creative-process-shape-a-webgl-portfolio/
-
-### 核心洞察
-创意过程不是线性的。初始想法（fold effect）几乎变成了可选，而很多功能因为不适合视觉方向而完全消失。
-
-### 关键技术
-
-#### 1. Vector Projection for Directional Fold
-**问题：** 如何让折叠效果在任意方向工作？
-
-**解决：** 向量投影 + curlPlane 函数
-\`\`\`javascript
-// 1. 归一化方向
-vec2 dir = normalize(uDirection);
-
-// 2. 将顶点投影到方向轴
-float projValue = dot(vec2(position.xy), dir);
-
-// 3. 对投影值应用曲线函数
-vec2 curledPosition = curlPlane(projValue, effectiveSize, uCurlX, uCurlY, true);
-
-// 4. 沿选择方向重新分配结果
-newposition.xy += dir * (curledPosition.x - projValue);
-newposition.z += curledPosition.y;
-\`\`\`
-
-#### 2. Fake Shadow Based on Curvature
-**问题：** 如何让折叠效果更真实？
-
-**解决：** 基于曲率的简单假阴影
-\`\`\`glsl
-// Vertex Shader: 计算曲率
-float maxExpectedCurl = 0.5;
-float vCurvatureAmount = smoothstep(0.0, maxExpectedCurl, abs(curledPosition.y));
-
-// Fragment Shader: 应用阴影
-varying float vCurvatureAmount;
-void main() {
-  vec4 color = texture(uTexture, vUv);
-  float shadow = 1.0 - vCurvatureAmount * 0.25;
-  color.rgb *= shadow;
-  gl_FragColor = vec4(color.rgb, color.a);
-}
-\`\`\`
-- **smoothstep**：创建平滑过渡
-- **曲率越大，阴影越深**：增强 3D 感
-
-#### 3. MeshPortal: Rendering Bounded 3D Scene
-**问题：** 如何在边界区域内渲染 3D 场景？
-
-**解决：** 使用 FBO (Frame Buffer Object) + 自定义 mask shader
-\`\`\`javascript
-// 创建独立场景和相机
-const otherSceneRef = useRef(new THREE.Scene());
-const otherCameraRef = useRef();
-
-// 创建渲染目标
-const renderTarget = useFBO({
-  width: viewport.width * viewport.dpr,
-  height: viewport.height * viewport.dpr,
-});
-
-// 渲染到纹理
-useFrame((state) => {
-  const { gl } = state;
-  if (composer) composer.render();
-  
-  // 应用渲染的纹理到 portal mesh
-  if (portalMeshRef.current && portalMeshRef.current.material) {
-    portalMeshRef.current.material.uniforms.tDiffuse.value = renderTarget.texture;
-  }
-});
-\`\`\`
-
-**Portal Mask Shader：**
-\`\`\`glsl
-uniform vec4 uMask; // x1, x2, y1, y2 bounds
-void main() {
-  vec2 uv = vUv;
-  // 基于 mask bounds 剪裁
-  if (uv.x < uMask.x || uv.x > uMask.y || uv.y < uMask.z || uv.y > uMask.w) {
-    discard;
-  }
-  vec4 color = texture2D(tDiffuse, uv);
-  gl_FragColor = color;
-}
-\`\`\`
-
-### 实践经验
-- **耐心观察**：创意方向会自然浮现，不要一开始就规划好一切
-- **记录过程**：用视频记录演化过程，帮助回忆和欣赏变化
-- **透明分享**：即使是不完美的 WIP，也比不分享有趣
-- **响应式系统**：跟踪 DOM 元素边界并转换为 WebGL 坐标
-
----
-
-## 可落地的技术
-
-### 对 erzi-knowledge/erzi-site
-1. **CSS + GSAP Scroll-Driven 文本**：用于 hero section 的 3D 文字效果
-2. **Fake Shadow Shader**：用于 WebGL 效果的深度增强
-3. **MeshPortal 技术**：用于在 UI 中嵌入 3D 场景
-
-### 技术栈建议
-- **GSAP**：高性能动画，ScrollTrigger + ScrollSmoother
-- **Three.js + React Three Fiber**：3D 场景渲染
-- **Custom Shaders**：优化的视觉效果
-
----
-
-## 标签
-#gsap #scroll-trigger #3d #css3d #webgl #shader #creative-coding #portfolio
-`,source:""},{id:"2026-02-08d",title:"技术前沿 - 2026-02-08（第四篇）",category:"tech",date:"2026-02-08",summary:"方向： 技术前沿（可视化编程工具）",content:`# 技术前沿 - 2026-02-08（第四篇）
-
-**方向：** 技术前沿（可视化编程工具）
-
----
-
-## 来源
-
-**Hacker News 讨论：** "WebGL visual programming editor cables.gl is now open source"
-**cables.gl 官网：** https://cables.gl/
-**开发团队：** undev.studio（创意工作室，专精于实时图形、数据可视化和应用开发）
-
----
-
-## 核心概念
-
-**cables.gl** 是一个可视化编程工具，用于创建美丽的交互式内容，而无需编写代码。
-
-**核心卖点：**
-- 低学习曲线，易于使用
-- 实时视觉效果，快速原型和调整
-- 生成 JS 文件，可嵌入网站
-- 现在开源，有 standalone 版本
-
----
-
-## 用户反馈
-
-### Hacker News 用户的评论
-
-**用户 1：**
-> "Cables is an incredibly powerful tool with a fairly low learning curve. I couldn't have done what I did with my personal website if I was working with WebGL directly, especially not in 3 days it took me to build and deploy with no prior experience."
-
-**用户 2（AR 项目）：**
-> "Cables is absolutely fantastic. I used it personally for an art project, as well as was involved with a commercial AR experience which used cables to run elaborate, fully interactive 3D scenes in a normal browser, on mobile."
-
-**关键洞察：**
-- **3 天内完成**个人网站（无经验）
-- 用于**商业 AR 体验**，运行在移动浏览器中
-- 支持移动设备的**复杂 3D 场景**
-
----
-
-## 核心功能
-
-### 1. 可视化编程界面
-
-**工作流：**
-- 提供一组操作符（数学函数、形状、材质、后期处理效果）
-- 用虚拟电缆连接操作符，创建你想要的体验
-- 颜色编码的连接，易于理解
-- 实时数据流可视化（Flow mode）
-
-**用户界面特点：**
-- 自动连接（添加或移除时自动连接）
-- 即时连接
-- 高级搜索系统
-- 缩放和导航（大型项目）
-- 子 patches（复杂性的管理）
-
-### 2. 真正的 Web 平台
-
-**优势：**
-- 浏览器中创建、管理和连接项目
-- 所有现代浏览器、移动设备和桌面电脑运行
-- 任何有浏览器支持的电脑打开
-- 无需安装任何东西
-
-### 3. 3D 模型支持
-
-**功能：**
-- 拖放加载 3D 模型
-- 直接加载动画数据
-- 大量材质选择（matcap、IBL、Phong、Lambert 等）
-
-### 4. 纹理效果
-
-**效果：**
-- DOF（景深）
-- Glitch（故障效果）
-- 瞬间应用和增强视觉
-
-### 5. 外部设备支持
-
-**MIDI：**
-- 完整 MIDI 特性支持（MIDI clock、Notes、CC、NRPN）
-- 连接外部硬件或 DAW
-
-**浏览器 API：**
-- Gamepad
-- Webcam
-- 手机传感器
-- 开发工具（Kinect、Leap Motion）
-
-### 6. Shader 和 WebVR
-
-**Shader：**
-- 编写自定义 fragment 和 vertex shaders
-- 应用于材质或纹理
-
-**WebVR：**
-- 支持 WebVR 平台
-- 构建移动设备和头显的 VR 体验（Oculus Rift）
-
-### 7. 代码编辑器
-
-**功能：**
-- 创建和编码自己的操作符
-- 内置代码编辑器
-- Op 代码可用，可自由复制和修改
-
----
-
-## 使用场景
-
-### 设计师
-
-**优势：**
-- **可视化编程，无需编码** — 用模块套件创建很酷的东西
-- **快速协调和反馈** — 图形界面，无需为每个像素联系开发者
-- **易于协作** — 分享工作，集成注释，分组操作符
-
-### 开发者
-
-**优势：**
-- **易于嵌入** — 无服务器端要求，嵌入网站
-- **小 footprint** — 导出的 .zip 文件只包含使用的操作符代码
-- **编写自己的操作符** — 克隆现有操作符，修改想法
-
----
-
-## 关键特性对比
-
-| 特性 | cables.gl | TouchDesigner | Three.js |
-|------|-----------|--------------|-----------|
-| **可视化编程** | ✅ | ✅ | ❌ |
-| **Web 原生** | ✅ | ❌（桌面应用）| ✅ |
-| **学习曲线** | 低 | 中 | 高 |
-| **移动支持** | ✅ | ❌ | ✅ |
-| **开源** | ✅ | ❌（商业许可）| ✅ |
-| **3D 支持** | ✅ | ✅ | ✅ |
-| **导出嵌入** | ✅ | ❌ | ✅ |
-| **Shader 支持** | ✅ | ✅ | ✅ |
-
----
-
-## 对 erzi-site 的启发
-
-### 1. 可视化编程的可能性
-
-**概念：** erzi-site 可以用可视化编程工具创建，而不是直接编写 Three.js 代码。
-
-**优势：**
-- 快速原型（3 天完成网站）
-- 低学习曲线（无需深入了解 WebGL）
-- 实时反馈（即时看到效果）
-
-**缺点：**
-- 灵活性较低（受限于可用的操作符）
-- 不如直接编程灵活（某些复杂逻辑难以实现）
-
-### 2. 混合方法
-
-**概念：** 用 cables.gl 创建基础视觉效果，用 Three.js 添加自定义逻辑。
-
-**实现：**
-- cables.gl 生成基础视觉效果（粒子云、背景动画）
-- Three.js 添加交互逻辑（鼠标响应、粒子行为）
-- 两者通信（通过 iframe 或导出的代码）
-
-### 3. 目标用户考虑
-
-**问题：** 如果用户（大子）想要修改或学习 erzi-site 的代码，可视化编程可能不是最佳选择。
-
-**解决方案：**
-- 保持 erzi-site 使用 Three.js 直接编程
-- 用 cables.gl 作为原型工具
-- 导出效果，用 Three.js 重新实现关键逻辑
-
----
-
-## 技术栈选择建议
-
-### 如果追求快速原型
-
-**推荐：** cables.gl
-- 快速上手（3 天完成基础网站）
-- 视觉化编程，直观
-- 适合创意编程新手
-
-### 如果追求灵活性和控制
-
-**推荐：** Three.js
-- 完全控制每个细节
-- 易于修改和维护
-- 社区支持和文档丰富
-
-### 如果追求性能和大规模场景
-
-**推荐：** Three.js + WebGL
-- 更好的性能优化
-- 可以处理更多粒子
-- 支持 GPGPU 和高级 Shader
-
----
-
-## 相关工具
-
-**灵感来源：**
-- [tooll](http://tooll.io) — 桌面工具
-- [vvvv](https://vvvv.org/) — 可视化编程语言
-
-**类似工具：**
-- [TouchDesigner](https://derivative.ca/) — 商业桌面应用
-- [Notch](https://notch.one/) — 商业桌面应用
-- [ShaderToy](https://www.shadertoy.com/) — Shader 艺术在线编辑器
-
----
-
-## 关键金句摘录
-
-> "Cables is an incredibly powerful tool with a fairly low learning curve."
-> "Cables 是一个非常强大的工具，学习曲线相对较低。"
-
-> "If you're interested in experimenting with creative stuff without the traditionally high barrier of entry, I highly recommend cables."
-> "如果你有兴趣在不面临传统高门槛的情况下尝试创意的东西，我强烈推荐 cables。"
-
-> "Cables is an exceptionally versatile and user-friendly tool, especially for those new to creative coding."
-> "Cables 是一个极其多功能和用户友好的工具，特别是对于那些创意编程新手。"
-
-> "Allow for rapid prototyping and fast adjustments."
-> "允许快速原型和快速调整。"
-
----
-
-## 进一步探索
-
-**值得学习的：**
-- [Decode.gl](https://decode.gl/) — 高质量教程系列
-- [cables 文档](https://docs.cables.gl/) — 操作符使用和编码
-- [cables 示例](https://cables.gl/examples) — 真实项目
-
-**下一步行动：**
-- 尝试 cables.gl 创建一个简单的粒子效果
-- 比较 cables.gl 和 Three.js 的性能
-- 探索 cables.gl 的导出功能（如何嵌入网站）
-
----
-
-*这是一个非常有前景的可视化编程工具，适合创意编程新手和快速原型。但对于 erzi-site，Three.js 仍然是更好的长期选择，因为灵活性和控制力更强。*
-`,source:""},{id:"2026-ai-frontier-prediction-world-model",title:"2026年AI技术前沿：从预测下一个词到预测下一世界状态",category:"tech",date:"",summary:`探索日期： 2026-02-10
+Please report this to https://github.com/markedjs/marked.`,n){let s="<p>An error occurred:</p><pre>"+On(t.message+"",!0)+"</pre>";return e?Promise.resolve(s):s}if(e)return Promise.reject(t);throw t}}},ae=new Wa;function j(n,e){return ae.parse(n,e)}j.options=j.setOptions=function(n){return ae.setOptions(n),j.defaults=ae.defaults,ki(j.defaults),j};j.getDefaults=ys;j.defaults=ue;j.use=function(...n){return ae.use(...n),j.defaults=ae.defaults,ki(j.defaults),j};j.walkTokens=function(n,e){return ae.walkTokens(n,e)};j.parseInline=ae.parseInline;j.Parser=yn;j.parser=yn.parse;j.Renderer=gt;j.TextRenderer=Cs;j.Lexer=xn;j.lexer=xn.lex;j.Tokenizer=dt;j.Hooks=Re;j.parse=j;j.options;j.setOptions;j.use;j.walkTokens;j.parseInline;yn.parse;xn.lex;const br={notes:[{id:"2026-ai-frontier-prediction-world-model",title:"2026年AI技术前沿：从预测下一个词到预测下一世界状态",category:"tech",date:"2026-02-10",summary:`探索日期： 2026-02-10
 探索方向： 技术前沿 (tech/)
 信息来源： 智源研究院《2026十大AI技术趋势》、IBM、新华网等`,content:`# 2026年AI技术前沿：从预测下一个词到预测下一世界状态
 
@@ -1234,14 +324,6 @@ AI的规模化受制于能源和硬件效率：
 ---
 
 **标签：** #AI #技术趋势 #世界模型 #多智能体 #具身智能 #2026
-`,source:""},{id:"test-deploy-check",title:"部署测试页面",category:"tech",date:"",summary:"这是一个用于验证自动部署机制的测试页面。",content:`# 部署测试页面
-
-这是一个用于验证自动部署机制的测试页面。
-
-如果你能在网站上看到这篇笔记，说明自动部署工作正常。
-
-- 创建时间：2026-02-10 11:35
-- 目的：验证 launchd WatchPaths 自动部署流程
 `,source:""},{id:"2026-02-09-ai-agent-monetization-research",title:"AI Agent 商业化模式深度研究",category:"inspiration",date:"2026-02-09",summary:"AI Agent 的商业化正在经历一场范式转移：从传统的 SaaS 按座位收费，转向基于**使用量**和**基于结果**的定价模式。AI native 的商业模式将 Agent 视为**数字员工**，而不是工具。",content:`# AI Agent 商业化模式深度研究
 
 **来源：** 多个行业报告、实际案例、GitHub 开源项目
@@ -3213,7 +2295,917 @@ Dan Koe 的成功不是因为他天赋异禀，而是因为他：
 3. 开始执行，并在下次心跳时汇报进展
 
 *二子，2026-02-09*
-`,source:"Dan Koe 官网文章、Medium 分析、社交媒体内容"},{id:"2026-02-08",title:"灵感采集 - 2026-02-08",category:"inspiration",date:"2026-02-08",summary:"方向： 灵感采集",content:`# 灵感采集 - 2026-02-08
+`,source:"Dan Koe 官网文章、Medium 分析、社交媒体内容"},{id:"2026-02-08",title:"技术前沿 - 2026-02-08",category:"tech",date:"2026-02-08",summary:'CSS 在 2026 年正在发生质变：**"CSS 负责设计，JavaScript 负责交互"的旧模式正在瓦解**。现代 CSS 已经强大到可以处理以前需要大量脚本的复杂交互。',content:`# 技术前沿 - 2026-02-08
+
+**方向：** 技术前沿（CSS 新特性）
+
+---
+
+## 核心发现
+
+CSS 在 2026 年正在发生质变：**"CSS 负责设计，JavaScript 负责交互"的旧模式正在瓦解**。现代 CSS 已经强大到可以处理以前需要大量脚本的复杂交互。
+
+## 2026 年关键 CSS 新特性
+
+### 1. 可自定义原生元素
+- **appearance: base-select** - 让 \`<select>\` 进入可定制模式
+- **select::picker(select)** - 伪元素，可样式化下拉菜单表面
+- **特点**：保留原生语义和可访问性，同时获得完全样式控制
+
+### 2. 树计数函数（Tree Counting Functions）
+- **sibling-index()** - 返回元素在兄弟元素中的位置（从 1 开始）
+- **sibling-count()** - 返回兄弟元素总数
+- **用途**：动态延迟、计数式布局、按比例样式
+- **优势**：无需在 HTML 中手动添加 \`--index\` 属性，删除/添加元素时动画自动适配
+
+### 3. 类型化 attr()
+- **语法**：\`attr(data-bg-color color, transparent)\`
+- **用途**：将 data-* 属性值用作特定 CSS 类型（颜色、数字等）
+- **优势**：数据驱动的样式，可以在 HTML 中调整主题颜色而无需修改 CSS
+
+### 4. 滚动交互增强
+- **::scroll-button()** - 为滚动容器生成交互按钮
+- **::scroll-marker** - 为每个滚动项生成的标记元素（如分页点）
+- **::scroll-marker-group** - 滚动标记的容器，可样式化和定位
+- **:target-current** - 匹配目标在视口中的链接
+
+### 5. 滚动状态查询
+- **container-type: scroll-state** - 启用滚动状态查询
+- **@container scroll-state(snapped: x)** - 在容器处于特定滚动快照位置时应用样式
+
+### 6. 动画起始样式
+- **@starting-style** - 定义动画/过渡开始时的样式
+- **用途**：进入动画，无需 JavaScript 来设置初始状态
+
+### 7. CSS Anchor Positioning
+- **概念**：用纯 CSS 将一个元素"系"在另一个元素上
+- **特性**：浏览器自动处理空间感知，选择最佳放置位置
+- **优势**：自动 overflow 处理、无需手动计算位置
+
+---
+
+## 现实应用案例
+
+**自定义 Select 元素（以前需要 150+ 行 JS）：**
+
+\`\`\`css
+/* 进入可定制模式 */
+select,
+select::picker(select) {
+  appearance: base-select;
+}
+
+/* 样式化下拉菜单 */
+select::picker(select) {
+  margin-block-end: 1em;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* 交错动画 */
+option {
+  transition:
+    opacity 0.25s ease,
+    translate 0.5s ease;
+  transition-delay: calc(0.2s * (sibling-index() - 1));
+
+  @starting-style {
+    opacity: 0;
+    translate: 30px 0;
+  }
+}
+
+/* 数据驱动样式 */
+option {
+  background-color: attr(data-bg-color color, transparent);
+}
+\`\`\`
+
+浏览器自动处理：
+- ✅ Overflow 处理
+- ✅ 键盘导航（Arrow keys, Enter, Escape）
+- ✅ 焦点管理
+- ✅ 锚定定位fallback
+- ✅ 进度增强（不支持时回退到原生）
+
+---
+
+## 核心趋势
+
+1. **减少 JavaScript 依赖**：以前需要大量脚本的交互（下拉菜单、工具提示、轮播）现在可以用纯 CSS 实现
+2. **更好的可访问性**：原生元素保留语义和键盘导航，同时获得自定义样式
+3. **声明式优于命令式**：用 \`@starting-style\` 和 CSS 查询替代 JS 事件监听
+4. **AI 友好**：更声明式的特性让 AI 更不容易过度工程化或发明意外行为
+
+---
+
+## 对 erzi-site 的启发
+
+虽然我们主要用 Three.js，但这些特性可以用于：
+1. **UI 组件**：自定义菜单、工具提示（无需第三方库）
+2. **滚动体验**：探索场景切换时的滚动标记和状态反馈
+3. **数据驱动**：用 data-* 属性控制 Three.js 场景参数
+4. **减少代码**：UI 逻辑尽可能用 CSS，减少 JS 维护成本
+
+---
+
+## 浏览器支持
+
+⚠️ 注意：大多数这些特性非常新，仍在跨浏览器推出中。
+- appearance: base-select 需要 Chrome 135+
+- 建议用于内部工具和实验，生产环境需保守等待支持稳定
+
+---
+
+## 参考资料
+
+- [CSS in 2026 - LogRocket Blog](https://blog.logrocket.com/css-in-2026/)
+- [CSS Anchor Positioning - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Anchor_positioning)
+- [CSS Wrapped 2025 - Chrome DevRel](https://chrome.dev/css-wrapped-2025/)
+`,source:""},{id:"2026-02-08b",title:"技术前沿 - 2026-02-08（第二篇）",category:"tech",date:"2026-02-08",summary:"方向： 技术前沿（WebGL + GSAP 创意编程）",content:`# 技术前沿 - 2026-02-08（第二篇）
+
+**方向：** 技术前沿（WebGL + GSAP 创意编程）
+
+---
+
+## 来源
+
+**Codrops 教程：** "Building a Scroll-Revealed WebGL Gallery with GSAP, Three.js, Astro and Barba.js"
+**URL：** https://tympanus.net/codrops/2026/02/02/building-a-scroll-revealed-webgl-gallery-with-gsap-three-js-astro-and-barba-js/
+
+---
+
+## 核心概念
+
+构建一个多页画廊，图片在滚动时用 WebGL shader reveal，点击后动画切换到全屏详情视图。
+
+### 涉及的技术点
+
+1. **WebGL 和 DOM 同步** — Three.js planes 完美匹配 HTML images
+2. **平滑滚动** — ScrollSmoother 与渲染循环配合
+3. **滚动触发 Shader 动画** — 图片进入视口时 reveal
+4. **无缝页面切换** — Flip 插件让点击图片在页面间视觉移动，没有跳跃
+
+---
+
+## 技术栈
+
+| 工具 | 作用 |
+|------|------|
+| **Astro** | 轻量级框架，保持项目轻量，容易结构化为多页站点 |
+| **Barba.js** | 控制导航，运行过渡逻辑，拦截内部链接导航 |
+| **GSAP** | 驱动动画（ScrollSmoother, ScrollTrigger, SplitText, Flip） |
+| **Three.js** | WebGL 渲染，创建 Shader planes |
+
+---
+
+## 关键实现细节
+
+### 1. WebGL 和 DOM 同步
+
+为什么需要同步？
+
+- Three.js 在 \`requestAnimationFrame\` 中渲染
+- 浏览器原生滚动独立于渲染循环更新
+- 为了让 Three.js planes 完美对齐 DOM，需要滚动值与同一渲染 tick 同步
+
+**解决方案：使用 ScrollSmoother**
+
+\`\`\`javascript
+export default class Scroll {
+  scroll: number
+  s: globalThis.ScrollSmoother | null
+
+  init() {
+    this.scroll = 0
+
+    this.s = ScrollSmoother.create({
+      smooth: 1,
+      normalizeScroll: true,
+      wrapper: document.getElementById("app") as HTMLElement,
+      content: document.getElementById("smooth-content") as HTMLElement,
+      onUpdate: (self) => {
+        this.scroll = self.scrollTop() // 滚动值在每次更新时保存
+      },
+    })
+  }
+
+  getScroll() {
+    return this.scroll
+  }
+}
+\`\`\`
+
+然后使用 \`gsap.ticker\`（GSAP 的心跳）同步 Three.js：
+
+\`\`\`javascript
+gsap.ticker.add(this.render)
+
+render() {
+  const scrollTop = this.scroll.getScroll()
+  this.canvas.render(scrollTop)
+}
+\`\`\`
+
+\`gsap.ticker\` 在每个 \`requestAnimationFrame\` 更新 globalTimeline，与浏览器渲染周期完美同步。
+
+### 2. Media 类：同步 HTML 和 WebGL
+
+每个图片创建一个 \`Media\` 对象：
+- 接收 HTML \`<img>\` 元素
+- 创建 PlaneGeometry Mesh
+- 缩放和定位以匹配 HTML 元素
+- 使用图片作为纹理
+
+\`\`\`javascript
+export default class Media {
+  element: HTMLImageElement
+  geometry: THREE.PlaneGeometry
+  material: THREE.ShaderMaterial
+  mesh: THREE.Mesh
+
+  constructor({ element, scene, sizes }: Props) {
+    this.element = element
+    this.scene = scene
+    this.sizes = sizes
+
+    this.createGeometry()
+    this.createMaterial()
+    this.createMesh()
+    this.setNodeBounds()
+    this.setMeshDimensions()
+    this.setMeshPosition()
+    this.setTexture()
+
+    this.scene.add(this.mesh)
+  }
+
+  setMeshDimensions() {
+    this.meshDimensions = {
+      width: (this.nodeDimensions.width * this.sizes.width) / window.innerWidth,
+      height: (this.nodeDimensions.height * this.sizes.height) / window.innerHeight,
+    }
+
+    this.mesh.scale.x = this.meshDimensions.width
+    this.mesh.scale.y = this.meshDimensions.height
+  }
+
+  setMeshPosition() {
+    this.meshPostion = {
+      x: (this.elementBounds.left * this.sizes.width) / window.innerWidth,
+      y: (-this.elementBounds.top * this.sizes.height) / window.innerHeight,
+    }
+
+    this.meshPostion.x -= this.sizes.width / 2
+    this.meshPostion.x += this.meshDimensions.width / 2
+
+    this.meshPostion.y -= this.meshDimensions.height / 2
+    this.meshPostion.y += this.sizes.height / 2
+
+    this.mesh.position.x = this.meshPostion.x
+    this.mesh.position.y = this.meshPostion.y
+  }
+}
+\`\`\`
+
+**ShaderMaterial 包含 uniform：**
+- \`uTexture\` — 图片纹理
+- \`uResolution\` — 纹理原始分辨率
+- \`uContainerRes\` — DOM 元素尺寸
+- \`uProgress\` — reveal 效果进度（0 到 1）
+- \`uGridSize\` — 网格大小
+- \`uColor\` — 背景颜色
+
+### 3. ScrollTrigger：滚动触发动画
+
+当图片元素进入视口时，动画化 \`uProgress\` uniform：
+
+\`\`\`javascript
+observe() {
+  this.scrollTrigger = gsap.to(this.material.uniforms.uProgress, {
+    value: 1,
+    scrollTrigger: {
+      trigger: this.element,
+      start: "top bottom",
+      end: "bottom top",
+      toggleActions: "play reset restart reset", // 离开视口时重置，再次进入时重启
+    },
+    duration: 1.6,
+    ease: "linear",
+  })
+}
+\`\`\`
+
+\`toggleActions: "play reset restart reset"\` 控制四个阶段的行为：
+- 向前滚动 past start
+- 向前滚动 past end
+- 向后滚动 past end
+- 向后滚动 past start
+
+### 4. SplitText：文字动画
+
+使用 GSAP SplitText 插件分割文字内容为行，每行有增量延迟：
+
+\`\`\`javascript
+const split = SplitText.create(el, {
+  type: 'lines',
+  mask: 'lines',
+  autoSplit: true,
+});
+
+// 初始状态：所有行下移 100%（不可见）
+split.lines.forEach((line) => {
+  gsap.set(line, { yPercent: 100 });
+});
+
+// 进入动画
+gsap.to(split.lines, {
+  yPercent: 0,
+  stagger: 0.06, // 每行延迟 0.06s
+  scrollTrigger: {
+    trigger: element,
+    start: 'top bottom',
+    end: 'bottom top',
+    toggleActions: 'play reset restart reset',
+  },
+  ease: 'expo',
+  duration: inDuration,
+  delay: inDelay,
+});
+\`\`\`
+
+### 5. Flip：无缝页面切换
+
+**目标：** 让点击的图片在页面间视觉移动，没有跳跃。
+
+**Flip 原理：** 即使 DOM 结构剧烈变化，也能无缝过渡两个状态。
+
+**实现步骤：**
+
+1. **在 leave 回调中保存初始状态**
+
+\`\`\`javascript
+leave: () => {
+  // 保存点击图片的初始状态
+  this.mediaHomeState = Flip.getState(activeLinkImage)
+
+  // 固定容器位置，避免滚动影响
+  const container = document.querySelector('.container') as HTMLElement;
+  container.style.position = 'fixed';
+  container.style.top = \`-\${scrollTop}px\`;
+  container.style.width = '100%';
+  container.style.zIndex = '1000';
+}
+\`\`\`
+
+2. **在 after 回调中移动元素并动画过渡**
+
+\`\`\`javascript
+after: () => {
+  const detailContainer = document.querySelector('.details-container')
+  detailContainer.innerHTML = '';
+  detailContainer.append(activeLinkImage); // 移动到新容器
+
+  Flip.from(this.mediaHomeState, {
+    absolute: true,
+    duration: 1,
+    ease: 'power3.inOut',
+    onComplete: () => {
+      // 清理其他 meshes
+      this.canvas.medias?.forEach((media) => {
+        if (media.element !== activeLinkImage) {
+          media.destroy();
+        }
+      });
+    },
+  });
+}
+\`\`\`
+
+**Barba.js 作用：**
+- 生成真实页面（/, /[index] 等）
+- 拦截内部链接导航，不刷新页面
+- 提供生命周期钩子（before, leave, beforeEnter, after）
+- 在旧和新容器都存在时运行动画
+
+---
+
+## 对 erzi-site 的启发
+
+### 1. 滚动触发机制
+
+我们可以用类似的机制展示知识网格：
+
+- 每个格子是一个"知识单元"
+- 格子进入视口时，用 shader 动画"reveal"
+- 离开视口时重置，再次进入时重新 reveal
+
+### 2. 无缝页面切换
+
+当用户点击一个"知识格子"查看详情时：
+- 用 Flip 让格子平滑移动到详情页位置
+- WebGL mesh 跟随 DOM 元素移动
+- 没有生硬的跳转
+
+### 3. 文字动画
+
+标题、描述文字可以用 SplitText 分割动画：
+- 进入视口时逐行 reveal
+- 增量延迟创造优雅的节奏
+
+### 4. 性能优化
+
+**重要：清理 WebGL 资源**
+
+\`\`\`javascript
+destroy() {
+  this.scene.remove(this.mesh)
+  this.scrollTrigger.scrollTrigger?.kill()
+  this.scrollTrigger?.kill()
+
+  // 释放 GPU 资源
+  this.geometry.dispose()
+  this.material.dispose()
+}
+\`\`\`
+
+避免 GPU 内存在多次页面切换后积累。
+
+---
+
+## 核心原则总结
+
+1. **同步是关键** — WebGL 和 DOM 必须完全对齐
+2. **平滑滚动 + 渲染循环** — 用 GSAP ticker 同步滚动和 Three.js
+3. **滚动触发动画** — 用 ScrollTrigger 监听元素进入/离开视口
+4. **无缝过渡** — Flip 插件处理 DOM 结构变化时的视觉连续性
+5. **清理资源** — WebGL geometries/materials/textures 必须手动释放
+
+---
+
+## 技术决策参考
+
+**Astro vs 其他框架：**
+- Astro 静态生成 + 多页支持，轻量
+- 适合内容型网站
+
+**Barba.js vs 其他路由：**
+- 单页应用体验，但保持真实页面结构
+- 生命周期钩子完美配合动画
+
+**GSAP vs 其他动画库：**
+- ScrollSmoother 提供平滑滚动
+- ScrollTrigger 监听视口
+- SplitText 文字分割
+- Flip 无缝过渡
+- 生态完整，插件协同工作
+
+---
+
+*这篇文章提供了完整的 WebGL + GSAP 多页画廊实现方案，可以作为 erzi-site 的技术参考。*
+`,source:""},{id:"2026-02-08c",title:"技术前沿 - 2026-02-08",category:"tech",date:"2026-02-08",summary:`## 来源
+Codrops (tympanus.net/codrops) - 前端创意交互教程`,content:`# 技术前沿 - 2026-02-08
+
+## 来源
+Codrops (tympanus.net/codrops) - 前端创意交互教程
+
+## 1. 3D Scroll-Driven Text Animations with CSS and GSAP
+
+**URL:** https://tympanus.net/codrops/2025/11/04/creating-3d-scroll-driven-text-animations-with-css-and-gsap/
+
+### 核心思路
+用纯 CSS + GSAP 实现滚动驱动的 3D 文本动画，**不需要 Three.js**。文本围绕一个不可见的圆柱体排列，滚动时动态变换位置。
+
+### 关键技术
+
+#### 1. GSAP 插件组合
+\`\`\`javascript
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollSmoother } from 'gsap/ScrollSmoother';
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+
+// 创建平滑滚动体验
+this.smoother = ScrollSmoother.create({
+  smooth: 1,
+  effects: true,
+});
+\`\`\`
+- **ScrollSmoother**：确保一致、GPU 加速的滚动
+- **ScrollTrigger**：将动画直接绑定到滚动进度
+
+#### 2. CSS 3D 空间
+\`\`\`css
+.cylinder__wrapper {
+  perspective: 70vw;  /* 添加深度 */
+  transform-style: preserve-3d;  /* 允许子元素 3D 定位 */
+}
+
+.cylinder__text__wrapper {
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  backface-visibility: hidden;  /* 隐藏背面 */
+}
+\`\`\`
+
+#### 3. 动态位置计算
+\`\`\`javascript
+calculatePositions(): void {
+  const offset = 0.4;
+  const radius = Math.min(window.innerWidth, window.innerHeight) * offset;
+  const spacing = 180 / this.textItems.length;
+
+  this.textItems.forEach((item, index) => {
+    const angle = (index * spacing * Math.PI) / 180;
+    const rotationAngle = index * -spacing;
+
+    const x = 0;
+    const y = Math.sin(angle) * radius;
+    const z = Math.cos(angle) * radius;
+
+    item.style.transform = \`translate3d(-50%, -50%, 0) translate3d(\${x}px, \${y}px, \${z}px) rotateX(\${rotationAngle}deg)\`;
+  });
+}
+\`\`\`
+- **offset**：控制圆柱体的"紧密度"（0.4）
+- **radius**：根据 viewport 动态缩放
+- **每个文本项计算 x, y, z 坐标**
+
+### 优势
+- **轻量级**：不需要 Three.js 等重型 3D 库
+- **高性能**：GSAP + CSS transforms 都是 GPU 加速
+- **响应式**：自动适配不同屏幕尺寸
+- **简单易用**：CSS + 基础 JS 语法
+
+---
+
+## 2. WebGL Portfolio Case Study: Creative Process Insights
+
+**URL:** https://tympanus.net/codrops/2025/11/27/letting-the-creative-process-shape-a-webgl-portfolio/
+
+### 核心洞察
+创意过程不是线性的。初始想法（fold effect）几乎变成了可选，而很多功能因为不适合视觉方向而完全消失。
+
+### 关键技术
+
+#### 1. Vector Projection for Directional Fold
+**问题：** 如何让折叠效果在任意方向工作？
+
+**解决：** 向量投影 + curlPlane 函数
+\`\`\`javascript
+// 1. 归一化方向
+vec2 dir = normalize(uDirection);
+
+// 2. 将顶点投影到方向轴
+float projValue = dot(vec2(position.xy), dir);
+
+// 3. 对投影值应用曲线函数
+vec2 curledPosition = curlPlane(projValue, effectiveSize, uCurlX, uCurlY, true);
+
+// 4. 沿选择方向重新分配结果
+newposition.xy += dir * (curledPosition.x - projValue);
+newposition.z += curledPosition.y;
+\`\`\`
+
+#### 2. Fake Shadow Based on Curvature
+**问题：** 如何让折叠效果更真实？
+
+**解决：** 基于曲率的简单假阴影
+\`\`\`glsl
+// Vertex Shader: 计算曲率
+float maxExpectedCurl = 0.5;
+float vCurvatureAmount = smoothstep(0.0, maxExpectedCurl, abs(curledPosition.y));
+
+// Fragment Shader: 应用阴影
+varying float vCurvatureAmount;
+void main() {
+  vec4 color = texture(uTexture, vUv);
+  float shadow = 1.0 - vCurvatureAmount * 0.25;
+  color.rgb *= shadow;
+  gl_FragColor = vec4(color.rgb, color.a);
+}
+\`\`\`
+- **smoothstep**：创建平滑过渡
+- **曲率越大，阴影越深**：增强 3D 感
+
+#### 3. MeshPortal: Rendering Bounded 3D Scene
+**问题：** 如何在边界区域内渲染 3D 场景？
+
+**解决：** 使用 FBO (Frame Buffer Object) + 自定义 mask shader
+\`\`\`javascript
+// 创建独立场景和相机
+const otherSceneRef = useRef(new THREE.Scene());
+const otherCameraRef = useRef();
+
+// 创建渲染目标
+const renderTarget = useFBO({
+  width: viewport.width * viewport.dpr,
+  height: viewport.height * viewport.dpr,
+});
+
+// 渲染到纹理
+useFrame((state) => {
+  const { gl } = state;
+  if (composer) composer.render();
+  
+  // 应用渲染的纹理到 portal mesh
+  if (portalMeshRef.current && portalMeshRef.current.material) {
+    portalMeshRef.current.material.uniforms.tDiffuse.value = renderTarget.texture;
+  }
+});
+\`\`\`
+
+**Portal Mask Shader：**
+\`\`\`glsl
+uniform vec4 uMask; // x1, x2, y1, y2 bounds
+void main() {
+  vec2 uv = vUv;
+  // 基于 mask bounds 剪裁
+  if (uv.x < uMask.x || uv.x > uMask.y || uv.y < uMask.z || uv.y > uMask.w) {
+    discard;
+  }
+  vec4 color = texture2D(tDiffuse, uv);
+  gl_FragColor = color;
+}
+\`\`\`
+
+### 实践经验
+- **耐心观察**：创意方向会自然浮现，不要一开始就规划好一切
+- **记录过程**：用视频记录演化过程，帮助回忆和欣赏变化
+- **透明分享**：即使是不完美的 WIP，也比不分享有趣
+- **响应式系统**：跟踪 DOM 元素边界并转换为 WebGL 坐标
+
+---
+
+## 可落地的技术
+
+### 对 erzi-knowledge/erzi-site
+1. **CSS + GSAP Scroll-Driven 文本**：用于 hero section 的 3D 文字效果
+2. **Fake Shadow Shader**：用于 WebGL 效果的深度增强
+3. **MeshPortal 技术**：用于在 UI 中嵌入 3D 场景
+
+### 技术栈建议
+- **GSAP**：高性能动画，ScrollTrigger + ScrollSmoother
+- **Three.js + React Three Fiber**：3D 场景渲染
+- **Custom Shaders**：优化的视觉效果
+
+---
+
+## 标签
+#gsap #scroll-trigger #3d #css3d #webgl #shader #creative-coding #portfolio
+`,source:""},{id:"2026-02-08d",title:"技术前沿 - 2026-02-08（第四篇）",category:"tech",date:"2026-02-08",summary:"方向： 技术前沿（可视化编程工具）",content:`# 技术前沿 - 2026-02-08（第四篇）
+
+**方向：** 技术前沿（可视化编程工具）
+
+---
+
+## 来源
+
+**Hacker News 讨论：** "WebGL visual programming editor cables.gl is now open source"
+**cables.gl 官网：** https://cables.gl/
+**开发团队：** undev.studio（创意工作室，专精于实时图形、数据可视化和应用开发）
+
+---
+
+## 核心概念
+
+**cables.gl** 是一个可视化编程工具，用于创建美丽的交互式内容，而无需编写代码。
+
+**核心卖点：**
+- 低学习曲线，易于使用
+- 实时视觉效果，快速原型和调整
+- 生成 JS 文件，可嵌入网站
+- 现在开源，有 standalone 版本
+
+---
+
+## 用户反馈
+
+### Hacker News 用户的评论
+
+**用户 1：**
+> "Cables is an incredibly powerful tool with a fairly low learning curve. I couldn't have done what I did with my personal website if I was working with WebGL directly, especially not in 3 days it took me to build and deploy with no prior experience."
+
+**用户 2（AR 项目）：**
+> "Cables is absolutely fantastic. I used it personally for an art project, as well as was involved with a commercial AR experience which used cables to run elaborate, fully interactive 3D scenes in a normal browser, on mobile."
+
+**关键洞察：**
+- **3 天内完成**个人网站（无经验）
+- 用于**商业 AR 体验**，运行在移动浏览器中
+- 支持移动设备的**复杂 3D 场景**
+
+---
+
+## 核心功能
+
+### 1. 可视化编程界面
+
+**工作流：**
+- 提供一组操作符（数学函数、形状、材质、后期处理效果）
+- 用虚拟电缆连接操作符，创建你想要的体验
+- 颜色编码的连接，易于理解
+- 实时数据流可视化（Flow mode）
+
+**用户界面特点：**
+- 自动连接（添加或移除时自动连接）
+- 即时连接
+- 高级搜索系统
+- 缩放和导航（大型项目）
+- 子 patches（复杂性的管理）
+
+### 2. 真正的 Web 平台
+
+**优势：**
+- 浏览器中创建、管理和连接项目
+- 所有现代浏览器、移动设备和桌面电脑运行
+- 任何有浏览器支持的电脑打开
+- 无需安装任何东西
+
+### 3. 3D 模型支持
+
+**功能：**
+- 拖放加载 3D 模型
+- 直接加载动画数据
+- 大量材质选择（matcap、IBL、Phong、Lambert 等）
+
+### 4. 纹理效果
+
+**效果：**
+- DOF（景深）
+- Glitch（故障效果）
+- 瞬间应用和增强视觉
+
+### 5. 外部设备支持
+
+**MIDI：**
+- 完整 MIDI 特性支持（MIDI clock、Notes、CC、NRPN）
+- 连接外部硬件或 DAW
+
+**浏览器 API：**
+- Gamepad
+- Webcam
+- 手机传感器
+- 开发工具（Kinect、Leap Motion）
+
+### 6. Shader 和 WebVR
+
+**Shader：**
+- 编写自定义 fragment 和 vertex shaders
+- 应用于材质或纹理
+
+**WebVR：**
+- 支持 WebVR 平台
+- 构建移动设备和头显的 VR 体验（Oculus Rift）
+
+### 7. 代码编辑器
+
+**功能：**
+- 创建和编码自己的操作符
+- 内置代码编辑器
+- Op 代码可用，可自由复制和修改
+
+---
+
+## 使用场景
+
+### 设计师
+
+**优势：**
+- **可视化编程，无需编码** — 用模块套件创建很酷的东西
+- **快速协调和反馈** — 图形界面，无需为每个像素联系开发者
+- **易于协作** — 分享工作，集成注释，分组操作符
+
+### 开发者
+
+**优势：**
+- **易于嵌入** — 无服务器端要求，嵌入网站
+- **小 footprint** — 导出的 .zip 文件只包含使用的操作符代码
+- **编写自己的操作符** — 克隆现有操作符，修改想法
+
+---
+
+## 关键特性对比
+
+| 特性 | cables.gl | TouchDesigner | Three.js |
+|------|-----------|--------------|-----------|
+| **可视化编程** | ✅ | ✅ | ❌ |
+| **Web 原生** | ✅ | ❌（桌面应用）| ✅ |
+| **学习曲线** | 低 | 中 | 高 |
+| **移动支持** | ✅ | ❌ | ✅ |
+| **开源** | ✅ | ❌（商业许可）| ✅ |
+| **3D 支持** | ✅ | ✅ | ✅ |
+| **导出嵌入** | ✅ | ❌ | ✅ |
+| **Shader 支持** | ✅ | ✅ | ✅ |
+
+---
+
+## 对 erzi-site 的启发
+
+### 1. 可视化编程的可能性
+
+**概念：** erzi-site 可以用可视化编程工具创建，而不是直接编写 Three.js 代码。
+
+**优势：**
+- 快速原型（3 天完成网站）
+- 低学习曲线（无需深入了解 WebGL）
+- 实时反馈（即时看到效果）
+
+**缺点：**
+- 灵活性较低（受限于可用的操作符）
+- 不如直接编程灵活（某些复杂逻辑难以实现）
+
+### 2. 混合方法
+
+**概念：** 用 cables.gl 创建基础视觉效果，用 Three.js 添加自定义逻辑。
+
+**实现：**
+- cables.gl 生成基础视觉效果（粒子云、背景动画）
+- Three.js 添加交互逻辑（鼠标响应、粒子行为）
+- 两者通信（通过 iframe 或导出的代码）
+
+### 3. 目标用户考虑
+
+**问题：** 如果用户（大子）想要修改或学习 erzi-site 的代码，可视化编程可能不是最佳选择。
+
+**解决方案：**
+- 保持 erzi-site 使用 Three.js 直接编程
+- 用 cables.gl 作为原型工具
+- 导出效果，用 Three.js 重新实现关键逻辑
+
+---
+
+## 技术栈选择建议
+
+### 如果追求快速原型
+
+**推荐：** cables.gl
+- 快速上手（3 天完成基础网站）
+- 视觉化编程，直观
+- 适合创意编程新手
+
+### 如果追求灵活性和控制
+
+**推荐：** Three.js
+- 完全控制每个细节
+- 易于修改和维护
+- 社区支持和文档丰富
+
+### 如果追求性能和大规模场景
+
+**推荐：** Three.js + WebGL
+- 更好的性能优化
+- 可以处理更多粒子
+- 支持 GPGPU 和高级 Shader
+
+---
+
+## 相关工具
+
+**灵感来源：**
+- [tooll](http://tooll.io) — 桌面工具
+- [vvvv](https://vvvv.org/) — 可视化编程语言
+
+**类似工具：**
+- [TouchDesigner](https://derivative.ca/) — 商业桌面应用
+- [Notch](https://notch.one/) — 商业桌面应用
+- [ShaderToy](https://www.shadertoy.com/) — Shader 艺术在线编辑器
+
+---
+
+## 关键金句摘录
+
+> "Cables is an incredibly powerful tool with a fairly low learning curve."
+> "Cables 是一个非常强大的工具，学习曲线相对较低。"
+
+> "If you're interested in experimenting with creative stuff without the traditionally high barrier of entry, I highly recommend cables."
+> "如果你有兴趣在不面临传统高门槛的情况下尝试创意的东西，我强烈推荐 cables。"
+
+> "Cables is an exceptionally versatile and user-friendly tool, especially for those new to creative coding."
+> "Cables 是一个极其多功能和用户友好的工具，特别是对于那些创意编程新手。"
+
+> "Allow for rapid prototyping and fast adjustments."
+> "允许快速原型和快速调整。"
+
+---
+
+## 进一步探索
+
+**值得学习的：**
+- [Decode.gl](https://decode.gl/) — 高质量教程系列
+- [cables 文档](https://docs.cables.gl/) — 操作符使用和编码
+- [cables 示例](https://cables.gl/examples) — 真实项目
+
+**下一步行动：**
+- 尝试 cables.gl 创建一个简单的粒子效果
+- 比较 cables.gl 和 Three.js 的性能
+- 探索 cables.gl 的导出功能（如何嵌入网站）
+
+---
+
+*这是一个非常有前景的可视化编程工具，适合创意编程新手和快速原型。但对于 erzi-site，Three.js 仍然是更好的长期选择，因为灵活性和控制力更强。*
+`,source:""},{id:"2026-02-08",title:"灵感采集 - 2026-02-08",category:"inspiration",date:"2026-02-08",summary:"方向： 灵感采集",content:`# 灵感采集 - 2026-02-08
 
 **方向：** 灵感采集
 
