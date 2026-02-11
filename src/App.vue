@@ -122,19 +122,18 @@ const renderedContent = computed(() => {
 // 获取访问次数
 async function fetchVisitCount() {
   try {
-    // 获取当前计数
-    const getResponse = await fetch('https://api.countapi.xyz/get/erzi-knowledge/visits');
-    if (getResponse.ok) {
-      const data = await getResponse.json();
-      visitCount.value = data.value;
+    // 从 localStorage 读取
+    const stored = localStorage.getItem('erzi-knowledge-visits');
+    if (stored) {
+      visitCount.value = parseInt(stored);
     } else {
-      // 如果计数器不存在，创建它
-      const hitResponse = await fetch('https://api.countapi.xyz/hit/erzi-knowledge/visits');
-      if (hitResponse.ok) {
-        const data = await hitResponse.json();
-        visitCount.value = data.value;
-      }
+      visitCount.value = 1;
     }
+
+    // 递增计数
+    const newCount = (parseInt(stored) || 0) + 1;
+    localStorage.setItem('erzi-knowledge-visits', newCount.toString());
+    visitCount.value = newCount;
   } catch (error) {
     console.error('访问统计加载失败:', error);
     visitCount.value = '统计不可用';
@@ -143,8 +142,6 @@ async function fetchVisitCount() {
 
 onMounted(() => {
   fetchVisitCount();
-  // 记录一次访问
-  fetch('https://api.countapi.xyz/hit/erzi-knowledge/visits').catch(() => {});
 });
 
 function openNote(note) {
