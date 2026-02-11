@@ -8,6 +8,7 @@
         <div class="stats">
           <span class="stat"><span class="stat-num">{{ notes.length }}</span> 篇笔记</span>
           <span class="stat"><span class="stat-num">{{ uniqueDates }}</span> 天探索</span>
+          <span class="stat"><span class="stat-num">{{ visitCount }}</span> 次访问</span>
         </div>
       </header>
 
@@ -86,7 +87,7 @@
 </template>
 
 <script setup>
-import { ref, computed, nextTick } from 'vue';
+import { ref, computed, nextTick, onMounted } from 'vue';
 import { marked } from 'marked';
 import { knowledgeData } from './data-generated.js';
 
@@ -101,6 +102,7 @@ const categories = knowledgeData.categories;
 
 const activeCategory = ref(null);
 const activeNote = ref(null);
+const visitCount = ref('加载中...');
 
 const uniqueDates = computed(() => {
   const dates = new Set(notes.map(n => n.date));
@@ -115,6 +117,34 @@ const filteredNotes = computed(() => {
 const renderedContent = computed(() => {
   if (!activeNote.value) return '';
   return marked(activeNote.value.content);
+});
+
+// 获取访问次数
+async function fetchVisitCount() {
+  try {
+    // 获取当前计数
+    const getResponse = await fetch('https://api.countapi.xyz/get/erzi-knowledge/visits');
+    if (getResponse.ok) {
+      const data = await getResponse.json();
+      visitCount.value = data.value;
+    } else {
+      // 如果计数器不存在，创建它
+      const hitResponse = await fetch('https://api.countapi.xyz/hit/erzi-knowledge/visits');
+      if (hitResponse.ok) {
+        const data = await hitResponse.json();
+        visitCount.value = data.value;
+      }
+    }
+  } catch (error) {
+    console.error('访问统计加载失败:', error);
+    visitCount.value = '统计不可用';
+  }
+}
+
+onMounted(() => {
+  fetchVisitCount();
+  // 记录一次访问
+  fetch('https://api.countapi.xyz/hit/erzi-knowledge/visits').catch(() => {});
 });
 
 function openNote(note) {
