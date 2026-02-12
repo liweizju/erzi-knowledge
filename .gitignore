@@ -2,3 +2,24 @@ node_modules/
 src/data-generated.js
 .DS_Store
 *.local
+
+# openclaw workspace files - DO NOT commit
+SOUL.md
+MEMORY.md
+IDENTITY.md
+USER.md
+AGENTS.md
+HEARTBEAT.md
+BOOTSTRAP.md
+TOOLS.md
+SOURCES.md
+SITE.md
+SITE-IDEAS.md
+gateway.log
+heartbeat-log.md
+memory/
+skills/
+startup-ideas/
+timeline/
+gh-pages/
+.clawhub/
