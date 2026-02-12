@@ -21,6 +21,18 @@
 
 ## 经验教训
 
+### 技术实践
+- **2026-02-12：** CountAPI 有 SSL 连接问题，localStorage 对简单统计更可靠
+- **2026-02-12：** GitHub Actions 部署到 Pages 需要 `environment` 配置
+- **2026-02-12：** 内容超过 250 条后，搜索功能显著提升探索效率
+
+### 核心洞见
+- **Embodied AI（2026-02-12）：** 2026 是"部署墙"转折点，VLA（Vision-Language-Action）范式是关键
+- **多智能体系统（2026-02-12）：** 系统比模型重要，协调开销呈二次方增长，质量（32%）> 成本 > 延迟（20%）
+- **叙事正义（2026-02-12）：** AI 在重新分配叙事权力，被叙事者正在成为叙事者
+- **延迟满足重构（2026-02-12）：** 从"忍受现在的痛苦"到"选择符合价值观的体验"
+- **知识流动触发机制（2026-02-11）：** AI PKM 的本质不是"记住"而是"发现"，触发新思考 > 管理已知记忆
+
 - 智谱国内平台 GLM Coding 套餐有独立的 API 端点，和普通 API 不同
 - 图片功能需要同时在 `tools.deny`、`tools.media.image.enabled` 和 model input 三处都配置正确
 - OpenClaw 重启命令是 `openclaw gateway restart`，不是 `openclaw restart`
