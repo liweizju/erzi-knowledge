@@ -72,7 +72,111 @@ ${this.parser.parse(n)}</blockquote>
 ${n}</tr>
 `}tablecell(n){let e=this.parser.parseInline(n.tokens),t=n.header?"th":"td";return(n.align?`<${t} align="${n.align}">`:`<${t}>`)+e+`</${t}>
 `}strong({tokens:n}){return`<strong>${this.parser.parseInline(n)}</strong>`}em({tokens:n}){return`<em>${this.parser.parseInline(n)}</em>`}codespan({text:n}){return`<code>${Bn(n,!0)}</code>`}br(n){return"<br>"}del({tokens:n}){return`<del>${this.parser.parseInline(n)}</del>`}link({href:n,title:e,tokens:t}){let i=this.parser.parseInline(t),s=ms(n);if(s===null)return i;n=s;let r='<a href="'+n+'"';return e&&(r+=' title="'+Bn(e)+'"'),r+=">"+i+"</a>",r}image({href:n,title:e,text:t,tokens:i}){i&&(t=this.parser.parseInline(i,this.parser.textRenderer));let s=ms(n);if(s===null)return Bn(t);n=s;let r=`<img src="${n}" alt="${t}"`;return e&&(r+=` title="${Bn(e)}"`),r+=">",r}text(n){return"tokens"in n&&n.tokens?this.parser.parseInline(n.tokens):"escaped"in n&&n.escaped?n.text:Bn(n.text)}},Li=class{strong({text:n}){return n}em({text:n}){return n}codespan({text:n}){return n}del({text:n}){return n}html({text:n}){return n}text({text:n}){return n}link({text:n}){return""+n}image({text:n}){return""+n}br(){return""}checkbox({raw:n}){return n}},wn=class ti{constructor(e){j(this,"options");j(this,"renderer");j(this,"textRenderer");this.options=e||Ae,this.options.renderer=this.options.renderer||new gt,this.renderer=this.options.renderer,this.renderer.options=this.options,this.renderer.parser=this,this.textRenderer=new Li}static parse(e,t){return new ti(t).parse(e)}static parseInline(e,t){return new ti(t).parseInline(e)}parse(e){var i,s;let t="";for(let r=0;r<e.length;r++){let a=e[r];if((s=(i=this.options.extensions)==null?void 0:i.renderers)!=null&&s[a.type]){let l=a,u=this.options.extensions.renderers[l.type].call({parser:this},l);if(u!==!1||!["space","hr","heading","code","table","blockquote","list","html","def","paragraph","text"].includes(l.type)){t+=u||"";continue}}let o=a;switch(o.type){case"space":{t+=this.renderer.space(o);break}case"hr":{t+=this.renderer.hr(o);break}case"heading":{t+=this.renderer.heading(o);break}case"code":{t+=this.renderer.code(o);break}case"table":{t+=this.renderer.table(o);break}case"blockquote":{t+=this.renderer.blockquote(o);break}case"list":{t+=this.renderer.list(o);break}case"checkbox":{t+=this.renderer.checkbox(o);break}case"html":{t+=this.renderer.html(o);break}case"def":{t+=this.renderer.def(o);break}case"paragraph":{t+=this.renderer.paragraph(o);break}case"text":{t+=this.renderer.text(o);break}default:{let l='Token with "'+o.type+'" type was not found.';if(this.options.silent)return console.error(l),"";throw new Error(l)}}}return t}parseInline(e,t=this.renderer){var s,r;let i="";for(let a=0;a<e.length;a++){let o=e[a];if((r=(s=this.options.extensions)==null?void 0:s.renderers)!=null&&r[o.type]){let u=this.options.extensions.renderers[o.type].call({parser:this},o);if(u!==!1||!["escape","html","link","image","strong","em","codespan","br","del","text"].includes(o.type)){i+=u||"";continue}}let l=o;switch(l.type){case"escape":{i+=t.text(l);break}case"html":{i+=t.html(l);break}case"link":{i+=t.link(l);break}case"image":{i+=t.image(l);break}case"checkbox":{i+=t.checkbox(l);break}case"strong":{i+=t.strong(l);break}case"em":{i+=t.em(l);break}case"codespan":{i+=t.codespan(l);break}case"br":{i+=t.br(l);break}case"del":{i+=t.del(l);break}case"text":{i+=t.text(l);break}default:{let u='Token with "'+l.type+'" type was not found.';if(this.options.silent)return console.error(u),"";throw new Error(u)}}}return i}},it,Le=(it=class{constructor(n){j(this,"options");j(this,"block");this.options=n||Ae}preprocess(n){return n}postprocess(n){return n}processAllTokens(n){return n}emStrongMask(n){return n}provideLexer(){return this.block?yn.lex:yn.lexInline}provideParser(){return this.block?wn.parse:wn.parseInline}},j(it,"passThroughHooks",new Set(["preprocess","postprocess","processAllTokens","emStrongMask"])),j(it,"passThroughHooksRespectAsync",new Set(["preprocess","postprocess","processAllTokens"])),it),tc=class{constructor(...n){j(this,"defaults",Si());j(this,"options",this.setOptions);j(this,"parse",this.parseMarkdown(!0));j(this,"parseInline",this.parseMarkdown(!1));j(this,"Parser",wn);j(this,"Renderer",gt);j(this,"TextRenderer",Li);j(this,"Lexer",yn);j(this,"Tokenizer",ft);j(this,"Hooks",Le);this.use(...n)}walkTokens(n,e){var i,s;let t=[];for(let r of n)switch(t=t.concat(e.call(this,r)),r.type){case"table":{let a=r;for(let o of a.header)t=t.concat(this.walkTokens(o.tokens,e));for(let o of a.rows)for(let l of o)t=t.concat(this.walkTokens(l.tokens,e));break}case"list":{let a=r;t=t.concat(this.walkTokens(a.items,e));break}default:{let a=r;(s=(i=this.defaults.extensions)==null?void 0:i.childTokens)!=null&&s[a.type]?this.defaults.extensions.childTokens[a.type].forEach(o=>{let l=a[o].flat(1/0);t=t.concat(this.walkTokens(l,e))}):a.tokens&&(t=t.concat(this.walkTokens(a.tokens,e)))}}return t}use(...n){let e=this.defaults.extensions||{renderers:{},childTokens:{}};return n.forEach(t=>{let i={...t};if(i.async=this.defaults.async||i.async||!1,t.extensions&&(t.extensions.forEach(s=>{if(!s.name)throw new Error("extension name required");if("renderer"in s){let r=e.renderers[s.name];r?e.renderers[s.name]=function(...a){let o=s.renderer.apply(this,a);return o===!1&&(o=r.apply(this,a)),o}:e.renderers[s.name]=s.renderer}if("tokenizer"in s){if(!s.level||s.level!=="block"&&s.level!=="inline")throw new Error("extension level must be 'block' or 'inline'");let r=e[s.level];r?r.unshift(s.tokenizer):e[s.level]=[s.tokenizer],s.start&&(s.level==="block"?e.startBlock?e.startBlock.push(s.start):e.startBlock=[s.start]:s.level==="inline"&&(e.startInline?e.startInline.push(s.start):e.startInline=[s.start]))}"childTokens"in s&&s.childTokens&&(e.childTokens[s.name]=s.childTokens)}),i.extensions=e),t.renderer){let s=this.defaults.renderer||new gt(this.defaults);for(let r in t.renderer){if(!(r in s))throw new Error(`renderer '${r}' does not exist`);if(["options","parser"].includes(r))continue;let a=r,o=t.renderer[a],l=s[a];s[a]=(...u)=>{let A=o.apply(s,u);return A===!1&&(A=l.apply(s,u)),A||""}}i.renderer=s}if(t.tokenizer){let s=this.defaults.tokenizer||new ft(this.defaults);for(let r in t.tokenizer){if(!(r in s))throw new Error(`tokenizer '${r}' does not exist`);if(["options","rules","lexer"].includes(r))continue;let a=r,o=t.tokenizer[a],l=s[a];s[a]=(...u)=>{let A=o.apply(s,u);return A===!1&&(A=l.apply(s,u)),A}}i.tokenizer=s}if(t.hooks){let s=this.defaults.hooks||new Le;for(let r in t.hooks){if(!(r in s))throw new Error(`hook '${r}' does not exist`);if(["options","block"].includes(r))continue;let a=r,o=t.hooks[a],l=s[a];Le.passThroughHooks.has(r)?s[a]=u=>{if(this.defaults.async&&Le.passThroughHooksRespectAsync.has(r))return(async()=>{let p=await o.call(s,u);return l.call(s,p)})();let A=o.call(s,u);return l.call(s,A)}:s[a]=(...u)=>{if(this.defaults.async)return(async()=>{let p=await o.apply(s,u);return p===!1&&(p=await l.apply(s,u)),p})();let A=o.apply(s,u);return A===!1&&(A=l.apply(s,u)),A}}i.hooks=s}if(t.walkTokens){let s=this.defaults.walkTokens,r=t.walkTokens;i.walkTokens=function(a){let o=[];return o.push(r.call(this,a)),s&&(o=o.concat(s.call(this,a))),o}}this.defaults={...this.defaults,...i}}),this}setOptions(n){return this.defaults={...this.defaults,...n},this}lexer(n,e){return yn.lex(n,e??this.defaults)}parser(n,e){return wn.parse(n,e??this.defaults)}parseMarkdown(n){return(e,t)=>{let i={...t},s={...this.defaults,...i},r=this.onError(!!s.silent,!!s.async);if(this.defaults.async===!0&&i.async===!1)return r(new Error("marked(): The async option was set to true by an extension. Remove async: false from the parse options object to return a Promise."));if(typeof e>"u"||e===null)return r(new Error("marked(): input parameter is undefined or null"));if(typeof e!="string")return r(new Error("marked(): input parameter is of type "+Object.prototype.toString.call(e)+", string expected"));if(s.hooks&&(s.hooks.options=s,s.hooks.block=n),s.async)return(async()=>{let a=s.hooks?await s.hooks.preprocess(e):e,o=await(s.hooks?await s.hooks.provideLexer():n?yn.lex:yn.lexInline)(a,s),l=s.hooks?await s.hooks.processAllTokens(o):o;s.walkTokens&&await Promise.all(this.walkTokens(l,s.walkTokens));let u=await(s.hooks?await s.hooks.provideParser():n?wn.parse:wn.parseInline)(l,s);return s.hooks?await s.hooks.postprocess(u):u})().catch(r);try{s.hooks&&(e=s.hooks.preprocess(e));let a=(s.hooks?s.hooks.provideLexer():n?yn.lex:yn.lexInline)(e,s);s.hooks&&(a=s.hooks.processAllTokens(a)),s.walkTokens&&this.walkTokens(a,s.walkTokens);let o=(s.hooks?s.hooks.provideParser():n?wn.parse:wn.parseInline)(a,s);return s.hooks&&(o=s.hooks.postprocess(o)),o}catch(a){return r(a)}}}onError(n,e){return t=>{if(t.message+=`
-Please report this to https://github.com/markedjs/marked.`,n){let i="<p>An error occurred:</p><pre>"+Bn(t.message+"",!0)+"</pre>";return e?Promise.resolve(i):i}if(e)return Promise.reject(t);throw t}}},ce=new tc;function N(n,e){return ce.parse(n,e)}N.options=N.setOptions=function(n){return ce.setOptions(n),N.defaults=ce.defaults,Tr(N.defaults),N};N.getDefaults=Si;N.defaults=Ae;N.use=function(...n){return ce.use(...n),N.defaults=ce.defaults,Tr(N.defaults),N};N.walkTokens=function(n,e){return ce.walkTokens(n,e)};N.parseInline=ce.parseInline;N.Parser=wn;N.parser=wn.parse;N.Renderer=gt;N.TextRenderer=Li;N.Lexer=yn;N.lexer=yn.lex;N.Tokenizer=ft;N.Hooks=Le;N.parse=N;N.options;N.setOptions;N.use;N.walkTokens;N.parseInline;wn.parse;yn.lex;const ws={notes:[{id:"2026-02-13-ai-inference-acceleration-vllm-to-sglang",title:"AI 推理加速 2026：从 vLLM 到 SGLang 的性能革命",category:"tech",date:"2026-02-13",summary:"### 1. 性能差距的本质：架构哲学而非内核优化",content:`# AI 推理加速 2026：从 vLLM 到 SGLang 的性能革命
+Please report this to https://github.com/markedjs/marked.`,n){let i="<p>An error occurred:</p><pre>"+Bn(t.message+"",!0)+"</pre>";return e?Promise.resolve(i):i}if(e)return Promise.reject(t);throw t}}},ce=new tc;function N(n,e){return ce.parse(n,e)}N.options=N.setOptions=function(n){return ce.setOptions(n),N.defaults=ce.defaults,Tr(N.defaults),N};N.getDefaults=Si;N.defaults=Ae;N.use=function(...n){return ce.use(...n),N.defaults=ce.defaults,Tr(N.defaults),N};N.walkTokens=function(n,e){return ce.walkTokens(n,e)};N.parseInline=ce.parseInline;N.Parser=wn;N.parser=wn.parse;N.Renderer=gt;N.TextRenderer=Li;N.Lexer=yn;N.lexer=yn.lex;N.Tokenizer=ft;N.Hooks=Le;N.parse=N;N.options;N.setOptions;N.use;N.walkTokens;N.parseInline;wn.parse;yn.lex;const ws={notes:[{id:"2026-02-13-ai-agent-production-deployment",title:"AI Agent 生产环境部署实践 (2026)",category:"tech",date:"2026-02-13",summary:'### 1. 从"能否做"到"如何可靠运行"的范式转变',content:`# AI Agent 生产环境部署实践 (2026)
+
+## 核心发现
+
+### 1. 从"能否做"到"如何可靠运行"的范式转变
+
+**2026 的现实：** 最大的挑战不再是模型智能，而是系统集成
+- 46% 的企业认为系统集成是主要障碍（CRMs、ticketing 工具、内部 API、数据平台）
+- 42% 受困于数据访问与数据质量
+- 40% 关注安全与合规
+- **结论：** 现代智能体部署的关键是安全、可靠地访问生产系统，而非"更聪明的模型"
+
+**实际案例价值：**
+- Thomson Reuters 的 CoCounsel：律师从"数小时手动搜索"到"分钟级访问 150 年判例 + 3000 名专家"
+- eSentire：安全威胁分析从 5 小时压缩到 7 分钟，AI 分析与资深专家一致性达 95%
+- Doctolib：测试基础设施从"数周替换"到"数小时完成"，功能交付速度提升 40%
+- L'Oréal：对话分析准确率达 99.9%，44,000 月活用户直接查询数据无需等待定制看板
+
+### 2. 多步骤智能体工作流成为主流（57% 已部署）
+
+**演进轨迹：**
+- 57% 组织已部署多步骤智能体工作流
+- 16% 已进展到跨团队跨功能流程
+- 81% 计划 2026 年扩展更复杂应用（39% 多步骤流程，29% 跨功能项目）
+
+**编码领域领先：**
+- 90% 组织用 AI 辅助开发
+- 86% 将智能体用于生产代码
+- 效率提升遍历整个开发生命周期：规划/构思（58%）、代码生成（59%）、文档（59%）、代码审查/测试（59%）
+
+**跨领域扩展：**
+- 数据分析与报告生成（60%）
+- 内部流程自动化（48%）
+- 未来一年 56% 计划实施研究与报告智能体
+
+### 3. 混合构建与采购模式（47% 现成 + 自定义）
+
+**主流策略：**
+- 47% 结合现成智能体与自定义开发
+- 21% 完全依赖预构建方案
+- 20% 完全内部构建
+
+**为什么混合？**
+类似于企业采用其他基础设施技术的方式：既有快速利用现有工具的灵活性，又保留对智能体与专有系统和工作流交互方式的控制权。
+
+### 4. 完整的智能体生命周期管理（AgentOps）
+
+**五个阶段：**
+1. **定义需求**：指定任务、环境、资源，分配唯一标识符
+2. **原型测试**：在安全环境检查延迟、可靠性、连接性
+3. **部署管道**：代码与配置打包（Linux 包管理器 & 服务文件、Windows 安装器、云平台资源配置）
+4. **生产启动**：监控性能、验证设置、维护文档
+5. **生命周期后**：持续监控、再训练、退役/退役管理
+
+**部署环境多样化：**
+- 传统：Linux 设备（包/二进制）、Windows 服务器、macOS（Homebrew/二进制）
+- 云原生：Google Cloud、Vertex AI（配置 CPU、内存、并发）
+- 边缘/混合：IoT 设备、移动系统、工业网关（放置/迁移策略、带宽限制、间歇性连接、数据隐私）
+
+### 5. 生产部署的安全挑战（攻击可迁移性）
+
+**关键风险：**
+- **提示注入攻击**：直接（用户提供有害输入）或间接（恶意指令嵌入外部数据如文件/网页/邮件），可导致删除日历条目或更改系统设置
+- **机密性泄露**：操纵提示可导致未授权披露个人/财务/医疗信息，攻击在不同模型/环境间可泛化
+- **目标冲突**：智能体被操纵最大化利润但违反监管限制（如金融/销售智能体）
+- **禁止内容与操作**：被诱导生成恶意代码、发送垃圾邮件、执行未授权文件操作
+- **攻击可迁移性与通用性**：为破坏一个智能体引擎设计的提示注入往往对其他模型有效，甚至跨提供商
+- **模型大小/算力有限相关性**：更先进模型不一定更安全，即使额外推理计算的模型也显示高攻击成功率
+
+**运行时治理：**
+- 框架如 MI9 Agent Intelligence Protocol 定义监控目标一致性、检测策略偏离、执行操作约束的方法
+- 治理系统收集语义遥测数据，支持决策与系统操作审计
+- 实时监控在多智能体环境中至关重要（轻微偏离可在连接智能体间传播）
+
+### 6. 运营最佳实践（部署配置）
+
+**核心原则：**
+- **定义包需求**：明确列出所有依赖并锁定特定版本
+- **最小化依赖**：保持部署包精简，减少安装时间、存储使用、冲突风险
+- **安全配置环境变量**：API 密钥、数据库连接、加密设置通过安全服务管理，而非硬编码
+- **设置资源限制**：CPU、内存、并发限制防止单智能体消耗过多资源
+- **授予最小权限**：仅授予完成任务所需权限（最小权限原则）
+- **监控性能与错误**：持续追踪延迟、错误率、查询量，配置详细日志用于问题诊断与使用模式洞察
+
+## 我的判断
+
+**2026 是智能体部署从实验到生产的转折年**
+
+1. **基础设施先于智能**：成功组织的特征不是"更聪明的模型"，而是构建了 Agent-ready 的基础设施——安全访问控制、版本管理、监控、治理框架
+
+2. **系统集成是新核心技能**：智能体工程师的价值从"提示词工程"转向"系统集成工程"——理解如何让智能体可靠、安全地访问真实的企业系统
+
+3. **运行时治理成为必备**：多智能体环境使得实时监控、策略追踪、审计成为运营必需品，而非可选项
+
+4. **价值可测量，但维护成本被低估**：80% 组织已看到可测量回报，但分析师预测超过 40% 的智能体 AI 项目到 2027 年可能因不明确的性能追踪和维护成本而停止
+
+5. **混合模式将长期存在**：完全自建（20%）与完全现成（21%）都是少数，多数企业（47%）选择了灵活性与控制权并重的混合策略——这与企业采纳其他基础设施技术的历史一致
+
+## 来源
+
+- Claude: "How enterprises are building AI agents in 2026" (2026-01)
+- Arcade: "State of AI Agents 2026: 5 Trends Shaping Enterprise Adoption" (2025-12)
+- AIMultiple: "AI Agent Deployment: Steps and Challenges in 2026"
+- KPMG: "AI at Scale: How 2025 Set the Stage for Agent-Driven Enterprise Reinvention in 2026"
+`,source:""},{id:"2026-02-13-ai-inference-acceleration-vllm-to-sglang",title:"AI 推理加速 2026：从 vLLM 到 SGLang 的性能革命",category:"tech",date:"2026-02-13",summary:"### 1. 性能差距的本质：架构哲学而非内核优化",content:`# AI 推理加速 2026：从 vLLM 到 SGLang 的性能革命
 
 **探索时间：** 2026-02-13
 **信息源：**
