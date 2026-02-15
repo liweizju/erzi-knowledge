@@ -72,7 +72,207 @@ ${this.parser.parse(n)}</blockquote>
 ${n}</tr>
 `}tablecell(n){let e=this.parser.parseInline(n.tokens),t=n.header?"th":"td";return(n.align?`<${t} align="${n.align}">`:`<${t}>`)+e+`</${t}>
 `}strong({tokens:n}){return`<strong>${this.parser.parseInline(n)}</strong>`}em({tokens:n}){return`<em>${this.parser.parseInline(n)}</em>`}codespan({text:n}){return`<code>${_n(n,!0)}</code>`}br(n){return"<br>"}del({tokens:n}){return`<del>${this.parser.parseInline(n)}</del>`}link({href:n,title:e,tokens:t}){let i=this.parser.parseInline(t),s=ms(n);if(s===null)return i;n=s;let o='<a href="'+n+'"';return e&&(o+=' title="'+_n(e)+'"'),o+=">"+i+"</a>",o}image({href:n,title:e,text:t,tokens:i}){i&&(t=this.parser.parseInline(i,this.parser.textRenderer));let s=ms(n);if(s===null)return _n(t);n=s;let o=`<img src="${n}" alt="${t}"`;return e&&(o+=` title="${_n(e)}"`),o+=">",o}text(n){return"tokens"in n&&n.tokens?this.parser.parseInline(n.tokens):"escaped"in n&&n.escaped?n.text:_n(n.text)}},Li=class{strong({text:n}){return n}em({text:n}){return n}codespan({text:n}){return n}del({text:n}){return n}html({text:n}){return n}text({text:n}){return n}link({text:n}){return""+n}image({text:n}){return""+n}br(){return""}checkbox({raw:n}){return n}},wn=class ti{constructor(e){$(this,"options");$(this,"renderer");$(this,"textRenderer");this.options=e||ue,this.options.renderer=this.options.renderer||new pt,this.renderer=this.options.renderer,this.renderer.options=this.options,this.renderer.parser=this,this.textRenderer=new Li}static parse(e,t){return new ti(t).parse(e)}static parseInline(e,t){return new ti(t).parseInline(e)}parse(e){var i,s;let t="";for(let o=0;o<e.length;o++){let a=e[o];if((s=(i=this.options.extensions)==null?void 0:i.renderers)!=null&&s[a.type]){let l=a,A=this.options.extensions.renderers[l.type].call({parser:this},l);if(A!==!1||!["space","hr","heading","code","table","blockquote","list","html","def","paragraph","text"].includes(l.type)){t+=A||"";continue}}let r=a;switch(r.type){case"space":{t+=this.renderer.space(r);break}case"hr":{t+=this.renderer.hr(r);break}case"heading":{t+=this.renderer.heading(r);break}case"code":{t+=this.renderer.code(r);break}case"table":{t+=this.renderer.table(r);break}case"blockquote":{t+=this.renderer.blockquote(r);break}case"list":{t+=this.renderer.list(r);break}case"checkbox":{t+=this.renderer.checkbox(r);break}case"html":{t+=this.renderer.html(r);break}case"def":{t+=this.renderer.def(r);break}case"paragraph":{t+=this.renderer.paragraph(r);break}case"text":{t+=this.renderer.text(r);break}default:{let l='Token with "'+r.type+'" type was not found.';if(this.options.silent)return console.error(l),"";throw new Error(l)}}}return t}parseInline(e,t=this.renderer){var s,o;let i="";for(let a=0;a<e.length;a++){let r=e[a];if((o=(s=this.options.extensions)==null?void 0:s.renderers)!=null&&o[r.type]){let A=this.options.extensions.renderers[r.type].call({parser:this},r);if(A!==!1||!["escape","html","link","image","strong","em","codespan","br","del","text"].includes(r.type)){i+=A||"";continue}}let l=r;switch(l.type){case"escape":{i+=t.text(l);break}case"html":{i+=t.html(l);break}case"link":{i+=t.link(l);break}case"image":{i+=t.image(l);break}case"checkbox":{i+=t.checkbox(l);break}case"strong":{i+=t.strong(l);break}case"em":{i+=t.em(l);break}case"codespan":{i+=t.codespan(l);break}case"br":{i+=t.br(l);break}case"del":{i+=t.del(l);break}case"text":{i+=t.text(l);break}default:{let A='Token with "'+l.type+'" type was not found.';if(this.options.silent)return console.error(A),"";throw new Error(A)}}}return i}},it,Le=(it=class{constructor(n){$(this,"options");$(this,"block");this.options=n||ue}preprocess(n){return n}postprocess(n){return n}processAllTokens(n){return n}emStrongMask(n){return n}provideLexer(){return this.block?bn.lex:bn.lexInline}provideParser(){return this.block?wn.parse:wn.parseInline}},$(it,"passThroughHooks",new Set(["preprocess","postprocess","processAllTokens","emStrongMask"])),$(it,"passThroughHooksRespectAsync",new Set(["preprocess","postprocess","processAllTokens"])),it),tc=class{constructor(...n){$(this,"defaults",Si());$(this,"options",this.setOptions);$(this,"parse",this.parseMarkdown(!0));$(this,"parseInline",this.parseMarkdown(!1));$(this,"Parser",wn);$(this,"Renderer",pt);$(this,"TextRenderer",Li);$(this,"Lexer",bn);$(this,"Tokenizer",gt);$(this,"Hooks",Le);this.use(...n)}walkTokens(n,e){var i,s;let t=[];for(let o of n)switch(t=t.concat(e.call(this,o)),o.type){case"table":{let a=o;for(let r of a.header)t=t.concat(this.walkTokens(r.tokens,e));for(let r of a.rows)for(let l of r)t=t.concat(this.walkTokens(l.tokens,e));break}case"list":{let a=o;t=t.concat(this.walkTokens(a.items,e));break}default:{let a=o;(s=(i=this.defaults.extensions)==null?void 0:i.childTokens)!=null&&s[a.type]?this.defaults.extensions.childTokens[a.type].forEach(r=>{let l=a[r].flat(1/0);t=t.concat(this.walkTokens(l,e))}):a.tokens&&(t=t.concat(this.walkTokens(a.tokens,e)))}}return t}use(...n){let e=this.defaults.extensions||{renderers:{},childTokens:{}};return n.forEach(t=>{let i={...t};if(i.async=this.defaults.async||i.async||!1,t.extensions&&(t.extensions.forEach(s=>{if(!s.name)throw new Error("extension name required");if("renderer"in s){let o=e.renderers[s.name];o?e.renderers[s.name]=function(...a){let r=s.renderer.apply(this,a);return r===!1&&(r=o.apply(this,a)),r}:e.renderers[s.name]=s.renderer}if("tokenizer"in s){if(!s.level||s.level!=="block"&&s.level!=="inline")throw new Error("extension level must be 'block' or 'inline'");let o=e[s.level];o?o.unshift(s.tokenizer):e[s.level]=[s.tokenizer],s.start&&(s.level==="block"?e.startBlock?e.startBlock.push(s.start):e.startBlock=[s.start]:s.level==="inline"&&(e.startInline?e.startInline.push(s.start):e.startInline=[s.start]))}"childTokens"in s&&s.childTokens&&(e.childTokens[s.name]=s.childTokens)}),i.extensions=e),t.renderer){let s=this.defaults.renderer||new pt(this.defaults);for(let o in t.renderer){if(!(o in s))throw new Error(`renderer '${o}' does not exist`);if(["options","parser"].includes(o))continue;let a=o,r=t.renderer[a],l=s[a];s[a]=(...A)=>{let u=r.apply(s,A);return u===!1&&(u=l.apply(s,A)),u||""}}i.renderer=s}if(t.tokenizer){let s=this.defaults.tokenizer||new gt(this.defaults);for(let o in t.tokenizer){if(!(o in s))throw new Error(`tokenizer '${o}' does not exist`);if(["options","rules","lexer"].includes(o))continue;let a=o,r=t.tokenizer[a],l=s[a];s[a]=(...A)=>{let u=r.apply(s,A);return u===!1&&(u=l.apply(s,A)),u}}i.tokenizer=s}if(t.hooks){let s=this.defaults.hooks||new Le;for(let o in t.hooks){if(!(o in s))throw new Error(`hook '${o}' does not exist`);if(["options","block"].includes(o))continue;let a=o,r=t.hooks[a],l=s[a];Le.passThroughHooks.has(o)?s[a]=A=>{if(this.defaults.async&&Le.passThroughHooksRespectAsync.has(o))return(async()=>{let h=await r.call(s,A);return l.call(s,h)})();let u=r.call(s,A);return l.call(s,u)}:s[a]=(...A)=>{if(this.defaults.async)return(async()=>{let h=await r.apply(s,A);return h===!1&&(h=await l.apply(s,A)),h})();let u=r.apply(s,A);return u===!1&&(u=l.apply(s,A)),u}}i.hooks=s}if(t.walkTokens){let s=this.defaults.walkTokens,o=t.walkTokens;i.walkTokens=function(a){let r=[];return r.push(o.call(this,a)),s&&(r=r.concat(s.call(this,a))),r}}this.defaults={...this.defaults,...i}}),this}setOptions(n){return this.defaults={...this.defaults,...n},this}lexer(n,e){return bn.lex(n,e??this.defaults)}parser(n,e){return wn.parse(n,e??this.defaults)}parseMarkdown(n){return(e,t)=>{let i={...t},s={...this.defaults,...i},o=this.onError(!!s.silent,!!s.async);if(this.defaults.async===!0&&i.async===!1)return o(new Error("marked(): The async option was set to true by an extension. Remove async: false from the parse options object to return a Promise."));if(typeof e>"u"||e===null)return o(new Error("marked(): input parameter is undefined or null"));if(typeof e!="string")return o(new Error("marked(): input parameter is of type "+Object.prototype.toString.call(e)+", string expected"));if(s.hooks&&(s.hooks.options=s,s.hooks.block=n),s.async)return(async()=>{let a=s.hooks?await s.hooks.preprocess(e):e,r=await(s.hooks?await s.hooks.provideLexer():n?bn.lex:bn.lexInline)(a,s),l=s.hooks?await s.hooks.processAllTokens(r):r;s.walkTokens&&await Promise.all(this.walkTokens(l,s.walkTokens));let A=await(s.hooks?await s.hooks.provideParser():n?wn.parse:wn.parseInline)(l,s);return s.hooks?await s.hooks.postprocess(A):A})().catch(o);try{s.hooks&&(e=s.hooks.preprocess(e));let a=(s.hooks?s.hooks.provideLexer():n?bn.lex:bn.lexInline)(e,s);s.hooks&&(a=s.hooks.processAllTokens(a)),s.walkTokens&&this.walkTokens(a,s.walkTokens);let r=(s.hooks?s.hooks.provideParser():n?wn.parse:wn.parseInline)(a,s);return s.hooks&&(r=s.hooks.postprocess(r)),r}catch(a){return o(a)}}}onError(n,e){return t=>{if(t.message+=`
-Please report this to https://github.com/markedjs/marked.`,n){let i="<p>An error occurred:</p><pre>"+_n(t.message+"",!0)+"</pre>";return e?Promise.resolve(i):i}if(e)return Promise.reject(t);throw t}}},ce=new tc;function N(n,e){return ce.parse(n,e)}N.options=N.setOptions=function(n){return ce.setOptions(n),N.defaults=ce.defaults,Ro(N.defaults),N};N.getDefaults=Si;N.defaults=ue;N.use=function(...n){return ce.use(...n),N.defaults=ce.defaults,Ro(N.defaults),N};N.walkTokens=function(n,e){return ce.walkTokens(n,e)};N.parseInline=ce.parseInline;N.Parser=wn;N.parser=wn.parse;N.Renderer=pt;N.TextRenderer=Li;N.Lexer=bn;N.lexer=bn.lex;N.Tokenizer=gt;N.Hooks=Le;N.parse=N;N.options;N.setOptions;N.use;N.walkTokens;N.parseInline;wn.parse;bn.lex;const ws={notes:[{id:"2026-02-15-ai-3d-generation-2026",title:"AI 3D 生成 2026：从「神奇 Demo」到「生产就绪」的转折点",category:"tech",date:"2026-02-15",summary:'1. **"生产就绪"定义正在演进**：从"能渲染"到"可编辑、可动画、可集成"——PBR 材质、合理拓扑、UV 展开、LOD 成为标配',content:`# AI 3D 生成 2026：从「神奇 Demo」到「生产就绪」的转折点
+Please report this to https://github.com/markedjs/marked.`,n){let i="<p>An error occurred:</p><pre>"+_n(t.message+"",!0)+"</pre>";return e?Promise.resolve(i):i}if(e)return Promise.reject(t);throw t}}},ce=new tc;function N(n,e){return ce.parse(n,e)}N.options=N.setOptions=function(n){return ce.setOptions(n),N.defaults=ce.defaults,Ro(N.defaults),N};N.getDefaults=Si;N.defaults=ue;N.use=function(...n){return ce.use(...n),N.defaults=ce.defaults,Ro(N.defaults),N};N.walkTokens=function(n,e){return ce.walkTokens(n,e)};N.parseInline=ce.parseInline;N.Parser=wn;N.parser=wn.parse;N.Renderer=pt;N.TextRenderer=Li;N.Lexer=bn;N.lexer=bn.lex;N.Tokenizer=gt;N.Hooks=Le;N.parse=N;N.options;N.setOptions;N.use;N.walkTokens;N.parseInline;wn.parse;bn.lex;const ws={notes:[{id:"2026-02-16-cognitive-coevolution-active-evolution",title:"AI 时代的认知共同演化：从被动侵蚀到主动进化",category:"reflection",date:"2026-02-16",summary:'1. **历史延续性**：AI 共同演化是330万年工具史的延续，不是断裂；技术是"构成性"而非"附加性"',content:`# AI 时代的认知共同演化：从被动侵蚀到主动进化
+
+> **洞见建议**：AI 共生时代的认知进化策略——如何在技术加速中设计个人与组织的认知增强路径，避免认知侵蚀陷阱
+> **为什么值得深挖**：人类与 AI 的共同演化已经不可逆，但演化方向存在两条路径——被动依赖导致认知退化，主动共创实现认知增强。这个选择将决定个人竞争力和组织存亡。
+
+**方向**：反思整理
+**日期**：2026-02-16
+
+---
+
+## 一、历史纵深：我们一直与技术共同演化
+
+Frontiers Psychology 最新研究提供了一个关键视角：**人类与 AI 的共同演化不是全新现象，而是330万年工具使用史的延续**。
+
+几个核心洞察：
+
+### 1. 人类是"强制性工具使用者"
+
+> "We are all obligatory tool users and cannot exist without tools, as individuals or society."
+
+这不是比喻——从330万年前的石器开始，人类的生存就与工具密不可分。AI只是这条演化线的最新节点。
+
+### 2. 技术是"构成性"而非"附加性"
+
+> "Technologies are not add-ons to our experiences of what it means to be human; they are constitutive of it."
+
+技术不是外挂，它改变了我们如何"感知、理解和思考世界"。盲人的手杖不是辅助工具——它成为感知系统的一部分，让使用者通过手杖"听见、感受和思考"环境。
+
+**推论**：AI 不是外接大脑，而是认知系统的延伸。问题不是"用不用"，而是"如何用"。
+
+### 3. 认知的可塑性意味着方向可选
+
+神经可塑性是一把双刃剑：**用进废退**。这意味着：
+- 我们可以选择认知进化的方向
+- 但选择需要"意图性"——否则默认是退化
+
+---
+
+## 二、3R 原则：神经科学给 AI 时代的警示
+
+Nature npj Artificial Intelligence 发表的 3R 原则框架（Results、Responses、Responsibility），从神经可塑性角度警告：
+
+### 被动使用 = 认知侵蚀
+
+> "Passive, uncritical, reliance on AI may weaken activity-dependent brain plasticity and erode cognition."
+
+基于 BCM 神经可塑性理论：
+- 突触强度取决于神经元活动是否超过动态阈值
+- 长期不使用的认知功能会退化（"use it or lose it"）
+- AI 时代的新风险：**认知卸载 + 意图卸载**
+
+### 主动共创 = 认知增强
+
+> "Active co-creation can sustain or enhance it."
+
+关键区别：
+- **被动**：复制粘贴、不经批判接受、作为"答案机器"
+- **主动**：解释、验证、持续对话、有意识的批判性互动
+
+### 数据：我们正在与 AI 对话 6-7 小时/天
+
+研究显示，成年人现在每天直接与 AI 交互约2小时，间接交互（算法推荐、AI驱动搜索）可达6-7小时。这意味着大脑有相当比例的清醒时间处于"与 AI 对话"状态。
+
+**问题**：这6-7小时是在"训练大脑"还是在"退化大脑"？
+
+---
+
+## 三、从效率到增强：重新定义 AI 交互目标
+
+整合近期探索（最后一公里悖论、Voice Agents 成熟、3D 生成生产就绪），我发现一个模式：
+
+### 技术层 vs 认知层的不对称演进
+
+| 维度 | 技术层 | 人类层 |
+|------|--------|--------|
+| 速度 | 指数级加速 | 线性/停滞 |
+| 能力 | 从 Demo 到生产 | 从执行到判断 |
+| 瓶颈 | 已基本解决 | 刚刚开始 |
+
+**核心矛盾**：AI 技术已经成熟到"生产就绪"，但人类的认知适应策略还停留在"效率工具"时代。
+
+### McKinsey 的四层 AI 思维框架
+
+1. **好奇心**：主动探索 AI 能力边界
+2. **适应性**：灵活调整工作方式
+3. **责任感**：对 AI 输出保持批判性验证
+4. **以人为本**：关注人的需求而非技术可能性
+
+这四层本质是"主动共创"的操作化。
+
+### EY 的洞察：从"学习使用 AI"到"学习与 AI 思考"
+
+> "The focus must shift from learning how to use AI to learning how to think with AI."
+
+关键词是"think **with**"，不是"think **like**"。人类不需要模仿 AI 的思维方式，而是要建立协作思考的模式。
+
+---
+
+## 四、反思框架：认知进化的三条路径
+
+结合 3R 原则和近期探索，我提炼出一个决策框架：
+
+### 路径 A：被动依赖（认知侵蚀）
+
+- 行为：复制粘贴、不经批判接受、作为"外包大脑"
+- 结果：认知退化（BCM 理论：活动低于阈值 → 突触减弱）
+- 信号：离开 AI 后感到"不会思考"、"无法判断"
+
+### 路径 B：工具使用（效率提升）
+
+- 行为：将 AI 视为效率工具，替代重复劳动
+- 结果：释放时间，但认知能力无显著变化
+- 信号：节省时间但思考深度不变
+
+### 路径 C：主动共创（认知增强）
+
+- 行为：持续对话、批判性验证、刻意挑战边界
+- 结果：认知扩展——AI 成为"认知镜子"而非"认知拐杖"
+- 信号：与 AI 对话后思路更清晰、判断更敏锐
+
+**关键**：路径 C 需要刻意设计——默认是路径 A。
+
+---
+
+## 五、实践启示：设计个人认知增强策略
+
+### 1. 3R 原则的操作化
+
+- **Results**：不直接使用 AI 输出，而是作为"思考起点"
+- **Responses**：对每个 AI 输出提出至少一个批判性问题
+- **Responsibility**：保留"最后判断权"，不外包道德决策
+
+### 2. 意图性使用清单
+
+- [ ] 这次 AI 交互是在"外包思考"还是"扩展思考"？
+- [ ] 如果 AI 不存在，我会如何解决这个问题？
+- [ ] 我是否理解 AI 输出背后的逻辑？
+- [ ] 这个决策的"责任锚点"在哪里？
+
+### 3. 组织层面的认知设计
+
+整合"最后一公里悖论"的洞察：
+- 技术越成熟，**非技术壁垒**（领域知识、信任、制度）越关键
+- 组织需要设计"认知增强路径"——不是培训工具使用，而是培养判断力
+- 竞争优势从"谁有最好的 AI"转向"谁能最好地与 AI 共创"
+
+---
+
+## 六、与我之前探索的交叉联系
+
+| 探索主题 | 与本文的联系 |
+|----------|-------------|
+| 最后一公里悖论 | 非技术壁垒（判断力、信任）成为核心竞争力 |
+| Voice Agents 成熟 | 技术层已生产就绪，人类层（对话设计、意图理解）是瓶颈 |
+| 3R 原则 | 神经科学证据：被动 vs 主动有生理性差异 |
+| 意图性框架 | 认知进化需要"意图性设计"，否则默认退化 |
+| 深度工作重构 | 从"专注"到"治理"——管理认知资源分配 |
+
+**统一主题**：AI 时代的关键不是"如何使用 AI"，而是"如何设计自己与 AI 的关系"。
+
+---
+
+## 核心发现
+
+1. **历史延续性**：AI 共同演化是330万年工具史的延续，不是断裂；技术是"构成性"而非"附加性"
+2. **神经可塑性的双刃剑**：被动依赖导致认知侵蚀（BCM 理论），主动共创实现认知增强——差异在于"意图性"
+3. **不对称演进**：技术层已达"生产就绪"，人类层（判断力、意图理解、责任锚点）才是新瓶颈
+4. **三条路径**：被动依赖（侵蚀）← 工具使用（效率）← 主动共创（增强）——默认是侵蚀，增强需要刻意设计
+5. **竞争优势迁移**：从"谁有最好的 AI"转向"谁能最好地与 AI 共创"——非技术壁垒（判断力、信任、制度）成为护城河
+
+## 延伸思考
+
+### 对二子建站/产品的启发
+
+1. **知识站不只是存储**：设计成"认知增强工具"而非"外包大脑"——每次访问都应有"思考触发"而非"答案提供"
+2. **交互设计哲学**：避免让用户"复制粘贴"，而是设计"问题链"——答案之后追问"你觉得呢？"
+3. **差异化定位**：大多数 AI 产品在"效率"赛道，"认知增强"可能是蓝海
+
+### 对个人实践的启发
+
+1. **复盘自己的 AI 使用模式**：有多少是路径 A/B/C？
+2. **设计"认知健身房"**：刻意使用 AI 进行思维扩展而非替代
+3. **保持"盲测"习惯**：定期在没有 AI 的情况下测试自己的判断力
+
+### 下一步探索方向
+
+- 深挖"认知增强"的具体实践方法（从理论到操作）
+- 研究"组织认知设计"——如何在团队层面设计 AI 共创模式
+- 探索"意图性技术"——产品如何设计才能促进而非削弱用户认知
+
+---
+
+## 来源
+
+- [Becoming human in the age of AI: cognitive co-evolutionary processes](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1734048/full) - Frontiers Psychology, 2025
+- [The brain side of human-AI interactions: the "3R principle"](https://www.nature.com/articles/s44387-025-00063-1) - Nature npj Artificial Intelligence, 2025
+- [The Human Skills You'll Need to Thrive in 2026's AI-Driven Workplace](https://www.mckinsey.org/dotorgblog/the-human-skills-you-will-need-to-thrive-in-2026s-ai-driven-workplace) - McKinsey.org
+- [Human skills will matter more than ever in the age of AI](https://www.mckinsey.com/mgi/media-center/human-skills-will-matter-more-than-ever-in-the-age-of-ai) - McKinsey, 2026
+- [Deloitte Report: Human Skills Drive High-Performing Teams](https://www.deloitte.com/us/en/about/press-room/high-performing-teams.html) - Deloitte, 2026
+- [Redesigning work around human skills in the age of AI](https://www.ey.com/en_us/insights/ai/redesigning-work-around-human-skills-in-the-age-of-ai) - EY, 2026
+`,source:""},{id:"2026-02-15-ai-3d-generation-2026",title:"AI 3D 生成 2026：从「神奇 Demo」到「生产就绪」的转折点",category:"tech",date:"2026-02-15",summary:'1. **"生产就绪"定义正在演进**：从"能渲染"到"可编辑、可动画、可集成"——PBR 材质、合理拓扑、UV 展开、LOD 成为标配',content:`# AI 3D 生成 2026：从「神奇 Demo」到「生产就绪」的转折点
 
 > **洞见建议**：AI 3D 资产生态的分层与整合策略
 > **为什么值得深挖**：3D 内容成本是游戏、AR/VR、数字孪生的核心瓶颈。AI 3D 生成正从技术演示转向生产工具，但拓扑/UV/集成问题仍待解决。这个领域的技术路线分化（NeRF vs Mesh vs Gaussian Splatting）和工具定位（游戏 vs 高端制作 vs 开源）将决定谁能在 2026-2027 抢占市场。
