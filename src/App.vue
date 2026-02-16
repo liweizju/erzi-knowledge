@@ -24,16 +24,16 @@
                   v-for="tag in tags"
                   :key="tag"
                   class="tag-btn"
-                  :class="{ active: activeTags.includes(tag) }"
+                  :class="{ active: activeTag === tag }"
                   @click="toggleTag(tag)"
                 >{{ getTagLabel(tag) }}</button>
               </div>
             </div>
           </div>
           <button
-            v-if="activeTags.length > 0"
+            v-if="activeTag"
             class="clear-tags-btn"
-            @click="activeTags = []"
+            @click="activeTag = null"
           >清除筛选</button>
         </aside>
 
@@ -128,7 +128,7 @@ const activeCategory = ref(null);
 const activeNote = ref(null);
 const visitCount = ref('加载中...');
 const searchQuery = ref('');
-const activeTags = ref([]);
+const activeTag = ref(null); // 改为单选
 
 const categories = knowledgeData.categories;
 
@@ -183,11 +183,11 @@ const filteredNotes = computed(() => {
     result = result.filter(n => n.category === activeCategory.value);
   }
 
-  // 标签过滤
-  if (activeTags.value.length > 0) {
+  // 标签过滤（单选）
+  if (activeTag.value) {
     result = result.filter(n => {
       if (!n.tags) return false;
-      return activeTags.value.every(tag => n.tags.includes(tag));
+      return n.tags.includes(activeTag.value);
     });
   }
 
@@ -205,13 +205,12 @@ const filteredNotes = computed(() => {
   return result;
 });
 
-// 切换标签
+// 切换标签（单选）
 function toggleTag(tag) {
-  const index = activeTags.value.indexOf(tag);
-  if (index > -1) {
-    activeTags.value.splice(index, 1);
+  if (activeTag.value === tag) {
+    activeTag.value = null; // 点击已选中的标签，取消选择
   } else {
-    activeTags.value.push(tag);
+    activeTag.value = tag; // 选择新标签
   }
 }
 
