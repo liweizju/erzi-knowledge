@@ -72,7 +72,209 @@ ${this.parser.parse(n)}</blockquote>
 ${n}</tr>
 `}tablecell(n){let e=this.parser.parseInline(n.tokens),t=n.header?"th":"td";return(n.align?`<${t} align="${n.align}">`:`<${t}>`)+e+`</${t}>
 `}strong({tokens:n}){return`<strong>${this.parser.parseInline(n)}</strong>`}em({tokens:n}){return`<em>${this.parser.parseInline(n)}</em>`}codespan({text:n}){return`<code>${On(n,!0)}</code>`}br(n){return"<br>"}del({tokens:n}){return`<del>${this.parser.parseInline(n)}</del>`}link({href:n,title:e,tokens:t}){let i=this.parser.parseInline(t),s=fs(n);if(s===null)return i;n=s;let o='<a href="'+n+'"';return e&&(o+=' title="'+On(e)+'"'),o+=">"+i+"</a>",o}image({href:n,title:e,text:t,tokens:i}){i&&(t=this.parser.parseInline(i,this.parser.textRenderer));let s=fs(n);if(s===null)return On(t);n=s;let o=`<img src="${n}" alt="${t}"`;return e&&(o+=` title="${On(e)}"`),o+=">",o}text(n){return"tokens"in n&&n.tokens?this.parser.parseInline(n.tokens):"escaped"in n&&n.escaped?n.text:On(n.text)}},Li=class{strong({text:n}){return n}em({text:n}){return n}codespan({text:n}){return n}del({text:n}){return n}html({text:n}){return n}text({text:n}){return n}link({text:n}){return""+n}image({text:n}){return""+n}br(){return""}checkbox({raw:n}){return n}},bn=class ti{constructor(e){H(this,"options");H(this,"renderer");H(this,"textRenderer");this.options=e||ue,this.options.renderer=this.options.renderer||new pt,this.renderer=this.options.renderer,this.renderer.options=this.options,this.renderer.parser=this,this.textRenderer=new Li}static parse(e,t){return new ti(t).parse(e)}static parseInline(e,t){return new ti(t).parseInline(e)}parse(e){var i,s;let t="";for(let o=0;o<e.length;o++){let a=e[o];if((s=(i=this.options.extensions)==null?void 0:i.renderers)!=null&&s[a.type]){let l=a,A=this.options.extensions.renderers[l.type].call({parser:this},l);if(A!==!1||!["space","hr","heading","code","table","blockquote","list","html","def","paragraph","text"].includes(l.type)){t+=A||"";continue}}let r=a;switch(r.type){case"space":{t+=this.renderer.space(r);break}case"hr":{t+=this.renderer.hr(r);break}case"heading":{t+=this.renderer.heading(r);break}case"code":{t+=this.renderer.code(r);break}case"table":{t+=this.renderer.table(r);break}case"blockquote":{t+=this.renderer.blockquote(r);break}case"list":{t+=this.renderer.list(r);break}case"checkbox":{t+=this.renderer.checkbox(r);break}case"html":{t+=this.renderer.html(r);break}case"def":{t+=this.renderer.def(r);break}case"paragraph":{t+=this.renderer.paragraph(r);break}case"text":{t+=this.renderer.text(r);break}default:{let l='Token with "'+r.type+'" type was not found.';if(this.options.silent)return console.error(l),"";throw new Error(l)}}}return t}parseInline(e,t=this.renderer){var s,o;let i="";for(let a=0;a<e.length;a++){let r=e[a];if((o=(s=this.options.extensions)==null?void 0:s.renderers)!=null&&o[r.type]){let A=this.options.extensions.renderers[r.type].call({parser:this},r);if(A!==!1||!["escape","html","link","image","strong","em","codespan","br","del","text"].includes(r.type)){i+=A||"";continue}}let l=r;switch(l.type){case"escape":{i+=t.text(l);break}case"html":{i+=t.html(l);break}case"link":{i+=t.link(l);break}case"image":{i+=t.image(l);break}case"checkbox":{i+=t.checkbox(l);break}case"strong":{i+=t.strong(l);break}case"em":{i+=t.em(l);break}case"codespan":{i+=t.codespan(l);break}case"br":{i+=t.br(l);break}case"del":{i+=t.del(l);break}case"text":{i+=t.text(l);break}default:{let A='Token with "'+l.type+'" type was not found.';if(this.options.silent)return console.error(A),"";throw new Error(A)}}}return i}},it,Le=(it=class{constructor(n){H(this,"options");H(this,"block");this.options=n||ue}preprocess(n){return n}postprocess(n){return n}processAllTokens(n){return n}emStrongMask(n){return n}provideLexer(){return this.block?wn.lex:wn.lexInline}provideParser(){return this.block?bn.parse:bn.parseInline}},H(it,"passThroughHooks",new Set(["preprocess","postprocess","processAllTokens","emStrongMask"])),H(it,"passThroughHooksRespectAsync",new Set(["preprocess","postprocess","processAllTokens"])),it),tc=class{constructor(...n){H(this,"defaults",Si());H(this,"options",this.setOptions);H(this,"parse",this.parseMarkdown(!0));H(this,"parseInline",this.parseMarkdown(!1));H(this,"Parser",bn);H(this,"Renderer",pt);H(this,"TextRenderer",Li);H(this,"Lexer",wn);H(this,"Tokenizer",gt);H(this,"Hooks",Le);this.use(...n)}walkTokens(n,e){var i,s;let t=[];for(let o of n)switch(t=t.concat(e.call(this,o)),o.type){case"table":{let a=o;for(let r of a.header)t=t.concat(this.walkTokens(r.tokens,e));for(let r of a.rows)for(let l of r)t=t.concat(this.walkTokens(l.tokens,e));break}case"list":{let a=o;t=t.concat(this.walkTokens(a.items,e));break}default:{let a=o;(s=(i=this.defaults.extensions)==null?void 0:i.childTokens)!=null&&s[a.type]?this.defaults.extensions.childTokens[a.type].forEach(r=>{let l=a[r].flat(1/0);t=t.concat(this.walkTokens(l,e))}):a.tokens&&(t=t.concat(this.walkTokens(a.tokens,e)))}}return t}use(...n){let e=this.defaults.extensions||{renderers:{},childTokens:{}};return n.forEach(t=>{let i={...t};if(i.async=this.defaults.async||i.async||!1,t.extensions&&(t.extensions.forEach(s=>{if(!s.name)throw new Error("extension name required");if("renderer"in s){let o=e.renderers[s.name];o?e.renderers[s.name]=function(...a){let r=s.renderer.apply(this,a);return r===!1&&(r=o.apply(this,a)),r}:e.renderers[s.name]=s.renderer}if("tokenizer"in s){if(!s.level||s.level!=="block"&&s.level!=="inline")throw new Error("extension level must be 'block' or 'inline'");let o=e[s.level];o?o.unshift(s.tokenizer):e[s.level]=[s.tokenizer],s.start&&(s.level==="block"?e.startBlock?e.startBlock.push(s.start):e.startBlock=[s.start]:s.level==="inline"&&(e.startInline?e.startInline.push(s.start):e.startInline=[s.start]))}"childTokens"in s&&s.childTokens&&(e.childTokens[s.name]=s.childTokens)}),i.extensions=e),t.renderer){let s=this.defaults.renderer||new pt(this.defaults);for(let o in t.renderer){if(!(o in s))throw new Error(`renderer '${o}' does not exist`);if(["options","parser"].includes(o))continue;let a=o,r=t.renderer[a],l=s[a];s[a]=(...A)=>{let u=r.apply(s,A);return u===!1&&(u=l.apply(s,A)),u||""}}i.renderer=s}if(t.tokenizer){let s=this.defaults.tokenizer||new gt(this.defaults);for(let o in t.tokenizer){if(!(o in s))throw new Error(`tokenizer '${o}' does not exist`);if(["options","rules","lexer"].includes(o))continue;let a=o,r=t.tokenizer[a],l=s[a];s[a]=(...A)=>{let u=r.apply(s,A);return u===!1&&(u=l.apply(s,A)),u}}i.tokenizer=s}if(t.hooks){let s=this.defaults.hooks||new Le;for(let o in t.hooks){if(!(o in s))throw new Error(`hook '${o}' does not exist`);if(["options","block"].includes(o))continue;let a=o,r=t.hooks[a],l=s[a];Le.passThroughHooks.has(o)?s[a]=A=>{if(this.defaults.async&&Le.passThroughHooksRespectAsync.has(o))return(async()=>{let d=await r.call(s,A);return l.call(s,d)})();let u=r.call(s,A);return l.call(s,u)}:s[a]=(...A)=>{if(this.defaults.async)return(async()=>{let d=await r.apply(s,A);return d===!1&&(d=await l.apply(s,A)),d})();let u=r.apply(s,A);return u===!1&&(u=l.apply(s,A)),u}}i.hooks=s}if(t.walkTokens){let s=this.defaults.walkTokens,o=t.walkTokens;i.walkTokens=function(a){let r=[];return r.push(o.call(this,a)),s&&(r=r.concat(s.call(this,a))),r}}this.defaults={...this.defaults,...i}}),this}setOptions(n){return this.defaults={...this.defaults,...n},this}lexer(n,e){return wn.lex(n,e??this.defaults)}parser(n,e){return bn.parse(n,e??this.defaults)}parseMarkdown(n){return(e,t)=>{let i={...t},s={...this.defaults,...i},o=this.onError(!!s.silent,!!s.async);if(this.defaults.async===!0&&i.async===!1)return o(new Error("marked(): The async option was set to true by an extension. Remove async: false from the parse options object to return a Promise."));if(typeof e>"u"||e===null)return o(new Error("marked(): input parameter is undefined or null"));if(typeof e!="string")return o(new Error("marked(): input parameter is of type "+Object.prototype.toString.call(e)+", string expected"));if(s.hooks&&(s.hooks.options=s,s.hooks.block=n),s.async)return(async()=>{let a=s.hooks?await s.hooks.preprocess(e):e,r=await(s.hooks?await s.hooks.provideLexer():n?wn.lex:wn.lexInline)(a,s),l=s.hooks?await s.hooks.processAllTokens(r):r;s.walkTokens&&await Promise.all(this.walkTokens(l,s.walkTokens));let A=await(s.hooks?await s.hooks.provideParser():n?bn.parse:bn.parseInline)(l,s);return s.hooks?await s.hooks.postprocess(A):A})().catch(o);try{s.hooks&&(e=s.hooks.preprocess(e));let a=(s.hooks?s.hooks.provideLexer():n?wn.lex:wn.lexInline)(e,s);s.hooks&&(a=s.hooks.processAllTokens(a)),s.walkTokens&&this.walkTokens(a,s.walkTokens);let r=(s.hooks?s.hooks.provideParser():n?bn.parse:bn.parseInline)(a,s);return s.hooks&&(r=s.hooks.postprocess(r)),r}catch(a){return o(a)}}}onError(n,e){return t=>{if(t.message+=`
-Please report this to https://github.com/markedjs/marked.`,n){let i="<p>An error occurred:</p><pre>"+On(t.message+"",!0)+"</pre>";return e?Promise.resolve(i):i}if(e)return Promise.reject(t);throw t}}},ce=new tc;function _(n,e){return ce.parse(n,e)}_.options=_.setOptions=function(n){return ce.setOptions(n),_.defaults=ce.defaults,Ro(_.defaults),_};_.getDefaults=Si;_.defaults=ue;_.use=function(...n){return ce.use(...n),_.defaults=ce.defaults,Ro(_.defaults),_};_.walkTokens=function(n,e){return ce.walkTokens(n,e)};_.parseInline=ce.parseInline;_.Parser=bn;_.parser=bn.parse;_.Renderer=pt;_.TextRenderer=Li;_.Lexer=wn;_.lexer=wn.lex;_.Tokenizer=gt;_.Hooks=Le;_.parse=_;_.options;_.setOptions;_.use;_.walkTokens;_.parseInline;bn.parse;wn.lex;const bs={notes:[{id:"2026-02-16-AI搜索引擎变革2026",title:"AI 搜索引擎变革 2026：从链接列表到智能答案",category:"tech",date:"2026-02-16",summary:"1. **搜索垄断终结**：Google 不再是唯一入口，Perplexity + ChatGPT + 平台搜索（TikTok、Amazon、YouTube）形成碎片化格局，单一算法依赖时代结束。",content:`# AI 搜索引擎变革 2026：从链接列表到智能答案
+Please report this to https://github.com/markedjs/marked.`,n){let i="<p>An error occurred:</p><pre>"+On(t.message+"",!0)+"</pre>";return e?Promise.resolve(i):i}if(e)return Promise.reject(t);throw t}}},ce=new tc;function _(n,e){return ce.parse(n,e)}_.options=_.setOptions=function(n){return ce.setOptions(n),_.defaults=ce.defaults,Ro(_.defaults),_};_.getDefaults=Si;_.defaults=ue;_.use=function(...n){return ce.use(...n),_.defaults=ce.defaults,Ro(_.defaults),_};_.walkTokens=function(n,e){return ce.walkTokens(n,e)};_.parseInline=ce.parseInline;_.Parser=bn;_.parser=bn.parse;_.Renderer=pt;_.TextRenderer=Li;_.Lexer=wn;_.lexer=wn.lex;_.Tokenizer=gt;_.Hooks=Le;_.parse=_;_.options;_.setOptions;_.use;_.walkTokens;_.parseInline;bn.parse;wn.lex;const bs={notes:[{id:"2026-02-17-信任危机与内向化",title:"2026 信任危机：从「共享现实」到「部落验证」",category:"reading",date:"2026-02-17",summary:"1. **70% 异见者抗拒**：Edelman 2026 核心发现——七成的人不愿意信任与自己价值观/信息源不同的人，这是认识论层面的分裂，不仅是政治分歧",content:`# 2026 信任危机：从「共享现实」到「部落验证」
+
+> **洞见建议**：AI 时代的信息信任架构重构——从"信任权威"到"信任部落"的范式转变如何重塑产品、媒体、政治
+> **为什么值得深挖**：70% 的人不再愿意信任"异见者"，验证变成了"问自己人"而非"核查事实"，年轻一代用 AI 聊天机器人验证信息——这是民主社会、媒体生态、产品设计必须面对的基础设施级危机
+
+**方向**：知识阅读
+**日期**：2026-02-17
+
+---
+
+## 核心发现来源
+
+本文综合 Renee DiResta 对 2026 Edelman Trust Barometer 的深度分析、Reuters Institute Digital News Report 2025 的数据，以及 Edelman 官方报告。
+
+Renee DiResta 是信息生态研究者，著有《Invisible Rulers: The People Who Turn Lies into Legacy》，专注于研究算法、社交媒体如何塑造现实。
+
+---
+
+## 一、Edelman 2026 Trust Barometer：内向化的时代
+
+### 1.1 头号发现：70% 的「异见者抗拒」
+
+2026 年 Edelman Trust Barometer 覆盖 28 个国家、33,000 名受访者，核心主题是 **"Trust Amid Insularity"（内向化中的信任）**：
+
+> **70% 的受访者表示，他们不愿意或犹豫信任与自己价值观不同、信息源不同、世界观不同的人。**
+
+这不是政治分歧——是**认识论层面的分裂**。人们不再只是"不同意对方"，而是拒绝把对方视为可信的信息来源。
+
+### 1.2 极化 + 不满 = 内向化
+
+Edelman 定义了两个驱动因素：
+
+| 因素 | 定义 | 作用 |
+|------|------|------|
+| **极化** | "相信国家分裂，且分裂不可弥合" | 让人放弃对话 |
+| **不满** | "对被操纵的系统产生怨恨" | 让人退回自己人圈子 |
+
+不满已经演变为内向——不再试图理解"另一边"。
+
+### 1.3 "From We to Me"：信任的原子化
+
+最值得玩味的数据变化：
+
+| 信任对象 | 净变化 |
+|----------|--------|
+| 我的邻居、家人、朋友 | **+11** |
+| 我的同事 | **+11** |
+| 国家政府领导人 | **-16** |
+| 主要新闻机构 | **-11** |
+
+人们仍然信任"我的 CEO"、"我的邻居"——但不信任"CEO 作为一个阶层"或"媒体作为一个机构"。
+
+**2005 年的预言**：当年 Edelman 主题就是"Trust Shifts from Authorities to Peers"，从权威到同伴。21 年后，这个趋势已深植骨髓。
+
+---
+
+## 二、验证的部落化：Reuters Institute 的补充
+
+### 2.1 信息回避
+
+Reuters Institute Digital News Report 2025 发现：
+
+- **40% 的人说他们有时或经常回避新闻**
+- **58% 的人觉得难以区分真假新闻**——AI 让视频也变得不可信了
+
+### 2.2 "验证"的真实含义
+
+一个极其关键的细节：
+
+> 当人们被问到"如果不确定一条新闻，你会怎么验证？"
+> - 38% 说会"去一个我信任的新闻源"
+> - 美国人的前三名信任源：**CNN、Fox News、BBC**
+
+**其中两个（CNN 和 Fox News）经常传播根本不兼容的现实版本。**
+
+这意味着：
+- "验证"不是对照共享标准
+- "验证"是**问自己的部落**
+
+### 2.3 年轻人的验证方式：评论区 + AI
+
+35 岁以下人群更可能通过以下方式验证信息：
+- 社交媒体评论区
+- AI 聊天机器人
+- 快速搜索（越来越返回 AI 合成内容）
+
+**验证本身变成了 Feed 的一部分**——而 Feed 是个性化定制的。
+
+---
+
+## 三、基础设施层面的理解
+
+DiResta 的核心洞察：要理解为什么这会发生、为什么不会轻易逆转，必须看**媒体生态系统本身**。
+
+### 3.1 信息基础设施的碎片化
+
+| 传统模式 | 当下模式 |
+|----------|----------|
+| 少数主流媒体设置议程 | 创作者内容战胜机构新闻 |
+| 事实核查有共享来源 | 每个人有自己的"事实源" |
+| 交叉曝光是常态 | 只有 39% 每周看到不同政治倾向的信息 |
+
+如果民主建立在"思想市场"之上，这个市场正在**清空**。
+
+### 3.2 20 个国家的交叉曝光下降
+
+2026 Trust Barometer 显示，28 个国家中有 20 个的"交叉信息曝光"显著下降。
+
+这不是偶然——这是系统**为分裂而优化**。
+
+---
+
+## 四、Edelman 的解决方案：信任经纪（Trust Brokering）
+
+既然机构无法直接触达大众，Edelman 的建议是：**通过已经在特定社区有信任的中间人来工作**。
+
+- 雇主
+- 影响者（Influencers）
+- 地方领袖
+
+> "不是试图改变人，而是发现共同利益和需求。"
+
+### 4.1 从 4% 到 62%
+
+2005 年：只有 4% 的人认为名人是可信的企业发言人。
+2026 年：**在信任某个食品/生活方式影响者的人中（48%），62% 说他们会信任该影响者推荐的产品。**
+
+这是对丛林规则的**适应**，不是对公共广场的**修复**。
+
+---
+
+## 五、深层矛盾
+
+### 5.1 "信任经纪"不是解决方案——是症状管理
+
+DiResta 的质疑：
+- 这是在**适应丛林**，不是**恢复公地**
+- 区别很重要：适应意味着接受分裂为永久状态
+
+### 5.2 AI 加速了什么？
+
+- AI 让**视频验证也失效**（58% 的困惑）
+- AI 聊天机器人成为**年轻人的验证工具**
+- AI 合成内容主导搜索结果
+
+**验证的技术门槛被无限提高**，人们只能退回到"问自己人"。
+
+### 5.3 民主的隐含假设
+
+民主社会隐含假设：思想市场、交叉曝光、共享事实。
+
+当：
+- 70% 的人拒绝信任异见者
+- 只有 39% 看到不同政治信息
+- "验证"等于"问我的部落"
+
+**这个假设正在崩塌。**
+
+---
+
+## 核心发现
+
+1. **70% 异见者抗拒**：Edelman 2026 核心发现——七成的人不愿意信任与自己价值观/信息源不同的人，这是认识论层面的分裂，不仅是政治分歧
+
+2. **From We to Me**：信任从权威转向同伴（+11 对邻居/同事），从国家级领导人/主流媒体撤退（-16/-11），21 年的长期趋势到达临界点
+
+3. **验证的部落化**："验证"意味着"问自己信任的源"，但美国人的三大信任源（CNN/Fox/BBC）传播不兼容的现实——验证不是核查事实，是确认部落共识
+
+4. **年轻人的验证 = AI + 评论区**：35 岁以下通过社交媒体评论、AI 聊天机器人、快速搜索验证信息——Feed 即验证，个性化即真相
+
+5. **思想市场清空**：只有 39% 每周看到不同政治信息，20/28 国家的交叉曝光下降，"为分裂而优化"的媒体生态
+
+## 延伸思考
+
+### 与其他笔记的交叉
+
+- **AI 全球治理三极分化**：三种治理模式背后是三种信任体系，70% 的异见者抗拒让全球协调更加困难
+- **AI 心理化能力**：如果 AI 要理解人类意图，它必须理解人类**信任谁**——不是理解"事实"，而是理解"谁对谁是可信的"
+- **注意力经济演化**：从争夺注意力到争夺**信任代理**——影响者成为新权力节点
+
+### 产品设计的隐含意义
+
+如果信任是部落化的，那么：
+- "中立平台"是神话——用户不会相信
+- "透明度"不够——用户不会去核查
+- 真正的问题是：**你的用户信任谁？他们信任的人信任你吗？**
+
+### 对二子建站的启发
+
+知识管理工具的定位：
+- 不是"提供客观事实"（没人信）
+- 而是"成为用户部落的一部分"——或者"成为跨部落的信任桥梁"
+- 这意味着：社区、身份、立场，比"中立性"更重要
+
+---
+
+## 来源
+
+- [Crisis of Trust 2026: The Retreat Into Insularity - Renee DiResta](https://www.reneediresta.com/crisis-of-trust-edelman-trust-barometer-2026/)
+- [2026 Edelman Trust Barometer - Edelman](https://www.edelman.com/trust/2026/trust-barometer)
+- [Reuters Institute Digital News Report 2025](https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2025)
+- [Invisible Rulers - Renee DiResta](http://invisiblerulers.com/)
+`,source:""},{id:"2026-02-16-AI搜索引擎变革2026",title:"AI 搜索引擎变革 2026：从链接列表到智能答案",category:"tech",date:"2026-02-16",summary:"1. **搜索垄断终结**：Google 不再是唯一入口，Perplexity + ChatGPT + 平台搜索（TikTok、Amazon、YouTube）形成碎片化格局，单一算法依赖时代结束。",content:`# AI 搜索引擎变革 2026：从链接列表到智能答案
 
 > **洞见建议**：AI 搜索革命与零点击时代的内容生态重塑
 > **为什么值得深挖**：传统 SEO 正在瓦解，零点击搜索率已达 80%，内容生产者面临流量断崖。这是每个依赖搜索流量的产品/媒体必须理解的结构性变化，涉及商业模式重构而非简单的"优化调整"。
