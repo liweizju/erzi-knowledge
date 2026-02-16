@@ -12,65 +12,62 @@
         </div>
       </header>
 
-      <div class="filter-bar">
-        <button
-          class="filter-btn"
-          :class="{ active: activeCategory === null }"
-          @click="activeCategory = null"
-        >全部</button>
-        <button
-          v-for="(info, key) in categories"
-          :key="key"
-          class="filter-btn"
-          :class="{ active: activeCategory === key }"
-          @click="activeCategory = key"
-        >{{ info.label }}</button>
-      </div>
-
-      <!-- 搜索和标签过滤 -->
-      <div class="search-bar">
-        <input
-          v-model="searchQuery"
-          type="text"
-          placeholder="搜索标题、内容或标签..."
-          class="search-input"
-        />
-      </div>
-
-      <div class="tag-cloud" v-if="allTags.length > 0">
-        <span class="tag-label">标签：</span>
-        <button
-          v-for="tag in allTags"
-          :key="tag"
-          class="tag-btn"
-          :class="{ active: activeTags.includes(tag) }"
-          @click="toggleTag(tag)"
-        >{{ tag }}</button>
-      </div>
-
-      <div class="note-list" v-if="filteredNotes.length">
-        <div
-          v-for="note in filteredNotes"
-          :key="note.id + note.category"
-          class="note-item"
-          @click="openNote(note)"
-        >
-          <div class="note-meta">
-            <span class="note-category" :class="'note-category--' + note.category">
-              {{ categories[note.category]?.label }}
-            </span>
-            <span class="note-date">{{ note.date }}</span>
+      <div class="main-layout">
+        <!-- 左侧标签栏 -->
+        <aside class="tag-sidebar" v-if="allTags.length > 0">
+          <div class="sidebar-title">标签</div>
+          <div class="tag-list">
+            <button
+              v-for="tag in allTags"
+              :key="tag"
+              class="tag-btn"
+              :class="{ active: activeTags.includes(tag) }"
+              @click="toggleTag(tag)"
+            >{{ tag }}</button>
           </div>
-          <div class="note-title">{{ note.title }}</div>
-          <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
-          <div class="note-tags" v-if="note.tags && note.tags.length > 0">
-            <span v-for="tag in note.tags" :key="tag" class="tag">{{ tag }}</span>
+          <button
+            v-if="activeTags.length > 0"
+            class="clear-tags-btn"
+            @click="activeTags = []"
+          >清除筛选</button>
+        </aside>
+
+        <!-- 右侧内容区 -->
+        <div class="content-area">
+          <div class="search-bar">
+            <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="搜索标题、内容或标签..."
+              class="search-input"
+            />
+          </div>
+
+          <div class="note-list" v-if="filteredNotes.length">
+            <div
+              v-for="note in filteredNotes"
+              :key="note.id + note.category"
+              class="note-item"
+              @click="openNote(note)"
+            >
+              <div class="note-meta">
+                <span class="note-category" :class="'note-category--' + note.category">
+                  {{ categories[note.category]?.label }}
+                </span>
+                <span class="note-date">{{ note.date }}</span>
+              </div>
+              <div class="note-title">{{ note.title }}</div>
+              <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
+              <div class="note-tags" v-if="note.tags && note.tags.length > 0">
+                <span v-for="tag in note.tags" :key="tag" class="tag">{{ tag }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="empty-state" v-else>
+            暂无笔记
           </div>
         </div>
-      </div>
-
-      <div class="empty-state" v-else>
-        暂无笔记
       </div>
 
       <footer class="site-footer">
