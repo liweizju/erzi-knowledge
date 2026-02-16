@@ -14,16 +14,21 @@
 
       <div class="main-layout">
         <!-- 左侧标签栏 -->
-        <aside class="tag-sidebar" v-if="allTags.length > 0">
+        <aside class="tag-sidebar" v-if="Object.keys(groupedTags).length > 0">
           <div class="sidebar-title">标签</div>
-          <div class="tag-list">
-            <button
-              v-for="tag in allTags"
-              :key="tag"
-              class="tag-btn"
-              :class="{ active: activeTags.includes(tag) }"
-              @click="toggleTag(tag)"
-            >{{ tag }}</button>
+          <div class="tag-groups">
+            <div v-for="(tags, parentTag) in groupedTags" :key="parentTag" class="tag-group">
+              <div class="tag-group-title">{{ parentTag }}</div>
+              <div class="tag-list">
+                <button
+                  v-for="tag in tags"
+                  :key="tag"
+                  class="tag-btn"
+                  :class="{ active: activeTags.includes(tag) }"
+                  @click="toggleTag(tag)"
+                >{{ getTagLabel(tag) }}</button>
+              </div>
+            </div>
           </div>
           <button
             v-if="activeTags.length > 0"
@@ -59,7 +64,7 @@
               <div class="note-title">{{ note.title }}</div>
               <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
               <div class="note-tags" v-if="note.tags && note.tags.length > 0">
-                <span v-for="tag in note.tags" :key="tag" class="tag">{{ tag }}</span>
+                <span v-for="tag in note.tags" :key="tag" class="tag">{{ getTagLabel(tag) }}</span>
               </div>
             </div>
           </div>
@@ -132,15 +137,41 @@ const uniqueDates = computed(() => {
   return dates.size;
 });
 
-// 获取所有标签
-const allTags = computed(() => {
-  const tags = new Set();
+// 获取所有标签（按父标签分组）
+const groupedTags = computed(() => {
+  const groups = {};
   notes.forEach(note => {
     if (note.tags) {
-      note.tags.forEach(tag => tags.add(tag));
+      note.tags.forEach(tag => {
+        const parts = tag.split('/');
+        if (parts.length === 2) {
+          const parentTag = parts[0];
+          if (!groups[parentTag]) {
+            groups[parentTag] = [];
+          }
+          if (!groups[parentTag].includes(tag)) {
+            groups[parentTag].push(tag);
+          }
+        }
+      });
     }
   });
-  return Array.from(tags).sort();
+
+  // 对每个分组内的标签排序
+  for (const parentTag in groups) {
+    groups[parentTag].sort();
+  }
+
+  return groups;
+});
+
+// 获取所有标签（扁平列表，用于搜索）
+const allTags = computed(() => {
+  const tags = [];
+  for (const parentTag in groupedTags.value) {
+    tags.push(...groupedTags.value[parentTag]);
+  }
+  return tags;
 });
 
 // 过滤笔记（分类 + 标签 + 搜索）
@@ -182,6 +213,12 @@ function toggleTag(tag) {
   } else {
     activeTags.value.push(tag);
   }
+}
+
+// 获取标签显示名称（只显示子标签部分）
+function getTagLabel(tag) {
+  const parts = tag.split('/');
+  return parts.length === 2 ? parts[1] : tag;
 }
 
 const renderedContent = computed(() => {

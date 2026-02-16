@@ -31,8 +31,8 @@
   --color-reflection-bg: #fff7ed;
   --color-diary-bg: #fdf2f8;
 
-  --max-width: 720px;
-  --spacing-page: 24px;
+  --max-width: 1200px;
+  --spacing-page: 32px;
 }
 
 html {
@@ -434,25 +434,47 @@ body {
 /* 左侧标签栏 */
 .tag-sidebar {
   flex-shrink: 0;
-  width: 200px;
+  width: 240px;
   position: sticky;
   top: 24px;
   height: fit-content;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
 }
 
 .sidebar-title {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   padding-bottom: 8px;
   border-bottom: 2px solid var(--color-border);
+}
+
+.tag-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tag-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tag-group-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  padding-left: 12px;
+  margin-bottom: 4px;
 }
 
 .tag-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .clear-tags-btn {
@@ -560,6 +582,19 @@ body {
     width: 100%;
     position: relative;
     top: 0;
+    max-height: none;
+  }
+
+  .tag-groups {
+    gap: 12px;
+  }
+
+  .tag-group {
+    gap: 6px;
+  }
+
+  .tag-group-title {
+    font-size: 0.8rem;
   }
 
   .tag-list {
