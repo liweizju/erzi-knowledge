@@ -27,6 +27,27 @@
         >{{ info.label }}</button>
       </div>
 
+      <!-- 搜索和标签过滤 -->
+      <div class="search-bar">
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="搜索标题、内容或标签..."
+          class="search-input"
+        />
+      </div>
+
+      <div class="tag-cloud" v-if="allTags.length > 0">
+        <span class="tag-label">标签：</span>
+        <button
+          v-for="tag in allTags"
+          :key="tag"
+          class="tag-btn"
+          :class="{ active: activeTags.includes(tag) }"
+          @click="toggleTag(tag)"
+        >{{ tag }}</button>
+      </div>
+
       <div class="note-list" v-if="filteredNotes.length">
         <div
           v-for="note in filteredNotes"
@@ -42,6 +63,9 @@
           </div>
           <div class="note-title">{{ note.title }}</div>
           <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
+          <div class="note-tags" v-if="note.tags && note.tags.length > 0">
+            <span v-for="tag in note.tags" :key="tag" class="tag">{{ tag }}</span>
+          </div>
         </div>
       </div>
 
@@ -98,21 +122,70 @@ marked.setOptions({
 });
 
 const notes = knowledgeData.notes;
-const categories = knowledgeData.categories;
-
 const activeCategory = ref(null);
 const activeNote = ref(null);
 const visitCount = ref('加载中...');
+const searchQuery = ref('');
+const activeTags = ref([]);
+
+const categories = knowledgeData.categories;
 
 const uniqueDates = computed(() => {
   const dates = new Set(notes.map(n => n.date));
   return dates.size;
 });
 
-const filteredNotes = computed(() => {
-  if (!activeCategory.value) return notes;
-  return notes.filter(n => n.category === activeCategory.value);
+// 获取所有标签
+const allTags = computed(() => {
+  const tags = new Set();
+  notes.forEach(note => {
+    if (note.tags) {
+      note.tags.forEach(tag => tags.add(tag));
+    }
+  });
+  return Array.from(tags).sort();
 });
+
+// 过滤笔记（分类 + 标签 + 搜索）
+const filteredNotes = computed(() => {
+  let result = notes;
+
+  // 分类过滤
+  if (activeCategory.value) {
+    result = result.filter(n => n.category === activeCategory.value);
+  }
+
+  // 标签过滤
+  if (activeTags.value.length > 0) {
+    result = result.filter(n => {
+      if (!n.tags) return false;
+      return activeTags.value.every(tag => n.tags.includes(tag));
+    });
+  }
+
+  // 搜索过滤
+  if (searchQuery.value.trim()) {
+    const query = searchQuery.value.toLowerCase();
+    result = result.filter(n => {
+      const titleMatch = n.title.toLowerCase().includes(query);
+      const contentMatch = n.content.toLowerCase().includes(query);
+      const tagMatch = n.tags && n.tags.some(tag => tag.toLowerCase().includes(query));
+      return titleMatch || contentMatch || tagMatch;
+    });
+  }
+
+  return result;
+});
+
+// 切换标签
+function toggleTag(tag) {
+  const index = activeTags.value.indexOf(tag);
+  if (index > -1) {
+    activeTags.value.splice(index, 1);
+  } else {
+    activeTags.value.push(tag);
+  }
+}
 
 const renderedContent = computed(() => {
   if (!activeNote.value) return '';
