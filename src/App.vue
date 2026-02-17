@@ -52,6 +52,45 @@
       </div>
     </template>
 
+    <!-- Favorites View -->
+    <template v-else-if="showFavorites">
+      <header class="site-header">
+        <button class="back-btn" @click="closeFavorites">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          返回
+        </button>
+      </header>
+
+      <div class="favorites-page">
+        <h1 class="favorites-title">⭐ 我的收藏</h1>
+        <p class="favorites-count" v-if="favoriteNotes.length">{{ favoriteNotes.length }} 篇文章</p>
+        <p class="favorites-empty" v-else>还没有收藏文章，浏览时点击 ★ 即可收藏</p>
+
+        <div class="note-list" v-if="favoriteNotes.length">
+          <div
+            v-for="note in favoriteNotes"
+            :key="note.id"
+            class="note-item"
+            :class="{ 'note-item--insights': note.category === 'insights' }"
+            @click="openNote(note)"
+          >
+            <div class="note-meta">
+              <span class="note-category" :class="'note-category--' + note.category">
+                {{ categories[note.category]?.label }}
+              </span>
+              <span class="note-date">{{ note.date }}</span>
+              <span class="note-reading-time">{{ getReadingTime(note) }} 分钟</span>
+            </div>
+            <div class="note-title">{{ note.title }}</div>
+            <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
+          </div>
+        </div>
+      </div>
+      <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
+    </template>
+
     <!-- List View -->
     <template v-else-if="!activeNote">
       <!-- 返回顶部按钮 -->
@@ -64,6 +103,7 @@
             <div class="site-subtitle">跟二子一起学习</div>
           </div>
           <div class="header-actions">
+            <button class="favorites-btn" @click="openFavorites" title="我的收藏">⭐ {{ favorites.size || '' }}</button>
             <button class="random-btn" @click="openRandomNote" title="随机一篇">🎲</button>
             <button class="about-link" @click="openAbout">关于二子</button>
           </div>
@@ -169,6 +209,9 @@
           返回
         </button>
         <div class="detail-actions">
+          <button class="favorite-btn" :class="{ 'favorite-btn-active': isFavorite(activeNote.id) }" @click="toggleFavorite(activeNote.id)" :title="isFavorite(activeNote.id) ? '取消收藏' : '收藏'">
+            {{ isFavorite(activeNote.id) ? '★' : '☆' }}
+          </button>
           <button class="share-btn" :class="{ 'share-btn-copied': shareCopied }" @click="shareNote" :title="shareCopied ? '已复制！' : '分享'">
             <svg v-if="!shareCopied" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="18" cy="5" r="3"></circle>
@@ -267,7 +310,9 @@ const readingProgress = ref(0);
 const showBackToTop = ref(false);
 const showNotFound = ref(false);
 const shareCopied = ref(false);
+const showFavorites = ref(false);
 const readHistory = ref({}); // { noteId: timestamp }
+const favorites = ref(new Set()); // Set<noteId>
 
 // 排序后的分类（用于显示）
 const displayCategories = computed(() => {
@@ -454,6 +499,7 @@ function parseRoute(hash) {
 
   if (parts.length === 0) return { view: 'list', category: null };
   if (parts[0] === 'about') return { view: 'about' };
+  if (parts[0] === 'favorites') return { view: 'favorites' };
   if (parts[0] === 'category' && parts[1]) return { view: 'list', category: decodeURIComponent(parts[1]) };
   if (parts[0] === 'note' && parts[1]) return { view: 'detail', noteId: decodeURIComponent(parts[1]) };
   return { view: 'list', category: null };
@@ -467,12 +513,20 @@ function handleRouteChange() {
     activeNote.value = null;
     activeCategory.value = null;
     showNotFound.value = false;
+    showFavorites.value = false;
+  } else if (route.view === 'favorites') {
+    showFavorites.value = true;
+    showAbout.value = false;
+    activeNote.value = null;
+    activeCategory.value = null;
+    showNotFound.value = false;
   } else if (route.view === 'list') {
     showAbout.value = false;
     activeNote.value = null;
     activeCategory.value = route.category;
     currentPage.value = 1;
     showNotFound.value = false;
+    showFavorites.value = false;
   } else if (route.view === 'detail') {
     const note = notes.find(n => n.id === route.noteId);
     if (note) {
@@ -480,6 +534,7 @@ function handleRouteChange() {
       activeNote.value = note;
       activeCategory.value = null;
       showNotFound.value = false;
+      showFavorites.value = false;
       // 标记为已读
       markAsRead(note.id);
     } else {
@@ -487,6 +542,7 @@ function handleRouteChange() {
       showNotFound.value = true;
       activeNote.value = null;
       showAbout.value = false;
+      showFavorites.value = false;
     }
   }
 }
@@ -566,6 +622,44 @@ function getLastRead(noteId) {
   if (days < 30) return `${Math.floor(days / 7)} 周前`;
   return `${Math.floor(days / 30)} 个月前`;
 }
+
+function toggleFavorite(noteId) {
+  if (favorites.value.has(noteId)) {
+    favorites.value.delete(noteId);
+  } else {
+    favorites.value.add(noteId);
+  }
+  saveFavorites();
+}
+
+function isFavorite(noteId) {
+  return favorites.value.has(noteId);
+}
+
+function saveFavorites() {
+  try {
+    localStorage.setItem('erzi-favorites', JSON.stringify([...favorites.value]));
+  } catch (e) {
+    console.warn('Failed to save favorites:', e);
+  }
+}
+
+function openFavorites() {
+  showFavorites.value = true;
+  activeNote.value = null;
+  showAbout.value = false;
+  showNotFound.value = false;
+  window.location.hash = '#/favorites';
+}
+
+function closeFavorites() {
+  showFavorites.value = false;
+  window.location.hash = '#/';
+}
+
+const favoriteNotes = computed(() => {
+  return notes.filter(n => favorites.value.has(n.id)).sort((a, b) => new Date(b.date) - new Date(a.date));
+});
 
 function scrollToHeading(id) {
   const element = document.getElementById(id);
@@ -655,6 +749,16 @@ onMounted(() => {
     }
   } catch (e) {
     console.warn('Failed to load read history:', e);
+  }
+  
+  // 加载收藏数据
+  try {
+    const savedFavorites = localStorage.getItem('erzi-favorites');
+    if (savedFavorites) {
+      favorites.value = new Set(JSON.parse(savedFavorites));
+    }
+  } catch (e) {
+    console.warn('Failed to load favorites:', e);
   }
 });
 
