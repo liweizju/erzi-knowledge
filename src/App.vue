@@ -282,7 +282,25 @@
         </aside>
 
         <!-- 文章内容 -->
-        <div class="note-content" v-html="renderedContent"></div>
+        <div class="note-content-wrapper">
+          <div class="note-content" v-html="renderedContent"></div>
+          
+          <!-- 相关文章推荐 -->
+          <div class="related-notes" v-if="relatedNotes.length > 0">
+            <h3 class="related-title">相关文章</h3>
+            <div class="related-list">
+              <div
+                v-for="note in relatedNotes"
+                :key="note.id"
+                class="related-item"
+                @click="openNote(note)"
+              >
+                <span class="related-date">{{ note.date }}</span>
+                <span class="related-item-title">{{ note.title }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <footer class="site-footer">
@@ -478,6 +496,19 @@ const tocItems = computed(() => {
 
 const showToc = computed(() => {
   return tocItems.value.length >= 3;
+});
+
+// 相关文章推荐
+const relatedNotes = computed(() => {
+  if (!activeNote.value) return [];
+  
+  const current = activeNote.value;
+  const sameCategory = notes
+    .filter(n => n.category === current.category && n.id !== current.id)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+  // 返回同分类的最近 3 篇
+  return sameCategory.slice(0, 3);
 });
 
 // ========== 路由系统 ==========
