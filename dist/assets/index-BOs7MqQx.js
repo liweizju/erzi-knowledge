@@ -6426,6 +6426,26 @@ PwC 研究（I012、I049、I050）的三个关键发现：
 ---
 
 _报告完成时间：2026-02-15 | 执行时间：约 25 分钟_
+`,source:""},{id:"INSIGHTS-TODO",title:"Insights TODO List",category:"insights",date:"2026-02-15",summary:"## 已完成",content:`# Insights TODO List
+
+## 已完成
+
+- [x] INS001 - LLM上下文工程 (2026-02-15)
+- [x] INS002 - AI视频产业链与商业落地 (2026-02-16)
+- [x] INS003 - 中国图像生成市场机会 (2026-02-17)
+- [x] INS004 - AI算力中心产业链与全球竞争格局 (2026-02-17)
+
+## 待完成
+
+（暂无）
+
+## 规划中
+
+（暂无）
+
+---
+
+*最后更新：2026-02-17*
 `,source:""},{id:"2026-02-14-ai-safety-alignment-2026",title:"AI 安全与对齐 2026：从理论到基础设施的技术前沿",category:"tech",date:"2026-02-14",summary:"---",content:`# AI 安全与对齐 2026：从理论到基础设施的技术前沿
 
 ---
