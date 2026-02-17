@@ -310,7 +310,7 @@ function setCategory(category) {
   activeCategory.value = category;
   activeTag.value = null;
   currentPage.value = 1;
-  window.location.hash = category ? `#/category/${category}` : '#/';
+  window.location.hash = category ? `#/category/${encodeURIComponent(category)}` : '#/';
 }
 
 function setTag(tag) {
@@ -399,8 +399,8 @@ function parseRoute(hash) {
 
   if (parts.length === 0) return { view: 'list', category: null };
   if (parts[0] === 'about') return { view: 'about' };
-  if (parts[0] === 'category' && parts[1]) return { view: 'list', category: parts[1] };
-  if (parts[0] === 'note' && parts[1]) return { view: 'detail', noteId: parts[1] };
+  if (parts[0] === 'category' && parts[1]) return { view: 'list', category: decodeURIComponent(parts[1]) };
+  if (parts[0] === 'note' && parts[1]) return { view: 'detail', noteId: decodeURIComponent(parts[1]) };
   return { view: 'list', category: null };
 }
 
@@ -429,12 +429,12 @@ function handleRouteChange() {
 }
 
 function openNote(note) {
-  window.location.hash = `#/note/${note.id}`;
+  window.location.hash = `#/note/${encodeURIComponent(note.id)}`;
   nextTick(() => window.scrollTo(0, 0));
 }
 
 function closeNote() {
-  window.location.hash = activeCategory.value ? `#/category/${activeCategory.value}` : '#/';
+  window.location.hash = activeCategory.value ? `#/category/${encodeURIComponent(activeCategory.value)}` : '#/';
   nextTick(() => window.scrollTo(0, 0));
 }
 
