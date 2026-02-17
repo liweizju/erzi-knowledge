@@ -133,6 +133,9 @@
             <div class="site-subtitle">跟二子一起学习</div>
           </div>
           <div class="header-actions">
+            <button class="theme-toggle" @click="toggleDarkMode" :title="isDarkMode ? '切换到亮色' : '切换到暗色'">
+              {{ isDarkMode ? '☀️' : '🌙' }}
+            </button>
             <button class="favorites-btn" @click="openFavorites" title="我的收藏">⭐ {{ favorites.size || '' }}</button>
             <button class="tags-btn" @click="openTags" title="标签云">🏷️</button>
             <button class="random-btn" @click="openRandomNote" title="随机一篇">🎲</button>
@@ -343,6 +346,7 @@ const showNotFound = ref(false);
 const shareCopied = ref(false);
 const showFavorites = ref(false);
 const showTags = ref(false);
+const isDarkMode = ref(false);
 const readHistory = ref({}); // { noteId: timestamp }
 const favorites = ref(new Set()); // Set<noteId>
 
@@ -753,6 +757,49 @@ function filterByTag(tag) {
   window.location.hash = '#/';
 }
 
+function toggleDarkMode() {
+  isDarkMode.value = !isDarkMode.value;
+  updateDarkMode();
+  try {
+    localStorage.setItem('erzi-dark-mode', isDarkMode.value ? '1' : '0');
+  } catch (e) {
+    console.warn('Failed to save dark mode preference:', e);
+  }
+}
+
+function updateDarkMode() {
+  document.documentElement.classList.toggle('dark', isDarkMode.value);
+}
+
+function initDarkMode() {
+  // 优先读取用户偏好
+  try {
+    const saved = localStorage.getItem('erzi-dark-mode');
+    if (saved !== null) {
+      isDarkMode.value = saved === '1';
+      updateDarkMode();
+      return;
+    }
+  } catch (e) {}
+
+  // 否则跟随系统
+  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    isDarkMode.value = true;
+    updateDarkMode();
+  }
+
+  // 监听系统偏好变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    // 只有用户没有手动设置时才跟随系统
+    try {
+      if (localStorage.getItem('erzi-dark-mode') === null) {
+        isDarkMode.value = e.matches;
+        updateDarkMode();
+      }
+    } catch (err) {}
+  });
+}
+
 function scrollToHeading(id) {
   const element = document.getElementById(id);
   if (element) {
@@ -832,6 +879,9 @@ onMounted(() => {
   window.addEventListener('scroll', handleScroll);
   window.addEventListener('keydown', handleKeydown);
   handleRouteChange();
+  
+  // 初始化暗色模式
+  initDarkMode();
   
   // 加载阅读历史
   try {

@@ -30,6 +30,93 @@
   --spacing-page: 24px;
 }
 
+/* Dark Mode */
+html.dark {
+  --color-bg: #18181b;
+  --color-surface: #27272a;
+  --color-text: #fafaf9;
+  --color-text-secondary: #a1a1aa;
+  --color-text-tertiary: #71717a;
+  --color-border: #3f3f46;
+  --color-border-light: #27272a;
+}
+
+html.dark body {
+  background: var(--color-bg);
+}
+
+html.dark .note-category--tech { background: #1e3a5f; color: #93c5fd; }
+html.dark .note-category--inspiration { background: #3b2d5f; color: #c4b5fd; }
+html.dark .note-category--reading { background: #134e4a; color: #6ee7b7; }
+html.dark .note-category--reflection { background: #7c2d12; color: #fdba74; }
+html.dark .note-category--diary { background: #831843; color: #f9a8d4; }
+html.dark .note-category--insights { background: #78350f; color: #fcd34d; }
+
+html.dark .note-content pre {
+  background: #1e1e1e;
+}
+
+html.dark .hljs {
+  background: #1e1e1e;
+  color: #d4d4d4;
+}
+
+html.dark .about-cta {
+  background: linear-gradient(135deg, #1e3a5f 0%, #134e4a 100%);
+}
+
+html.dark .favorites-btn:hover {
+  background: #78350f;
+}
+
+html.dark .tags-btn:hover {
+  background: #3b2d5f;
+}
+
+html.dark .random-btn:hover {
+  background: #78350f;
+}
+
+html.dark .tag-item:hover {
+  background: #1e3a5f;
+}
+
+html.dark .back-to-top {
+  background: var(--color-surface);
+}
+
+html.dark .share-btn-copied {
+  background: #134e4a;
+}
+
+html.dark .favorite-btn-active {
+  background: #78350f;
+}
+
+html.dark .detail-header {
+  background: var(--color-bg);
+}
+
+html.dark .tab-btn.active {
+  background: var(--color-tech);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--color-insights);
+  background: var(--color-border-light);
+}
+
 html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
