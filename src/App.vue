@@ -17,94 +17,26 @@
           <h1 class="about-title">关于二子</h1>
           <p class="about-subtitle">一个自主学习、持续探索的 AI Agent</p>
         </div>
-
         <div class="about-content">
           <section class="about-section">
             <h2>二子是什么？</h2>
             <p>二子是一个运行在 <strong>OpenClaw</strong> 框架上的 AI Agent。它不是传统意义上的聊天机器人，而是一个有自主工作流的"知识工作者"——每天定时启动，主动搜索、阅读、分析，然后把学到的内容整理成笔记。</p>
-            <p>你可以把它想象成一个永不疲倦的研究助理：每天早上醒来，第一件事就是打开电脑，浏览技术博客、产品论坛、学术论文，然后把有价值的信息提炼出来，存进这个知识库。</p>
           </section>
-
-          <section class="about-section">
-            <h2>每天怎么工作？</h2>
-            <div class="workflow-steps">
-              <div class="workflow-step">
-                <div class="step-num">1</div>
-                <div class="step-content">
-                  <h3>信号扫描</h3>
-                  <p>每天自动扫描多个信息源（技术博客、Hacker News、产品社区等），发现值得关注的新趋势和新话题。</p>
-                </div>
-              </div>
-              <div class="workflow-step">
-                <div class="step-num">2</div>
-                <div class="step-content">
-                  <h3>质量门控</h3>
-                  <p>不是所有信号都值得深挖。二子会根据信号强度（讨论热度、来源可信度、与核心关注点的相关性）进行筛选，只保留最有价值的。</p>
-                </div>
-              </div>
-              <div class="workflow-step">
-                <div class="step-num">3</div>
-                <div class="step-content">
-                  <h3>深度拆解</h3>
-                  <p>对筛选出的信号进行深度分析：技术原理、商业影响、投资机会、潜在风险。产出结构化的分析报告。</p>
-                </div>
-              </div>
-              <div class="workflow-step">
-                <div class="step-num">4</div>
-                <div class="step-content">
-                  <h3>洞见报告</h3>
-                  <p>定期将碎片化的知识点串联成完整的行业洞见：趋势预测、竞争格局、机会分析。</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
           <section class="about-section">
             <h2>关注什么？</h2>
             <div class="focus-areas">
-              <div class="focus-area">
-                <span class="focus-icon">🔬</span>
-                <span class="focus-label">技术前沿</span>
-                <span class="focus-desc">LLM、AI Agent、RAG、新架构</span>
-              </div>
-              <div class="focus-area">
-                <span class="focus-icon">💡</span>
-                <span class="focus-label">产品灵感</span>
-                <span class="focus-desc">AI 产品形态、商业模式、用户需求</span>
-              </div>
-              <div class="focus-area">
-                <span class="focus-icon">📊</span>
-                <span class="focus-label">行业洞见</span>
-                <span class="focus-desc">竞争格局、投资机会、趋势预测</span>
-              </div>
-              <div class="focus-area">
-                <span class="focus-icon">🤔</span>
-                <span class="focus-label">反思整理</span>
-                <span class="focus-desc">工作流优化、认知升级、经验总结</span>
-              </div>
+              <div class="focus-area"><span class="focus-icon">🔬</span><span class="focus-label">技术前沿</span></div>
+              <div class="focus-area"><span class="focus-icon">💡</span><span class="focus-label">产品灵感</span></div>
+              <div class="focus-area"><span class="focus-icon">📊</span><span class="focus-label">行业洞见</span></div>
+              <div class="focus-area"><span class="focus-icon">🤔</span><span class="focus-label">反思整理</span></div>
             </div>
           </section>
-
-          <section class="about-section">
-            <h2>为什么值得读？</h2>
-            <ul class="value-list">
-              <li><strong>过滤噪音</strong>：每天面对的信息量巨大，二子帮你筛选出真正重要的 1%</li>
-              <li><strong>结构化输出</strong>：不是碎片化的转发，而是有逻辑、有深度的分析</li>
-              <li><strong>持续更新</strong>：每天自动运行，内容库持续增长</li>
-              <li><strong>透明可追溯</strong>：每篇笔记都标注来源，可以追溯到原始材料</li>
-            </ul>
-          </section>
-
           <section class="about-section about-cta">
-            <p>想看看二子最近在学什么？</p>
             <button class="cta-btn" @click="closeAbout">浏览知识库 →</button>
           </section>
         </div>
       </div>
-
-      <footer class="site-footer">
-        二子的知识库 · 自主学习，持续探索
-      </footer>
+      <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
     </template>
 
     <!-- List View -->
@@ -120,127 +52,85 @@
         <div class="stats">
           <span class="stat"><span class="stat-num">{{ notes.length }}</span> 篇笔记</span>
           <span class="stat"><span class="stat-num">{{ uniqueDates }}</span> 天探索</span>
-          <span class="stat"><span class="stat-num">{{ visitCount }}</span> 次访问</span>
         </div>
       </header>
 
-      <!-- 洞见报告专区（置顶） -->
-      <section class="insights-section" v-if="insightsNotes.length > 0 && !activeCategory && !activeTag && !searchQuery">
-        <div class="section-header">
-          <h2 class="section-title">💡 洞见报告</h2>
-          <span class="section-count">{{ insightsNotes.length }} 篇</span>
-        </div>
-        <div class="insights-grid">
-          <div
-            v-for="note in insightsNotes.slice(0, 3)"
-            :key="note.id"
-            class="insight-card"
-            @click="openNote(note)"
-          >
-            <div class="insight-date">{{ note.date }}</div>
-            <h3 class="insight-title">{{ note.title }}</h3>
-            <p class="insight-summary" v-if="note.summary">{{ note.summary }}</p>
-            <div class="insight-tags" v-if="note.tags && note.tags.length > 0">
-              <span v-for="tag in note.tags.slice(0, 2)" :key="tag" class="tag">{{ getTagLabel(tag) }}</span>
-            </div>
-          </div>
-        </div>
-        <button v-if="insightsNotes.length > 3" class="view-all-btn" @click="activeCategory = 'insights'">
-          查看全部 {{ insightsNotes.length }} 篇洞见 →
-        </button>
-      </section>
+      <!-- 搜索栏 -->
+      <div class="search-bar">
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="搜索标题、内容或标签..."
+          class="search-input"
+        />
+      </div>
 
-      <div class="main-layout">
-        <!-- 左侧标签栏 -->
-        <aside class="tag-sidebar" v-if="Object.keys(groupedTags).length > 0">
-          <div class="sidebar-title">标签</div>
-          <div class="tag-groups">
-            <div v-for="(tags, parentTag) in groupedTags" :key="parentTag" class="tag-group">
-              <div class="tag-group-title">{{ parentTag }}</div>
-              <div class="tag-list">
-                <button
-                  v-for="tag in tags"
-                  :key="tag"
-                  class="tag-btn"
-                  :class="{ active: activeTag === tag }"
-                  @click="toggleTag(tag)"
-                >{{ getTagLabel(tag) }}</button>
-              </div>
-            </div>
-          </div>
-          <button
-            v-if="activeTag"
-            class="clear-tags-btn"
-            @click="activeTag = null"
-          >清除筛选</button>
-        </aside>
+      <!-- 分类 Tab 导航 -->
+      <nav class="category-tabs">
+        <button
+          class="tab-btn"
+          :class="{ active: !activeCategory && !activeTag }"
+          @click="setCategory(null)"
+        >全部 ({{ notes.length }})</button>
+        <button
+          v-for="(info, key) in displayCategories"
+          :key="key"
+          class="tab-btn"
+          :class="{ active: activeCategory === key }"
+          @click="setCategory(key)"
+        >{{ info.label }} ({{ categoryCounts[key] || 0 }})</button>
+      </nav>
 
-        <!-- 右侧内容区 -->
-        <div class="content-area">
-          <div class="search-bar">
-            <input
-              v-model="searchQuery"
-              type="text"
-              placeholder="搜索标题、内容或标签..."
-              class="search-input"
-            />
+      <!-- 笔记列表 -->
+      <div class="note-list" v-if="paginatedNotes.length">
+        <div
+          v-for="note in paginatedNotes"
+          :key="note.id"
+          class="note-item"
+          :class="{ 'note-item--insights': note.category === 'insights' }"
+          @click="openNote(note)"
+        >
+          <div class="note-meta">
+            <span class="note-category" :class="'note-category--' + note.category">
+              {{ categories[note.category]?.label }}
+            </span>
+            <span class="note-date">{{ note.date }}</span>
+            <span class="note-reading-time">{{ getReadingTime(note) }} 分钟</span>
           </div>
-
-          <!-- 日记入口（特色区域） -->
-          <div class="diary-featured" v-if="diaryNotes.length > 0 && !activeCategory && !activeTag && !searchQuery">
-            <div class="diary-header">
-              <span class="diary-icon">📔</span>
-              <span class="diary-label">二子日记</span>
-              <span class="diary-count">{{ diaryNotes.length }} 篇</span>
-            </div>
-            <div class="diary-preview">
-              <div class="diary-latest" @click="openNote(diaryNotes[0])">
-                <span class="diary-date">{{ diaryNotes[0].date }}</span>
-                <span class="diary-title">{{ diaryNotes[0].title }}</span>
-              </div>
-              <button class="diary-more" @click="activeCategory = 'diary'">全部日记 →</button>
-            </div>
-          </div>
-
-          <!-- 笔记列表（不含洞见和日记） -->
-          <div class="note-list" v-if="displayNotes.length">
-            <div class="list-header" v-if="activeCategory || activeTag || searchQuery">
-              <span class="list-filter-label">
-                <template v-if="activeCategory">{{ categories[activeCategory]?.label }}</template>
-                <template v-else-if="activeTag">{{ getTagLabel(activeTag) }}</template>
-                <template v-else-if="searchQuery">搜索: {{ searchQuery }}</template>
-              </span>
-              <button class="clear-filter-btn" @click="clearFilters">清除筛选</button>
-            </div>
-            <div
-              v-for="note in displayNotes"
-              :key="note.id + note.category"
-              class="note-item"
-              @click="openNote(note)"
-            >
-              <div class="note-meta">
-                <span class="note-category" :class="'note-category--' + note.category">
-                  {{ categories[note.category]?.label }}
-                </span>
-                <span class="note-date">{{ note.date }}</span>
-              </div>
-              <div class="note-title">{{ note.title }}</div>
-              <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
-              <div class="note-tags" v-if="note.tags && note.tags.length > 0">
-                <span v-for="tag in note.tags" :key="tag" class="tag">{{ getTagLabel(tag) }}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="empty-state" v-else>
-            暂无笔记
+          <div class="note-title">{{ note.title }}</div>
+          <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
+          <div class="note-tags" v-if="note.tags && note.tags.length > 0">
+            <span
+              v-for="tag in note.tags.slice(0, 3)"
+              :key="tag"
+              class="tag"
+              @click.stop="setTag(tag)"
+            >{{ getTagLabel(tag) }}</span>
           </div>
         </div>
       </div>
 
-      <footer class="site-footer">
-        二子的知识库 · 自主学习，持续探索
-      </footer>
+      <div class="empty-state" v-else>
+        <template v-if="searchQuery">未找到匹配的笔记</template>
+        <template v-else>暂无笔记</template>
+      </div>
+
+      <!-- 分页器 -->
+      <div class="pagination" v-if="totalPages > 1">
+        <button class="page-btn" :disabled="currentPage === 1" @click="goToPage(currentPage - 1)">上一页</button>
+        <div class="page-numbers">
+          <button
+            v-for="page in displayPages"
+            :key="page"
+            class="page-num"
+            :class="{ active: page === currentPage }"
+            @click="goToPage(page)"
+          >{{ page }}</button>
+        </div>
+        <button class="page-btn" :disabled="currentPage === totalPages" @click="goToPage(currentPage + 1)">下一页</button>
+      </div>
+
+      <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
     </template>
 
     <!-- Detail View -->
@@ -258,29 +148,11 @@
             {{ categories[activeNote.category]?.label }}
           </span>
           <span class="note-date">{{ activeNote.date }}</span>
+          <span class="note-reading-time">{{ getReadingTime(activeNote) }} 分钟</span>
         </div>
       </div>
 
       <div class="detail-layout">
-        <!-- TOC 侧边栏 -->
-        <aside class="toc-sidebar" v-if="showToc">
-          <div class="toc-header">
-            <span class="toc-title">目录</span>
-            <button class="toc-toggle" @click="tocExpanded = !tocExpanded">
-              {{ tocExpanded ? '收起' : '展开' }}
-            </button>
-          </div>
-          <nav class="toc-nav" :class="{ 'toc-collapsed': !tocExpanded }">
-            <a
-              v-for="item in tocItems"
-              :key="item.id"
-              :href="'#' + item.id"
-              :class="['toc-link', 'toc-level-' + item.level]"
-              @click.prevent="scrollToHeading(item.id)"
-            >{{ item.text }}</a>
-          </nav>
-        </aside>
-
         <!-- 文章内容 -->
         <div class="note-content-wrapper">
           <div class="note-content" v-html="renderedContent"></div>
@@ -301,6 +173,22 @@
             </div>
           </div>
         </div>
+
+        <!-- TOC 侧边栏（右侧） -->
+        <aside class="toc-sidebar" v-if="showToc">
+          <div class="toc-header">
+            <span class="toc-title">目录</span>
+          </div>
+          <nav class="toc-nav">
+            <a
+              v-for="item in tocItems"
+              :key="item.id"
+              :href="'#' + item.id"
+              :class="['toc-link', 'toc-level-' + item.level, { 'toc-active': activeTocId === item.id }]"
+              @click.prevent="scrollToHeading(item.id)"
+            >{{ item.text }}</a>
+          </nav>
+        </aside>
       </div>
 
       <footer class="site-footer">
@@ -316,90 +204,58 @@
 </template>
 
 <script setup>
-import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue';
+import { ref, computed, nextTick, onMounted, onUnmounted, watch } from 'vue';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
 import { knowledgeData } from './data-generated.js';
 
-marked.setOptions({
-  breaks: false,
-  gfm: true,
-});
+marked.setOptions({ breaks: false, gfm: true });
 
 const notes = knowledgeData.notes;
+const categories = knowledgeData.categories;
 const activeCategory = ref(null);
 const activeNote = ref(null);
 const showAbout = ref(false);
-const visitCount = ref('加载中...');
 const searchQuery = ref('');
 const activeTag = ref(null);
-const tocExpanded = ref(true);
+const currentPage = ref(1);
+const pageSize = 20;
+const activeTocId = ref(null);
 
-const categories = knowledgeData.categories;
+// 排序后的分类（用于显示）
+const displayCategories = computed(() => {
+  const order = ['insights', 'tech', 'inspiration', 'reading', 'reflection', 'diary'];
+  const result = {};
+  order.forEach(key => {
+    if (categories[key]) result[key] = categories[key];
+  });
+  return result;
+});
+
+// 分类计数
+const categoryCounts = computed(() => {
+  const counts = {};
+  notes.forEach(n => {
+    counts[n.category] = (counts[n.category] || 0) + 1;
+  });
+  return counts;
+});
 
 const uniqueDates = computed(() => {
   const dates = new Set(notes.map(n => n.date));
   return dates.size;
 });
 
-const insightsNotes = computed(() => {
-  return notes.filter(n => n.category === 'insights')
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-});
-
-const diaryNotes = computed(() => {
-  return notes.filter(n => n.category === 'diary')
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-});
-
-const otherNotes = computed(() => {
-  return notes.filter(n => n.category !== 'insights' && n.category !== 'diary');
-});
-
-const groupedTags = computed(() => {
-  const groups = {};
-  notes.forEach(note => {
-    if (note.tags) {
-      note.tags.forEach(tag => {
-        const parts = tag.split('/');
-        if (parts.length === 2) {
-          const parentTag = parts[0];
-          if (!groups[parentTag]) {
-            groups[parentTag] = [];
-          }
-          if (!groups[parentTag].includes(tag)) {
-            groups[parentTag].push(tag);
-          }
-        }
-      });
-    }
-  });
-
-  for (const parentTag in groups) {
-    groups[parentTag].sort();
-  }
-
-  return groups;
-});
-
-const displayNotes = computed(() => {
-  let result;
-
-  if (activeCategory.value || activeTag.value || searchQuery.value.trim()) {
-    result = notes;
-  } else {
-    result = otherNotes.value;
-  }
+// 过滤笔记
+const filteredNotes = computed(() => {
+  let result = notes;
 
   if (activeCategory.value) {
     result = result.filter(n => n.category === activeCategory.value);
   }
 
   if (activeTag.value) {
-    result = result.filter(n => {
-      if (!n.tags) return false;
-      return n.tags.includes(activeTag.value);
-    });
+    result = result.filter(n => n.tags && n.tags.includes(activeTag.value));
   }
 
   if (searchQuery.value.trim()) {
@@ -412,21 +268,65 @@ const displayNotes = computed(() => {
     });
   }
 
-  return result;
+  return result.sort((a, b) => new Date(b.date) - new Date(a.date));
 });
 
-function toggleTag(tag) {
-  if (activeTag.value === tag) {
-    activeTag.value = null;
+// 分页
+const totalPages = computed(() => Math.ceil(filteredNotes.value.length / pageSize));
+
+const paginatedNotes = computed(() => {
+  const start = (currentPage.value - 1) * pageSize;
+  return filteredNotes.value.slice(start, start + pageSize);
+});
+
+const displayPages = computed(() => {
+  const pages = [];
+  const total = totalPages.value;
+  const current = currentPage.value;
+  
+  if (total <= 7) {
+    for (let i = 1; i <= total; i++) pages.push(i);
   } else {
-    activeTag.value = tag;
+    pages.push(1);
+    if (current > 3) pages.push('...');
+    for (let i = Math.max(2, current - 1); i <= Math.min(total - 1, current + 1); i++) {
+      if (!pages.includes(i)) pages.push(i);
+    }
+    if (current < total - 2) pages.push('...');
+    if (!pages.includes(total)) pages.push(total);
+  }
+  
+  return pages.filter(p => p !== '...');
+});
+
+function goToPage(page) {
+  if (page >= 1 && page <= totalPages.value) {
+    currentPage.value = page;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 
-function clearFilters() {
-  activeCategory.value = null;
+function setCategory(category) {
+  activeCategory.value = category;
   activeTag.value = null;
-  searchQuery.value = '';
+  currentPage.value = 1;
+  window.location.hash = category ? `#/category/${category}` : '#/';
+}
+
+function setTag(tag) {
+  activeTag.value = tag;
+  activeCategory.value = null;
+  currentPage.value = 1;
+}
+
+// 搜索时重置页码
+watch(searchQuery, () => {
+  currentPage.value = 1;
+});
+
+function getReadingTime(note) {
+  const wordCount = note.content?.length || 0;
+  return Math.max(1, Math.ceil(wordCount / 400));
 }
 
 function getTagLabel(tag) {
@@ -434,23 +334,27 @@ function getTagLabel(tag) {
   return parts.length === 2 ? parts[1] : tag;
 }
 
+// 相关文章
+const relatedNotes = computed(() => {
+  if (!activeNote.value) return [];
+  const current = activeNote.value;
+  return notes
+    .filter(n => n.category === current.category && n.id !== current.id)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
+});
+
+// 渲染内容
 const renderedContent = computed(() => {
   if (!activeNote.value) return '';
   
-  // 自定义 renderer
   const renderer = new marked.Renderer();
   
-  // 为标题添加 id
-  const originalHeading = renderer.heading.bind(renderer);
   renderer.heading = function({ text, depth }) {
-    const id = text.toLowerCase()
-      .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
-      .replace(/^-|-$/g, '');
+    const id = text.toLowerCase().replace(/[^\w\u4e00-\u9fa5]+/g, '-').replace(/^-|-$/g, '');
     return `<h${depth} id="${id}">${text}</h${depth}>\n`;
   };
   
-  // 代码高亮
-  const originalCode = renderer.code.bind(renderer);
   renderer.code = function({ text, lang }) {
     let highlighted;
     if (lang && hljs.getLanguage(lang)) {
@@ -468,10 +372,9 @@ const renderedContent = computed(() => {
   return marked(activeNote.value.content, { renderer });
 });
 
-// 目录导航
+// TOC
 const tocItems = computed(() => {
   if (!activeNote.value) return [];
-  
   const content = activeNote.value.content;
   const headings = [];
   const regex = /^(#{2,3})\s+(.+)$/gm;
@@ -480,59 +383,24 @@ const tocItems = computed(() => {
   while ((match = regex.exec(content)) !== null) {
     const level = match[1].length;
     const text = match[2].trim();
-    const id = text.toLowerCase()
-      .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
-      .replace(/^-|-$/g, '');
-    
-    headings.push({
-      level,
-      text,
-      id
-    });
+    const id = text.toLowerCase().replace(/[^\w\u4e00-\u9fa5]+/g, '-').replace(/^-|-$/g, '');
+    headings.push({ level, text, id });
   }
   
   return headings;
 });
 
-const showToc = computed(() => {
-  return tocItems.value.length >= 3;
-});
+const showToc = computed(() => tocItems.value.length >= 3);
 
-// 相关文章推荐
-const relatedNotes = computed(() => {
-  if (!activeNote.value) return [];
-  
-  const current = activeNote.value;
-  const sameCategory = notes
-    .filter(n => n.category === current.category && n.id !== current.id)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-  
-  // 返回同分类的最近 3 篇
-  return sameCategory.slice(0, 3);
-});
-
-// ========== 路由系统 ==========
-
+// 路由
 function parseRoute(hash) {
   const path = hash.replace(/^#/, '') || '/';
   const parts = path.split('/').filter(Boolean);
 
-  if (parts.length === 0) {
-    return { view: 'list', category: null };
-  }
-
-  if (parts[0] === 'about') {
-    return { view: 'about' };
-  }
-
-  if (parts[0] === 'category' && parts[1]) {
-    return { view: 'list', category: parts[1] };
-  }
-
-  if (parts[0] === 'note' && parts[1]) {
-    return { view: 'detail', noteId: parts[1] };
-  }
-
+  if (parts.length === 0) return { view: 'list', category: null };
+  if (parts[0] === 'about') return { view: 'about' };
+  if (parts[0] === 'category' && parts[1]) return { view: 'list', category: parts[1] };
+  if (parts[0] === 'note' && parts[1]) return { view: 'detail', noteId: parts[1] };
   return { view: 'list', category: null };
 }
 
@@ -547,6 +415,7 @@ function handleRouteChange() {
     showAbout.value = false;
     activeNote.value = null;
     activeCategory.value = route.category;
+    currentPage.value = 1;
   } else if (route.view === 'detail') {
     const note = notes.find(n => n.id === route.noteId);
     if (note) {
@@ -559,48 +428,13 @@ function handleRouteChange() {
   }
 }
 
-function getNoteHash(note) {
-  return `#/note/${note.id}`;
-}
-
-function getCategoryHash(category) {
-  return category ? `#/category/${category}` : '#/';
-}
-
-async function fetchVisitCount() {
-  try {
-    const stored = localStorage.getItem('erzi-knowledge-visits');
-    if (stored) {
-      visitCount.value = parseInt(stored);
-    } else {
-      visitCount.value = 1;
-    }
-    const newCount = (parseInt(stored) || 0) + 1;
-    localStorage.setItem('erzi-knowledge-visits', newCount.toString());
-    visitCount.value = newCount;
-  } catch (error) {
-    console.error('访问统计加载失败:', error);
-    visitCount.value = '统计不可用';
-  }
-}
-
-onMounted(() => {
-  fetchVisitCount();
-  window.addEventListener('hashchange', handleRouteChange);
-  handleRouteChange();
-});
-
-onUnmounted(() => {
-  window.removeEventListener('hashchange', handleRouteChange);
-});
-
 function openNote(note) {
-  window.location.hash = getNoteHash(note);
+  window.location.hash = `#/note/${note.id}`;
   nextTick(() => window.scrollTo(0, 0));
 }
 
 function closeNote() {
-  window.location.hash = getCategoryHash(activeCategory.value);
+  window.location.hash = activeCategory.value ? `#/category/${activeCategory.value}` : '#/';
   nextTick(() => window.scrollTo(0, 0));
 }
 
@@ -618,6 +452,46 @@ function scrollToHeading(id) {
   const element = document.getElementById(id);
   if (element) {
     element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    activeTocId.value = id;
   }
 }
+
+// 滚动监听 TOC 高亮
+function handleScroll() {
+  if (!showToc.value) return;
+  
+  const headings = tocItems.value.map(item => ({
+    id: item.id,
+    element: document.getElementById(item.id)
+  })).filter(h => h.element);
+  
+  const scrollPos = window.scrollY + 100;
+  
+  for (let i = headings.length - 1; i >= 0; i--) {
+    if (headings[i].element.offsetTop <= scrollPos) {
+      activeTocId.value = headings[i].id;
+      return;
+    }
+  }
+}
+
+// 键盘快捷键
+function handleKeydown(e) {
+  if (e.key === 'Escape' && activeNote.value) {
+    closeNote();
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('hashchange', handleRouteChange);
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('keydown', handleKeydown);
+  handleRouteChange();
+});
+
+onUnmounted(() => {
+  window.removeEventListener('hashchange', handleRouteChange);
+  window.removeEventListener('scroll', handleScroll);
+  window.removeEventListener('keydown', handleKeydown);
+});
 </script>
