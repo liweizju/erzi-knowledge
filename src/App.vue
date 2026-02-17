@@ -16,14 +16,14 @@
         <button
           class="filter-btn"
           :class="{ active: activeCategory === null }"
-          @click="activeCategory = null"
+          @click="setCategory(null)"
         >全部</button>
         <button
           v-for="(info, key) in categories"
           :key="key"
           class="filter-btn"
           :class="{ active: activeCategory === key }"
-          @click="activeCategory = key"
+          @click="setCategory(key)"
         >{{ info.label }}</button>
       </div>
 
@@ -87,7 +87,7 @@
 </template>
 
 <script setup>
-import { ref, computed, nextTick, onMounted } from 'vue';
+import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue';
 import { marked } from 'marked';
 import { knowledgeData } from './data-generated.js';
 
@@ -119,6 +119,70 @@ const renderedContent = computed(() => {
   return marked(activeNote.value.content);
 });
 
+// ========== 路由系统 ==========
+
+/**
+ * 解析 hash 路由
+ * 支持格式：
+ * - #/ 或空 → 首页（全部笔记）
+ * - #/category/{name} → 分类筛选
+ * - #/note/{id} → 笔记详情
+ */
+function parseRoute(hash) {
+  const path = hash.replace(/^#/, '') || '/';
+  const parts = path.split('/').filter(Boolean);
+
+  if (parts.length === 0) {
+    return { view: 'list', category: null };
+  }
+
+  if (parts[0] === 'category' && parts[1]) {
+    return { view: 'list', category: parts[1] };
+  }
+
+  if (parts[0] === 'note' && parts[1]) {
+    return { view: 'detail', noteId: parts[1] };
+  }
+
+  return { view: 'list', category: null };
+}
+
+/**
+ * 根据 hash 更新应用状态
+ */
+function handleRouteChange() {
+  const route = parseRoute(window.location.hash);
+
+  if (route.view === 'list') {
+    activeNote.value = null;
+    activeCategory.value = route.category;
+  } else if (route.view === 'detail') {
+    // 根据 ID 查找笔记
+    const note = notes.find(n => n.id === route.noteId);
+    if (note) {
+      activeNote.value = note;
+      activeCategory.value = null;
+    } else {
+      // 找不到笔记，返回首页
+      window.location.hash = '#/';
+    }
+  }
+}
+
+/**
+ * 生成笔记的 URL hash
+ */
+function getNoteHash(note) {
+  return `#/note/${note.id}`;
+}
+
+/**
+ * 生成分类的 URL hash
+ */
+function getCategoryHash(category) {
+  return category ? `#/category/${category}` : '#/';
+}
+
 // 获取访问次数
 async function fetchVisitCount() {
   try {
@@ -142,15 +206,33 @@ async function fetchVisitCount() {
 
 onMounted(() => {
   fetchVisitCount();
+
+  // 监听 hashchange 事件
+  window.addEventListener('hashchange', handleRouteChange);
+
+  // 初始化路由
+  handleRouteChange();
+});
+
+onUnmounted(() => {
+  window.removeEventListener('hashchange', handleRouteChange);
 });
 
 function openNote(note) {
-  activeNote.value = note;
+  // 更新 hash，触发路由变化
+  window.location.hash = getNoteHash(note);
   nextTick(() => window.scrollTo(0, 0));
 }
 
 function closeNote() {
-  activeNote.value = null;
+  // 更新 hash，触发路由变化
+  window.location.hash = getCategoryHash(activeCategory.value);
   nextTick(() => window.scrollTo(0, 0));
+}
+
+function setCategory(category) {
+  activeCategory.value = category;
+  // 更新 hash
+  window.location.hash = getCategoryHash(category);
 }
 </script>

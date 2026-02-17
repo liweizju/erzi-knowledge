@@ -34,6 +34,11 @@ const CATEGORIES = {
     label: '二子日记',
     color: '#e879a0',
     priority: 5
+  },
+  'insights': {
+    label: '洞见报告',
+    color: '#f59e0b',
+    priority: 6
   }
 };
 
