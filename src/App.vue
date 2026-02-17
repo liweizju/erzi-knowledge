@@ -91,6 +91,36 @@
       <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
     </template>
 
+    <!-- Tags View -->
+    <template v-else-if="showTags">
+      <header class="site-header">
+        <button class="back-btn" @click="closeTags">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          返回
+        </button>
+      </header>
+
+      <div class="tags-page">
+        <h1 class="tags-title">🏷️ 标签云</h1>
+        <p class="tags-count">{{ sortedTags.length }} 个标签</p>
+
+        <div class="tag-cloud">
+          <button
+            v-for="item in sortedTags"
+            :key="item.tag"
+            class="tag-item"
+            :style="{ fontSize: getTagSize(item.count) + 'rem' }"
+            @click="filterByTag(item.tag)"
+          >
+            {{ item.label }} <span class="tag-count">{{ item.count }}</span>
+          </button>
+        </div>
+      </div>
+      <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
+    </template>
+
     <!-- List View -->
     <template v-else-if="!activeNote">
       <!-- 返回顶部按钮 -->
@@ -104,6 +134,7 @@
           </div>
           <div class="header-actions">
             <button class="favorites-btn" @click="openFavorites" title="我的收藏">⭐ {{ favorites.size || '' }}</button>
+            <button class="tags-btn" @click="openTags" title="标签云">🏷️</button>
             <button class="random-btn" @click="openRandomNote" title="随机一篇">🎲</button>
             <button class="about-link" @click="openAbout">关于二子</button>
           </div>
@@ -311,6 +342,7 @@ const showBackToTop = ref(false);
 const showNotFound = ref(false);
 const shareCopied = ref(false);
 const showFavorites = ref(false);
+const showTags = ref(false);
 const readHistory = ref({}); // { noteId: timestamp }
 const favorites = ref(new Set()); // Set<noteId>
 
@@ -434,6 +466,14 @@ function getTagLabel(tag) {
   return parts.length === 2 ? parts[1] : tag;
 }
 
+function getTagSize(count) {
+  // 基于文章数量计算字体大小：0.75rem - 1.25rem
+  const min = 0.75;
+  const max = 1.25;
+  const maxCount = Math.max(...Object.values(tagStats.value), 1);
+  return min + (count / maxCount) * (max - min);
+}
+
 // 相关文章
 const relatedNotes = computed(() => {
   if (!activeNote.value) return [];
@@ -500,6 +540,7 @@ function parseRoute(hash) {
   if (parts.length === 0) return { view: 'list', category: null };
   if (parts[0] === 'about') return { view: 'about' };
   if (parts[0] === 'favorites') return { view: 'favorites' };
+  if (parts[0] === 'tags') return { view: 'tags' };
   if (parts[0] === 'category' && parts[1]) return { view: 'list', category: decodeURIComponent(parts[1]) };
   if (parts[0] === 'note' && parts[1]) return { view: 'detail', noteId: decodeURIComponent(parts[1]) };
   return { view: 'list', category: null };
@@ -514,8 +555,17 @@ function handleRouteChange() {
     activeCategory.value = null;
     showNotFound.value = false;
     showFavorites.value = false;
+    showTags.value = false;
   } else if (route.view === 'favorites') {
     showFavorites.value = true;
+    showAbout.value = false;
+    activeNote.value = null;
+    activeCategory.value = null;
+    showNotFound.value = false;
+    showTags.value = false;
+  } else if (route.view === 'tags') {
+    showTags.value = true;
+    showFavorites.value = false;
     showAbout.value = false;
     activeNote.value = null;
     activeCategory.value = null;
@@ -527,6 +577,7 @@ function handleRouteChange() {
     currentPage.value = 1;
     showNotFound.value = false;
     showFavorites.value = false;
+    showTags.value = false;
   } else if (route.view === 'detail') {
     const note = notes.find(n => n.id === route.noteId);
     if (note) {
@@ -535,6 +586,7 @@ function handleRouteChange() {
       activeCategory.value = null;
       showNotFound.value = false;
       showFavorites.value = false;
+      showTags.value = false;
       // 标记为已读
       markAsRead(note.id);
     } else {
@@ -543,6 +595,7 @@ function handleRouteChange() {
       activeNote.value = null;
       showAbout.value = false;
       showFavorites.value = false;
+      showTags.value = false;
     }
   }
 }
@@ -660,6 +713,45 @@ function closeFavorites() {
 const favoriteNotes = computed(() => {
   return notes.filter(n => favorites.value.has(n.id)).sort((a, b) => new Date(b.date) - new Date(a.date));
 });
+
+// 标签统计
+const tagStats = computed(() => {
+  const stats = {};
+  notes.forEach(n => {
+    if (n.tags) {
+      n.tags.forEach(tag => {
+        stats[tag] = (stats[tag] || 0) + 1;
+      });
+    }
+  });
+  return stats;
+});
+
+const sortedTags = computed(() => {
+  return Object.entries(tagStats.value)
+    .map(([tag, count]) => ({ tag, count, label: getTagLabel(tag) }))
+    .sort((a, b) => b.count - a.count);
+});
+
+function openTags() {
+  showTags.value = true;
+  activeNote.value = null;
+  showAbout.value = false;
+  showFavorites.value = false;
+  showNotFound.value = false;
+  window.location.hash = '#/tags';
+}
+
+function closeTags() {
+  showTags.value = false;
+  window.location.hash = '#/';
+}
+
+function filterByTag(tag) {
+  showTags.value = false;
+  setTag(tag);
+  window.location.hash = '#/';
+}
 
 function scrollToHeading(id) {
   const element = document.getElementById(id);

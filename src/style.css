@@ -821,6 +821,74 @@ body {
   color: var(--color-text-tertiary);
 }
 
+/* ========== Tags Page ========== */
+.tags-page {
+  padding-top: 20px;
+}
+
+.tags-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.tags-count {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.tag-item {
+  padding: 8px 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text);
+}
+
+.tag-item:hover {
+  border-color: var(--color-tech);
+  background: #eff6ff;
+  transform: translateY(-2px);
+}
+
+.tag-count {
+  font-size: 0.75em;
+  color: var(--color-text-tertiary);
+  background: var(--color-border-light);
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.tags-btn {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tags-btn:hover {
+  border-color: var(--color-inspiration);
+  background: #ede9fe;
+}
+
 /* ========== About Page ========== */
 .about-page {
   max-width: 640px;
