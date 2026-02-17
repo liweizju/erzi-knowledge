@@ -363,6 +363,16 @@ body {
   color: var(--color-text-tertiary);
   border-top: 1px solid var(--color-border);
   margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.keyboard-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  opacity: 0.6;
 }
 
 /* ========== Reading Progress Bar ========== */

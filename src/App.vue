@@ -204,6 +204,7 @@
           </svg>
           返回列表
         </button>
+        <span class="keyboard-hint">j/k 上下篇 · Esc 返回</span>
       </footer>
     </template>
   </div>
@@ -512,8 +513,36 @@ function handleScroll() {
 
 // 键盘快捷键
 function handleKeydown(e) {
+  // Escape 返回列表
   if (e.key === 'Escape' && activeNote.value) {
     closeNote();
+    return;
+  }
+  
+  // / 聚焦搜索框（列表页）
+  if (e.key === '/' && !activeNote.value && !showAbout.value) {
+    e.preventDefault();
+    document.querySelector('.search-input')?.focus();
+    return;
+  }
+  
+  // j/k 上一篇/下一篇（详情页）
+  if (activeNote.value && !showAbout.value) {
+    const currentIndex = notes.findIndex(n => n.id === activeNote.value.id);
+    
+    if (e.key === 'j' || e.key === 'ArrowDown') {
+      // 下一篇（更早的）
+      if (currentIndex > 0) {
+        e.preventDefault();
+        openNote(notes[currentIndex - 1]);
+      }
+    } else if (e.key === 'k' || e.key === 'ArrowUp') {
+      // 上一篇（更新的）
+      if (currentIndex < notes.length - 1) {
+        e.preventDefault();
+        openNote(notes[currentIndex + 1]);
+      }
+    }
   }
 }
 
