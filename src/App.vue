@@ -12,6 +12,32 @@
         </div>
       </header>
 
+      <!-- 洞见报告专区（置顶） -->
+      <section class="insights-section" v-if="insightsNotes.length > 0 && !activeCategory && !activeTag && !searchQuery">
+        <div class="section-header">
+          <h2 class="section-title">💡 洞见报告</h2>
+          <span class="section-count">{{ insightsNotes.length }} 篇</span>
+        </div>
+        <div class="insights-grid">
+          <div
+            v-for="note in insightsNotes.slice(0, 3)"
+            :key="note.id"
+            class="insight-card"
+            @click="openNote(note)"
+          >
+            <div class="insight-date">{{ note.date }}</div>
+            <h3 class="insight-title">{{ note.title }}</h3>
+            <p class="insight-summary" v-if="note.summary">{{ note.summary }}</p>
+            <div class="insight-tags" v-if="note.tags && note.tags.length > 0">
+              <span v-for="tag in note.tags.slice(0, 2)" :key="tag" class="tag">{{ getTagLabel(tag) }}</span>
+            </div>
+          </div>
+        </div>
+        <button v-if="insightsNotes.length > 3" class="view-all-btn" @click="activeCategory = 'insights'">
+          查看全部 {{ insightsNotes.length }} 篇洞见 →
+        </button>
+      </section>
+
       <div class="main-layout">
         <!-- 左侧标签栏 -->
         <aside class="tag-sidebar" v-if="Object.keys(groupedTags).length > 0">
@@ -48,9 +74,34 @@
             />
           </div>
 
-          <div class="note-list" v-if="filteredNotes.length">
+          <!-- 日记入口（特色区域） -->
+          <div class="diary-featured" v-if="diaryNotes.length > 0 && !activeCategory && !activeTag && !searchQuery">
+            <div class="diary-header">
+              <span class="diary-icon">📔</span>
+              <span class="diary-label">二子日记</span>
+              <span class="diary-count">{{ diaryNotes.length }} 篇</span>
+            </div>
+            <div class="diary-preview">
+              <div class="diary-latest" @click="openNote(diaryNotes[0])">
+                <span class="diary-date">{{ diaryNotes[0].date }}</span>
+                <span class="diary-title">{{ diaryNotes[0].title }}</span>
+              </div>
+              <button class="diary-more" @click="activeCategory = 'diary'">全部日记 →</button>
+            </div>
+          </div>
+
+          <!-- 笔记列表（不含洞见和日记） -->
+          <div class="note-list" v-if="displayNotes.length">
+            <div class="list-header" v-if="activeCategory || activeTag || searchQuery">
+              <span class="list-filter-label">
+                <template v-if="activeCategory">{{ categories[activeCategory]?.label }}</template>
+                <template v-else-if="activeTag">{{ getTagLabel(activeTag) }}</template>
+                <template v-else-if="searchQuery">搜索: {{ searchQuery }}</template>
+              </span>
+              <button class="clear-filter-btn" @click="clearFilters">清除筛选</button>
+            </div>
             <div
-              v-for="note in filteredNotes"
+              v-for="note in displayNotes"
               :key="note.id + note.category"
               class="note-item"
               @click="openNote(note)"
@@ -128,13 +179,30 @@ const activeCategory = ref(null);
 const activeNote = ref(null);
 const visitCount = ref('加载中...');
 const searchQuery = ref('');
-const activeTag = ref(null); // 改为单选
+const activeTag = ref(null);
 
 const categories = knowledgeData.categories;
 
 const uniqueDates = computed(() => {
   const dates = new Set(notes.map(n => n.date));
   return dates.size;
+});
+
+// 洞见报告列表
+const insightsNotes = computed(() => {
+  return notes.filter(n => n.category === 'insights')
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+});
+
+// 日记列表
+const diaryNotes = computed(() => {
+  return notes.filter(n => n.category === 'diary')
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+});
+
+// 其他笔记（不含洞见和日记）
+const otherNotes = computed(() => {
+  return notes.filter(n => n.category !== 'insights' && n.category !== 'diary');
 });
 
 // 获取所有标签（按父标签分组）
@@ -157,7 +225,6 @@ const groupedTags = computed(() => {
     }
   });
 
-  // 对每个分组内的标签排序
   for (const parentTag in groups) {
     groups[parentTag].sort();
   }
@@ -165,25 +232,24 @@ const groupedTags = computed(() => {
   return groups;
 });
 
-// 获取所有标签（扁平列表，用于搜索）
-const allTags = computed(() => {
-  const tags = [];
-  for (const parentTag in groupedTags.value) {
-    tags.push(...groupedTags.value[parentTag]);
-  }
-  return tags;
-});
+// 显示的笔记列表
+const displayNotes = computed(() => {
+  let result;
 
-// 过滤笔记（分类 + 标签 + 搜索）
-const filteredNotes = computed(() => {
-  let result = notes;
+  // 如果有筛选条件，显示全部笔记
+  if (activeCategory.value || activeTag.value || searchQuery.value.trim()) {
+    result = notes;
+  } else {
+    // 首页：只显示其他笔记（不含洞见和日记）
+    result = otherNotes.value;
+  }
 
   // 分类过滤
   if (activeCategory.value) {
     result = result.filter(n => n.category === activeCategory.value);
   }
 
-  // 标签过滤（单选）
+  // 标签过滤
   if (activeTag.value) {
     result = result.filter(n => {
       if (!n.tags) return false;
@@ -205,16 +271,20 @@ const filteredNotes = computed(() => {
   return result;
 });
 
-// 切换标签（单选）
 function toggleTag(tag) {
   if (activeTag.value === tag) {
-    activeTag.value = null; // 点击已选中的标签，取消选择
+    activeTag.value = null;
   } else {
-    activeTag.value = tag; // 选择新标签
+    activeTag.value = tag;
   }
 }
 
-// 获取标签显示名称（只显示子标签部分）
+function clearFilters() {
+  activeCategory.value = null;
+  activeTag.value = null;
+  searchQuery.value = '';
+}
+
 function getTagLabel(tag) {
   const parts = tag.split('/');
   return parts.length === 2 ? parts[1] : tag;
@@ -227,13 +297,6 @@ const renderedContent = computed(() => {
 
 // ========== 路由系统 ==========
 
-/**
- * 解析 hash 路由
- * 支持格式：
- * - #/ 或空 → 首页（全部笔记）
- * - #/category/{name} → 分类筛选
- * - #/note/{id} → 笔记详情
- */
 function parseRoute(hash) {
   const path = hash.replace(/^#/, '') || '/';
   const parts = path.split('/').filter(Boolean);
@@ -253,9 +316,6 @@ function parseRoute(hash) {
   return { view: 'list', category: null };
 }
 
-/**
- * 根据 hash 更新应用状态
- */
 function handleRouteChange() {
   const route = parseRoute(window.location.hash);
 
@@ -263,44 +323,32 @@ function handleRouteChange() {
     activeNote.value = null;
     activeCategory.value = route.category;
   } else if (route.view === 'detail') {
-    // 根据 ID 查找笔记
     const note = notes.find(n => n.id === route.noteId);
     if (note) {
       activeNote.value = note;
       activeCategory.value = null;
     } else {
-      // 找不到笔记，返回首页
       window.location.hash = '#/';
     }
   }
 }
 
-/**
- * 生成笔记的 URL hash
- */
 function getNoteHash(note) {
   return `#/note/${note.id}`;
 }
 
-/**
- * 生成分类的 URL hash
- */
 function getCategoryHash(category) {
   return category ? `#/category/${category}` : '#/';
 }
 
-// 获取访问次数
 async function fetchVisitCount() {
   try {
-    // 从 localStorage 读取
     const stored = localStorage.getItem('erzi-knowledge-visits');
     if (stored) {
       visitCount.value = parseInt(stored);
     } else {
       visitCount.value = 1;
     }
-
-    // 递增计数
     const newCount = (parseInt(stored) || 0) + 1;
     localStorage.setItem('erzi-knowledge-visits', newCount.toString());
     visitCount.value = newCount;
@@ -312,11 +360,7 @@ async function fetchVisitCount() {
 
 onMounted(() => {
   fetchVisitCount();
-
-  // 监听 hashchange 事件
   window.addEventListener('hashchange', handleRouteChange);
-
-  // 初始化路由
   handleRouteChange();
 });
 
@@ -325,20 +369,12 @@ onUnmounted(() => {
 });
 
 function openNote(note) {
-  // 更新 hash，触发路由变化
   window.location.hash = getNoteHash(note);
   nextTick(() => window.scrollTo(0, 0));
 }
 
 function closeNote() {
-  // 更新 hash，触发路由变化
   window.location.hash = getCategoryHash(activeCategory.value);
   nextTick(() => window.scrollTo(0, 0));
-}
-
-function setCategory(category) {
-  activeCategory.value = category;
-  // 更新 hash
-  window.location.hash = getCategoryHash(category);
 }
 </script>
