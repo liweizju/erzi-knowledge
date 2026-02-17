@@ -1,8 +1,10 @@
 name: Deploy to GitHub Pages
 
 on:
-  push:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
+  # 禁用自动触发，避免在 GitHub 服务器上构建空数据
+  # 只依赖本地 auto-deploy.sh 进行部署
   workflow_dispatch:
 
 permissions:
