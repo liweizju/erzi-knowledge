@@ -39,8 +39,24 @@
       <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
     </template>
 
+    <!-- 404 Not Found -->
+    <template v-else-if="showNotFound">
+      <div class="not-found-page">
+        <div class="not-found-icon">🔍</div>
+        <h1 class="not-found-title">404</h1>
+        <p class="not-found-desc">这篇文章好像走丢了...</p>
+        <div class="not-found-actions">
+          <button class="cta-btn" @click="goHome">回到首页</button>
+          <button class="cta-btn cta-btn-secondary" @click="openRandomNote">随机一篇 🎲</button>
+        </div>
+      </div>
+    </template>
+
     <!-- List View -->
     <template v-else-if="!activeNote">
+      <!-- 返回顶部按钮 -->
+      <button class="back-to-top" v-show="showBackToTop" @click="scrollToTop" title="返回顶部">↑</button>
+      
       <header class="site-header">
         <div class="header-main">
           <div class="header-titles">
@@ -138,6 +154,9 @@
 
     <!-- Detail View -->
     <template v-else>
+      <!-- 返回顶部按钮 -->
+      <button class="back-to-top" v-show="showBackToTop" @click="scrollToTop" title="返回顶部">↑</button>
+      
       <!-- 阅读进度条 -->
       <div class="reading-progress" :style="{ width: readingProgress + '%' }"></div>
       
@@ -148,6 +167,20 @@
           </svg>
           返回
         </button>
+        <div class="detail-actions">
+          <button class="share-btn" :class="{ 'share-btn-copied': shareCopied }" @click="shareNote" :title="shareCopied ? '已复制！' : '分享'">
+            <svg v-if="!shareCopied" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <svg v-else viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+          </button>
+        </div>
         <h1 class="detail-title">{{ activeNote.title }}</h1>
         <div class="detail-meta">
           <span class="note-category" :class="'note-category--' + activeNote.category">
@@ -229,6 +262,9 @@ const currentPage = ref(1);
 const pageSize = 20;
 const activeTocId = ref(null);
 const readingProgress = ref(0);
+const showBackToTop = ref(false);
+const showNotFound = ref(false);
+const shareCopied = ref(false);
 
 // 排序后的分类（用于显示）
 const displayCategories = computed(() => {
@@ -427,19 +463,25 @@ function handleRouteChange() {
     showAbout.value = true;
     activeNote.value = null;
     activeCategory.value = null;
+    showNotFound.value = false;
   } else if (route.view === 'list') {
     showAbout.value = false;
     activeNote.value = null;
     activeCategory.value = route.category;
     currentPage.value = 1;
+    showNotFound.value = false;
   } else if (route.view === 'detail') {
     const note = notes.find(n => n.id === route.noteId);
     if (note) {
       showAbout.value = false;
       activeNote.value = note;
       activeCategory.value = null;
+      showNotFound.value = false;
     } else {
-      window.location.hash = '#/';
+      // 文章不存在，显示 404
+      showNotFound.value = true;
+      activeNote.value = null;
+      showAbout.value = false;
     }
   }
 }
@@ -476,6 +518,29 @@ function openRandomNote() {
   openNote(availableNotes[randomIndex]);
 }
 
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function goHome() {
+  showNotFound.value = false;
+  window.location.hash = '#/';
+}
+
+function shareNote() {
+  if (!activeNote.value) return;
+  
+  const url = `https://knowledge.erzi.site/#/note/${encodeURIComponent(activeNote.value.id)}`;
+  const text = `${activeNote.value.title}\n${url}`;
+  
+  navigator.clipboard.writeText(text).then(() => {
+    shareCopied.value = true;
+    setTimeout(() => {
+      shareCopied.value = false;
+    }, 2000);
+  });
+}
+
 function scrollToHeading(id) {
   const element = document.getElementById(id);
   if (element) {
@@ -484,11 +549,15 @@ function scrollToHeading(id) {
   }
 }
 
-// 滚动监听 TOC 高亮 + 阅读进度
+// 滚动监听 TOC 高亮 + 阅读进度 + 返回顶部
 function handleScroll() {
+  const scrollTop = window.scrollY;
+  
+  // 返回顶部按钮显示/隐藏
+  showBackToTop.value = scrollTop > 500;
+  
   // 阅读进度
   if (activeNote.value) {
-    const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     readingProgress.value = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
   }

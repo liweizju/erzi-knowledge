@@ -375,6 +375,31 @@ body {
   opacity: 0.6;
 }
 
+/* ========== Back to Top Button ========== */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+  z-index: 100;
+}
+
+.back-to-top:hover {
+  border-color: var(--color-tech);
+  color: var(--color-tech);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 /* ========== Reading Progress Bar ========== */
 .reading-progress {
   position: fixed;
@@ -391,6 +416,51 @@ body {
   padding: 32px 0 20px;
   border-bottom: 1px solid var(--color-border);
   margin-bottom: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.detail-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+.share-btn {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-btn svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-secondary);
+}
+
+.share-btn:hover {
+  border-color: var(--color-tech);
+}
+
+.share-btn:hover svg {
+  color: var(--color-tech);
+}
+
+.share-btn-copied {
+  border-color: var(--color-reading);
+  background: #d1fae5;
+}
+
+.share-btn-copied svg {
+  color: var(--color-reading);
 }
 
 .back-btn {
@@ -635,6 +705,47 @@ body {
 .hljs-function .hljs-title { color: #8250df; }
 .hljs-built_in { color: #cf222e; }
 
+/* ========== 404 Not Found ========== */
+.not-found-page {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.not-found-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+}
+
+.not-found-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.not-found-desc {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+
+.not-found-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.cta-btn-secondary {
+  background: transparent;
+  color: var(--color-tech);
+  border: 1px solid var(--color-tech);
+}
+
+.cta-btn-secondary:hover {
+  background: var(--color-tech);
+  color: white;
+}
+
 /* ========== About Page ========== */
 .about-page {
   max-width: 640px;
@@ -739,6 +850,56 @@ body {
 
 .cta-btn:hover {
   background: #2563eb;
+}
+
+/* ========== Print Styles ========== */
+@media print {
+  .reading-progress,
+  .back-to-top,
+  .detail-actions,
+  .toc-sidebar,
+  .category-tabs,
+  .search-bar,
+  .header-actions,
+  .back-btn,
+  .keyboard-hint,
+  .related-notes {
+    display: none !important;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .site-header {
+    padding: 20px 0;
+    border-bottom: 1px solid #000;
+  }
+
+  .detail-header {
+    padding: 20px 0;
+  }
+
+  .note-content {
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  .note-content pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
 }
 
 /* ========== Responsive ========== */
