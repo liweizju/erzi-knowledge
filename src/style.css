@@ -1216,3 +1216,87 @@ body {
     padding-left: 10px;
   }
 }
+
+/* ========== Code Highlighting (GitHub Style) ========== */
+.hljs {
+  background: #f6f8fa;
+  color: #24292f;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #6e7781;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+  color: #cf222e;
+}
+
+.hljs-string,
+.hljs-attr,
+.hljs-template-variable {
+  color: #0a3069;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-regexp {
+  color: #0550ae;
+}
+
+.hljs-function .hljs-title,
+.hljs-title.function_ {
+  color: #8250df;
+}
+
+.hljs-params {
+  color: #24292f;
+}
+
+.hljs-built_in {
+  color: #cf222e;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #0969da;
+}
+
+.hljs-meta,
+.hljs-meta .hljs-keyword {
+  color: #8250df;
+}
+
+.hljs-meta .hljs-string {
+  color: #0a3069;
+}
+
+.hljs-attr {
+  color: #0550ae;
+}
+
+.hljs-attribute {
+  color: #0a3069;
+}
+
+.hljs-name {
+  color: #116329;
+}
+
+.hljs-tag {
+  color: #24292f;
+}
+
+.hljs-addition {
+  background-color: #ccffd8;
+  color: #1a7f37;
+}
+
+.hljs-deletion {
+  background-color: #ffd7d5;
+  color: #cf222e;
+}

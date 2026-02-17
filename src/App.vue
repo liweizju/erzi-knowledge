@@ -300,6 +300,7 @@
 <script setup>
 import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue';
 import { marked } from 'marked';
+import hljs from 'highlight.js';
 import { knowledgeData } from './data-generated.js';
 
 marked.setOptions({
@@ -418,14 +419,32 @@ function getTagLabel(tag) {
 const renderedContent = computed(() => {
   if (!activeNote.value) return '';
   
-  // 自定义 renderer 为标题添加 id
+  // 自定义 renderer
   const renderer = new marked.Renderer();
+  
+  // 为标题添加 id
   const originalHeading = renderer.heading.bind(renderer);
   renderer.heading = function({ text, depth }) {
     const id = text.toLowerCase()
       .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
       .replace(/^-|-$/g, '');
     return `<h${depth} id="${id}">${text}</h${depth}>\n`;
+  };
+  
+  // 代码高亮
+  const originalCode = renderer.code.bind(renderer);
+  renderer.code = function({ text, lang }) {
+    let highlighted;
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        highlighted = hljs.highlight(text, { language: lang }).value;
+      } catch {
+        highlighted = hljs.highlightAuto(text).value;
+      }
+    } else {
+      highlighted = hljs.highlightAuto(text).value;
+    }
+    return `<pre><code class="hljs">${highlighted}</code></pre>\n`;
   };
   
   return marked(activeNote.value.content, { renderer });
