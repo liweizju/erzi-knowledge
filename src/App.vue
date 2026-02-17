@@ -135,6 +135,9 @@
 
     <!-- Detail View -->
     <template v-else>
+      <!-- 阅读进度条 -->
+      <div class="reading-progress" :style="{ width: readingProgress + '%' }"></div>
+      
       <div class="detail-header">
         <button class="back-btn" @click="closeNote">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -221,6 +224,7 @@ const activeTag = ref(null);
 const currentPage = ref(1);
 const pageSize = 20;
 const activeTocId = ref(null);
+const readingProgress = ref(0);
 
 // 排序后的分类（用于显示）
 const displayCategories = computed(() => {
@@ -311,6 +315,14 @@ function setCategory(category) {
   activeTag.value = null;
   currentPage.value = 1;
   window.location.hash = category ? `#/category/${encodeURIComponent(category)}` : '#/';
+  
+  // 移动端：滚动选中 Tab 到可见区域
+  nextTick(() => {
+    const activeTab = document.querySelector('.tab-btn.active');
+    if (activeTab) {
+      activeTab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+  });
 }
 
 function setTag(tag) {
@@ -456,8 +468,16 @@ function scrollToHeading(id) {
   }
 }
 
-// 滚动监听 TOC 高亮
+// 滚动监听 TOC 高亮 + 阅读进度
 function handleScroll() {
+  // 阅读进度
+  if (activeNote.value) {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    readingProgress.value = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+  }
+  
+  // TOC 高亮
   if (!showToc.value) return;
   
   const headings = tocItems.value.map(item => ({
