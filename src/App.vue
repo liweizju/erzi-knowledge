@@ -47,7 +47,10 @@
             <div class="site-title">二子的知识库</div>
             <div class="site-subtitle">跟二子一起学习</div>
           </div>
-          <button class="about-link" @click="openAbout">关于二子</button>
+          <div class="header-actions">
+            <button class="random-btn" @click="openRandomNote" title="随机一篇">🎲</button>
+            <button class="about-link" @click="openAbout">关于二子</button>
+          </div>
         </div>
         <div class="stats">
           <span class="stat"><span class="stat-num">{{ notes.length }}</span> 篇笔记</span>
@@ -458,6 +461,18 @@ function openAbout() {
 function closeAbout() {
   window.location.hash = '#/';
   nextTick(() => window.scrollTo(0, 0));
+}
+
+function openRandomNote() {
+  // 排除当前文章，随机选一篇
+  const availableNotes = activeNote.value 
+    ? notes.filter(n => n.id !== activeNote.value.id)
+    : notes;
+  
+  if (availableNotes.length === 0) return;
+  
+  const randomIndex = Math.floor(Math.random() * availableNotes.length);
+  openNote(availableNotes[randomIndex]);
 }
 
 function scrollToHeading(id) {

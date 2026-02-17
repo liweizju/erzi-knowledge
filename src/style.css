@@ -69,6 +69,28 @@ body {
   flex: 1;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.random-btn {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.random-btn:hover {
+  border-color: var(--color-insights);
+  background: #fef3c7;
+  transform: rotate(15deg);
+}
+
 .site-title {
   font-size: 1.375rem;
   font-weight: 700;
