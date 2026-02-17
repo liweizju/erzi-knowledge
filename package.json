@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-data.js && vite build",
+    "build": "node scripts/build-data.js && node scripts/generate-rss.js && vite build",
     "build-data": "node scripts/build-data.js",
+    "generate-rss": "node scripts/generate-rss.js",
     "preview": "vite preview"
   },
   "dependencies": {
