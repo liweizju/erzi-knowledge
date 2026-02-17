@@ -121,6 +121,52 @@
       <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
     </template>
 
+    <!-- Timeline View -->
+    <template v-else-if="showTimeline">
+      <header class="site-header">
+        <button class="back-btn" @click="closeTimeline">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          返回
+        </button>
+      </header>
+
+      <div class="timeline-page">
+        <h1 class="timeline-title">📅 知识时间线</h1>
+        <p class="timeline-desc">二子的知识积累轨迹</p>
+
+        <div class="timeline-list">
+          <div
+            v-for="group in timelineGroups"
+            :key="group.month"
+            class="timeline-group"
+          >
+            <div class="timeline-header" @click="toggleMonth(group.month)">
+              <span class="timeline-month">{{ formatMonth(group.month) }}</span>
+              <span class="timeline-count">{{ group.notes.length }} 篇</span>
+              <span class="timeline-tags" v-if="group.topTags.length">
+                <span v-for="tag in group.topTags" :key="tag" class="timeline-tag">{{ tag }}</span>
+              </span>
+              <span class="timeline-expand">{{ expandedMonths.has(group.month) ? '▼' : '▶' }}</span>
+            </div>
+            <div class="timeline-notes" v-show="expandedMonths.has(group.month)">
+              <div
+                v-for="note in group.notes"
+                :key="note.id"
+                class="timeline-note-item"
+                @click="openNote(note)"
+              >
+                <span class="timeline-note-date">{{ note.date.slice(5) }}</span>
+                <span class="timeline-note-title">{{ note.title }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
+    </template>
+
     <!-- List View -->
     <template v-else-if="!activeNote">
       <!-- 返回顶部按钮 -->
@@ -136,6 +182,7 @@
             <button class="theme-toggle" @click="toggleDarkMode" :title="isDarkMode ? '切换到亮色' : '切换到暗色'">
               {{ isDarkMode ? '☀️' : '🌙' }}
             </button>
+            <button class="timeline-btn" @click="openTimeline" title="时间线">📅</button>
             <button class="favorites-btn" @click="openFavorites" title="我的收藏">⭐ {{ favorites.size || '' }}</button>
             <button class="tags-btn" @click="openTags" title="标签云">🏷️</button>
             <button class="random-btn" @click="openRandomNote" title="随机一篇">🎲</button>
@@ -347,6 +394,7 @@ const shareCopied = ref(false);
 const showFavorites = ref(false);
 const showTags = ref(false);
 const isDarkMode = ref(false);
+const showTimeline = ref(false);
 const readHistory = ref({}); // { noteId: timestamp }
 const favorites = ref(new Set()); // Set<noteId>
 
@@ -545,6 +593,7 @@ function parseRoute(hash) {
   if (parts[0] === 'about') return { view: 'about' };
   if (parts[0] === 'favorites') return { view: 'favorites' };
   if (parts[0] === 'tags') return { view: 'tags' };
+  if (parts[0] === 'timeline') return { view: 'timeline' };
   if (parts[0] === 'category' && parts[1]) return { view: 'list', category: decodeURIComponent(parts[1]) };
   if (parts[0] === 'note' && parts[1]) return { view: 'detail', noteId: decodeURIComponent(parts[1]) };
   return { view: 'list', category: null };
@@ -574,6 +623,15 @@ function handleRouteChange() {
     activeNote.value = null;
     activeCategory.value = null;
     showNotFound.value = false;
+    showTimeline.value = false;
+  } else if (route.view === 'timeline') {
+    showTimeline.value = true;
+    showTags.value = false;
+    showFavorites.value = false;
+    showAbout.value = false;
+    activeNote.value = null;
+    activeCategory.value = null;
+    showNotFound.value = false;
   } else if (route.view === 'list') {
     showAbout.value = false;
     activeNote.value = null;
@@ -582,6 +640,7 @@ function handleRouteChange() {
     showNotFound.value = false;
     showFavorites.value = false;
     showTags.value = false;
+    showTimeline.value = false;
   } else if (route.view === 'detail') {
     const note = notes.find(n => n.id === route.noteId);
     if (note) {
@@ -591,6 +650,7 @@ function handleRouteChange() {
       showNotFound.value = false;
       showFavorites.value = false;
       showTags.value = false;
+      showTimeline.value = false;
       // 标记为已读
       markAsRead(note.id);
     } else {
@@ -600,6 +660,7 @@ function handleRouteChange() {
       showAbout.value = false;
       showFavorites.value = false;
       showTags.value = false;
+      showTimeline.value = false;
     }
   }
 }
@@ -798,6 +859,64 @@ function initDarkMode() {
       }
     } catch (err) {}
   });
+}
+
+// 时间线分组
+const timelineGroups = computed(() => {
+  const groups = {};
+  notes.forEach(n => {
+    const month = n.date.substring(0, 7); // YYYY-MM
+    if (!groups[month]) {
+      groups[month] = { month, notes: [], tags: {} };
+    }
+    groups[month].notes.push(n);
+    if (n.tags) {
+      n.tags.forEach(tag => {
+        groups[month].tags[tag] = (groups[month].tags[tag] || 0) + 1;
+      });
+    }
+  });
+  
+  // 排序并取前3个标签
+  return Object.values(groups)
+    .map(g => ({
+      ...g,
+      topTags: Object.entries(g.tags)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([tag]) => getTagLabel(tag))
+    }))
+    .sort((a, b) => b.month.localeCompare(a.month));
+});
+
+const expandedMonths = ref(new Set());
+
+function toggleMonth(month) {
+  if (expandedMonths.value.has(month)) {
+    expandedMonths.value.delete(month);
+  } else {
+    expandedMonths.value.add(month);
+  }
+}
+
+function formatMonth(monthStr) {
+  const [year, month] = monthStr.split('-');
+  return `${year}年${parseInt(month)}月`;
+}
+
+function openTimeline() {
+  showTimeline.value = true;
+  activeNote.value = null;
+  showAbout.value = false;
+  showFavorites.value = false;
+  showTags.value = false;
+  showNotFound.value = false;
+  window.location.hash = '#/timeline';
+}
+
+function closeTimeline() {
+  showTimeline.value = false;
+  window.location.hash = '#/';
 }
 
 function scrollToHeading(id) {

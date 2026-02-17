@@ -976,6 +976,134 @@ body {
   background: #ede9fe;
 }
 
+/* ========== Timeline Page ========== */
+.timeline-page {
+  padding-top: 20px;
+}
+
+.timeline-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.timeline-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timeline-group {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.timeline-header:hover {
+  background: var(--color-border-light);
+}
+
+.timeline-month {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 1rem;
+}
+
+.timeline-count {
+  font-size: 0.8125rem;
+  color: var(--color-text-tertiary);
+}
+
+.timeline-tags {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.timeline-tag {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  background: var(--color-border-light);
+  border-radius: 10px;
+  color: var(--color-text-secondary);
+}
+
+.timeline-expand {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+}
+
+.timeline-notes {
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.timeline-note-item {
+  display: flex;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--color-border-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.timeline-note-item:last-child {
+  border-bottom: none;
+}
+
+.timeline-note-item:hover {
+  background: var(--color-surface);
+}
+
+.timeline-note-date {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.timeline-note-title {
+  font-size: 0.875rem;
+  color: var(--color-text);
+}
+
+.timeline-btn {
+  padding: 6px 10px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.timeline-btn:hover {
+  border-color: var(--color-reading);
+  background: #d1fae5;
+}
+
+html.dark .timeline-btn:hover {
+  background: #134e4a;
+}
+
 /* ========== About Page ========== */
 .about-page {
   max-width: 640px;
