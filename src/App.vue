@@ -12,41 +12,67 @@
         </div>
       </header>
 
-      <div class="filter-bar">
-        <button
-          class="filter-btn"
-          :class="{ active: activeCategory === null }"
-          @click="setCategory(null)"
-        >全部</button>
-        <button
-          v-for="(info, key) in categories"
-          :key="key"
-          class="filter-btn"
-          :class="{ active: activeCategory === key }"
-          @click="setCategory(key)"
-        >{{ info.label }}</button>
-      </div>
-
-      <div class="note-list" v-if="filteredNotes.length">
-        <div
-          v-for="note in filteredNotes"
-          :key="note.id + note.category"
-          class="note-item"
-          @click="openNote(note)"
-        >
-          <div class="note-meta">
-            <span class="note-category" :class="'note-category--' + note.category">
-              {{ categories[note.category]?.label }}
-            </span>
-            <span class="note-date">{{ note.date }}</span>
+      <div class="main-layout">
+        <!-- 左侧标签栏 -->
+        <aside class="tag-sidebar" v-if="Object.keys(groupedTags).length > 0">
+          <div class="sidebar-title">标签</div>
+          <div class="tag-groups">
+            <div v-for="(tags, parentTag) in groupedTags" :key="parentTag" class="tag-group">
+              <div class="tag-group-title">{{ parentTag }}</div>
+              <div class="tag-list">
+                <button
+                  v-for="tag in tags"
+                  :key="tag"
+                  class="tag-btn"
+                  :class="{ active: activeTag === tag }"
+                  @click="toggleTag(tag)"
+                >{{ getTagLabel(tag) }}</button>
+              </div>
+            </div>
           </div>
-          <div class="note-title">{{ note.title }}</div>
-          <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
-        </div>
-      </div>
+          <button
+            v-if="activeTag"
+            class="clear-tags-btn"
+            @click="activeTag = null"
+          >清除筛选</button>
+        </aside>
 
-      <div class="empty-state" v-else>
-        暂无笔记
+        <!-- 右侧内容区 -->
+        <div class="content-area">
+          <div class="search-bar">
+            <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="搜索标题、内容或标签..."
+              class="search-input"
+            />
+          </div>
+
+          <div class="note-list" v-if="filteredNotes.length">
+            <div
+              v-for="note in filteredNotes"
+              :key="note.id + note.category"
+              class="note-item"
+              @click="openNote(note)"
+            >
+              <div class="note-meta">
+                <span class="note-category" :class="'note-category--' + note.category">
+                  {{ categories[note.category]?.label }}
+                </span>
+                <span class="note-date">{{ note.date }}</span>
+              </div>
+              <div class="note-title">{{ note.title }}</div>
+              <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
+              <div class="note-tags" v-if="note.tags && note.tags.length > 0">
+                <span v-for="tag in note.tags" :key="tag" class="tag">{{ getTagLabel(tag) }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="empty-state" v-else>
+            暂无笔记
+          </div>
+        </div>
       </div>
 
       <footer class="site-footer">
@@ -98,21 +124,101 @@ marked.setOptions({
 });
 
 const notes = knowledgeData.notes;
-const categories = knowledgeData.categories;
-
 const activeCategory = ref(null);
 const activeNote = ref(null);
 const visitCount = ref('加载中...');
+const searchQuery = ref('');
+const activeTag = ref(null); // 改为单选
+
+const categories = knowledgeData.categories;
 
 const uniqueDates = computed(() => {
   const dates = new Set(notes.map(n => n.date));
   return dates.size;
 });
 
-const filteredNotes = computed(() => {
-  if (!activeCategory.value) return notes;
-  return notes.filter(n => n.category === activeCategory.value);
+// 获取所有标签（按父标签分组）
+const groupedTags = computed(() => {
+  const groups = {};
+  notes.forEach(note => {
+    if (note.tags) {
+      note.tags.forEach(tag => {
+        const parts = tag.split('/');
+        if (parts.length === 2) {
+          const parentTag = parts[0];
+          if (!groups[parentTag]) {
+            groups[parentTag] = [];
+          }
+          if (!groups[parentTag].includes(tag)) {
+            groups[parentTag].push(tag);
+          }
+        }
+      });
+    }
+  });
+
+  // 对每个分组内的标签排序
+  for (const parentTag in groups) {
+    groups[parentTag].sort();
+  }
+
+  return groups;
 });
+
+// 获取所有标签（扁平列表，用于搜索）
+const allTags = computed(() => {
+  const tags = [];
+  for (const parentTag in groupedTags.value) {
+    tags.push(...groupedTags.value[parentTag]);
+  }
+  return tags;
+});
+
+// 过滤笔记（分类 + 标签 + 搜索）
+const filteredNotes = computed(() => {
+  let result = notes;
+
+  // 分类过滤
+  if (activeCategory.value) {
+    result = result.filter(n => n.category === activeCategory.value);
+  }
+
+  // 标签过滤（单选）
+  if (activeTag.value) {
+    result = result.filter(n => {
+      if (!n.tags) return false;
+      return n.tags.includes(activeTag.value);
+    });
+  }
+
+  // 搜索过滤
+  if (searchQuery.value.trim()) {
+    const query = searchQuery.value.toLowerCase();
+    result = result.filter(n => {
+      const titleMatch = n.title.toLowerCase().includes(query);
+      const contentMatch = n.content.toLowerCase().includes(query);
+      const tagMatch = n.tags && n.tags.some(tag => tag.toLowerCase().includes(query));
+      return titleMatch || contentMatch || tagMatch;
+    });
+  }
+
+  return result;
+});
+
+// 切换标签（单选）
+function toggleTag(tag) {
+  if (activeTag.value === tag) {
+    activeTag.value = null; // 点击已选中的标签，取消选择
+  } else {
+    activeTag.value = tag; // 选择新标签
+  }
+}
+
+// 获取标签显示名称（只显示子标签部分）
+function getTagLabel(tag) {
+  const parts = tag.split('/');
+  return parts.length === 2 ? parts[1] : tag;
+}
 
 const renderedContent = computed(() => {
   if (!activeNote.value) return '';

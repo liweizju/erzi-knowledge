@@ -30,17 +30,83 @@ const CATEGORIES = {
     color: '#f09383',
     priority: 4
   },
-  'diary': {
-    label: '二子日记',
-    color: '#e879a0',
-    priority: 5
-  },
   'insights': {
     label: '洞见报告',
     color: '#f59e0b',
+    priority: 5
+  },
+  'diary': {
+    label: '二子日记',
+    color: '#e879a0',
     priority: 6
   }
 };
+
+/**
+ * 标签提取规则（参考 flomo 多级标签）
+ * 格式：#父标签/子标签
+ */
+const TAG_RULES = {
+  tech: {
+    '技术前沿/LLM': ['LLM', 'GPT', 'Claude', '大模型', '语言模型', 'prompt', '上下文'],
+    '技术前沿/AI Agent': ['agent', 'Agent', '智能体', '多代理'],
+    '技术前沿/RAG': ['RAG', '检索增强', 'GraphRAG'],
+    '技术前沿/AI 编程': ['Copilot', 'Cursor', 'AI 编程', 'vibe coding', '编程助手'],
+    '技术前沿/WebGPU': ['WebGPU', 'GPU'],
+    '技术前沿/设计系统': ['设计系统', 'Design System'],
+    '技术前沿/知识管理': ['知识管理', '第二大脑', '笔记', 'PKM']
+  },
+  inspiration: {
+    '灵感采集/设计思维': ['设计思维', '设计方法', '用户体验'],
+    '灵感采集/AI 产品': ['AI 产品', 'AI 应用', 'AI 功能'],
+    '灵感采集/商业模式': ['商业模式', '盈利', '定价', 'PPP'],
+    '灵感采集/设计趋势': ['设计趋势', '2026', '审美', '美学'],
+    '灵感采集/用户研究': ['用户研究', '用户访谈', '洞察']
+  },
+  reading: {
+    '知识阅读/认知科学': ['认知', '思维', '慢思考', '快思考', '卡尼曼'],
+    '知识阅读/学习理论': ['学习', '教育', '知识'],
+    '知识阅读/技术哲学': ['技术哲学', '伦理', 'AI 伦理'],
+    '知识阅读/生产力': ['生产力', '效率', '时间管理', 'GTD']
+  },
+  reflection: {
+    '反思与整理/工作流': ['工作流', 'workflow', '自动化'],
+    '反思与整理/个人成长': ['成长', '反思', '复盘'],
+    '反思与整理/二子': ['二子', 'AI 助手', 'OpenClaw']
+  },
+  insights: {
+    '洞见报告/产业链分析': ['产业链', '价值链', '波特五力', '竞争格局'],
+    '洞见报告/投资机会': ['投资', '机会', '风险'],
+    '洞见报告/市场趋势': ['趋势', '预测', '发展'],
+    '洞见报告/全球竞争': ['全球', '国家', '地区', '中美', '欧盟']
+  },
+  diary: {
+    '二子日记/日常': ['日记', '日常', '生活']
+  }
+};
+
+/**
+ * 提取标签
+ */
+function extractTags(content, category, filePath) {
+  const tags = [];
+  const rules = TAG_RULES[category] || {};
+
+  // 基于内容关键词提取标签
+  for (const [tag, keywords] of Object.entries(rules)) {
+    for (const keyword of keywords) {
+      if (content.toLowerCase().includes(keyword.toLowerCase())) {
+        if (!tags.includes(tag)) {
+          tags.push(tag);
+        }
+        break; // 找到一个关键词就添加标签，跳出内层循环
+      }
+    }
+  }
+
+  // 限制标签数量（最多3个）
+  return tags.slice(0, 3);
+}
 
 /**
  * 从 Markdown 文件提取元数据
@@ -54,7 +120,8 @@ function extractMetadata(content, filePath, category) {
     date: '',
     summary: '',
     content: content,
-    source: ''
+    source: '',
+    tags: [] // 添加标签字段
   };
 
   // 提取标题（第一个 # 标题）
@@ -77,6 +144,9 @@ function extractMetadata(content, filePath, category) {
   if (sourceMatch) {
     metadata.source = sourceMatch[1].trim();
   }
+
+  // 提取标签（基于内容和分类）
+  metadata.tags = extractTags(content, category, filePath);
 
   // 提取摘要（第一段或第一个列表项）
   const summaryMatch = content.match(/##\s+核心发现\s*\n\s*(.+)$/m) ||
