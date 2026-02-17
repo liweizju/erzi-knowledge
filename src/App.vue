@@ -261,7 +261,29 @@
         </div>
       </div>
 
-      <div class="note-content" v-html="renderedContent"></div>
+      <div class="detail-layout">
+        <!-- TOC 侧边栏 -->
+        <aside class="toc-sidebar" v-if="showToc">
+          <div class="toc-header">
+            <span class="toc-title">目录</span>
+            <button class="toc-toggle" @click="tocExpanded = !tocExpanded">
+              {{ tocExpanded ? '收起' : '展开' }}
+            </button>
+          </div>
+          <nav class="toc-nav" :class="{ 'toc-collapsed': !tocExpanded }">
+            <a
+              v-for="item in tocItems"
+              :key="item.id"
+              :href="'#' + item.id"
+              :class="['toc-link', 'toc-level-' + item.level]"
+              @click.prevent="scrollToHeading(item.id)"
+            >{{ item.text }}</a>
+          </nav>
+        </aside>
+
+        <!-- 文章内容 -->
+        <div class="note-content" v-html="renderedContent"></div>
+      </div>
 
       <footer class="site-footer">
         <button class="back-btn" @click="closeNote">
@@ -292,6 +314,7 @@ const showAbout = ref(false);
 const visitCount = ref('加载中...');
 const searchQuery = ref('');
 const activeTag = ref(null);
+const tocExpanded = ref(true);
 
 const categories = knowledgeData.categories;
 
@@ -394,7 +417,48 @@ function getTagLabel(tag) {
 
 const renderedContent = computed(() => {
   if (!activeNote.value) return '';
-  return marked(activeNote.value.content);
+  
+  // 自定义 renderer 为标题添加 id
+  const renderer = new marked.Renderer();
+  const originalHeading = renderer.heading.bind(renderer);
+  renderer.heading = function({ text, depth }) {
+    const id = text.toLowerCase()
+      .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
+      .replace(/^-|-$/g, '');
+    return `<h${depth} id="${id}">${text}</h${depth}>\n`;
+  };
+  
+  return marked(activeNote.value.content, { renderer });
+});
+
+// 目录导航
+const tocItems = computed(() => {
+  if (!activeNote.value) return [];
+  
+  const content = activeNote.value.content;
+  const headings = [];
+  const regex = /^(#{2,3})\s+(.+)$/gm;
+  let match;
+  
+  while ((match = regex.exec(content)) !== null) {
+    const level = match[1].length;
+    const text = match[2].trim();
+    const id = text.toLowerCase()
+      .replace(/[^\w\u4e00-\u9fa5]+/g, '-')
+      .replace(/^-|-$/g, '');
+    
+    headings.push({
+      level,
+      text,
+      id
+    });
+  }
+  
+  return headings;
+});
+
+const showToc = computed(() => {
+  return tocItems.value.length >= 3;
 });
 
 // ========== 路由系统 ==========
@@ -498,5 +562,12 @@ function openAbout() {
 function closeAbout() {
   window.location.hash = '#/';
   nextTick(() => window.scrollTo(0, 0));
+}
+
+function scrollToHeading(id) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 </script>
