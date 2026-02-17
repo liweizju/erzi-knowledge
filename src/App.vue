@@ -115,6 +115,7 @@
             </span>
             <span class="note-date">{{ note.date }}</span>
             <span class="note-reading-time">{{ getReadingTime(note) }} 分钟</span>
+            <span v-if="readHistory[note.id]" class="note-read-badge">✓</span>
           </div>
           <div class="note-title">{{ note.title }}</div>
           <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
@@ -188,6 +189,7 @@
           </span>
           <span class="note-date">{{ activeNote.date }}</span>
           <span class="note-reading-time">{{ getReadingTime(activeNote) }} 分钟</span>
+          <span v-if="getLastRead(activeNote.id)" class="note-last-read">上次阅读：{{ getLastRead(activeNote.id) }}</span>
         </div>
       </div>
 
@@ -265,6 +267,7 @@ const readingProgress = ref(0);
 const showBackToTop = ref(false);
 const showNotFound = ref(false);
 const shareCopied = ref(false);
+const readHistory = ref({}); // { noteId: timestamp }
 
 // 排序后的分类（用于显示）
 const displayCategories = computed(() => {
@@ -477,6 +480,8 @@ function handleRouteChange() {
       activeNote.value = note;
       activeCategory.value = null;
       showNotFound.value = false;
+      // 标记为已读
+      markAsRead(note.id);
     } else {
       // 文章不存在，显示 404
       showNotFound.value = true;
@@ -539,6 +544,27 @@ function shareNote() {
       shareCopied.value = false;
     }, 2000);
   });
+}
+
+function markAsRead(noteId) {
+  readHistory.value[noteId] = Date.now();
+  try {
+    localStorage.setItem('erzi-read-history', JSON.stringify(readHistory.value));
+  } catch (e) {
+    console.warn('Failed to save read history:', e);
+  }
+}
+
+function getLastRead(noteId) {
+  const timestamp = readHistory.value[noteId];
+  if (!timestamp) return null;
+  
+  const days = Math.floor((Date.now() - timestamp) / (1000 * 60 * 60 * 24));
+  if (days === 0) return '今天';
+  if (days === 1) return '昨天';
+  if (days < 7) return `${days} 天前`;
+  if (days < 30) return `${Math.floor(days / 7)} 周前`;
+  return `${Math.floor(days / 30)} 个月前`;
 }
 
 function scrollToHeading(id) {
@@ -620,6 +646,16 @@ onMounted(() => {
   window.addEventListener('scroll', handleScroll);
   window.addEventListener('keydown', handleKeydown);
   handleRouteChange();
+  
+  // 加载阅读历史
+  try {
+    const saved = localStorage.getItem('erzi-read-history');
+    if (saved) {
+      readHistory.value = JSON.parse(saved);
+    }
+  } catch (e) {
+    console.warn('Failed to load read history:', e);
+  }
 });
 
 onUnmounted(() => {

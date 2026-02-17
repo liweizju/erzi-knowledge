@@ -249,6 +249,18 @@ body {
   color: var(--color-text-tertiary);
 }
 
+.note-read-badge {
+  font-size: 0.7rem;
+  color: var(--color-reading);
+  font-weight: 600;
+}
+
+.note-last-read {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
 .note-title {
   font-size: 1rem;
   font-weight: 600;
