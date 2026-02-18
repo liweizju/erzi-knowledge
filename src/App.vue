@@ -320,10 +320,15 @@
       <div class="detail-layout">
         <!-- 文章内容 -->
         <div class="note-content-wrapper">
-          <div class="note-content" v-html="renderedContent"></div>
+          <!-- 加载状态 -->
+          <div v-if="isLoadingContent" class="loading-indicator">
+            <div class="loading-spinner"></div>
+            <p>正在加载文章...</p>
+          </div>
+          <div v-else class="note-content" v-html="renderedContent"></div>
           
           <!-- 相关文章推荐 -->
-          <div class="related-notes" v-if="relatedNotes.length > 0">
+          <div class="related-notes" v-if="relatedNotes.length > 0 && !isLoadingContent">
             <h3 class="related-title">相关文章</h3>
             <div class="related-list">
               <div
@@ -381,6 +386,8 @@ const notes = knowledgeData.notes;
 const categories = knowledgeData.categories;
 const activeCategory = ref(null);
 const activeNote = ref(null);
+const noteContent = ref(''); // 按需加载的文章内容
+const isLoadingContent = ref(false); // 加载状态
 const showAbout = ref(false);
 const searchQuery = ref('');
 const activeTag = ref(null);
@@ -438,9 +445,9 @@ const filteredNotes = computed(() => {
     const query = searchQuery.value.toLowerCase();
     result = result.filter(n => {
       const titleMatch = n.title.toLowerCase().includes(query);
-      const contentMatch = n.content.toLowerCase().includes(query);
+      const summaryMatch = n.summary && n.summary.toLowerCase().includes(query);
       const tagMatch = n.tags && n.tags.some(tag => tag.toLowerCase().includes(query));
-      return titleMatch || contentMatch || tagMatch;
+      return titleMatch || summaryMatch || tagMatch;
     });
   }
 
@@ -509,7 +516,7 @@ watch(searchQuery, () => {
 });
 
 function getReadingTime(note) {
-  const wordCount = note.content?.length || 0;
+  const wordCount = note.wordCount || note.content?.length || 0;
   return Math.max(1, Math.ceil(wordCount / 400));
 }
 
@@ -538,7 +545,7 @@ const relatedNotes = computed(() => {
 
 // 渲染内容
 const renderedContent = computed(() => {
-  if (!activeNote.value) return '';
+  if (!activeNote.value || !noteContent.value) return '';
   
   const renderer = new marked.Renderer();
   
@@ -561,13 +568,13 @@ const renderedContent = computed(() => {
     return `<pre><code class="hljs">${highlighted}</code></pre>\n`;
   };
   
-  return marked(activeNote.value.content, { renderer });
+  return marked(noteContent.value, { renderer });
 });
 
 // TOC
 const tocItems = computed(() => {
-  if (!activeNote.value) return [];
-  const content = activeNote.value.content;
+  if (!activeNote.value || !noteContent.value) return [];
+  const content = noteContent.value;
   const headings = [];
   const regex = /^(#{2,3})\s+(.+)$/gm;
   let match;
@@ -653,6 +660,8 @@ function handleRouteChange() {
       showTimeline.value = false;
       // 标记为已读
       markAsRead(note.id);
+      // 按需加载内容
+      loadNoteContent(note);
     } else {
       // 文章不存在，显示 404
       showNotFound.value = true;
@@ -665,9 +674,34 @@ function handleRouteChange() {
   }
 }
 
-function openNote(note) {
+async function loadNoteContent(note) {
+  // 按需加载文章内容
+  if (!note.content) {
+    isLoadingContent.value = true;
+    noteContent.value = '';
+    try {
+      const response = await fetch(`/data/notes/${note.id}.md`);
+      if (response.ok) {
+        noteContent.value = await response.text();
+        note.content = noteContent.value; // 缓存到 note 对象
+      } else {
+        noteContent.value = '# 文章加载失败\n\n抱歉，无法加载这篇文章的内容。';
+      }
+    } catch (error) {
+      console.error('Failed to load note:', error);
+      noteContent.value = '# 文章加载失败\n\n抱歉，加载文章时出现错误。';
+    } finally {
+      isLoadingContent.value = false;
+    }
+  } else {
+    noteContent.value = note.content;
+  }
+}
+
+async function openNote(note) {
   window.location.hash = `#/note/${encodeURIComponent(note.id)}`;
   nextTick(() => window.scrollTo(0, 0));
+  await loadNoteContent(note);
 }
 
 function closeNote() {

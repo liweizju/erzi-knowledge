@@ -8,6 +8,10 @@ const __dirname = path.dirname(__filename);
 // 知识库目录
 const KNOWLEDGE_DIR = '/Users/liwei/.openclaw/workspace/knowledge';
 
+// 输出目录
+const OUTPUT_DIR = path.join(__dirname, '../public/data');
+const NOTES_DIR = path.join(OUTPUT_DIR, 'notes');
+
 // 分类配置
 const CATEGORIES = {
   'tech': {
@@ -121,7 +125,8 @@ function extractMetadata(content, filePath, category) {
     summary: '',
     content: content,
     source: '',
-    tags: [] // 添加标签字段
+    tags: [],
+    wordCount: content.length // 添加字数统计
   };
 
   // 提取标题（第一个 # 标题）
@@ -178,7 +183,7 @@ function readMarkdownFiles(dir, category) {
     if (item.isDirectory()) {
       // 递归读取子目录
       files.push(...readMarkdownFiles(fullPath, category));
-    } else if (item.name.endsWith('.md') && item.name !== 'README.md') {
+    } else if (item.name.endsWith('.md') && item.name !== 'README.md' && item.name !== 'INSIGHTS-TODO.md') {
       // 读取 Markdown 文件
       const content = fs.readFileSync(fullPath, 'utf-8');
       const metadata = extractMetadata(content, item.name, category);
@@ -220,22 +225,80 @@ function generateKnowledgeData() {
 }
 
 /**
- * 主函数
+ * 确保目录存在
+ */
+function ensureDir(dir) {
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
+}
+
+/**
+ * 主函数（数据拆分版本）
  */
 function main() {
-  console.log('📚 开始构建知识数据...\n');
+  console.log('📚 开始构建知识数据（拆分模式）...\n');
+
+  // 确保输出目录存在
+  ensureDir(OUTPUT_DIR);
+  ensureDir(NOTES_DIR);
 
   const data = generateKnowledgeData();
 
   console.log(`✅ 成功读取 ${data.notes.length} 篇笔记`);
   console.log(`   - 分类数: ${Object.keys(data.categories).length}\n`);
 
-  // 生成输出数据
-  const outputPath = path.join(__dirname, '../src/data-generated.js');
-  const outputContent = `// 自动生成的知识数据
-// 生成时间: ${new Date().toISOString()}
+  // 1. 生成 index.json（仅 metadata，不含 content）
+  const indexData = {
+    notes: data.notes.map(note => ({
+      id: note.id,
+      title: note.title,
+      category: note.category,
+      date: note.date,
+      summary: note.summary,
+      tags: note.tags,
+      wordCount: note.wordCount,
+      source: note.source
+    })),
+    categories: data.categories
+  };
 
-export const knowledgeData = ${JSON.stringify(data, null, 2)};
+  const indexPath = path.join(OUTPUT_DIR, 'index.json');
+  fs.writeFileSync(indexPath, JSON.stringify(indexData, null, 2), 'utf-8');
+  const indexSize = (fs.statSync(indexPath).size / 1024).toFixed(2);
+  console.log(`📄 index.json 已生成: ${indexPath}`);
+  console.log(`   大小: ${indexSize} KB\n`);
+
+  // 2. 生成单独的 markdown 文件
+  console.log('📝 生成单独的文章文件...');
+  data.notes.forEach(note => {
+    const notePath = path.join(NOTES_DIR, `${note.id}.md`);
+    fs.writeFileSync(notePath, note.content, 'utf-8');
+  });
+  console.log(`   ✅ 已生成 ${data.notes.length} 个 .md 文件\n`);
+
+  // 3. 生成轻量化的 data-generated.js（仅包含 metadata，用于首屏）
+  const compatPath = path.join(__dirname, '../src/data-generated.js');
+  const lightweightData = {
+    notes: data.notes.map(note => ({
+      id: note.id,
+      title: note.title,
+      category: note.category,
+      date: note.date,
+      summary: note.summary,
+      tags: note.tags,
+      wordCount: note.wordCount,
+      source: note.source
+      // 不包含 content，实现按需加载
+    })),
+    categories: data.categories
+  };
+  
+  const compatContent = `// 自动生成的知识数据
+// 生成时间: ${new Date().toISOString()}
+// 注意：此文件仅包含 metadata，详情页按需加载 /data/notes/{id}.md
+
+export const knowledgeData = ${JSON.stringify(lightweightData, null, 2)};
 
 export const categoryLabels = ${JSON.stringify(
   Object.fromEntries(
@@ -254,8 +317,10 @@ export const categoryColors = ${JSON.stringify(
 )};
 `;
 
-  fs.writeFileSync(outputPath, outputContent, 'utf-8');
-  console.log(`📄 数据已保存到: ${outputPath}\n`);
+  fs.writeFileSync(compatPath, compatContent, 'utf-8');
+  const compatSize = (fs.statSync(compatPath).size / 1024).toFixed(2);
+  console.log(`📄 data-generated.js 已生成: ${compatPath}`);
+  console.log(`   大小: ${compatSize} KB（轻量化）\n`);
 
   // 显示统计信息
   console.log('📊 统计信息:');
@@ -267,6 +332,11 @@ export const categoryColors = ${JSON.stringify(
   for (const [category, count] of Object.entries(categoryCounts)) {
     console.log(`   - ${data.categories[category].label}: ${count} 篇`);
   }
+
+  console.log('\n✨ 数据拆分完成！');
+  console.log('   - 首屏加载: /data/index.json（轻量）');
+  console.log('   - 详情页按需加载: /data/notes/{id}.md');
+  console.log('   - 搜索功能: 仍使用全量数据（data-generated.js）');
 }
 
 // 运行主函数
