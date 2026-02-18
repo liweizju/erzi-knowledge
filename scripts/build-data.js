@@ -153,6 +153,12 @@ function extractMetadata(content, filePath, category) {
   // 提取标签（基于内容和分类）
   metadata.tags = extractTags(content, category, filePath);
 
+  // 提取系列信息（如果存在）
+  const seriesMatch = content.match(/^series:\s*["']?([^"'\n]+)["']?\s*$/m);
+  if (seriesMatch) {
+    metadata.series = seriesMatch[1].trim();
+  }
+
   // 提取摘要（第一段或第一个列表项）
   const summaryMatch = content.match(/##\s+核心发现\s*\n\s*(.+)$/m) ||
                        content.match(/##\s+核心论点\s*\n\s*\*\*(.+)\*\*$/m) ||
@@ -288,7 +294,8 @@ function main() {
       summary: note.summary,
       tags: note.tags,
       wordCount: note.wordCount,
-      source: note.source
+      source: note.source,
+      series: note.series || null
       // 不包含 content，实现按需加载
     })),
     categories: data.categories

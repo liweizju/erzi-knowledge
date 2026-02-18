@@ -327,6 +327,33 @@
           </div>
           <div v-else class="note-content" v-html="renderedContent"></div>
           
+          <!-- 系列导航 -->
+          <div class="series-navigation" v-if="seriesNotes && !isLoadingContent">
+            <div class="series-header">
+              <span class="series-icon">📚</span>
+              <span class="series-name">{{ seriesNotes.name }}</span>
+              <span class="series-progress">第 {{ seriesNotes.current }} / {{ seriesNotes.total }} 篇</span>
+            </div>
+            <div class="series-nav">
+              <button 
+                v-if="seriesNotes.prev" 
+                class="series-nav-btn"
+                @click="openNote(seriesNotes.prev)"
+              >
+                ← 上一篇：{{ seriesNotes.prev.title }}
+              </button>
+              <span v-else class="series-nav-disabled">← 已是第一篇</span>
+              <button 
+                v-if="seriesNotes.next" 
+                class="series-nav-btn"
+                @click="openNote(seriesNotes.next)"
+              >
+                下一篇：{{ seriesNotes.next.title }} →
+              </button>
+              <span v-else class="series-nav-disabled">已是最后一篇 →</span>
+            </div>
+          </div>
+          
           <!-- 相关文章推荐 -->
           <div class="related-notes" v-if="relatedNotes.length > 0 && !isLoadingContent">
             <h3 class="related-title">相关文章</h3>
@@ -541,6 +568,28 @@ const relatedNotes = computed(() => {
     .filter(n => n.category === current.category && n.id !== current.id)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3);
+});
+
+// 系列文章
+const seriesNotes = computed(() => {
+  if (!activeNote.value || !activeNote.value.series) return null;
+  
+  const seriesName = activeNote.value.series;
+  const seriesArticles = notes
+    .filter(n => n.series === seriesName)
+    .sort((a, b) => new Date(a.date) - new Date(b.date)); // 按日期正序
+  
+  if (seriesArticles.length <= 1) return null;
+  
+  const currentIndex = seriesArticles.findIndex(n => n.id === activeNote.value.id);
+  
+  return {
+    name: seriesName,
+    total: seriesArticles.length,
+    current: currentIndex + 1,
+    prev: currentIndex > 0 ? seriesArticles[currentIndex - 1] : null,
+    next: currentIndex < seriesArticles.length - 1 ? seriesArticles[currentIndex + 1] : null
+  };
 });
 
 // 渲染内容

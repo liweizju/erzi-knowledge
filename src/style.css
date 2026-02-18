@@ -839,6 +839,84 @@ body {
   color: var(--color-text);
 }
 
+/* ========== Series Navigation ========== */
+.series-navigation {
+  margin-top: 48px;
+  padding: 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.series-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.series-icon {
+  font-size: 1.25rem;
+}
+
+.series-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.series-progress {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  background: var(--color-border-light);
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.series-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.series-nav-btn {
+  flex: 1;
+  padding: 10px 14px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.series-nav-btn:hover {
+  border-color: var(--color-tech);
+  color: var(--color-tech);
+  background: #eff6ff;
+}
+
+html.dark .series-nav-btn:hover {
+  background: #1e3a5f;
+}
+
+.series-nav-disabled {
+  flex: 1;
+  padding: 10px 14px;
+  font-size: 0.8125rem;
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
 /* ========== Code Highlighting ========== */
 .hljs { background: #f6f8fa; color: #24292f; }
 .hljs-comment, .hljs-quote { color: #6e7781; font-style: italic; }
