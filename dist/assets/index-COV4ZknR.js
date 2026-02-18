@@ -1341,7 +1341,134 @@ J-curve 本质上就是「最后一公里」的组织重构成本：
 - [The Productivity Paradox of AI Adoption in Manufacturing Firms](https://mitsloan.mit.edu/ideas-made-to-matter/productivity-paradox-ai-adoption-manufacturing-firms) — MIT Sloan, Jul 2025
 - [The AI Productivity Paradox: Why Your AI-Powered Workday Isn't Making You Richer](https://c3.unu.edu/blog/the-ai-productivity-paradox-why-your-ai-powered-workday-isnt-making-you-richer) — UNU, Aug 2025 (基于 NBER Working Paper 33777)
 - [The Rise of Industrial AI in America: Microfoundations of the Productivity J-Curve(s)](https://www2.census.gov/library/working-papers/2025/adrm/ces/CES-WP-25-27.pdf) — Census Bureau Working Paper
-`,source:"",tags:["知识阅读/学习理论","知识阅读/技术哲学","知识阅读/生产力"]},{id:"2026-02-18-ai-recursive-trap",title:"AI 递归陷阱：当 AI 成为 AI 的输入源",category:"reflection",date:"2026-02-18",summary:"1. **三重递归叠加**：训练层（Model Collapse）、推理层（边际递减）、生态层（互联网污染）——三层递归同时发生，风险被放大",content:`# AI 递归陷阱：当 AI 成为 AI 的输入源
+`,source:"",tags:["知识阅读/学习理论","知识阅读/技术哲学","知识阅读/生产力"]},{id:"2026-02-18-AI监管执法元年",title:"AI 监管执法元年——三极分化的全球治理格局",category:"reading",date:"2026-02-18",summary:"1. **2026 是执法元年**：AI 监管从「立法辩论」进入「实际执法」阶段，隐私团队被卷入 AI 合规",content:`# AI 监管执法元年——三极分化的全球治理格局
+
+> **洞见建议**：AI 监管碎片化下的企业合规策略——当 EU、US、China 三套规则同时生效，跨国企业如何在「合规成本」和「市场准入」之间找到平衡点？
+> **为什么值得深挖**：2026 年是 AI 监管从「立法」转向「执法」的第一年。欧盟罚款可达全球营收 7%，美国州级法律形成「事实联邦标准」，中国则用「算力券」和产业政策绑定合规。三套规则不仅不兼容，还在互相博弈。理解这个格局，是做 AI 产品的必修课。
+
+**方向**：知识阅读
+**日期**：2026-02-18
+
+---
+
+## 2026：从「是否监管」到「如何执法」
+
+AI 现在已和隐私数据一样被法律管辖。立法者不再讨论「AI 是否需要监管」，而是在定义：
+- 谁负责
+- 何时需要风险评估
+- 必须披露什么
+- 执法如何运作
+
+2026 年是有约束力 AI 法律开始**执法**的一年，而非继续辩论。
+
+## 三极分化的监管逻辑
+
+| 区域 | 核心逻辑 | 监管方式 | 典型特征 |
+|------|----------|----------|----------|
+| 欧盟 | 权利驱动 | 框架立法 | 风险分级、高额罚款、全生命周期责任 |
+| 美国 | 市场驱动 | 州级拼图 | 消费者保护、透明度、反歧视 |
+| 中国 | 国家驱动 | 行业规章 | 生成式 AI 管理、内容标识、产业政策绑定 |
+
+### 欧盟：权利驱动的全面框架
+
+EU AI Act 2024 年 8 月生效，义务分阶段至 2027 年。2026 年已适用：
+- 禁止的 AI 实践
+- 通用 AI 模型要求
+- 透明度义务
+- 罚则（最高全球年营收 7%，超过 GDPR）
+
+高风险 AI 系统（影响基本权利的画像、生物识别、决策）必须：
+- 部署前评估
+- 广泛文档
+- 市场后监控
+- 事件报告
+
+**2025 年底的 Digital Omnibus 提案**试图简化 GDPR、AI Act、ePrivacy 的重叠，减少运营摩擦但不放松问责。
+
+### 美国：州级拼图形成「事实联邦标准」
+
+没有联邦 AI 法律，但州法律正在形成**事实上的全国标准**：
+
+| 州 | 法律 | 生效时间 | 核心内容 |
+|----|------|----------|----------|
+| 科罗拉多 | AI Act | 2026 | 防止算法歧视、文档要求、透明度 |
+| 德州 | Responsible AI Governance Act | 2026.1.1 | 禁止社会评分、生物识别滥用、歧视性 AI |
+| 加州 | AI Transparency Act | 2026.1.1 | AI 生成内容披露、训练数据公开摘要 |
+| 纽约 | 自动化就业决策规则 | 已生效 | 通知、偏见监控、快速下架义务 |
+
+美国通过**消费者保护**视角监管 AI：披露、文档、基于权利的保障是执法支柱。
+
+### 中国：行业规章 + 产业政策
+
+中国没有统一的「AI 法」，而是多部专项规章：
+- 生成式 AI 服务管理办法
+- 合成内容标识规则（2025.9.1 生效）
+- 即将推出的「AI 法」提案（2025.6 人大提出）
+
+义务涵盖：同意、数据质量、内容标识、用户权利、投诉处理。
+
+**产业政策绑定合规**：「算力券」补贴高达 80% 云计算成本，Big Fund III 注册资本 3440 亿元。政府资本填补了部分私人投资缺口（但历史拨付率约 50%）。
+
+## 中美 AI 创业的资本差距
+
+一个关键洞察：**中美 AI 创业在完全不同的资本约束下运行**。
+
+| 维度 | 美国 | 中国 |
+|------|------|------|
+| 2024 私人投资 | $1091 亿 | $93 亿 |
+| 比例 | 12:1 | — |
+| 外资参与 | 高 | 2025 年仅 10% |
+| 商业模式 | 卖「能力」（订阅制） | 卖「解决方案」（项目制） |
+
+**美国模式**：ChatGPT Plus $20/月，GitHub Copilot $10/月。在高薪资市场，订阅是自然选择。
+
+**中国模式**：前沿训练基础设施稀缺，增长来自效率、定向部署、市场选择。市场碎片化（沿海制造 vs 内地服务，企业自动化 vs 消费娱乐）创造可防御的细分市场。
+
+## 全球监管的共同模式
+
+尽管法律体系不同，AI 监管呈现出惊人的一致性：
+
+### 1. 风险分级而非技术分级
+
+所有框架都按**风险**而非技术分类。影响就业、信贷、医疗、教育、公共服务的系统被一致视为高风险。
+
+### 2. 全生命周期责任分配
+
+开发者、部署者、分发者、提供者被分配不同义务——类似隐私法中的「控制者」和「处理者」区分。
+
+### 3. 透明度贯穿始终
+
+个人必须被告知 AI 何时被使用，尤其是结果影响权利或机会时。文档、日志、监控被定位为「问责确实存在」的证明。
+
+---
+
+## 核心发现
+
+1. **2026 是执法元年**：AI 监管从「立法辩论」进入「实际执法」阶段，隐私团队被卷入 AI 合规
+2. **三套规则不兼容**：EU 的权利驱动、US 的市场驱动、China 的国家驱动形成三极格局
+3. **资本差距决定商业模式**：美国 12 倍投资优势造就「卖能力」模式，中国约束下形成「卖解决方案」模式
+4. **透明度是共同底线**：无论哪个法域，披露、文档、问责都是核心要求
+
+## 延伸思考
+
+**对中国 AI 企业的启示**：
+
+1. **合规是市场准入条件**：想进欧盟？先过 AI Act。想进美国？先应对州级拼图。
+2. **透明度投资是刚需**：无论哪个市场，AI 的「黑箱」时代正在被监管终结。
+3. **碎片化市场的机会**：中国市场的分层和碎片化意味着小玩家可以守住细分市场，不必和巨头正面硬刚。
+
+**与之前笔记的联系**：
+- 与「AI 全球治理三极分化」（2.16）呼应，但聚焦执法层面
+- 与「模型碎片化」（2.18 tech）呼应——监管碎片化加剧了模型/市场碎片化
+- 与「信任设计」呼应——透明度监管是信任的制度化版本
+
+## 来源
+
+- [Where AI Regulation is Heading in 2026: A Global Outlook](https://www.onetrust.com/blog/where-ai-regulation-is-heading-in-2026-a-global-outlook/)
+- [China and the US Are Running Different AI Races](https://ai-frontiers.org/articles/china-and-the-us-are-running-different-ai-races)
+- [How 'policy convergence' could pave the way for US-China cooperation on AI](https://www.scmp.com/news/china/diplomacy/article/3343497/how-policy-convergence-could-pave-way-us-china-cooperation-ai)
+- [Regulation of artificial intelligence - Wikipedia](https://en.wikipedia.org/wiki/Regulation_of_artificial_intelligence)
+`,source:"",tags:["知识阅读/学习理论","知识阅读/生产力"]},{id:"2026-02-18-ai-recursive-trap",title:"AI 递归陷阱：当 AI 成为 AI 的输入源",category:"reflection",date:"2026-02-18",summary:"1. **三重递归叠加**：训练层（Model Collapse）、推理层（边际递减）、生态层（互联网污染）——三层递归同时发生，风险被放大",content:`# AI 递归陷阱：当 AI 成为 AI 的输入源
 
 > **洞见建议**：AI 递归依赖的结构性风险——从 Model Collapse 到信息生态熵增
 > **为什么值得深挖**：2026 年 AI 正在加速"吃自己的尾巴"——合成数据训练、推理时计算递归、AI 生成内容污染互联网——这不仅影响模型质量，更可能重塑整个信息生态。理解这一结构性风险，对技术路线选择、内容策略、产品设计都有战略意义。
