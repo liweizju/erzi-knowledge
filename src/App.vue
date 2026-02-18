@@ -248,6 +248,24 @@
               @click.stop="setTag(tag)"
             >{{ getTagLabel(tag) }}</span>
           </div>
+          
+          <!-- 预览浮层（桌面端） -->
+          <div class="note-preview" v-if="note.summary || (note.tags && note.tags.length > 3)">
+            <div class="preview-header">
+              <span class="preview-icon">👁️</span>
+              <span class="preview-label">快速预览</span>
+            </div>
+            <div class="preview-content" v-if="note.summary">{{ note.summary }}</div>
+            <div class="preview-tags" v-if="note.tags && note.tags.length > 3">
+              <span class="preview-tag-label">标签：</span>
+              <span v-for="tag in note.tags" :key="tag" class="preview-tag">{{ getTagLabel(tag) }}</span>
+            </div>
+            <div class="preview-meta">
+              <span>字数：{{ note.wordCount || 0 }}</span>
+              <span>·</span>
+              <span>{{ getReadingTime(note) }} 分钟阅读</span>
+            </div>
+          </div>
         </div>
       </div>
 
