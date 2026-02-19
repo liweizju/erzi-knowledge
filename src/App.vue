@@ -1,5 +1,12 @@
 <template>
   <div class="container">
+    <!-- T46: SW 更新提示 -->
+    <div class="update-toast" v-if="showUpdateToast">
+      <span class="update-toast-text">🎉 网站已更新</span>
+      <button class="update-toast-btn" @click="reloadPage">立即刷新</button>
+      <button class="update-toast-close" @click="dismissUpdateToast">✕</button>
+    </div>
+    
     <!-- About View -->
     <template v-if="showAbout">
       <header class="site-header">
@@ -468,6 +475,8 @@ const showTimeline = ref(false);
 const readHistory = ref({}); // { noteId: timestamp }
 const favorites = ref(new Set()); // Set<noteId>
 const expandedNoteId = ref(null); // T44: 移动端展开的笔记ID
+const showUpdateToast = ref(false); // T46: SW 更新提示
+const swVersion = ref(''); // T46: SW 版本
 
 // 排序后的分类（用于显示）
 const displayCategories = computed(() => {
@@ -1111,6 +1120,15 @@ function closeTimeline() {
   window.location.hash = '#/';
 }
 
+// T46: 刷新页面以应用 SW 更新
+function reloadPage() {
+  window.location.reload();
+}
+
+function dismissUpdateToast() {
+  showUpdateToast.value = false;
+}
+
 function scrollToHeading(id) {
   const element = document.getElementById(id);
   if (element) {
@@ -1236,6 +1254,17 @@ onMounted(() => {
     }
   } catch (e) {
     console.warn('Failed to load favorites:', e);
+  }
+  
+  // T46: 监听 Service Worker 更新
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.addEventListener('message', (event) => {
+      if (event.data?.type === 'SW_UPDATED') {
+        swVersion.value = event.data.version;
+        showUpdateToast.value = true;
+        console.log('SW 已更新:', event.data.version);
+      }
+    });
   }
 });
 
