@@ -113,6 +113,68 @@ function extractTags(content, category, filePath) {
 }
 
 /**
+ * 精确统计字数（T41: 文章字数/阅读时间精确化）
+ * - 中文字符：每个算1个字
+ * - 英文单词：按空格分词，每个词算1个字
+ * - 代码块：权重0.3（阅读速度慢）
+ * - 图片：每张算50字
+ */
+function countWords(content) {
+  // 提取代码块（单独统计，权重0.3）
+  const codeBlocks = content.match(/```[\s\S]*?```/g) || [];
+  let codeWordCount = 0;
+  codeBlocks.forEach(block => {
+    // 去掉 ``` 标记
+    const code = block.replace(/```\w*\n?/g, '').replace(/```$/g, '');
+    codeWordCount += countChineseChars(code) + countEnglishWords(code);
+  });
+  
+  // 去掉代码块后的内容
+  let textContent = content.replace(/```[\s\S]*?```/g, '');
+  
+  // 统计图片数量（每张算50字）
+  const images = textContent.match(/!\[.*?\]\(.*?\)/g) || [];
+  const imageWordCount = images.length * 50;
+  
+  // 去掉 Markdown 标记
+  textContent = textContent
+    .replace(/^#+\s+.*$/gm, '') // 标题
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // 链接保留文字
+    .replace(/!\[.*?\]\(.*?\)/g, '') // 图片已单独统计
+    .replace(/\*\*([^*]+)\*\*/g, '$1') // 粗体
+    .replace(/\*([^*]+)\*/g, '$1') // 斜体
+    .replace(/`([^`]+)`/g, '$1') // 行内代码
+    .replace(/^[-*+]\s+/gm, '') // 列表标记
+    .replace(/^\d+\.\s+/gm, '') // 有序列表
+    .replace(/^>\s*/gm, '') // 引用
+    .replace(/\n+/g, ' ') // 换行
+    .trim();
+  
+  const chineseCount = countChineseChars(textContent);
+  const englishCount = countEnglishWords(textContent);
+  
+  // 总字数 = 文字 + 代码块×0.3 + 图片
+  return Math.round(chineseCount + englishCount + codeWordCount * 0.3 + imageWordCount);
+}
+
+/**
+ * 统计中文字符数
+ */
+function countChineseChars(text) {
+  const matches = text.match(/[\u4e00-\u9fa5]/g) || [];
+  return matches.length;
+}
+
+/**
+ * 统计英文单词数
+ */
+function countEnglishWords(text) {
+  // 提取英文单词（连续的字母）
+  const matches = text.match(/[a-zA-Z]+/g) || [];
+  return matches.length;
+}
+
+/**
  * 从 Markdown 文件提取元数据
  */
 function extractMetadata(content, filePath, category) {
@@ -126,7 +188,9 @@ function extractMetadata(content, filePath, category) {
     content: content,
     source: '',
     tags: [],
-    wordCount: content.length // 添加字数统计
+    wordCount: countWords(content), // 精确字数统计（T41）
+    chineseCount: countChineseChars(content), // 中文字数
+    englishCount: countEnglishWords(content) // 英文词数
   };
 
   // 提取标题（第一个 # 标题）
@@ -264,6 +328,8 @@ function main() {
       summary: note.summary,
       tags: note.tags,
       wordCount: note.wordCount,
+      chineseCount: note.chineseCount, // T41: 中文字数
+      englishCount: note.englishCount, // T41: 英文词数
       source: note.source
     })),
     categories: data.categories
@@ -294,6 +360,8 @@ function main() {
       summary: note.summary,
       tags: note.tags,
       wordCount: note.wordCount,
+      chineseCount: note.chineseCount, // T41: 中文字数
+      englishCount: note.englishCount, // T41: 英文词数
       source: note.source,
       series: note.series || null
       // 不包含 content，实现按需加载

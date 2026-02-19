@@ -561,8 +561,21 @@ watch(searchQuery, () => {
 });
 
 function getReadingTime(note) {
-  const wordCount = note.wordCount || note.content?.length || 0;
-  return Math.max(1, Math.ceil(wordCount / 400));
+  // T41: 精确阅读时间计算
+  // 中文：300字/分钟，英文：200词/分钟
+  const chineseCount = note.chineseCount || 0;
+  const englishCount = note.englishCount || 0;
+  const wordCount = note.wordCount || 0;
+  
+  // 如果有详细数据，按比例计算
+  if (chineseCount > 0 || englishCount > 0) {
+    const chineseTime = chineseCount / 300; // 中文字数/300
+    const englishTime = englishCount / 200; // 英文词数/200
+    return Math.max(1, Math.ceil(chineseTime + englishTime));
+  }
+  
+  // 兼容旧数据：统一按300字/分钟
+  return Math.max(1, Math.ceil(wordCount / 300));
 }
 
 function getTagLabel(tag) {
