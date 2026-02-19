@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build-data.js && node scripts/generate-rss.js && node scripts/generate-sitemap.js && vite build",
+    "build": "node scripts/generate-icons.js && node scripts/build-data.js && node scripts/generate-rss.js && node scripts/generate-sitemap.js && vite build",
     "build-data": "node scripts/build-data.js",
     "generate-rss": "node scripts/generate-rss.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
@@ -19,6 +19,7 @@
     "vue": "^3.5.27"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "vite": "^6.0.0"
   }
 }
