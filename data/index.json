@@ -1,6 +1,21 @@
 {
   "notes": [
     {
+      "id": "2026-02-20-AI-for-Science第五范式",
+      "title": "AI for Science：科学发现的第五范式",
+      "category": "reading",
+      "date": "2026-02-20",
+      "summary": "1. **第五范式正在形成**：AI4S 代表科学发现的新范式，整合数据驱动建模与先验知识，自动化假设生成和验证",
+      "tags": [
+        "知识阅读/学习理论",
+        "知识阅读/生产力"
+      ],
+      "wordCount": 2163,
+      "chineseCount": 2302,
+      "englishCount": 221,
+      "source": ""
+    },
+    {
       "id": "2026-02-19-AI-Agent编排框架",
       "title": "AI Agent 编排框架：从单智能体到多智能体协作的技术路径",
       "category": "tech",
