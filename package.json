@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "node scripts/generate-icons.js && node scripts/build-data.js && node scripts/generate-rss.js && node scripts/generate-sitemap.js && vite build",
+    "build:check": "node scripts/build-check.js",
+    "build:full": "npm run build && npm run build:check",
     "build-data": "node scripts/build-data.js",
     "generate-rss": "node scripts/generate-rss.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
