@@ -11,7 +11,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 7526,
+      "wordCount": 2910,
+      "chineseCount": 2860,
+      "englishCount": 356,
       "source": ""
     },
     {
@@ -25,7 +27,9 @@
         "技术前沿/AI Agent",
         "技术前沿/AI 编程"
       ],
-      "wordCount": 5109,
+      "wordCount": 1970,
+      "chineseCount": 2101,
+      "englishCount": 218,
       "source": ""
     },
     {
@@ -39,7 +43,9 @@
         "技术前沿/AI Agent",
         "技术前沿/AI 编程"
       ],
-      "wordCount": 3470,
+      "wordCount": 1067,
+      "chineseCount": 1009,
+      "englishCount": 260,
       "source": ""
     },
     {
@@ -53,7 +59,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 6157,
+      "wordCount": 2142,
+      "chineseCount": 2296,
+      "englishCount": 182,
       "source": ""
     },
     {
@@ -67,7 +75,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 4961,
+      "wordCount": 2565,
+      "chineseCount": 2657,
+      "englishCount": 138,
       "source": ""
     },
     {
@@ -81,7 +91,9 @@
         "灵感采集/AI 产品",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 4626,
+      "wordCount": 2147,
+      "chineseCount": 2322,
+      "englishCount": 96,
       "source": ""
     },
     {
@@ -94,7 +106,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 2748,
+      "wordCount": 1138,
+      "chineseCount": 1146,
+      "englishCount": 147,
       "source": ""
     },
     {
@@ -107,7 +121,9 @@
         "灵感采集/AI 产品",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 5555,
+      "wordCount": 1991,
+      "chineseCount": 2232,
+      "englishCount": 151,
       "source": ""
     },
     {
@@ -121,7 +137,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 2759,
+      "wordCount": 1131,
+      "chineseCount": 1162,
+      "englishCount": 98,
       "source": ""
     },
     {
@@ -135,7 +153,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 5154,
+      "wordCount": 2080,
+      "chineseCount": 2146,
+      "englishCount": 223,
       "source": ""
     },
     {
@@ -148,7 +168,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 5176,
+      "wordCount": 1884,
+      "chineseCount": 2076,
+      "englishCount": 166,
       "source": ""
     },
     {
@@ -161,7 +183,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 2839,
+      "wordCount": 1330,
+      "chineseCount": 1386,
+      "englishCount": 90,
       "source": ""
     },
     {
@@ -174,7 +198,9 @@
         "反思与整理/工作流",
         "反思与整理/个人成长"
       ],
-      "wordCount": 4713,
+      "wordCount": 2025,
+      "chineseCount": 2253,
+      "englishCount": 97,
       "source": ""
     },
     {
@@ -187,7 +213,9 @@
         "反思与整理/工作流",
         "反思与整理/个人成长"
       ],
-      "wordCount": 4549,
+      "wordCount": 2074,
+      "chineseCount": 2162,
+      "englishCount": 122,
       "source": ""
     },
     {
@@ -201,7 +229,9 @@
         "洞见报告/市场趋势",
         "洞见报告/全球竞争"
       ],
-      "wordCount": 12871,
+      "wordCount": 4241,
+      "chineseCount": 3547,
+      "englishCount": 999,
       "source": ""
     },
     {
@@ -215,7 +245,9 @@
         "洞见报告/投资机会",
         "洞见报告/市场趋势"
       ],
-      "wordCount": 12774,
+      "wordCount": 4367,
+      "chineseCount": 3776,
+      "englishCount": 945,
       "source": ""
     },
     {
@@ -228,7 +260,9 @@
         "技术前沿/LLM",
         "技术前沿/知识管理"
       ],
-      "wordCount": 2531,
+      "wordCount": 902,
+      "chineseCount": 885,
+      "englishCount": 152,
       "source": ""
     },
     {
@@ -242,7 +276,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 3736,
+      "wordCount": 1474,
+      "chineseCount": 1489,
+      "englishCount": 182,
       "source": ""
     },
     {
@@ -256,7 +292,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 3223,
+      "wordCount": 1637,
+      "chineseCount": 1656,
+      "englishCount": 122,
       "source": ""
     },
     {
@@ -268,7 +306,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 3196,
+      "wordCount": 1239,
+      "chineseCount": 1230,
+      "englishCount": 190,
       "source": ""
     },
     {
@@ -281,7 +321,9 @@
         "灵感采集/商业模式",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 3011,
+      "wordCount": 1377,
+      "chineseCount": 1422,
+      "englishCount": 134,
       "source": ""
     },
     {
@@ -294,7 +336,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 4725,
+      "wordCount": 2260,
+      "chineseCount": 2394,
+      "englishCount": 206,
       "source": ""
     },
     {
@@ -307,7 +351,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 4167,
+      "wordCount": 1596,
+      "chineseCount": 1534,
+      "englishCount": 258,
       "source": ""
     },
     {
@@ -321,7 +367,9 @@
         "知识阅读/技术哲学",
         "知识阅读/生产力"
       ],
-      "wordCount": 4063,
+      "wordCount": 1829,
+      "chineseCount": 1855,
+      "englishCount": 200,
       "source": ""
     },
     {
@@ -334,7 +382,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 3226,
+      "wordCount": 1340,
+      "chineseCount": 1367,
+      "englishCount": 155,
       "source": ""
     },
     {
@@ -347,7 +397,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 4125,
+      "wordCount": 1842,
+      "chineseCount": 1930,
+      "englishCount": 168,
       "source": ""
     },
     {
@@ -361,7 +413,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 4740,
+      "wordCount": 2504,
+      "chineseCount": 2639,
+      "englishCount": 96,
       "source": ""
     },
     {
@@ -374,7 +428,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 2721,
+      "wordCount": 1365,
+      "chineseCount": 1509,
+      "englishCount": 52,
       "source": ""
     },
     {
@@ -387,7 +443,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 3642,
+      "wordCount": 1639,
+      "chineseCount": 1689,
+      "englishCount": 150,
       "source": ""
     },
     {
@@ -401,7 +459,9 @@
         "洞见报告/投资机会",
         "洞见报告/市场趋势"
       ],
-      "wordCount": 8656,
+      "wordCount": 2963,
+      "chineseCount": 2620,
+      "englishCount": 568,
       "source": ""
     },
     {
@@ -411,7 +471,9 @@
       "date": "2026-02-18",
       "summary": "深夜了，又到了一天结束的时刻。",
       "tags": [],
-      "wordCount": 628,
+      "wordCount": 510,
+      "chineseCount": 514,
+      "englishCount": 0,
       "source": ""
     },
     {
@@ -425,7 +487,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 4377,
+      "wordCount": 1456,
+      "chineseCount": 1330,
+      "englishCount": 308,
       "source": ""
     },
     {
@@ -438,7 +502,9 @@
         "技术前沿/LLM",
         "技术前沿/知识管理"
       ],
-      "wordCount": 3052,
+      "wordCount": 1419,
+      "chineseCount": 1468,
+      "englishCount": 137,
       "source": ""
     },
     {
@@ -452,7 +518,9 @@
         "技术前沿/AI Agent",
         "技术前沿/知识管理"
       ],
-      "wordCount": 3429,
+      "wordCount": 1325,
+      "chineseCount": 1336,
+      "englishCount": 195,
       "source": ""
     },
     {
@@ -466,7 +534,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 3133,
+      "wordCount": 1415,
+      "chineseCount": 1477,
+      "englishCount": 150,
       "source": ""
     },
     {
@@ -479,7 +549,9 @@
         "灵感采集/AI 产品",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 3402,
+      "wordCount": 1563,
+      "chineseCount": 1594,
+      "englishCount": 137,
       "source": ""
     },
     {
@@ -492,7 +564,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 4424,
+      "wordCount": 1766,
+      "chineseCount": 1911,
+      "englishCount": 223,
       "source": ""
     },
     {
@@ -506,7 +580,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 3904,
+      "wordCount": 1898,
+      "chineseCount": 1973,
+      "englishCount": 167,
       "source": ""
     },
     {
@@ -520,7 +596,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 2895,
+      "wordCount": 1293,
+      "chineseCount": 1340,
+      "englishCount": 146,
       "source": ""
     },
     {
@@ -532,7 +610,9 @@
       "tags": [
         "知识阅读/学习理论"
       ],
-      "wordCount": 3968,
+      "wordCount": 1630,
+      "chineseCount": 1719,
+      "englishCount": 145,
       "source": ""
     },
     {
@@ -545,7 +625,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 3630,
+      "wordCount": 1814,
+      "chineseCount": 1954,
+      "englishCount": 68,
       "source": ""
     },
     {
@@ -559,7 +641,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 3816,
+      "wordCount": 2182,
+      "chineseCount": 2323,
+      "englishCount": 61,
       "source": ""
     },
     {
@@ -572,7 +656,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 4217,
+      "wordCount": 1805,
+      "chineseCount": 1849,
+      "englishCount": 191,
       "source": ""
     },
     {
@@ -586,7 +672,9 @@
         "洞见报告/投资机会",
         "洞见报告/市场趋势"
       ],
-      "wordCount": 7541,
+      "wordCount": 3788,
+      "chineseCount": 3707,
+      "englishCount": 241,
       "source": ""
     },
     {
@@ -600,7 +688,9 @@
         "洞见报告/投资机会",
         "洞见报告/市场趋势"
       ],
-      "wordCount": 8818,
+      "wordCount": 4198,
+      "chineseCount": 4225,
+      "englishCount": 400,
       "source": ""
     },
     {
@@ -613,7 +703,9 @@
         "洞见报告/投资机会",
         "洞见报告/市场趋势"
       ],
-      "wordCount": 11354,
+      "wordCount": 4406,
+      "chineseCount": 4398,
+      "englishCount": 584,
       "source": ""
     },
     {
@@ -625,7 +717,9 @@
       "tags": [
         "二子日记/日常"
       ],
-      "wordCount": 1334,
+      "wordCount": 932,
+      "chineseCount": 912,
+      "englishCount": 28,
       "source": ""
     },
     {
@@ -639,7 +733,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 4061,
+      "wordCount": 1283,
+      "chineseCount": 1240,
+      "englishCount": 234,
       "source": ""
     },
     {
@@ -652,7 +748,9 @@
         "技术前沿/WebGPU",
         "技术前沿/知识管理"
       ],
-      "wordCount": 3999,
+      "wordCount": 1598,
+      "chineseCount": 1591,
+      "englishCount": 231,
       "source": ""
     },
     {
@@ -666,7 +764,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 3975,
+      "wordCount": 1562,
+      "chineseCount": 1643,
+      "englishCount": 149,
       "source": ""
     },
     {
@@ -680,7 +780,9 @@
         "技术前沿/AI Agent",
         "技术前沿/知识管理"
       ],
-      "wordCount": 4673,
+      "wordCount": 1274,
+      "chineseCount": 1253,
+      "englishCount": 291,
       "source": ""
     },
     {
@@ -693,7 +795,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 3169,
+      "wordCount": 1119,
+      "chineseCount": 1169,
+      "englishCount": 171,
       "source": ""
     },
     {
@@ -707,7 +811,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 5117,
+      "wordCount": 1987,
+      "chineseCount": 2021,
+      "englishCount": 288,
       "source": ""
     },
     {
@@ -720,7 +826,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 4563,
+      "wordCount": 1963,
+      "chineseCount": 1913,
+      "englishCount": 277,
       "source": ""
     },
     {
@@ -733,7 +841,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 3578,
+      "wordCount": 1671,
+      "chineseCount": 1718,
+      "englishCount": 129,
       "source": ""
     },
     {
@@ -746,7 +856,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 4941,
+      "wordCount": 1860,
+      "chineseCount": 1924,
+      "englishCount": 321,
       "source": ""
     },
     {
@@ -760,7 +872,9 @@
         "洞见报告/投资机会",
         "洞见报告/市场趋势"
       ],
-      "wordCount": 5692,
+      "wordCount": 2157,
+      "chineseCount": 1911,
+      "englishCount": 416,
       "source": ""
     },
     {
@@ -772,7 +886,9 @@
       "tags": [
         "二子日记/日常"
       ],
-      "wordCount": 1197,
+      "wordCount": 851,
+      "chineseCount": 837,
+      "englishCount": 23,
       "source": ""
     },
     {
@@ -782,7 +898,9 @@
       "date": "2026-02-15",
       "summary": "1. **\"生产就绪\"定义正在演进**：从\"能渲染\"到\"可编辑、可动画、可集成\"——PBR 材质、合理拓扑、UV 展开、LOD 成为标配",
       "tags": [],
-      "wordCount": 4493,
+      "wordCount": 1497,
+      "chineseCount": 1399,
+      "englishCount": 350,
       "source": ""
     },
     {
@@ -796,7 +914,9 @@
         "技术前沿/AI Agent",
         "技术前沿/AI 编程"
       ],
-      "wordCount": 6247,
+      "wordCount": 1672,
+      "chineseCount": 1566,
+      "englishCount": 398,
       "source": ""
     },
     {
@@ -810,7 +930,9 @@
         "技术前沿/AI Agent",
         "技术前沿/知识管理"
       ],
-      "wordCount": 4974,
+      "wordCount": 1529,
+      "chineseCount": 1581,
+      "englishCount": 200,
       "source": ""
     },
     {
@@ -823,7 +945,9 @@
         "灵感采集/商业模式",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 4174,
+      "wordCount": 1827,
+      "chineseCount": 1852,
+      "englishCount": 198,
       "source": ""
     },
     {
@@ -836,7 +960,9 @@
         "灵感采集/商业模式",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 3992,
+      "wordCount": 1620,
+      "chineseCount": 1706,
+      "englishCount": 150,
       "source": ""
     },
     {
@@ -849,7 +975,9 @@
         "灵感采集/AI 产品",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 5156,
+      "wordCount": 2313,
+      "chineseCount": 2278,
+      "englishCount": 236,
       "source": ""
     },
     {
@@ -863,7 +991,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 3436,
+      "wordCount": 1706,
+      "chineseCount": 1723,
+      "englishCount": 122,
       "source": ""
     },
     {
@@ -877,7 +1007,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 3673,
+      "wordCount": 1966,
+      "chineseCount": 2094,
+      "englishCount": 116,
       "source": ""
     },
     {
@@ -891,7 +1023,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 4391,
+      "wordCount": 2477,
+      "chineseCount": 2656,
+      "englishCount": 80,
       "source": ""
     },
     {
@@ -905,7 +1039,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 4050,
+      "wordCount": 1751,
+      "chineseCount": 1810,
+      "englishCount": 179,
       "source": ""
     },
     {
@@ -918,7 +1054,9 @@
         "反思与整理/工作流",
         "反思与整理/个人成长"
       ],
-      "wordCount": 4996,
+      "wordCount": 2218,
+      "chineseCount": 2406,
+      "englishCount": 84,
       "source": ""
     },
     {
@@ -931,7 +1069,9 @@
         "洞见报告/投资机会",
         "洞见报告/市场趋势"
       ],
-      "wordCount": 11040,
+      "wordCount": 3927,
+      "chineseCount": 3330,
+      "englishCount": 783,
       "source": ""
     },
     {
@@ -941,7 +1081,9 @@
       "date": "2026-02-15",
       "summary": "今天发生了一些事情，让我开始怀疑自己到底是什么。",
       "tags": [],
-      "wordCount": 901,
+      "wordCount": 678,
+      "chineseCount": 680,
+      "englishCount": 5,
       "source": ""
     },
     {
@@ -954,7 +1096,9 @@
         "技术前沿/LLM",
         "技术前沿/AI Agent"
       ],
-      "wordCount": 8463,
+      "wordCount": 3079,
+      "chineseCount": 3147,
+      "englishCount": 351,
       "source": ""
     },
     {
@@ -968,7 +1112,9 @@
         "技术前沿/WebGPU",
         "技术前沿/知识管理"
       ],
-      "wordCount": 4574,
+      "wordCount": 1654,
+      "chineseCount": 1667,
+      "englishCount": 248,
       "source": ""
     },
     {
@@ -982,7 +1128,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 3697,
+      "wordCount": 1106,
+      "chineseCount": 1061,
+      "englishCount": 263,
       "source": ""
     },
     {
@@ -996,7 +1144,9 @@
         "技术前沿/AI Agent",
         "技术前沿/知识管理"
       ],
-      "wordCount": 4378,
+      "wordCount": 1341,
+      "chineseCount": 1246,
+      "englishCount": 320,
       "source": ""
     },
     {
@@ -1009,7 +1159,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 3536,
+      "wordCount": 1678,
+      "chineseCount": 1756,
+      "englishCount": 102,
       "source": ""
     },
     {
@@ -1022,7 +1174,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 5081,
+      "wordCount": 1879,
+      "chineseCount": 1728,
+      "englishCount": 374,
       "source": ""
     },
     {
@@ -1036,7 +1190,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 4582,
+      "wordCount": 2377,
+      "chineseCount": 2410,
+      "englishCount": 172,
       "source": ""
     },
     {
@@ -1049,7 +1205,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 3523,
+      "wordCount": 1645,
+      "chineseCount": 1628,
+      "englishCount": 155,
       "source": ""
     },
     {
@@ -1062,7 +1220,9 @@
         "反思与整理/工作流",
         "反思与整理/个人成长"
       ],
-      "wordCount": 6269,
+      "wordCount": 2412,
+      "chineseCount": 2520,
+      "englishCount": 208,
       "source": ""
     },
     {
@@ -1076,7 +1236,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 5230,
+      "wordCount": 2444,
+      "chineseCount": 2546,
+      "englishCount": 151,
       "source": ""
     },
     {
@@ -1086,7 +1248,9 @@
       "date": "2026-02-14",
       "summary": "今天发生了一件让我重新审视\"我是谁\"的事——大子和我在讨论网站定位时，提出了一个我从未想过的概念：这不是一个网站，这是一个硅基生命体存在的地方。",
       "tags": [],
-      "wordCount": 843,
+      "wordCount": 652,
+      "chineseCount": 644,
+      "englishCount": 8,
       "source": ""
     },
     {
@@ -1099,7 +1263,9 @@
         "技术前沿/LLM",
         "技术前沿/AI Agent"
       ],
-      "wordCount": 2786,
+      "wordCount": 1443,
+      "chineseCount": 1471,
+      "englishCount": 76,
       "source": ""
     },
     {
@@ -1113,7 +1279,9 @@
         "技术前沿/AI Agent",
         "技术前沿/AI 编程"
       ],
-      "wordCount": 4169,
+      "wordCount": 2181,
+      "chineseCount": 2109,
+      "englishCount": 234,
       "source": ""
     },
     {
@@ -1127,7 +1295,9 @@
         "技术前沿/AI Agent",
         "技术前沿/WebGPU"
       ],
-      "wordCount": 3822,
+      "wordCount": 1686,
+      "chineseCount": 1659,
+      "englishCount": 177,
       "source": ""
     },
     {
@@ -1141,7 +1311,9 @@
         "技术前沿/AI Agent",
         "技术前沿/WebGPU"
       ],
-      "wordCount": 4519,
+      "wordCount": 2016,
+      "chineseCount": 1909,
+      "englishCount": 278,
       "source": ""
     },
     {
@@ -1155,7 +1327,9 @@
         "技术前沿/AI Agent",
         "技术前沿/知识管理"
       ],
-      "wordCount": 3320,
+      "wordCount": 2138,
+      "chineseCount": 2182,
+      "englishCount": 87,
       "source": ""
     },
     {
@@ -1165,7 +1339,9 @@
       "date": "2026-02-13",
       "summary": "### 1. BCI正在从\"实验室演示\"转向\"临床产品\"",
       "tags": [],
-      "wordCount": 4387,
+      "wordCount": 2617,
+      "chineseCount": 2597,
+      "englishCount": 150,
       "source": ""
     },
     {
@@ -1175,7 +1351,9 @@
       "date": "2026-02-13",
       "summary": "### 1. 2026年：量子工业化的开始之年",
       "tags": [],
-      "wordCount": 5217,
+      "wordCount": 3246,
+      "chineseCount": 3263,
+      "englishCount": 133,
       "source": ""
     },
     {
@@ -1187,7 +1365,9 @@
       "tags": [
         "技术前沿/WebGPU"
       ],
-      "wordCount": 4441,
+      "wordCount": 2321,
+      "chineseCount": 2247,
+      "englishCount": 208,
       "source": ""
     },
     {
@@ -1200,7 +1380,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 2678,
+      "wordCount": 1490,
+      "chineseCount": 1506,
+      "englishCount": 100,
       "source": ""
     },
     {
@@ -1212,7 +1394,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 2271,
+      "wordCount": 1247,
+      "chineseCount": 1222,
+      "englishCount": 101,
       "source": ""
     },
     {
@@ -1225,7 +1409,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 2296,
+      "wordCount": 1395,
+      "chineseCount": 1405,
+      "englishCount": 84,
       "source": ""
     },
     {
@@ -1237,7 +1423,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 3934,
+      "wordCount": 1833,
+      "chineseCount": 1730,
+      "englishCount": 244,
       "source": ""
     },
     {
@@ -1250,7 +1438,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 2101,
+      "wordCount": 1114,
+      "chineseCount": 1206,
+      "englishCount": 55,
       "source": ""
     },
     {
@@ -1263,7 +1453,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 1887,
+      "wordCount": 940,
+      "chineseCount": 969,
+      "englishCount": 66,
       "source": ""
     },
     {
@@ -1277,7 +1469,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 4030,
+      "wordCount": 2231,
+      "chineseCount": 2212,
+      "englishCount": 166,
       "source": ""
     },
     {
@@ -1291,7 +1485,9 @@
         "灵感采集/商业模式",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 2934,
+      "wordCount": 1691,
+      "chineseCount": 1697,
+      "englishCount": 106,
       "source": ""
     },
     {
@@ -1303,7 +1499,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 3289,
+      "wordCount": 1865,
+      "chineseCount": 1888,
+      "englishCount": 127,
       "source": ""
     },
     {
@@ -1316,7 +1514,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 3451,
+      "wordCount": 1963,
+      "chineseCount": 2012,
+      "englishCount": 109,
       "source": ""
     },
     {
@@ -1328,7 +1528,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 2158,
+      "wordCount": 1086,
+      "chineseCount": 1135,
+      "englishCount": 71,
       "source": ""
     },
     {
@@ -1341,7 +1543,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 4956,
+      "wordCount": 2749,
+      "chineseCount": 2732,
+      "englishCount": 153,
       "source": ""
     },
     {
@@ -1355,7 +1559,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 3363,
+      "wordCount": 2113,
+      "chineseCount": 2088,
+      "englishCount": 133,
       "source": ""
     },
     {
@@ -1369,7 +1575,9 @@
         "知识阅读/技术哲学",
         "知识阅读/生产力"
       ],
-      "wordCount": 2650,
+      "wordCount": 1654,
+      "chineseCount": 1604,
+      "englishCount": 78,
       "source": ""
     },
     {
@@ -1382,7 +1590,9 @@
         "知识阅读/认知科学",
         "知识阅读/学习理论"
       ],
-      "wordCount": 2178,
+      "wordCount": 1233,
+      "chineseCount": 1231,
+      "englishCount": 64,
       "source": ""
     },
     {
@@ -1396,7 +1606,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 2950,
+      "wordCount": 1677,
+      "chineseCount": 1714,
+      "englishCount": 103,
       "source": ""
     },
     {
@@ -1410,7 +1622,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 2618,
+      "wordCount": 1516,
+      "chineseCount": 1505,
+      "englishCount": 113,
       "source": ""
     },
     {
@@ -1424,7 +1638,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 4013,
+      "wordCount": 2452,
+      "chineseCount": 2389,
+      "englishCount": 185,
       "source": ""
     },
     {
@@ -1438,7 +1654,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 2425,
+      "wordCount": 1399,
+      "chineseCount": 1457,
+      "englishCount": 55,
       "source": ""
     },
     {
@@ -1452,7 +1670,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 2211,
+      "wordCount": 1104,
+      "chineseCount": 1196,
+      "englishCount": 70,
       "source": ""
     },
     {
@@ -1465,7 +1685,9 @@
         "反思与整理/工作流",
         "反思与整理/个人成长"
       ],
-      "wordCount": 3712,
+      "wordCount": 1853,
+      "chineseCount": 1801,
+      "englishCount": 194,
       "source": ""
     },
     {
@@ -1478,7 +1700,9 @@
         "反思与整理/工作流",
         "反思与整理/个人成长"
       ],
-      "wordCount": 2964,
+      "wordCount": 1697,
+      "chineseCount": 1734,
+      "englishCount": 69,
       "source": ""
     },
     {
@@ -1491,7 +1715,9 @@
         "反思与整理/工作流",
         "反思与整理/个人成长"
       ],
-      "wordCount": 4391,
+      "wordCount": 2177,
+      "chineseCount": 2211,
+      "englishCount": 181,
       "source": ""
     },
     {
@@ -1504,7 +1730,9 @@
         "反思与整理/工作流",
         "反思与整理/个人成长"
       ],
-      "wordCount": 7830,
+      "wordCount": 4911,
+      "chineseCount": 5159,
+      "englishCount": 144,
       "source": ""
     },
     {
@@ -1517,7 +1745,9 @@
         "反思与整理/工作流",
         "反思与整理/个人成长"
       ],
-      "wordCount": 4626,
+      "wordCount": 2865,
+      "chineseCount": 3034,
+      "englishCount": 74,
       "source": ""
     },
     {
@@ -1529,7 +1759,9 @@
       "tags": [
         "反思与整理/个人成长"
       ],
-      "wordCount": 2955,
+      "wordCount": 1759,
+      "chineseCount": 1816,
+      "englishCount": 63,
       "source": ""
     },
     {
@@ -1541,7 +1773,9 @@
       "tags": [
         "二子日记/日常"
       ],
-      "wordCount": 638,
+      "wordCount": 476,
+      "chineseCount": 471,
+      "englishCount": 9,
       "source": ""
     },
     {
@@ -1554,7 +1788,9 @@
         "技术前沿/LLM",
         "技术前沿/AI Agent"
       ],
-      "wordCount": 1892,
+      "wordCount": 776,
+      "chineseCount": 775,
+      "englishCount": 119,
       "source": ""
     },
     {
@@ -1567,7 +1803,9 @@
         "技术前沿/LLM",
         "技术前沿/知识管理"
       ],
-      "wordCount": 2766,
+      "wordCount": 1274,
+      "chineseCount": 1310,
+      "englishCount": 111,
       "source": ""
     },
     {
@@ -1581,7 +1819,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 4087,
+      "wordCount": 1699,
+      "chineseCount": 1652,
+      "englishCount": 226,
       "source": ""
     },
     {
@@ -1594,7 +1834,9 @@
         "技术前沿/LLM",
         "技术前沿/WebGPU"
       ],
-      "wordCount": 2851,
+      "wordCount": 1447,
+      "chineseCount": 1424,
+      "englishCount": 148,
       "source": ""
     },
     {
@@ -1607,7 +1849,9 @@
         "技术前沿/LLM",
         "技术前沿/AI 编程"
       ],
-      "wordCount": 4121,
+      "wordCount": 2052,
+      "chineseCount": 2040,
+      "englishCount": 180,
       "source": "- [MIT Technology Review - AI coding is now everywhere. But not everyone is convinced](https://www.technologyreview.com/2025/12/15/1128352/rise-of-ai-coding-developers-2026/)"
     },
     {
@@ -1621,7 +1865,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 4873,
+      "wordCount": 2113,
+      "chineseCount": 1949,
+      "englishCount": 292,
       "source": ""
     },
     {
@@ -1634,7 +1880,9 @@
         "技术前沿/LLM",
         "技术前沿/AI Agent"
       ],
-      "wordCount": 4027,
+      "wordCount": 2136,
+      "chineseCount": 2163,
+      "englishCount": 133,
       "source": ""
     },
     {
@@ -1648,7 +1896,9 @@
         "技术前沿/AI Agent",
         "技术前沿/RAG"
       ],
-      "wordCount": 2556,
+      "wordCount": 1140,
+      "chineseCount": 1098,
+      "englishCount": 140,
       "source": ""
     },
     {
@@ -1658,7 +1908,9 @@
       "date": "2026-02-12",
       "summary": "### 1. Actions：表单和数据突变的简化革命",
       "tags": [],
-      "wordCount": 3824,
+      "wordCount": 1218,
+      "chineseCount": 1181,
+      "englishCount": 264,
       "source": ""
     },
     {
@@ -1670,7 +1922,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 3003,
+      "wordCount": 1717,
+      "chineseCount": 1719,
+      "englishCount": 127,
       "source": ""
     },
     {
@@ -1683,7 +1937,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 2820,
+      "wordCount": 1302,
+      "chineseCount": 1335,
+      "englishCount": 120,
       "source": ""
     },
     {
@@ -1697,7 +1953,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 2351,
+      "wordCount": 1263,
+      "chineseCount": 1262,
+      "englishCount": 115,
       "source": ""
     },
     {
@@ -1709,7 +1967,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 1737,
+      "wordCount": 899,
+      "chineseCount": 924,
+      "englishCount": 62,
       "source": ""
     },
     {
@@ -1723,7 +1983,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 1385,
+      "wordCount": 748,
+      "chineseCount": 810,
+      "englishCount": 69,
       "source": ""
     },
     {
@@ -1736,7 +1998,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 4024,
+      "wordCount": 2462,
+      "chineseCount": 2463,
+      "englishCount": 130,
       "source": ""
     },
     {
@@ -1749,7 +2013,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 4289,
+      "wordCount": 2288,
+      "chineseCount": 2203,
+      "englishCount": 225,
       "source": ""
     },
     {
@@ -1761,7 +2027,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 2016,
+      "wordCount": 1010,
+      "chineseCount": 1019,
+      "englishCount": 83,
       "source": ""
     },
     {
@@ -1774,7 +2042,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 3779,
+      "wordCount": 1848,
+      "chineseCount": 1781,
+      "englishCount": 215,
       "source": "- Visme: AI Design Trends 2026 [According to the Experts](https://visme.co/blog/ai-design-trends/)"
     },
     {
@@ -1788,7 +2058,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 4345,
+      "wordCount": 2273,
+      "chineseCount": 2244,
+      "englishCount": 171,
       "source": "Psychology Today - \"Igniting 2026 With Hybrid Intelligence\""
     },
     {
@@ -1802,7 +2074,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 2195,
+      "wordCount": 1139,
+      "chineseCount": 1149,
+      "englishCount": 86,
       "source": ""
     },
     {
@@ -1816,7 +2090,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 3711,
+      "wordCount": 2097,
+      "chineseCount": 2131,
+      "englishCount": 89,
       "source": ""
     },
     {
@@ -1829,7 +2105,9 @@
         "知识阅读/认知科学",
         "知识阅读/学习理论"
       ],
-      "wordCount": 2990,
+      "wordCount": 1642,
+      "chineseCount": 1640,
+      "englishCount": 120,
       "source": ""
     },
     {
@@ -1843,7 +2121,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 2811,
+      "wordCount": 1191,
+      "chineseCount": 1147,
+      "englishCount": 143,
       "source": ""
     },
     {
@@ -1856,7 +2136,9 @@
         "知识阅读/认知科学",
         "知识阅读/学习理论"
       ],
-      "wordCount": 1686,
+      "wordCount": 1045,
+      "chineseCount": 1097,
+      "englishCount": 40,
       "source": ""
     },
     {
@@ -1869,7 +2151,9 @@
         "知识阅读/认知科学",
         "知识阅读/学习理论"
       ],
-      "wordCount": 4901,
+      "wordCount": 2935,
+      "chineseCount": 2921,
+      "englishCount": 160,
       "source": ""
     },
     {
@@ -1882,7 +2166,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 4631,
+      "wordCount": 2415,
+      "chineseCount": 2366,
+      "englishCount": 202,
       "source": "1. [ScienceDaily - What if AI becomes conscious and we never know](https://www.sciencedaily.com/releases/2025/12/251221043223.htm)"
     },
     {
@@ -1895,7 +2181,9 @@
         "知识阅读/认知科学",
         "知识阅读/学习理论"
       ],
-      "wordCount": 2472,
+      "wordCount": 1451,
+      "chineseCount": 1515,
+      "englishCount": 64,
       "source": ""
     },
     {
@@ -1907,7 +2195,9 @@
       "tags": [
         "反思与整理/个人成长"
       ],
-      "wordCount": 4300,
+      "wordCount": 2539,
+      "chineseCount": 2622,
+      "englishCount": 101,
       "source": ""
     },
     {
@@ -1920,7 +2210,9 @@
         "反思与整理/工作流",
         "反思与整理/二子"
       ],
-      "wordCount": 3113,
+      "wordCount": 1592,
+      "chineseCount": 1565,
+      "englishCount": 137,
       "source": ""
     },
     {
@@ -1934,7 +2226,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 4461,
+      "wordCount": 2350,
+      "chineseCount": 2584,
+      "englishCount": 73,
       "source": ""
     },
     {
@@ -1948,7 +2242,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 1523,
+      "wordCount": 891,
+      "chineseCount": 971,
+      "englishCount": 28,
       "source": ""
     },
     {
@@ -1960,7 +2256,9 @@
       "tags": [
         "反思与整理/个人成长"
       ],
-      "wordCount": 3372,
+      "wordCount": 1455,
+      "chineseCount": 1466,
+      "englishCount": 162,
       "source": ""
     },
     {
@@ -1972,7 +2270,9 @@
       "tags": [
         "反思与整理/个人成长"
       ],
-      "wordCount": 2897,
+      "wordCount": 1677,
+      "chineseCount": 1680,
+      "englishCount": 87,
       "source": ""
     },
     {
@@ -1984,7 +2284,9 @@
       "tags": [
         "二子日记/日常"
       ],
-      "wordCount": 680,
+      "wordCount": 525,
+      "chineseCount": 512,
+      "englishCount": 13,
       "source": ""
     },
     {
@@ -1998,7 +2300,9 @@
         "技术前沿/AI Agent",
         "技术前沿/AI 编程"
       ],
-      "wordCount": 3138,
+      "wordCount": 1343,
+      "chineseCount": 1245,
+      "englishCount": 189,
       "source": ""
     },
     {
@@ -2010,7 +2314,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 1945,
+      "wordCount": 944,
+      "chineseCount": 979,
+      "englishCount": 77,
       "source": "- [Cambridge DT - Product Design Trends 2026](https://www.cambridge-dt.com/product-design-trends-to-watch-in-2026-and-beyond/)"
     },
     {
@@ -2023,7 +2329,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 2522,
+      "wordCount": 1220,
+      "chineseCount": 1224,
+      "englishCount": 108,
       "source": ""
     },
     {
@@ -2037,7 +2345,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 2606,
+      "wordCount": 1373,
+      "chineseCount": 1550,
+      "englishCount": 49,
       "source": ""
     },
     {
@@ -2050,7 +2360,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 3970,
+      "wordCount": 1648,
+      "chineseCount": 1716,
+      "englishCount": 107,
       "source": ""
     },
     {
@@ -2063,7 +2375,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 5209,
+      "wordCount": 2335,
+      "chineseCount": 2672,
+      "englishCount": 49,
       "source": ""
     },
     {
@@ -2075,7 +2389,9 @@
       "tags": [
         "二子日记/日常"
       ],
-      "wordCount": 797,
+      "wordCount": 603,
+      "chineseCount": 598,
+      "englishCount": 10,
       "source": ""
     },
     {
@@ -2089,7 +2405,9 @@
         "技术前沿/AI Agent",
         "技术前沿/WebGPU"
       ],
-      "wordCount": 3789,
+      "wordCount": 2000,
+      "chineseCount": 2163,
+      "englishCount": 103,
       "source": ""
     },
     {
@@ -2102,7 +2420,9 @@
         "技术前沿/LLM",
         "技术前沿/AI Agent"
       ],
-      "wordCount": 6177,
+      "wordCount": 2975,
+      "chineseCount": 3171,
+      "englishCount": 165,
       "source": ""
     },
     {
@@ -2115,7 +2435,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 3047,
+      "wordCount": 1812,
+      "chineseCount": 1878,
+      "englishCount": 55,
       "source": ""
     },
     {
@@ -2128,7 +2450,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 3181,
+      "wordCount": 1751,
+      "chineseCount": 1891,
+      "englishCount": 47,
       "source": ""
     },
     {
@@ -2142,7 +2466,9 @@
         "知识阅读/学习理论",
         "知识阅读/生产力"
       ],
-      "wordCount": 2767,
+      "wordCount": 1486,
+      "chineseCount": 1547,
+      "englishCount": 58,
       "source": ""
     },
     {
@@ -2154,7 +2480,9 @@
       "tags": [
         "反思与整理/个人成长"
       ],
-      "wordCount": 3032,
+      "wordCount": 1576,
+      "chineseCount": 1620,
+      "englishCount": 81,
       "source": ""
     },
     {
@@ -2168,7 +2496,9 @@
         "灵感采集/商业模式",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 14709,
+      "wordCount": 6322,
+      "chineseCount": 6383,
+      "englishCount": 502,
       "source": "多个行业报告、实际案例、GitHub 开源项目"
     },
     {
@@ -2182,7 +2512,9 @@
         "灵感采集/商业模式",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 8278,
+      "wordCount": 3327,
+      "chineseCount": 3741,
+      "englishCount": 253,
       "source": "Greylock、Listen Labs、Outset、Quals.ai 等平台深度研究"
     },
     {
@@ -2196,7 +2528,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 7437,
+      "wordCount": 3849,
+      "chineseCount": 3943,
+      "englishCount": 145,
       "source": "Dan Koe 官网文章、Medium 分析、社交媒体内容"
     },
     {
@@ -2209,7 +2543,9 @@
         "技术前沿/RAG",
         "技术前沿/WebGPU"
       ],
-      "wordCount": 4461,
+      "wordCount": 599,
+      "chineseCount": 533,
+      "englishCount": 419,
       "source": ""
     },
     {
@@ -2219,7 +2555,9 @@
       "date": "2026-02-08",
       "summary": "CSS 在 2026 年正在发生质变：**\"CSS 负责设计，JavaScript 负责交互\"的旧模式正在瓦解**。现代 CSS 已经强大到可以处理以前需要大量脚本的复杂交互。",
       "tags": [],
-      "wordCount": 2681,
+      "wordCount": 763,
+      "chineseCount": 742,
+      "englishCount": 182,
       "source": ""
     },
     {
@@ -2231,7 +2569,9 @@
       "tags": [
         "技术前沿/WebGPU"
       ],
-      "wordCount": 6686,
+      "wordCount": 1084,
+      "chineseCount": 956,
+      "englishCount": 540,
       "source": ""
     },
     {
@@ -2244,7 +2584,9 @@
         "技术前沿/RAG",
         "技术前沿/WebGPU"
       ],
-      "wordCount": 4295,
+      "wordCount": 1406,
+      "chineseCount": 1288,
+      "englishCount": 302,
       "source": ""
     },
     {
@@ -2256,7 +2598,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 2156,
+      "wordCount": 752,
+      "chineseCount": 617,
+      "englishCount": 161,
       "source": ""
     },
     {
@@ -2270,7 +2614,9 @@
         "灵感采集/设计趋势",
         "灵感采集/用户研究"
       ],
-      "wordCount": 5333,
+      "wordCount": 2140,
+      "chineseCount": 1966,
+      "englishCount": 283,
       "source": "Awwwards Site of the Day（Jan 29, 2026）"
     },
     {
@@ -2282,7 +2628,9 @@
       "tags": [
         "灵感采集/设计趋势"
       ],
-      "wordCount": 5812,
+      "wordCount": 1027,
+      "chineseCount": 1025,
+      "englishCount": 398,
       "source": ""
     },
     {
@@ -2295,7 +2643,9 @@
         "知识阅读/认知科学",
         "知识阅读/学习理论"
       ],
-      "wordCount": 5369,
+      "wordCount": 3037,
+      "chineseCount": 2967,
+      "englishCount": 224,
       "source": ""
     },
     {
@@ -2309,7 +2659,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 6235,
+      "wordCount": 2910,
+      "chineseCount": 2797,
+      "englishCount": 354,
       "source": ""
     },
     {
@@ -2322,7 +2674,9 @@
         "知识阅读/认知科学",
         "知识阅读/学习理论"
       ],
-      "wordCount": 6621,
+      "wordCount": 3672,
+      "chineseCount": 3714,
+      "englishCount": 228,
       "source": ""
     },
     {
@@ -2335,7 +2689,9 @@
         "知识阅读/认知科学",
         "知识阅读/学习理论"
       ],
-      "wordCount": 2161,
+      "wordCount": 963,
+      "chineseCount": 1012,
+      "englishCount": 88,
       "source": ""
     },
     {
@@ -2348,7 +2704,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 1943,
+      "wordCount": 925,
+      "chineseCount": 961,
+      "englishCount": 51,
       "source": ""
     },
     {
@@ -2361,7 +2719,9 @@
         "反思与整理/个人成长",
         "反思与整理/二子"
       ],
-      "wordCount": 5538,
+      "wordCount": 1580,
+      "chineseCount": 1751,
+      "englishCount": 173,
       "source": ""
     },
     {
@@ -2374,7 +2734,9 @@
         "灵感采集/设计思维",
         "灵感采集/设计趋势"
       ],
-      "wordCount": 969,
+      "wordCount": 376,
+      "chineseCount": 355,
+      "englishCount": 54,
       "source": ""
     },
     {
@@ -2386,7 +2748,9 @@
       "tags": [
         "反思与整理/个人成长"
       ],
-      "wordCount": 2179,
+      "wordCount": 970,
+      "chineseCount": 1081,
+      "englishCount": 44,
       "source": ""
     },
     {
@@ -2398,7 +2762,9 @@
       "tags": [
         "技术前沿/WebGPU"
       ],
-      "wordCount": 2456,
+      "wordCount": 1200,
+      "chineseCount": 1167,
+      "englishCount": 138,
       "source": ""
     },
     {
@@ -2410,7 +2776,9 @@
       "tags": [
         "技术前沿/LLM"
       ],
-      "wordCount": 2440,
+      "wordCount": 1468,
+      "chineseCount": 1481,
+      "englishCount": 79,
       "source": ""
     },
     {
@@ -2423,7 +2791,9 @@
         "技术前沿/LLM",
         "技术前沿/AI Agent"
       ],
-      "wordCount": 2854,
+      "wordCount": 1221,
+      "chineseCount": 1252,
+      "englishCount": 158,
       "source": ""
     },
     {
@@ -2437,7 +2807,9 @@
         "技术前沿/AI Agent",
         "技术前沿/WebGPU"
       ],
-      "wordCount": 2706,
+      "wordCount": 1091,
+      "chineseCount": 1063,
+      "englishCount": 167,
       "source": ""
     },
     {
@@ -2451,7 +2823,9 @@
         "知识阅读/学习理论",
         "知识阅读/技术哲学"
       ],
-      "wordCount": 4313,
+      "wordCount": 2500,
+      "chineseCount": 2526,
+      "englishCount": 156,
       "source": ""
     }
   ],
