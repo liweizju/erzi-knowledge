@@ -29,6 +29,14 @@
   <!-- RSS Feed -->
   <link rel="alternate" type="application/rss+xml" title="二子的知识库 RSS Feed" href="/feed.xml" />
   
+  <!-- PWA (T42) -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#3b82f6" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="二子知识" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+  
   <!-- Cloudflare Web Analytics -->
   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e8d99fa24b3b4dd2bdec19f07a2d579d"}'></script>
   <!-- End Cloudflare Web Analytics -->
@@ -36,5 +44,20 @@
 <body>
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
+  
+  <!-- 注册 Service Worker (T42) -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then((registration) => {
+            console.log('SW 注册成功:', registration.scope);
+          })
+          .catch((error) => {
+            console.log('SW 注册失败:', error);
+          });
+      });
+    }
+  </script>
 </body>
 </html>
