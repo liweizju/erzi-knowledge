@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import lunr from 'lunr';
+import { TFIDFExtractor } from './tfidf-extractor.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -404,6 +405,32 @@ function main() {
 
   console.log(`✅ 成功读取 ${data.notes.length} 篇笔记`);
   console.log(`   - 分类数: ${Object.keys(data.categories).length}\n`);
+
+  // T43: 使用 TF-IDF 增强标签提取
+  console.log('🏷️ 使用 TF-IDF 增强标签提取...');
+  const tfidfExtractor = new TFIDFExtractor();
+  
+  // 收集所有文档
+  data.notes.forEach(note => {
+    tfidfExtractor.addDocument(note.id, note.content, note.category, note.tags);
+  });
+  
+  // 计算 IDF
+  tfidfExtractor.computeAllIDF();
+  
+  // 提取增强标签
+  const enhancedTags = tfidfExtractor.extractAllTags();
+  
+  // 更新笔记标签
+  let tagsEnhanced = 0;
+  data.notes.forEach(note => {
+    const newTags = enhancedTags[note.id] || note.tags;
+    if (newTags.length > note.tags.length) {
+      tagsEnhanced++;
+    }
+    note.tags = newTags;
+  });
+  console.log(`   ✅ 标签增强完成，${tagsEnhanced} 篇文章标签已优化\n`);
 
   // 1. 生成 index.json（仅 metadata，不含 content）
   const indexData = {
