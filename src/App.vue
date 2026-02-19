@@ -227,7 +227,10 @@
           v-for="note in paginatedNotes"
           :key="note.id"
           class="note-item"
-          :class="{ 'note-item--insights': note.category === 'insights' }"
+          :class="{ 
+            'note-item--insights': note.category === 'insights',
+            'note-item--expanded': expandedNoteId === note.id 
+          }"
           @click="openNote(note)"
         >
           <div class="note-meta">
@@ -240,6 +243,18 @@
           </div>
           <div class="note-title">{{ note.title }}</div>
           <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
+          
+          <!-- T44: 移动端展开预览 -->
+          <div class="note-mobile-preview" v-if="expandedNoteId === note.id">
+            <div class="mobile-preview-content" v-if="note.summary">{{ note.summary }}</div>
+            <div class="mobile-preview-meta">
+              <span>字数：{{ note.wordCount || 0 }}</span>
+              <span>·</span>
+              <span>{{ getReadingTime(note) }} 分钟阅读</span>
+            </div>
+            <div class="mobile-preview-hint">再次点击进入详情页</div>
+          </div>
+          
           <div class="note-tags" v-if="note.tags && note.tags.length > 0">
             <span
               v-for="tag in note.tags.slice(0, 3)"
@@ -449,6 +464,7 @@ const isDarkMode = ref(false);
 const showTimeline = ref(false);
 const readHistory = ref({}); // { noteId: timestamp }
 const favorites = ref(new Set()); // Set<noteId>
+const expandedNoteId = ref(null); // T44: 移动端展开的笔记ID
 
 // 排序后的分类（用于显示）
 const displayCategories = computed(() => {
@@ -538,6 +554,7 @@ function setCategory(category) {
   activeCategory.value = category;
   activeTag.value = null;
   currentPage.value = 1;
+  expandedNoteId.value = null; // T44: 切换分类时关闭展开
   window.location.hash = category ? `#/category/${encodeURIComponent(category)}` : '#/';
   
   // 移动端：滚动选中 Tab 到可见区域
@@ -553,11 +570,13 @@ function setTag(tag) {
   activeTag.value = tag;
   activeCategory.value = null;
   currentPage.value = 1;
+  expandedNoteId.value = null; // T44: 切换标签时关闭展开
 }
 
 // 搜索时重置页码
 watch(searchQuery, () => {
   currentPage.value = 1;
+  expandedNoteId.value = null; // T44: 搜索时关闭展开
 });
 
 function getReadingTime(note) {
@@ -778,10 +797,18 @@ async function loadNoteContent(note) {
   }
 }
 
-async function openNote(note) {
+function openNote(note) {
+  // T44: 移动端先展开预览，再次点击才进入详情页
+  if (window.innerWidth <= 1200 && expandedNoteId.value !== note.id) {
+    expandedNoteId.value = note.id;
+    return;
+  }
+  
+  // 已展开或桌面端，直接进入详情页
+  expandedNoteId.value = null;
   window.location.hash = `#/note/${encodeURIComponent(note.id)}`;
   nextTick(() => window.scrollTo(0, 0));
-  await loadNoteContent(note);
+  loadNoteContent(note); // 异步加载，不等待
 }
 
 function closeNote() {
