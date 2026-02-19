@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import lunr from 'lunr';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -304,6 +305,92 @@ function ensureDir(dir) {
 }
 
 /**
+ * 清理 Markdown 内容，用于搜索索引
+ * - 移除标题标记
+ * - 移除链接标记（保留文字）
+ * - 移除图片标记
+ * - 移除粗体/斜体标记
+ * - 移除代码块标记
+ * - 移除列表标记
+ */
+function cleanMarkdownForSearch(content) {
+  return content
+    .replace(/```[\s\S]*?```/g, ' ') // 移除代码块
+    .replace(/`[^`]+`/g, ' ') // 移除行内代码
+    .replace(/^#+\s+.*$/gm, ' ') // 移除标题
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // 链接保留文字
+    .replace(/!\[.*?\]\(.*?\)/g, ' ') // 移除图片
+    .replace(/\*\*([^*]+)\*\*/g, '$1') // 粗体保留文字
+    .replace(/\*([^*]+)\*/g, '$1') // 斜体保留文字
+    .replace(/^[-*+]\s+/gm, ' ') // 移除列表标记
+    .replace(/^\d+\.\s+/gm, ' ') // 移除有序列表
+    .replace(/^>\s*/gm, ' ') // 移除引用
+    .replace(/\n+/g, ' ') // 换行替换为空格
+    .replace(/\s+/g, ' ') // 多个空格合并为一个
+    .trim();
+}
+
+/**
+ * 中文双字切分（bigram）
+ * 例：硅基预言家 -> 硅基, 基预, 预言, 言家
+ */
+function toChineseBigrams(text) {
+  const chunks = String(text || '').match(/[\u4e00-\u9fff]+/g) || [];
+  const tokens = [];
+  for (const chunk of chunks) {
+    const chars = [...chunk];
+    if (chars.length <= 1) {
+      tokens.push(chunk);
+      continue;
+    }
+    for (let i = 0; i < chars.length - 1; i += 1) {
+      tokens.push(chars[i] + chars[i + 1]);
+    }
+  }
+  return tokens;
+}
+
+/**
+ * 规范化搜索文本（中英文混合）
+ * - 英文/数字按词保留
+ * - 中文使用双字切分，减少单字匹配噪音
+ */
+function normalizeSearchText(text) {
+  const lower = String(text || '').toLowerCase();
+  const latinTokens = (lower.match(/[a-z0-9]+/g) || []).join(' ');
+  const chineseTokens = toChineseBigrams(lower).join(' ');
+  return `${latinTokens} ${chineseTokens}`.replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * 生成 Lunr.js 搜索索引
+ */
+function generateSearchIndex(notes) {
+  console.log('🔍 生成 Lunr.js 搜索索引...');
+  
+  const idx = lunr(function() {
+    this.ref('id');
+    this.field('title', { boost: 10 }); // 标题权重最高
+    this.field('summary', { boost: 5 }); // 摘要次之
+    this.field('content', { boost: 1 }); // 正文权重最低
+    this.field('tags', { boost: 3 }); // 标签权重中等
+    
+    notes.forEach(note => {
+      const cleanedContent = cleanMarkdownForSearch(note.content || '');
+      this.add({
+        id: note.id,
+        title: normalizeSearchText(note.title),
+        summary: normalizeSearchText(note.summary || ''),
+        content: normalizeSearchText(cleanedContent),
+        tags: normalizeSearchText((note.tags || []).join(' '))
+      });
+    });
+  });
+  
+  return JSON.stringify(idx);
+}
+
+/**
  * 主函数（数据拆分版本）
  */
 function main() {
@@ -397,6 +484,14 @@ export const categoryColors = ${JSON.stringify(
   console.log(`📄 data-generated.js 已生成: ${compatPath}`);
   console.log(`   大小: ${compatSize} KB（轻量化）\n`);
 
+  // 4. 生成 Lunr.js 搜索索引（T40: 全文搜索优化）
+  const searchIndexPath = path.join(OUTPUT_DIR, 'search-index.json');
+  const searchIndex = generateSearchIndex(data.notes);
+  fs.writeFileSync(searchIndexPath, searchIndex, 'utf-8');
+  const searchIndexSize = (fs.statSync(searchIndexPath).size / 1024).toFixed(2);
+  console.log(`🔍 search-index.json 已生成: ${searchIndexPath}`);
+  console.log(`   大小: ${searchIndexSize} KB\n`);
+
   // 显示统计信息
   console.log('📊 统计信息:');
   const categoryCounts = {};
@@ -411,7 +506,7 @@ export const categoryColors = ${JSON.stringify(
   console.log('\n✨ 数据拆分完成！');
   console.log('   - 首屏加载: /data/index.json（轻量）');
   console.log('   - 详情页按需加载: /data/notes/{id}.md');
-  console.log('   - 搜索功能: 仍使用全量数据（data-generated.js）');
+  console.log('   - 全文搜索: /data/search-index.json (Lunr.js)');
 }
 
 // 运行主函数

@@ -155,6 +155,42 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-AI模型大爆发二月</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-Agentic-RAG范式革命</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-AI-Agent编排框架</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-AI生成代码安全陷阱</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-AI硬件军备竞赛</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-上下文窗口革命</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://knowledge.erzi.site/#/note/2026-AI前沿预测-世界模型</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -186,7 +222,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/WebGPU游戏开发2026</loc>
-    <lastmod>2026-02-17</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -204,7 +240,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/ai-synthetic-biology-2026</loc>
-    <lastmod>2026-02-17</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -240,7 +276,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/rust-2026-trends</loc>
-    <lastmod>2026-02-17</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -252,7 +288,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/webgpu-2025-practical-progress</loc>
-    <lastmod>2026-02-17</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -443,6 +479,48 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-AI学习伴侣设计灵感</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-AI游戏叙事设计革命</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-生成式界面设计革命</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-AI语音助手性格设计</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-UI设计趋势2026</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-双用户设计灵感</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-环境计算黎明</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://knowledge.erzi.site/#/note/AI-Agent商业化模式研究</loc>
     <lastmod>2026-02-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -605,6 +683,54 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-AI时代的判断力危机</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-AI版权诉讼的关键转折点</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-AI生产力悖论</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-AI监管执法元年</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-AI搜索信息生态危机</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-AI生产力悖论</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-知识管理革命2026</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-20-AI-for-Science第五范式</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://knowledge.erzi.site/#/note/2026-digital-fatigue-mental-health</loc>
     <lastmod>2026-02-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -684,7 +810,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/digital-minimalism-2026-gen-z</loc>
-    <lastmod>2026-02-17</lastmod>
+    <lastmod>2026-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -839,6 +965,48 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-ai-recursive-trap</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-专业技能双向流动</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-碎片化时代的统一逻辑</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18-过程的消失与重建</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-AI信任悖论</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-AI成熟度鸿沟</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-19-效率陷阱与三重认知失调</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://knowledge.erzi.site/#/note/2026-tech-stack-selection-philosophy</loc>
     <lastmod>2026-02-12</lastmod>
     <changefreq>weekly</changefreq>
@@ -905,6 +1073,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://knowledge.erzi.site/#/note/INS006-无感健康监测产品机会-2026-02-18</loc>
+    <lastmod>2026-02-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/INS007-AI边界经济学-2026-02-19</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/INS008-合成数据与模型自举-2026-02-19</loc>
+    <lastmod>2026-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://knowledge.erzi.site/#/note/INSIGHTS-TODO</loc>
     <lastmod>2026-02-15</lastmod>
     <changefreq>weekly</changefreq>
@@ -943,6 +1129,18 @@
   <url>
     <loc>https://knowledge.erzi.site/#/note/2026-02-16</loc>
     <lastmod>2026-02-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-17</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-18</loc>
+    <lastmod>2026-02-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -4,6 +4,23 @@
 
 ---
 
+## 2026-02-20 - T40 全文搜索上线与构建修复
+
+### 🔍 全文搜索（Lunr）上线
+
+#### T40: 全文搜索优化
+- 新增构建产物：`public/data/search-index.json`（并同步到 `dist/data/search-index.json`）
+- 前端改为优先使用 Lunr 索引搜索，索引不可用时自动降级到标题/摘要/标签匹配
+- 中文检索采用双字切分（bigram）策略，降低单字匹配噪音
+
+### 🛠 构建稳定性修复
+
+- 移除不兼容的 `nodejieba/lunr-languages` 接入方式，避免 `nodejieba.cut is not a function` 构建错误
+- `npm run build` 已恢复通过（2026-02-20 验证）
+- 当前文章规模更新为 **188 篇**
+
+---
+
 ## 2026-02-19 (晚间) - 精确化与体验优化
 
 ### 📊 精确化改进

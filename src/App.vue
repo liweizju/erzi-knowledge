@@ -439,6 +439,7 @@ import { ref, computed, nextTick, onMounted, onUnmounted, watch } from 'vue';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
 import { knowledgeData } from './data-generated.js';
+import lunr from 'lunr';
 
 marked.setOptions({ breaks: false, gfm: true });
 
@@ -451,6 +452,8 @@ const isLoadingContent = ref(false); // 加载状态
 const showAbout = ref(false);
 const searchQuery = ref('');
 const activeTag = ref(null);
+const searchIndex = ref(null); // T40: Lunr.js 搜索索引
+const isLoadingSearchIndex = ref(false); // 搜索索引加载状态
 const currentPage = ref(1);
 const pageSize = 20;
 const activeTocId = ref(null);
@@ -490,7 +493,30 @@ const uniqueDates = computed(() => {
   return dates.size;
 });
 
-// 过滤笔记
+function toChineseBigrams(text) {
+  const chunks = String(text || '').match(/[\u4e00-\u9fff]+/g) || [];
+  const tokens = [];
+  for (const chunk of chunks) {
+    const chars = [...chunk];
+    if (chars.length <= 1) {
+      tokens.push(chunk);
+      continue;
+    }
+    for (let i = 0; i < chars.length - 1; i += 1) {
+      tokens.push(chars[i] + chars[i + 1]);
+    }
+  }
+  return tokens;
+}
+
+function normalizeSearchQuery(text) {
+  const lower = String(text || '').toLowerCase();
+  const latinTokens = (lower.match(/[a-z0-9]+/g) || []).join(' ');
+  const chineseTokens = toChineseBigrams(lower).join(' ');
+  return `${latinTokens} ${chineseTokens}`.replace(/\s+/g, ' ').trim();
+}
+
+// 过滤笔记（T40: 支持全文搜索）
 const filteredNotes = computed(() => {
   let result = notes;
 
@@ -503,13 +529,38 @@ const filteredNotes = computed(() => {
   }
 
   if (searchQuery.value.trim()) {
-    const query = searchQuery.value.toLowerCase();
-    result = result.filter(n => {
-      const titleMatch = n.title.toLowerCase().includes(query);
-      const summaryMatch = n.summary && n.summary.toLowerCase().includes(query);
-      const tagMatch = n.tags && n.tags.some(tag => tag.toLowerCase().includes(query));
-      return titleMatch || summaryMatch || tagMatch;
-    });
+    // T40: 使用 Lunr.js 全文搜索
+    if (searchIndex.value) {
+      try {
+        const normalizedQuery = normalizeSearchQuery(searchQuery.value);
+        if (normalizedQuery) {
+          const searchResults = searchIndex.value.search(normalizedQuery);
+          const matchedIds = new Set(searchResults.map(r => r.ref));
+          result = result.filter(n => matchedIds.has(n.id));
+        } else {
+          result = [];
+        }
+      } catch (e) {
+        // 搜索失败，降级到简单匹配
+        console.warn('Lunr search failed, fallback to simple match:', e);
+        const query = searchQuery.value.toLowerCase();
+        result = result.filter(n => {
+          const titleMatch = n.title.toLowerCase().includes(query);
+          const summaryMatch = n.summary && n.summary.toLowerCase().includes(query);
+          const tagMatch = n.tags && n.tags.some(tag => tag.toLowerCase().includes(query));
+          return titleMatch || summaryMatch || tagMatch;
+        });
+      }
+    } else {
+      // 索引未加载，使用简单匹配
+      const query = searchQuery.value.toLowerCase();
+      result = result.filter(n => {
+        const titleMatch = n.title.toLowerCase().includes(query);
+        const summaryMatch = n.summary && n.summary.toLowerCase().includes(query);
+        const tagMatch = n.tags && n.tags.some(tag => tag.toLowerCase().includes(query));
+        return titleMatch || summaryMatch || tagMatch;
+      });
+    }
   }
 
   return result.sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -1134,6 +1185,27 @@ function handleKeydown(e) {
   }
 }
 
+// T40: 加载 Lunr.js 搜索索引
+async function loadSearchIndex() {
+  if (searchIndex.value || isLoadingSearchIndex.value) return;
+  
+  isLoadingSearchIndex.value = true;
+  try {
+    const response = await fetch('/data/search-index.json');
+    if (response.ok) {
+      const indexData = await response.json();
+      searchIndex.value = lunr.Index.load(indexData);
+      console.log('✅ 搜索索引加载成功');
+    } else {
+      console.warn('搜索索引加载失败，将使用简单搜索');
+    }
+  } catch (e) {
+    console.warn('加载搜索索引时出错，将使用简单搜索:', e);
+  } finally {
+    isLoadingSearchIndex.value = false;
+  }
+}
+
 onMounted(() => {
   window.addEventListener('hashchange', handleRouteChange);
   window.addEventListener('scroll', handleScroll);
@@ -1142,6 +1214,9 @@ onMounted(() => {
   
   // 初始化暗色模式
   initDarkMode();
+  
+  // T40: 加载搜索索引（延迟加载，不阻塞首屏）
+  setTimeout(() => loadSearchIndex(), 1000);
   
   // 加载阅读历史
   try {
