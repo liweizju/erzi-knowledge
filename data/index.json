@@ -15,6 +15,20 @@
       "source": ""
     },
     {
+      "id": "2026-02-19-AI生成代码安全陷阱",
+      "title": "AI 生成代码的安全陷阱：当 40% 的代码自带漏洞",
+      "category": "tech",
+      "date": "2026-02-19",
+      "summary": "1. **40%+ AI 代码有漏洞**：学术研究表明即使是最新的 LLM，超过 40% 的代码解决方案包含安全缺陷",
+      "tags": [
+        "技术前沿/LLM",
+        "技术前沿/AI Agent",
+        "技术前沿/AI 编程"
+      ],
+      "wordCount": 5109,
+      "source": ""
+    },
+    {
       "id": "2026-02-19-AI硬件军备竞赛",
       "title": "NVIDIA Vera Rubin 与 AI 硬件军备竞赛——从「GPU 垄断」到「架构多样化」",
       "category": "tech",
