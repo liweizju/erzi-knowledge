@@ -1724,3 +1724,49 @@ html.dark .timeline-btn:hover {
     font-size: 0.75rem;
   }
 }
+
+/* 评论区样式 */
+.comments-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.comments-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.comments-icon {
+  font-size: 1.5rem;
+}
+
+.comments-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.giscus-container {
+  margin-top: 1rem;
+}
+
+/* 暗色模式下的评论区 */
+[data-theme="dark"] .comments-section {
+  border-top-color: var(--border-color);
+}
+
+/* 移动端评论区 */
+@media (max-width: 1200px) {
+  .comments-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .comments-title {
+    font-size: 1.1rem;
+  }
+}

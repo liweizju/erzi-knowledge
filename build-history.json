@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2026-02-19T18:29:21.742Z",
+    "sizes": {
+      "indexHtml": 3.033203125,
+      "css": 23.4775390625,
+      "js": 1180.533203125,
+      "dataIndex": 97.1845703125,
+      "searchIndex": 1115.08203125
+    },
+    "budget": {
+      "indexHtml": 10,
+      "css": 30,
+      "js": 500,
+      "jsMax": 1500,
+      "dataIndex": 150,
+      "searchIndex": 1500
+    }
+  }
+]

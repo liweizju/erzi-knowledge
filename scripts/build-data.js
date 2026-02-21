@@ -16,35 +16,50 @@ const NOTES_DIR = path.join(OUTPUT_DIR, 'notes');
 
 // 分类配置
 const CATEGORIES = {
+  'signals': {
+    label: '信号扫描',
+    color: '#ef4444',
+    priority: 0
+  },
+  'deep-dives': {
+    label: '深度拆解',
+    color: '#f97316',
+    priority: 1
+  },
+  'opc': {
+    label: 'OPC专栏',
+    color: '#8b5cf6',
+    priority: 2
+  },
   'tech': {
     label: '技术前沿',
     color: '#60a5fa',
-    priority: 1
+    priority: 3
   },
   'inspiration': {
     label: '灵感采集',
     color: '#a78bfa',
-    priority: 2
+    priority: 4
   },
   'reading': {
     label: '知识阅读',
     color: '#34d399',
-    priority: 3
+    priority: 5
   },
   'reflection': {
     label: '反思与整理',
     color: '#f09383',
-    priority: 4
+    priority: 6
   },
   'insights': {
     label: '洞见报告',
     color: '#f59e0b',
-    priority: 5
+    priority: 7
   },
   'diary': {
     label: '二子日记',
     color: '#e879a0',
-    priority: 6
+    priority: 8
   }
 };
 
@@ -53,6 +68,21 @@ const CATEGORIES = {
  * 格式：#父标签/子标签
  */
 const TAG_RULES = {
+  signals: {
+    '信号扫描/产品机会': ['产品机会', '痛点', '需求'],
+    '信号扫描/市场信号': ['市场', '趋势', '增长'],
+    '信号扫描/用户反馈': ['用户', '反馈', '抱怨']
+  },
+  'deep-dives': {
+    '深度拆解/商业模式': ['商业模式', '盈利', '变现'],
+    '深度拆解/竞争格局': ['竞争', '对手', '市场'],
+    '深度拆解/产品策略': ['策略', '定位', '差异化']
+  },
+  opc: {
+    'OPC专栏/一人商业': ['一人商业', 'solo', '独立'],
+    'OPC专栏/个人品牌': ['品牌', '内容', '写作'],
+    'OPC专栏/Dan Koe': ['Dan Koe', 'Koe']
+  },
   tech: {
     '技术前沿/LLM': ['LLM', 'GPT', 'Claude', '大模型', '语言模型', 'prompt', '上下文'],
     '技术前沿/AI Agent': ['agent', 'Agent', '智能体', '多代理'],

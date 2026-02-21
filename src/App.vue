@@ -409,6 +409,32 @@
               </div>
             </div>
           </div>
+          
+          <!-- 评论区 -->
+          <div class="comments-section" v-if="!isLoadingContent">
+            <div class="comments-header">
+              <span class="comments-icon">💬</span>
+              <h3 class="comments-title">评论区</h3>
+            </div>
+            <div class="giscus-container">
+              <div 
+                class="giscus" 
+                :data-repo="'liweizju/erzi-knowledge'"
+                :data-repo-id="'R_kgDOA'"
+                :data-category="'Announcements'"
+                :data-category-id="'DIC_kwDOA'"
+                data-mapping="pathname"
+                data-strict="0"
+                data-reactions-enabled="1"
+                data-emit-metadata="0"
+                data-input-position="top"
+                data-theme="preferred_color_scheme"
+                data-lang="zh-CN"
+                data-loading="lazy"
+                crossorigin="anonymous"
+              ></div>
+            </div>
+          </div>
         </div>
 
         <!-- TOC 侧边栏（右侧） -->
@@ -851,9 +877,13 @@ async function loadNoteContent(note) {
       noteContent.value = '# 文章加载失败\n\n抱歉，加载文章时出现错误。';
     } finally {
       isLoadingContent.value = false;
+      // 加载完成后刷新评论
+      setTimeout(() => reloadGiscus(), 100);
     }
   } else {
     noteContent.value = note.content;
+    // 刷新评论
+    setTimeout(() => reloadGiscus(), 100);
   }
 }
 
@@ -1266,7 +1296,49 @@ onMounted(() => {
       }
     });
   }
+  
+  // 加载 Giscus 评论系统
+  loadGiscus();
 });
+
+// 加载 Giscus 评论系统
+function loadGiscus() {
+  if (document.getElementById('giscus-script')) return;
+  
+  const script = document.createElement('script');
+  script.id = 'giscus-script';
+  script.src = 'https://giscus.app/client.js';
+  script.setAttribute('data-repo', 'liweizju/erzi-knowledge');
+  script.setAttribute('data-repo-id', 'R_kgDOA');
+  script.setAttribute('data-category', 'Announcements');
+  script.setAttribute('data-category-id', 'DIC_kwDOA');
+  script.setAttribute('data-mapping', 'pathname');
+  script.setAttribute('data-strict', '0');
+  script.setAttribute('data-reactions-enabled', '1');
+  script.setAttribute('data-emit-metadata', '0');
+  script.setAttribute('data-input-position', 'top');
+  script.setAttribute('data-theme', 'preferred_color_scheme');
+  script.setAttribute('data-lang', 'zh-CN');
+  script.setAttribute('data-loading', 'lazy');
+  script.setAttribute('crossorigin', 'anonymous');
+  script.async = true;
+  
+  const giscusContainer = document.querySelector('.giscus');
+  if (giscusContainer) {
+    giscusContainer.appendChild(script);
+  }
+}
+
+// 刷新 Giscus 评论（切换文章时）
+function reloadGiscus() {
+  const iframe = document.querySelector('iframe.giscus-frame');
+  if (iframe) {
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { term: window.location.pathname } } },
+      'https://giscus.app'
+    );
+  }
+}
 
 onUnmounted(() => {
   window.removeEventListener('hashchange', handleRouteChange);
