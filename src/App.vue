@@ -506,7 +506,7 @@ const swVersion = ref(''); // T46: SW 版本
 
 // 排序后的分类（用于显示）
 const displayCategories = computed(() => {
-  const order = ['insights', 'tech', 'inspiration', 'reading', 'reflection', 'diary'];
+  const order = ['signals', 'deep-dives', 'opc', 'insights', 'tech', 'inspiration', 'reading', 'reflection', 'diary'];
   const result = {};
   order.forEach(key => {
     if (categories[key]) result[key] = categories[key];
