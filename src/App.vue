@@ -420,14 +420,14 @@
               <div 
                 class="giscus" 
                 :data-repo="'liweizju/erzi-knowledge'"
-                :data-repo-id="'R_kgDOA'"
+                :data-repo-id="'R_kgDORLYCSg'"
                 :data-category="'Announcements'"
-                :data-category-id="'DIC_kwDOA'"
+                :data-category-id="'DIC_kwDORLYCSs4C27AK'"
                 data-mapping="pathname"
                 data-strict="0"
                 data-reactions-enabled="1"
                 data-emit-metadata="0"
-                data-input-position="top"
+                data-input-position="bottom"
                 data-theme="preferred_color_scheme"
                 data-lang="zh-CN"
                 data-loading="lazy"
@@ -1309,14 +1309,14 @@ function loadGiscus() {
   script.id = 'giscus-script';
   script.src = 'https://giscus.app/client.js';
   script.setAttribute('data-repo', 'liweizju/erzi-knowledge');
-  script.setAttribute('data-repo-id', 'R_kgDOA');
+  script.setAttribute('data-repo-id', 'R_kgDORLYCSg');
   script.setAttribute('data-category', 'Announcements');
-  script.setAttribute('data-category-id', 'DIC_kwDOA');
+  script.setAttribute('data-category-id', 'DIC_kwDORLYCSs4C27AK');
   script.setAttribute('data-mapping', 'pathname');
   script.setAttribute('data-strict', '0');
   script.setAttribute('data-reactions-enabled', '1');
   script.setAttribute('data-emit-metadata', '0');
-  script.setAttribute('data-input-position', 'top');
+  script.setAttribute('data-input-position', 'bottom');
   script.setAttribute('data-theme', 'preferred_color_scheme');
   script.setAttribute('data-lang', 'zh-CN');
   script.setAttribute('data-loading', 'lazy');
