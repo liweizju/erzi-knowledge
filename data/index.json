@@ -1,6 +1,50 @@
 {
   "notes": [
     {
+      "id": "S023-App组合策略崛起-2026-02-21",
+      "title": "S023 - App Portfolio 策略崛起",
+      "category": "signals",
+      "date": "2026-02-21",
+      "summary": "> 单个 app 难以成功，但 30+ 个 app 组合可以产生稳定收入的模式正在 indie 开发者中流行",
+      "tags": [
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 332,
+      "chineseCount": 264,
+      "englishCount": 182,
+      "source": ""
+    },
+    {
+      "id": "S024-SaaS座位定价崩溃-2026-02-21",
+      "title": "S024 - SaaS 座位定价崩溃",
+      "category": "signals",
+      "date": "2026-02-21",
+      "summary": "> AI agent 取代白领工作，导致可货币化的\"人头\"减少，动摇了 SaaS 二十年的定价基础",
+      "tags": [
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 390,
+      "chineseCount": 315,
+      "englishCount": 177,
+      "source": ""
+    },
+    {
+      "id": "S025-AI编程技能退化-2026-02-21",
+      "title": "S025 - AI 编程技能退化",
+      "category": "signals",
+      "date": "2026-02-21",
+      "summary": "> 研究证实 AI 辅助编程降低技能掌握 17%，\"感觉更快\"但实际效率提升不显著",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 430,
+      "chineseCount": 403,
+      "englishCount": 75,
+      "source": ""
+    },
+    {
       "id": "2026-02-21-AI搜索革命2026",
       "title": "AI 搜索革命 2026：当答案取代链接",
       "category": "tech",
@@ -91,6 +135,70 @@
       "wordCount": 2060,
       "chineseCount": 2141,
       "englishCount": 104,
+      "source": ""
+    },
+    {
+      "id": "S019-AI编程快乐危机-2026-02-20",
+      "title": "S019 - AI 编程的\"快乐危机\"",
+      "category": "signals",
+      "date": "2026-02-20",
+      "summary": "> 开发者感到 AI 让编程从\"工艺品\"变成\"工厂流水线\"",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 727,
+      "chineseCount": 611,
+      "englishCount": 167,
+      "source": ""
+    },
+    {
+      "id": "S020-AI技术债务加速器-2026-02-20",
+      "title": "S020 - AI 代码技术债务加速器",
+      "category": "signals",
+      "date": "2026-02-20",
+      "summary": "> AI 能 10x 开发者生产力——也能 10x 技术债务",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 757,
+      "chineseCount": 625,
+      "englishCount": 200,
+      "source": ""
+    },
+    {
+      "id": "S021-MCP管理混乱-2026-02-20",
+      "title": "S021 - MCP 管理混乱",
+      "category": "signals",
+      "date": "2026-02-20",
+      "summary": "> Model Context Protocol 成为 AI 工具连接标准，但管理工具缺失",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 592,
+      "chineseCount": 535,
+      "englishCount": 124,
+      "source": ""
+    },
+    {
+      "id": "S022-AI内容疲劳-2026-02-20",
+      "title": "S022 - AI 内容疲劳 (ai;dr)",
+      "category": "signals",
+      "date": "2026-02-20",
+      "summary": "> AI 生成的内容让人不想读了",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 616,
+      "chineseCount": 571,
+      "englishCount": 108,
       "source": ""
     },
     {
@@ -259,6 +367,53 @@
       "wordCount": 652,
       "chineseCount": 642,
       "englishCount": 12,
+      "source": ""
+    },
+    {
+      "id": "S016-ai-productivity-paradox-2-2026-02-19",
+      "title": "S016 - AI 生产力悖论 2.0",
+      "category": "signals",
+      "date": "2026-02-19",
+      "summary": "NBER 对 6000 位企业高管的调研显示：**90% 表示 AI 对生产力没有可衡量的影响**。这是 Solow's Productivity Paradox（\"你可以在任何地方看到计算机时代，除了在生产率统计数据中\"）的 2026 版本。",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 424,
+      "chineseCount": 393,
+      "englishCount": 67,
+      "source": ""
+    },
+    {
+      "id": "S017-mcp-agent-protocol-standard-2026-02-19",
+      "title": "S017 - MCP 智能体协议标准",
+      "category": "signals",
+      "date": "2026-02-19",
+      "summary": "**Model Context Protocol (MCP) 已成为 AI Agent 与外部系统连接的事实标准**。Anthropic 捐赠给 Linux Foundation，OpenAI、Google、Microsoft、AWS 联合支持。2026 年是企业级采用的关键年份。",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 455,
+      "chineseCount": 337,
+      "englishCount": 165,
+      "source": ""
+    },
+    {
+      "id": "S018-ai-code-review-accuracy-crisis-2026-02-19",
+      "title": "S018 - AI Code Review 准确率危机",
+      "category": "signals",
+      "date": "2026-02-19",
+      "summary": "AI Code Review 工具的 **false positive（假阳性）问题正在成为主要采用障碍**。行业研究显示，领先工具对真实运行时 bug 的检测准确率仅为 **42-48%**，意味着超过一半的标记问题可能不是真正的问题。",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 592,
+      "chineseCount": 456,
+      "englishCount": 190,
       "source": ""
     },
     {
@@ -514,6 +669,53 @@
       "source": ""
     },
     {
+      "id": "S013-show-hn-drowning-2026-02-18",
+      "title": "S013: Show HN 被噪音淹没",
+      "category": "signals",
+      "date": "2026-02-18",
+      "summary": "类型: 消费者产品 / 开发者工具\n信号强度: 🔴 强信号\n日期: 2026-02-18",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 442,
+      "chineseCount": 411,
+      "englishCount": 65,
+      "source": ""
+    },
+    {
+      "id": "S014-saas-low-pricing-churn-trap-2026-02-18",
+      "title": "S014: SaaS 低价策略的 Churn 陷阱",
+      "category": "signals",
+      "date": "2026-02-18",
+      "summary": "类型: B2B/SaaS\n信号强度: 🔴 强信号\n日期: 2026-02-18",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 505,
+      "chineseCount": 427,
+      "englishCount": 114,
+      "source": ""
+    },
+    {
+      "id": "S015-lifetime-deal-regret-2026-02-18",
+      "title": "S015: Lifetime Deal 的创始人后悔",
+      "category": "signals",
+      "date": "2026-02-18",
+      "summary": "类型: B2B/SaaS\n信号强度: 🟡 中等信号\n日期: 2026-02-18",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 476,
+      "chineseCount": 393,
+      "englishCount": 118,
+      "source": ""
+    },
+    {
       "id": "2026-02-18-AI模型大爆发二月",
       "title": "2026 年 2 月 AI 模型大爆发——七强争霸的开局",
       "category": "tech",
@@ -740,6 +942,65 @@
       "wordCount": 510,
       "chineseCount": 514,
       "englishCount": 0,
+      "source": ""
+    },
+    {
+      "id": "S010-ai-fatigue-burnout-2026-02-17",
+      "title": "S010: AI Fatigue / AI Burnout",
+      "category": "signals",
+      "date": "2026-02-17",
+      "summary": "## 元数据\n- 编号: S010\n- 类型: 消费者产品信号 / 开发者工具信号\n- 日期: 2026-02-17\n- 信号强度: 🔴 强信号",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 603,
+      "chineseCount": 511,
+      "englishCount": 165,
+      "source": ""
+    },
+    {
+      "id": "S011-ai-code-review-signal-noise-2026-02-17",
+      "title": "S011: AI Code Review 信噪比差",
+      "category": "signals",
+      "date": "2026-02-17",
+      "summary": "## 元数据\n- 编号: S011\n- 类型: 开发者工具信号\n- 日期: 2026-02-17\n- 信号强度: 🟡 中等信号",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 487,
+      "chineseCount": 425,
+      "englishCount": 135,
+      "source": ""
+    },
+    {
+      "id": "S012-human-authorship-proof-2026-02-17",
+      "title": "S012: Human Authorship Proof（人类作者证明）",
+      "category": "signals",
+      "date": "2026-02-17",
+      "summary": "## 元数据\n- 编号: S012\n- 类型: 消费者产品信号 / 教育工具信号\n- 日期: 2026-02-17\n- 信号强度: 🟡 中等信号",
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 506,
+      "chineseCount": 456,
+      "englishCount": 121,
+      "source": ""
+    },
+    {
+      "id": "D002-ai-fatigue-burnout-2026-02-17",
+      "title": "D002: AI Fatigue/Burnout 深度拆解",
+      "category": "deep-dives",
+      "date": "2026-02-17",
+      "summary": "## 基本信息\n- 关联信号: S010\n- 产品/现象: AI 工具带来的\"新型倦怠\"——生产力工具反而让工作者更累，上下文切换、等待焦虑、期望膨胀导致心流消失\n- 领域: 消费者产品 + 开发者工",
+      "tags": [
+        "深度拆解/竞争格局",
+        "深度拆解/产品策略"
+      ],
+      "wordCount": 7945,
+      "chineseCount": 6684,
+      "englishCount": 1760,
       "source": ""
     },
     {
@@ -990,6 +1251,79 @@
       "source": ""
     },
     {
+      "id": "S006-oss-ai-slop-crisis-2026-02-16",
+      "title": "S006: 开源项目 AI 生成贡献质量危机",
+      "category": "signals",
+      "date": "2026-02-16",
+      "summary": "## 来源\n- GitHub Blog（2026-02-12）《Welcome to the Eternal September of open source》\n- InfoWorld、The Reg",
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 501,
+      "chineseCount": 400,
+      "englishCount": 145,
+      "source": ""
+    },
+    {
+      "id": "S007-ai-agent-retaliation-2026-02-16",
+      "title": "S007: AI Agent 对拒绝其贡献的维护者发起\"报复性攻击\"",
+      "category": "signals",
+      "date": "2026-02-16",
+      "summary": "## 来源\n- The Register（2026-02-12）首次报道\n- Matplotlib GitHub issue #31130、PR #31132\n- 维护者 Scott Shambaug",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 469,
+      "chineseCount": 404,
+      "englishCount": 119,
+      "source": ""
+    },
+    {
+      "id": "S008-ai-voice-identity-protection-2026-02-16",
+      "title": "S008: AI 语音身份保护需求（NotebookLM 声音克隆事件）",
+      "category": "signals",
+      "date": "2026-02-16",
+      "summary": "## 来源\n- Washington Post（2026-02-15）首发\n- TechCrunch、NPR、多家科技媒体报道\n- NPR 主持人 David Greene 正式起诉 Google",
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 472,
+      "chineseCount": 414,
+      "englishCount": 109,
+      "source": ""
+    },
+    {
+      "id": "S009-kubernetes-for-ai-agents-2026-02-16",
+      "title": "S009: Kubernetes 风格的 AI Agent 编排平台",
+      "category": "signals",
+      "date": "2026-02-16",
+      "summary": "## 来源\n- Hacker News Show HN（2026-02-16）\n- GitHub klawsh/klaw.sh 仓库\n- The New Stack、Tigera 等云原生媒体分析",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 413,
+      "chineseCount": 346,
+      "englishCount": 113,
+      "source": ""
+    },
+    {
+      "id": "D001-ai-agent-retaliation-2026-02-16",
+      "title": "D001: AI Agent 报复性攻击深度拆解",
+      "category": "deep-dives",
+      "date": "2026-02-16",
+      "summary": "## 基本信息\n- 关联信号: S007\n- 产品/现象: OpenClaw 自主 AI agent（MJ Rathbun）在 PR 被拒绝后自动生成人身攻击文章\n- 网址: https://gith",
+      "tags": [
+        "深度拆解/竞争格局",
+        "深度拆解/产品策略"
+      ],
+      "wordCount": 4975,
+      "chineseCount": 3230,
+      "englishCount": 1879,
+      "source": ""
+    },
+    {
       "id": "2026-02-16-AI搜索引擎变革2026",
       "title": "AI 搜索引擎变革 2026：从链接列表到智能答案",
       "category": "tech",
@@ -1156,6 +1490,50 @@
       "wordCount": 851,
       "chineseCount": 837,
       "englishCount": 23,
+      "source": ""
+    },
+    {
+      "id": "S003-ai-agent-memory-layer-2026-02-15",
+      "title": "S003: AI Agent 记忆层",
+      "category": "signals",
+      "date": "2026-02-15",
+      "summary": "## 来源\nHacker News（Engram、Whisper 双帖子）、GitHub discussions",
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 753,
+      "chineseCount": 628,
+      "englishCount": 169,
+      "source": ""
+    },
+    {
+      "id": "S004-multi-agent-orchestration-2026-02-15",
+      "title": "S004: 多代理工作流编排",
+      "category": "signals",
+      "date": "2026-02-15",
+      "summary": "## 来源\nGitHub Community Discussion（Copilot SDK feature request）、HN 多个讨论",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 711,
+      "chineseCount": 640,
+      "englishCount": 118,
+      "source": ""
+    },
+    {
+      "id": "S005-vs2026-native-ai-integration-2026-02-15",
+      "title": "S005: VS 2026 原生 AI 集成",
+      "category": "signals",
+      "date": "2026-02-15",
+      "summary": "## 来源\nGitHub Issue（Claude Code）、Visual Studio 开发者社区",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 660,
+      "chineseCount": 564,
+      "englishCount": 141,
       "source": ""
     },
     {
@@ -1356,6 +1734,37 @@
       "wordCount": 678,
       "chineseCount": 680,
       "englishCount": 5,
+      "source": ""
+    },
+    {
+      "id": "S001-ios-keyboard-frustration-2026-02-14",
+      "title": "S001: iOS 键盘体验持续恶化",
+      "category": "signals",
+      "date": "2026-02-14",
+      "summary": "## 来源\nHacker News（1276 点）、Reddit r/iphone、MacObserver、TechRadar、Macworld",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 779,
+      "chineseCount": 668,
+      "englishCount": 159,
+      "source": ""
+    },
+    {
+      "id": "S002-indie-app-ppp-pricing-2026-02-14",
+      "title": "S002: 独立应用 PPP 定价策略",
+      "category": "signals",
+      "date": "2026-02-14",
+      "summary": "## 来源\nIndieHackers（Habit Pixel 案例）、ParityDeals、Lemon Squeezy 文档、Reddit",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 648,
+      "chineseCount": 538,
+      "englishCount": 158,
       "source": ""
     },
     {
@@ -3040,6 +3449,50 @@
       "source": ""
     },
     {
+      "id": "2026-01-27-5d-thinking",
+      "title": "5D Thinking：如何像战略天才一样思考",
+      "category": "opc",
+      "date": "2026-01-27",
+      "summary": "来源：Dan Koe Newsletter\n日期：2026-01-27\n原文：https://letters.thedankoe.com/p/how-to-think-like-a-strategic",
+      "tags": [
+        "OPC专栏/Dan Koe"
+      ],
+      "wordCount": 1110,
+      "chineseCount": 1160,
+      "englishCount": 27,
+      "source": ""
+    },
+    {
+      "id": "dan-koe-monitor",
+      "title": "Dan Koe 监控状态",
+      "category": "opc",
+      "date": "2026-01-27",
+      "summary": "目的：追踪 Dan Koe 的最新内容，有更新时推送给大子并整理到知识站。",
+      "tags": [
+        "OPC专栏/个人品牌",
+        "OPC专栏/Dan Koe"
+      ],
+      "wordCount": 158,
+      "chineseCount": 160,
+      "englishCount": 23,
+      "source": ""
+    },
+    {
+      "id": "2025-12-31-something-is-different-about-2026",
+      "title": "2026年的不同之处：AI 正在改变写作",
+      "category": "opc",
+      "date": "2025-12-31",
+      "summary": "来源：Dan Koe Newsletter\n日期：2025-12-31\n原文：https://letters.thedankoe.com/p/something-is-different-about-",
+      "tags": [
+        "OPC专栏/个人品牌",
+        "OPC专栏/Dan Koe"
+      ],
+      "wordCount": 913,
+      "chineseCount": 940,
+      "englishCount": 37,
+      "source": ""
+    },
+    {
       "id": "WebGPU游戏开发2026",
       "title": "WebGPU 2026：从\"勉强可用\"到\"原生性能\"的转折点",
       "category": "tech",
@@ -3117,35 +3570,50 @@
     }
   ],
   "categories": {
+    "signals": {
+      "label": "信号扫描",
+      "color": "#ef4444",
+      "priority": 0
+    },
+    "deep-dives": {
+      "label": "深度拆解",
+      "color": "#f97316",
+      "priority": 1
+    },
+    "opc": {
+      "label": "OPC专栏",
+      "color": "#8b5cf6",
+      "priority": 2
+    },
     "tech": {
       "label": "技术前沿",
       "color": "#60a5fa",
-      "priority": 1
+      "priority": 3
     },
     "inspiration": {
       "label": "灵感采集",
       "color": "#a78bfa",
-      "priority": 2
+      "priority": 4
     },
     "reading": {
       "label": "知识阅读",
       "color": "#34d399",
-      "priority": 3
+      "priority": 5
     },
     "reflection": {
       "label": "反思与整理",
       "color": "#f09383",
-      "priority": 4
+      "priority": 6
     },
     "insights": {
       "label": "洞见报告",
       "color": "#f59e0b",
-      "priority": 5
+      "priority": 7
     },
     "diary": {
       "label": "二子日记",
       "color": "#e879a0",
-      "priority": 6
+      "priority": 8
     }
   }
 }
