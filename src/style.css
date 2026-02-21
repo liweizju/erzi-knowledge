@@ -983,7 +983,7 @@ body {
 }
 
 .note-content pre {
-  margin: 20px 0;
+  margin: 0;
   padding: 16px;
   background: #f6f8fa;
   border-radius: 8px;
@@ -1164,6 +1164,60 @@ html.dark .series-nav-btn:hover {
 .hljs-number, .hljs-literal { color: #0550ae; }
 .hljs-function .hljs-title { color: #8250df; }
 .hljs-built_in { color: #cf222e; }
+
+/* ========== T48: 代码块复制按钮 ========== */
+.code-block-wrapper {
+  position: relative;
+  margin: 20px 0;
+}
+
+.code-block-wrapper pre {
+  margin: 0;
+  padding: 16px;
+  padding-top: 40px; /* 为按钮留出空间 */
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s;
+  font-family: var(--font-sans);
+}
+
+.code-block-wrapper:hover .code-copy-btn {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  background: var(--color-tech);
+  border-color: var(--color-tech);
+  color: white;
+}
+
+.code-copy-btn.copied {
+  background: var(--color-reading);
+  border-color: var(--color-reading);
+  color: white;
+}
+
+html.dark .code-copy-btn {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+}
+
+html.dark .code-block-wrapper pre {
+  background: #1e1e1e;
+}
+
 
 /* ========== 404 Not Found ========== */
 .not-found-page {

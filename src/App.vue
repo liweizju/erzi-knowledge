@@ -732,7 +732,12 @@ const renderedContent = computed(() => {
     } else {
       highlighted = hljs.highlightAuto(text).value;
     }
-    return `<pre><code class="hljs">${highlighted}</code></pre>\n`;
+    // T48: 添加代码块复制按钮
+    const escapedText = text.replace(/`/g, '\\`').replace(/\$/g, '\\$');
+    return `<div class="code-block-wrapper">
+      <button class="code-copy-btn" data-code="${encodeURIComponent(text)}" title="复制代码">复制</button>
+      <pre><code class="hljs">${highlighted}</code></pre>
+    </div>\n`;
   };
   
   return marked(noteContent.value, { renderer });
@@ -1282,6 +1287,9 @@ onMounted(() => {
       }
     });
   }
+  
+  // T48: 代码块复制按钮事件委托
+  document.addEventListener('click', handleCodeCopy);
 });
 
 // 加载 Giscus 评论系统
@@ -1338,5 +1346,36 @@ onUnmounted(() => {
   window.removeEventListener('hashchange', handleRouteChange);
   window.removeEventListener('scroll', handleScroll);
   window.removeEventListener('keydown', handleKeydown);
+  // T48: 移除代码块复制事件监听
+  document.removeEventListener('click', handleCodeCopy);
 });
+
+// T48: 代码块复制功能
+function handleCodeCopy(e) {
+  const btn = e.target.closest('.code-copy-btn');
+  if (!btn) return;
+  
+  const encodedCode = btn.getAttribute('data-code');
+  if (!encodedCode) return;
+  
+  const code = decodeURIComponent(encodedCode);
+  
+  navigator.clipboard.writeText(code).then(() => {
+    // 显示复制成功反馈
+    const originalText = btn.textContent;
+    btn.textContent = '已复制 ✓';
+    btn.classList.add('copied');
+    
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(err => {
+    console.error('复制失败:', err);
+    btn.textContent = '复制失败';
+    setTimeout(() => {
+      btn.textContent = '复制';
+    }, 2000);
+  });
+}
 </script>
