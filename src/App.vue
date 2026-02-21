@@ -271,21 +271,24 @@
             >{{ getTagLabel(tag) }}</span>
           </div>
           
-          <!-- 预览浮层（桌面端） -->
-          <div class="note-preview" v-if="note.summary || (note.tags && note.tags.length > 3)">
+          <!-- 预览浮层（桌面端）- 显示额外信息 -->
+          <div class="note-preview" v-if="note.source || (note.tags && note.tags.length > 3)">
             <div class="preview-header">
               <span class="preview-icon">👁️</span>
               <span class="preview-label">快速预览</span>
             </div>
-            <div class="preview-content" v-if="note.summary">{{ note.summary }}</div>
+            <div class="preview-source" v-if="note.source">
+              <span class="preview-source-label">来源：</span>
+              <span class="preview-source-text">{{ note.source }}</span>
+            </div>
             <div class="preview-tags" v-if="note.tags && note.tags.length > 3">
-              <span class="preview-tag-label">标签：</span>
+              <span class="preview-tag-label">完整标签：</span>
               <span v-for="tag in note.tags" :key="tag" class="preview-tag">{{ getTagLabel(tag) }}</span>
             </div>
             <div class="preview-meta">
-              <span>字数：{{ note.wordCount || 0 }}</span>
+              <span>📝 {{ note.wordCount || 0 }} 字</span>
               <span>·</span>
-              <span>{{ getReadingTime(note) }} 分钟阅读</span>
+              <span>⏱️ {{ getReadingTime(note) }} 分钟</span>
             </div>
           </div>
         </div>
