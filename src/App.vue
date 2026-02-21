@@ -345,13 +345,19 @@
       <div class="detail-layout">
         <!-- 文章内容 -->
         <div class="note-content-wrapper">
-          <!-- 加载状态 -->
-          <div v-if="isLoadingContent" class="loading-indicator">
-            <div class="loading-spinner"></div>
-            <p>正在加载文章...</p>
+          <!-- T52: 骨架屏加载状态 -->
+          <div v-if="isLoadingContent" class="skeleton-screen">
+            <div class="skeleton-paragraph"></div>
+            <div class="skeleton-paragraph skeleton-paragraph--short"></div>
+            <div class="skeleton-paragraph"></div>
+            <div class="skeleton-paragraph skeleton-paragraph--medium"></div>
+            <div class="skeleton-paragraph"></div>
+            <div class="skeleton-code"></div>
+            <div class="skeleton-paragraph skeleton-paragraph--short"></div>
+            <div class="skeleton-paragraph"></div>
           </div>
           <div v-else class="note-content" v-html="renderedContent"></div>
-          
+
           <!-- 系列导航 -->
           <div class="series-navigation" v-if="seriesNotes && !isLoadingContent">
             <div class="series-header">

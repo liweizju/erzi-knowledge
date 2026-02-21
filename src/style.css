@@ -1008,6 +1008,62 @@ body {
   font-size: 0.875em;
 }
 
+/* ========== T52: 骨架屏 ========== */
+.skeleton-screen {
+  padding: 20px 0;
+  animation: skeletonFadeIn 0.3s ease-out;
+}
+
+@keyframes skeletonFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.skeleton-paragraph {
+  height: 16px;
+  background: linear-gradient(90deg, var(--color-border-light) 25%, var(--color-border) 50%, var(--color-border-light) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.skeleton-paragraph--short {
+  width: 60%;
+}
+
+.skeleton-paragraph--medium {
+  width: 80%;
+}
+
+.skeleton-code {
+  height: 80px;
+  background: linear-gradient(90deg, var(--color-border-light) 25%, var(--color-border) 50%, var(--color-border-light) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+html.dark .skeleton-paragraph,
+html.dark .skeleton-code {
+  background: linear-gradient(90deg, #27272a 25%, #3f3f46 50%, #27272a 75%);
+  background-size: 200% 100%;
+}
+
 /* ========== Loading Indicator ========== */
 .loading-indicator {
   display: flex;
