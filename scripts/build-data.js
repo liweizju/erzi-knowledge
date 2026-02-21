@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 import lunr from 'lunr';
 import { TFIDFExtractor } from './tfidf-extractor.js';
 
@@ -207,6 +208,41 @@ function countEnglishWords(text) {
 }
 
 /**
+ * T51: 获取文件的最后修改时间（从 git 历史）
+ */
+function getLastModifiedTime(filePath, knowledgeDir) {
+  try {
+    // 获取相对于知识库目录的相对路径
+    const relativePath = path.relative(knowledgeDir, filePath);
+    const fullPath = path.join(knowledgeDir, relativePath);
+    
+    // 使用 git log 获取最后修改时间
+    const cmd = `git log -1 --format="%ai" -- "${relativePath}"`;
+    const result = execSync(cmd, { 
+      cwd: knowledgeDir, 
+      encoding: 'utf-8',
+      stdio: ['pipe', 'pipe', 'pipe']
+    }).trim();
+    
+    if (result) {
+      // 返回 YYYY-MM-DD 格式
+      return result.split(' ')[0];
+    }
+  } catch (error) {
+    // git 命令失败（文件未提交或不在 git 仓库中），忽略错误
+  }
+  
+  // 如果 git 获取失败，返回文件的修改时间
+  try {
+    const stats = fs.statSync(filePath);
+    const date = new Date(stats.mtime);
+    return date.toISOString().split('T')[0];
+  } catch (e) {
+    return null;
+  }
+}
+
+/**
  * 从 Markdown 文件提取元数据
  */
 function extractMetadata(content, filePath, category) {
@@ -222,7 +258,8 @@ function extractMetadata(content, filePath, category) {
     tags: [],
     wordCount: countWords(content), // 精确字数统计（T41）
     chineseCount: countChineseChars(content), // 中文字数
-    englishCount: countEnglishWords(content) // 英文词数
+    englishCount: countEnglishWords(content), // 英文词数
+    lastModified: getLastModifiedTime(filePath, KNOWLEDGE_DIR) // T51: 最后修改时间
   };
 
   // 提取标题（第一个 # 标题）
@@ -474,7 +511,8 @@ function main() {
       wordCount: note.wordCount,
       chineseCount: note.chineseCount, // T41: 中文字数
       englishCount: note.englishCount, // T41: 英文词数
-      source: note.source
+      source: note.source,
+      lastModified: note.lastModified // T51: 最后修改时间
     })),
     categories: data.categories
   };
@@ -507,7 +545,8 @@ function main() {
       chineseCount: note.chineseCount, // T41: 中文字数
       englishCount: note.englishCount, // T41: 英文词数
       source: note.source,
-      series: note.series || null
+      series: note.series || null,
+      lastModified: note.lastModified // T51: 最后修改时间
       // 不包含 content，实现按需加载
     })),
     categories: data.categories

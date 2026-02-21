@@ -336,6 +336,9 @@
           <span class="note-date">{{ activeNote.date }}</span>
           <span class="note-reading-time">{{ getReadingTime(activeNote) }} 分钟</span>
           <span v-if="getLastRead(activeNote.id)" class="note-last-read">上次阅读：{{ getLastRead(activeNote.id) }}</span>
+          <span v-if="activeNote.lastModified && activeNote.lastModified !== activeNote.date" class="note-last-modified">
+            最后更新：{{ formatDate(activeNote.lastModified) }}
+          </span>
         </div>
       </div>
 
@@ -961,6 +964,13 @@ function getLastRead(noteId) {
   if (days < 7) return `${days} 天前`;
   if (days < 30) return `${Math.floor(days / 7)} 周前`;
   return `${Math.floor(days / 30)} 个月前`;
+}
+
+// T51: 格式化日期（YYYY-MM-DD -> YYYY年M月D日）
+function formatDate(dateStr) {
+  if (!dateStr) return null;
+  const [year, month, day] = dateStr.split('-');
+  return `${year}年${parseInt(month)}月${parseInt(day)}日`;
 }
 
 function toggleFavorite(noteId) {

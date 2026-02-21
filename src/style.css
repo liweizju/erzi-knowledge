@@ -590,6 +590,12 @@ body {
   font-style: italic;
 }
 
+.note-last-modified {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  font-style: italic;
+}
+
 .note-title {
   font-size: 1rem;
   font-weight: 600;
