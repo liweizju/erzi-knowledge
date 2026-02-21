@@ -432,9 +432,10 @@ function normalizeSearchText(text) {
 
 /**
  * 生成 Lunr.js 搜索索引
+ * T49: 优化索引体积，只索引标题 + 摘要 + 标签 + 正文前500字
  */
 function generateSearchIndex(notes) {
-  console.log('🔍 生成 Lunr.js 搜索索引...');
+  console.log('🔍 生成 Lunr.js 搜索索引（优化版）...');
   
   const idx = lunr(function() {
     this.ref('id');
@@ -444,12 +445,15 @@ function generateSearchIndex(notes) {
     this.field('tags', { boost: 3 }); // 标签权重中等
     
     notes.forEach(note => {
+      // T49: 只索引正文前 500 字符，减少索引体积
       const cleanedContent = cleanMarkdownForSearch(note.content || '');
+      const truncatedContent = cleanedContent.substring(0, 500);
+      
       this.add({
         id: note.id,
         title: normalizeSearchText(note.title),
         summary: normalizeSearchText(note.summary || ''),
-        content: normalizeSearchText(cleanedContent),
+        content: normalizeSearchText(truncatedContent),
         tags: normalizeSearchText((note.tags || []).join(' '))
       });
     });
