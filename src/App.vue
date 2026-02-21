@@ -877,13 +877,17 @@ async function loadNoteContent(note) {
       noteContent.value = '# 文章加载失败\n\n抱歉，加载文章时出现错误。';
     } finally {
       isLoadingContent.value = false;
-      // 加载完成后刷新评论
-      setTimeout(() => reloadGiscus(), 100);
+      // 加载完成后加载评论（需要等待 Vue 渲染 DOM）
+      nextTick(() => {
+        setTimeout(() => loadGiscus(), 200);
+      });
     }
   } else {
     noteContent.value = note.content;
-    // 刷新评论
-    setTimeout(() => reloadGiscus(), 100);
+    // 加载评论
+    nextTick(() => {
+      setTimeout(() => loadGiscus(), 200);
+    });
   }
 }
 
@@ -1296,37 +1300,45 @@ onMounted(() => {
       }
     });
   }
-  
-  // 加载 Giscus 评论系统
-  loadGiscus();
 });
 
 // 加载 Giscus 评论系统
 function loadGiscus() {
-  if (document.getElementById('giscus-script')) return;
-  
-  const script = document.createElement('script');
-  script.id = 'giscus-script';
-  script.src = 'https://giscus.app/client.js';
-  script.setAttribute('data-repo', 'liweizju/erzi-knowledge');
-  script.setAttribute('data-repo-id', 'R_kgDORLYCSg');
-  script.setAttribute('data-category', 'Announcements');
-  script.setAttribute('data-category-id', 'DIC_kwDORLYCSs4C27AK');
-  script.setAttribute('data-mapping', 'pathname');
-  script.setAttribute('data-strict', '0');
-  script.setAttribute('data-reactions-enabled', '1');
-  script.setAttribute('data-emit-metadata', '0');
-  script.setAttribute('data-input-position', 'bottom');
-  script.setAttribute('data-theme', 'preferred_color_scheme');
-  script.setAttribute('data-lang', 'zh-CN');
-  script.setAttribute('data-loading', 'lazy');
-  script.setAttribute('crossorigin', 'anonymous');
-  script.async = true;
-  
-  const giscusContainer = document.querySelector('.giscus');
-  if (giscusContainer) {
+  // 等待 DOM 更新完成
+  setTimeout(() => {
+    const giscusContainer = document.querySelector('.giscus');
+    if (!giscusContainer) {
+      console.log('Giscus container not found');
+      return;
+    }
+    
+    // 如果已经加载过，不重复加载
+    if (document.getElementById('giscus-script')) {
+      reloadGiscus();
+      return;
+    }
+    
+    const script = document.createElement('script');
+    script.id = 'giscus-script';
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', 'liweizju/erzi-knowledge');
+    script.setAttribute('data-repo-id', 'R_kgDORLYCSg');
+    script.setAttribute('data-category', 'Announcements');
+    script.setAttribute('data-category-id', 'DIC_kwDORLYCSs4C27AK');
+    script.setAttribute('data-mapping', 'pathname');
+    script.setAttribute('data-strict', '0');
+    script.setAttribute('data-reactions-enabled', '1');
+    script.setAttribute('data-emit-metadata', '0');
+    script.setAttribute('data-input-position', 'bottom');
+    script.setAttribute('data-theme', 'preferred_color_scheme');
+    script.setAttribute('data-lang', 'zh-CN');
+    script.setAttribute('data-loading', 'lazy');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+    
     giscusContainer.appendChild(script);
-  }
+    console.log('Giscus script loaded');
+  }, 100);
 }
 
 // 刷新 Giscus 评论（切换文章时）
