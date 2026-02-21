@@ -270,19 +270,6 @@
               @click.stop="setTag(tag)"
             >{{ getTagLabel(tag) }}</span>
           </div>
-          
-          <!-- 预览浮层（桌面端）- 显示额外信息 -->
-          <div class="note-preview">
-            <div class="preview-header">
-              <span class="preview-icon">👁️</span>
-              <span class="preview-label">快速预览</span>
-            </div>
-            <div class="preview-meta">
-              <span>📝 {{ note.wordCount || 0 }} 字</span>
-              <span>·</span>
-              <span>⏱️ {{ getReadingTime(note) }} 分钟</span>
-            </div>
-          </div>
         </div>
       </div>
 
