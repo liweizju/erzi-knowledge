@@ -1,6 +1,23 @@
 {
   "notes": [
     {
+      "id": "2026-02-22-AI能效危机与绿色计算",
+      "title": "AI 能效危机与绿色计算——当智能的代价是地球的未来",
+      "category": "tech",
+      "date": "2026-02-22",
+      "summary": "1. **推理能耗超越训练能耗**：随着 AI 无处不在，推理阶段的累计能耗将成为主导因素，改变 AI 经济学的核心假设。",
+      "tags": [
+        "技术前沿/LLM",
+        "技术前沿/WebGPU",
+        "技术前沿/知识管理"
+      ],
+      "wordCount": 1699,
+      "chineseCount": 1704,
+      "englishCount": 264,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-22-人机协作的反直觉发现",
       "title": "人机协作的反直觉发现——何时一起更好，何时单独更强",
       "category": "reading",
