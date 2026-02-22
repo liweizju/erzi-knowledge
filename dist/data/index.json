@@ -52,6 +52,23 @@
       "lastModified": null
     },
     {
+      "id": "2026-02-22-AI浏览器自动化革命",
+      "title": "AI 浏览器自动化革命——从\"脚本执行\"到\"目标代理\"",
+      "category": "tech",
+      "date": "2026-02-22",
+      "summary": "1. **范式转变**：从\"手动编写脚本\"到\"监督 AI 执行\"——工作模式从\"编码\"变成\"监督\"",
+      "tags": [
+        "技术前沿/LLM",
+        "技术前沿/AI Agent",
+        "技术前沿/知识管理"
+      ],
+      "wordCount": 1567,
+      "chineseCount": 1668,
+      "englishCount": 201,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-22-AI能效危机与绿色计算",
       "title": "AI 能效危机与绿色计算——当智能的代价是地球的未来",
       "category": "tech",
