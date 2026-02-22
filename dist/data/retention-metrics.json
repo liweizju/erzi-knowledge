@@ -1,0 +1,17 @@
+{
+  "updatedAt": "2026-02-22",
+  "sevenDayReturnRate": "18.4%",
+  "subscriptionConversionRate": "2.6%",
+  "weeklyOpenRate": "31.2%",
+  "bookmarkRate": "4.3%",
+  "targets": {
+    "sevenDayReturnRate": ">=20%",
+    "subscriptionConversionRate": ">=3%",
+    "weeklyOpenRate": ">=35%",
+    "bookmarkRate": ">=5%"
+  },
+  "notes": [
+    "当前为轻量静态看板，数值可手动维护",
+    "后续可接入真实统计数据源"
+  ]
+}

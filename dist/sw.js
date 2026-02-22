@@ -10,6 +10,7 @@ const CORE_ASSETS = [
   '/index.html',
   '/manifest.json',
   '/data/index.json', // 轻量元数据（~100KB）
+  '/data/retention-metrics.json',
   '/icon-192.png',
   '/icon-512.png'
 ];

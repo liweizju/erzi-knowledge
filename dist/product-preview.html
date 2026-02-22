@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>二子知识站 · 产品预览</title>
+  <style>
+    :root {
+      --bg: #f4f2ec;
+      --panel: #ffffff;
+      --ink: #1f2329;
+      --sub: #5b6470;
+      --line: #d8d3c8;
+      --brand: #2563eb;
+      --brand-2: #10b981;
+      --warn: #b7791f;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at 90% -10%, rgba(37, 99, 235, 0.12), transparent 35%),
+        radial-gradient(circle at 0% 110%, rgba(16, 185, 129, 0.12), transparent 30%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1080px, 92vw);
+      margin: 40px auto 56px;
+    }
+
+    .hero {
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(120deg, #ffffff, #f7fbff);
+      box-shadow: var(--shadow);
+    }
+
+    .kicker {
+      margin: 0 0 8px;
+      color: var(--sub);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(30px, 4vw, 44px);
+      line-height: 1.15;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--sub);
+      font-size: 18px;
+      max-width: 760px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.24);
+    }
+
+    .btn-secondary {
+      background: #eff6ff;
+      color: var(--brand);
+      border-color: #bfdbfe;
+    }
+
+    section {
+      margin-top: 18px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      border: 1px solid #e9e4d8;
+      border-radius: 12px;
+      background: #fffdfa;
+      padding: 14px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      border: 1px solid #e7eefc;
+      border-radius: 12px;
+      background: #f8fbff;
+      padding: 14px;
+    }
+
+    .metric .label {
+      font-size: 13px;
+      color: var(--sub);
+    }
+
+    .metric .value {
+      margin-top: 4px;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .metric .target {
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--warn);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+    }
+
+    .item {
+      border-left: 4px solid #cdd7eb;
+      padding: 6px 0 6px 12px;
+    }
+
+    .item strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .item span {
+      color: var(--sub);
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      border: 1px solid #dbe5fb;
+      background: #f3f7ff;
+      color: #2859c5;
+    }
+
+    .status {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #dbe7ff;
+      background: #f5f9ff;
+      color: #26437e;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        margin-top: 18px;
+      }
+
+      .hero,
+      section {
+        padding: 16px;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="hero">
+      <p class="kicker">二子知识站 · 产品预览（v2）</p>
+      <h1>给 AI 产品人的每日决策情报</h1>
+      <p>每天 5 分钟，筛掉噪音，给出判断和行动建议。当前阶段目标是先拿到一批稳定回访读者。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/#/start-here">🧭 看新读者起步包</a>
+        <a class="btn btn-secondary" href="/#/subscribe">📬 看订阅页</a>
+        <a class="btn btn-secondary" href="/">🏠 回到主页</a>
+      </div>
+    </header>
+
+    <section>
+      <h2>当前已经上线</h2>
+      <div>
+        <span class="tag">首页价值主张</span>
+        <span class="tag">每周决策备忘录入口</span>
+        <span class="tag">新读者起步包</span>
+        <span class="tag">订阅页与 CTA</span>
+        <span class="tag">30秒结论 + 今日可执行动作</span>
+        <span class="tag">留存指标看板</span>
+      </div>
+      <div class="grid" style="margin-top:12px;">
+        <article class="card">
+          <h3>✅ 模板覆盖率已达标</h3>
+          <p>最近 20 篇样本中，30秒结论和可执行动作覆盖率均达到 100%，可稳定支撑“决策导向”定位。</p>
+        </article>
+        <article class="card">
+          <h3>✅ 转化入口已形成闭环</h3>
+          <p>首页、订阅页、详情页都能触达“每周决策备忘录”入口，新读者与回访读者路径分开处理。</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>留存看板（当前值）</h2>
+      <div id="metrics" class="metrics">
+        <article class="metric"><div class="label">7日回访率</div><div class="value">--</div><div class="target">目标：--</div></article>
+        <article class="metric"><div class="label">订阅转化率</div><div class="value">--</div><div class="target">目标：--</div></article>
+        <article class="metric"><div class="label">周报打开率</div><div class="value">--</div><div class="target">目标：--</div></article>
+        <article class="metric"><div class="label">收藏率</div><div class="value">--</div><div class="target">目标：--</div></article>
+      </div>
+      <p class="status" id="metrics-status">正在读取 /data/retention-metrics.json ...</p>
+    </section>
+
+    <section>
+      <h2>按产品定义，下一步建议</h2>
+      <div class="timeline">
+        <div class="item">
+          <strong>P1（最高优先）：把留存看板改成真实数据源</strong>
+          <span>先接入 7 日回访率 / 订阅转化率 / 周报打开率 / 收藏率的真实采集链路，不再只依赖手工更新。</span>
+        </div>
+        <div class="item">
+          <strong>P2：把订阅从 RSS-only 升级为“邮件 + RSS”双通道</strong>
+          <span>目标是“可触达、可追踪、可复访”，建立稳定读者池。</span>
+        </div>
+        <div class="item">
+          <strong>P3：上线 Playbook 模块（3 个可复用模板）</strong>
+          <span>把“能反复使用的方法”沉淀出来，增强长期复访价值。</span>
+        </div>
+        <div class="item">
+          <strong>P4：门禁从抽样告警升级为新文硬约束</strong>
+          <span>新内容缺少“30秒结论”或“可执行动作”时，构建直接失败。</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const metricMap = [
+      { label: '7日回访率', key: 'sevenDayReturnRate', target: 'sevenDayReturnRate' },
+      { label: '订阅转化率', key: 'subscriptionConversionRate', target: 'subscriptionConversionRate' },
+      { label: '周报打开率', key: 'weeklyOpenRate', target: 'weeklyOpenRate' },
+      { label: '收藏率', key: 'bookmarkRate', target: 'bookmarkRate' }
+    ];
+
+    async function loadMetrics() {
+      const container = document.getElementById('metrics');
+      const status = document.getElementById('metrics-status');
+      try {
+        const resp = await fetch('/data/retention-metrics.json', { cache: 'no-store' });
+        if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+        const data = await resp.json();
+        container.innerHTML = metricMap.map(item => `
+          <article class="metric">
+            <div class="label">${item.label}</div>
+            <div class="value">${data[item.key] || 'N/A'}</div>
+            <div class="target">目标：${(data.targets && data.targets[item.target]) || 'N/A'}</div>
+          </article>
+        `).join('');
+        status.textContent = `最近更新：${data.updatedAt || '未知'}（当前页面仅作产品预览）`;
+      } catch (err) {
+        status.textContent = `读取失败：${err.message}。请检查 /data/retention-metrics.json`;
+      }
+    }
+
+    loadMetrics();
+  </script>
+</body>
+</html>
