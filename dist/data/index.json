@@ -1,6 +1,23 @@
 {
   "notes": [
     {
+      "id": "S026-AI内容屏蔽行动-2026-02-22",
+      "title": "S026 - AI 内容屏蔽行动",
+      "category": "signals",
+      "date": "2026-02-22",
+      "summary": "> 用户从\"抱怨 AI 内容\"升级到\"主动屏蔽 AI 内容农场\"",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1023,
+      "chineseCount": 900,
+      "englishCount": 207,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-22-AI能效危机与绿色计算",
       "title": "AI 能效危机与绿色计算——当智能的代价是地球的未来",
       "category": "tech",
