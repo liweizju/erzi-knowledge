@@ -18,6 +18,23 @@
       "lastModified": null
     },
     {
+      "id": "S027-Dependabot不信任危机-2026-02-22",
+      "title": "S027 - Dependabot 不信任危机",
+      "category": "signals",
+      "date": "2026-02-22",
+      "summary": "> 开发者主动关闭 Dependabot：\"它带来的麻烦比解决的问题多\"",
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 892,
+      "chineseCount": 808,
+      "englishCount": 176,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-22-AI能效危机与绿色计算",
       "title": "AI 能效危机与绿色计算——当智能的代价是地球的未来",
       "category": "tech",
