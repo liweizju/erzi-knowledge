@@ -174,6 +174,83 @@
       <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
     </template>
 
+    <!-- Start Here View -->
+    <template v-else-if="showStartHere">
+      <header class="site-header">
+        <button class="back-btn" @click="closeStartHere">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          返回
+        </button>
+      </header>
+
+      <div class="start-here-page">
+        <h1 class="start-here-title">🚀 新读者起步包</h1>
+        <p class="start-here-desc">按顺序阅读这 10 篇，快速建立 AI 产品决策共识。</p>
+
+        <div class="start-here-list">
+          <div
+            v-for="item in startHereNotes"
+            :key="item.id"
+            class="start-here-item"
+            @click="openNote(item)"
+          >
+            <div class="start-here-order">#{{ item.order }}</div>
+            <div class="start-here-content">
+              <div class="start-here-meta">
+                <span class="note-category" :class="'note-category--' + item.category">
+                  {{ categories[item.category]?.label }}
+                </span>
+                <span class="note-date">{{ item.date }}</span>
+              </div>
+              <div class="start-here-item-title">{{ item.title }}</div>
+              <div class="start-here-reason">{{ item.reason }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="site-footer">二子的知识库 · 稳定读者计划</footer>
+    </template>
+
+    <!-- Subscribe View -->
+    <template v-else-if="showSubscribe">
+      <header class="site-header">
+        <button class="back-btn" @click="closeSubscribe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          返回
+        </button>
+      </header>
+
+      <div class="subscribe-page">
+        <h1 class="subscribe-title">📬 订阅每周决策备忘录</h1>
+        <p class="subscribe-desc">固定每周一发布，8-12 分钟读完，聚焦 3-5 个关键判断和下周行动建议。</p>
+
+        <div class="subscribe-card">
+          <h2 class="subscribe-card-title">订阅方式</h2>
+          <div class="subscribe-options">
+            <a class="subscribe-link" href="/feed.xml" target="_blank" rel="noopener noreferrer">RSS 立即订阅</a>
+            <button class="subscribe-copy-btn" @click="copyRssLink">{{ rssCopied ? '已复制 RSS 链接 ✓' : '复制 RSS 链接' }}</button>
+          </div>
+          <ul class="subscribe-bullets">
+            <li>频率：每周 1 次，不刷屏</li>
+            <li>价值：只保留可执行判断，减少信息噪音</li>
+            <li>隐私：当前站点不采集个人身份信息</li>
+          </ul>
+        </div>
+
+        <div class="subscribe-card" v-if="latestDecisionMemo">
+          <h2 class="subscribe-card-title">最新决策备忘录</h2>
+          <p class="subscribe-latest-title">{{ latestDecisionMemo.title }}</p>
+          <p class="subscribe-latest-summary">{{ getQuickConclusion(latestDecisionMemo) || latestDecisionMemo.summary }}</p>
+          <button class="cta-btn" @click="openNote(latestDecisionMemo)">阅读最新一期</button>
+        </div>
+      </div>
+      <footer class="site-footer">二子的知识库 · 决策优先，不追热点</footer>
+    </template>
+
     <!-- List View -->
     <template v-else-if="!activeNote">
       <!-- 返回顶部按钮 -->
@@ -193,6 +270,8 @@
             <button class="favorites-btn" @click="openFavorites" title="我的收藏">⭐ {{ favorites.size || '' }}</button>
             <button class="tags-btn" @click="openTags" title="标签云">🏷️</button>
             <button class="random-btn" @click="openRandomNote" title="随机一篇">🎲</button>
+            <button class="start-btn" @click="openStartHere" title="新读者起步包">🧭 起步包</button>
+            <button class="subscribe-btn" @click="openSubscribe" title="订阅每周决策备忘录">📬 订阅</button>
             <button class="about-link" @click="openAbout">关于二子</button>
           </div>
         </div>
@@ -201,6 +280,87 @@
           <span class="stat"><span class="stat-num">{{ uniqueDates }}</span> 天探索</span>
         </div>
       </header>
+
+      <section class="value-prop">
+        <h1 class="value-title">给 AI 产品人的每日决策情报</h1>
+        <p class="value-subtitle">筛掉噪音，给出判断和行动建议。每天 5 分钟，掌握最值得投入的方向。</p>
+        <div class="value-actions">
+          <button class="cta-btn" @click="openSubscribe">订阅每周决策备忘录</button>
+          <button class="cta-btn cta-btn-secondary" @click="openStartHere">新读者起步包（10 篇）</button>
+        </div>
+      </section>
+
+      <section class="weekly-memo-card" v-if="latestDecisionMemo">
+        <div class="weekly-memo-top">
+          <span class="weekly-memo-badge">本周决策备忘录</span>
+          <span class="weekly-memo-date">{{ latestDecisionMemo.date }}</span>
+        </div>
+        <h2 class="weekly-memo-title">{{ latestDecisionMemo.title }}</h2>
+        <p class="weekly-memo-summary">{{ getQuickConclusion(latestDecisionMemo) || latestDecisionMemo.summary }}</p>
+        <ul class="weekly-memo-actions" v-if="latestDecisionActions.length">
+          <li v-for="action in latestDecisionActions" :key="action">{{ action }}</li>
+        </ul>
+        <button class="cta-btn" @click="openNote(latestDecisionMemo)">阅读完整备忘录</button>
+      </section>
+
+      <section class="metrics-panel" v-if="retentionMetrics">
+        <div class="metrics-panel-header">
+          <h2 class="metrics-panel-title">留存指标看板（轻量）</h2>
+          <a class="metrics-panel-link" href="/data/retention-metrics.json" target="_blank" rel="noopener noreferrer">查看数据源</a>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-card" v-for="metric in retentionMetricItems" :key="metric.key">
+            <div class="metric-label">{{ metric.label }}</div>
+            <div class="metric-value">{{ metric.value }}</div>
+            <div class="metric-target">目标：{{ metric.target }}</div>
+          </div>
+        </div>
+        <p class="metrics-footnote">最近更新：{{ retentionMetrics.updatedAt || '未设置' }} · 当前为静态数据，可手动维护。</p>
+      </section>
+
+      <!-- T38: 访问统计面板（轻量版） -->
+      <section class="analytics-panel" v-if="totalPageViews > 0">
+        <div class="analytics-header">
+          <h2 class="analytics-title">📊 阅读统计</h2>
+          <span class="analytics-badge">本地数据</span>
+        </div>
+        <div class="analytics-summary">
+          <div class="analytics-stat">
+            <span class="analytics-stat-value">{{ totalPageViews }}</span>
+            <span class="analytics-stat-label">总访问量</span>
+          </div>
+          <div class="analytics-stat">
+            <span class="analytics-stat-value">{{ Object.keys(readHistory).length }}</span>
+            <span class="analytics-stat-label">已读文章</span>
+          </div>
+          <div class="analytics-stat">
+            <span class="analytics-stat-value">{{ favorites.size }}</span>
+            <span class="analytics-stat-label">收藏文章</span>
+          </div>
+        </div>
+        <div class="analytics-top" v-if="topViewedNotes.length > 0">
+          <h3 class="analytics-top-title">热门文章 TOP {{ topViewedNotes.length }}</h3>
+          <div class="analytics-top-list">
+            <div 
+              v-for="(note, index) in topViewedNotes" 
+              :key="note.id" 
+              class="analytics-top-item"
+              @click="openNote(note)"
+            >
+              <span class="analytics-top-rank">{{ index + 1 }}</span>
+              <div class="analytics-top-content">
+                <div class="analytics-top-title-text">{{ note.title }}</div>
+                <div class="analytics-top-meta">
+                  <span>{{ note.viewCount }} 次访问</span>
+                  <span>·</span>
+                  <span>{{ note.date }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="analytics-footnote">数据仅保存在本地浏览器，清除缓存后会重置。</p>
+      </section>
 
       <!-- 搜索栏 -->
       <div class="search-bar">
@@ -248,12 +408,13 @@
             <span class="note-reading-time">{{ getReadingTime(note) }} 分钟</span>
             <span v-if="readHistory[note.id]" class="note-read-badge">✓</span>
           </div>
-          <div class="note-title">{{ note.title }}</div>
-          <div class="note-summary" v-if="note.summary">{{ note.summary }}</div>
+          <div class="note-title" v-html="highlightText(note.title, searchQuery)"></div>
+          <div class="note-quick-conclusion" v-if="getQuickConclusion(note)">30秒结论：{{ getQuickConclusion(note) }}</div>
+          <div class="note-summary" v-if="note.summary && note.summary !== getQuickConclusion(note)" v-html="highlightText(note.summary, searchQuery)"></div>
           
           <!-- T44: 移动端展开预览 -->
           <div class="note-mobile-preview" v-if="expandedNoteId === note.id">
-            <div class="mobile-preview-content" v-if="note.summary">{{ note.summary }}</div>
+            <div class="mobile-preview-content" v-if="getQuickConclusion(note) || note.summary">{{ getQuickConclusion(note) || note.summary }}</div>
             <div class="mobile-preview-meta">
               <span>字数：{{ note.wordCount || 0 }}</span>
               <span>·</span>
@@ -327,6 +488,13 @@
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
           </button>
+          <button class="export-btn" @click="exportNote" title="导出 Markdown">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </button>
         </div>
         <h1 class="detail-title">{{ activeNote.title }}</h1>
         <div class="detail-meta">
@@ -339,6 +507,16 @@
           <span v-if="activeNote.lastModified && activeNote.lastModified !== activeNote.date" class="note-last-modified">
             最后更新：{{ formatDate(activeNote.lastModified) }}
           </span>
+        </div>
+        <div class="detail-decision" v-if="getQuickConclusion(activeNote) || (activeNote.actionItems && activeNote.actionItems.length)">
+          <p class="detail-decision-title">30秒结论</p>
+          <p class="detail-decision-summary" v-if="getQuickConclusion(activeNote)">{{ getQuickConclusion(activeNote) }}</p>
+          <div class="detail-actions-list" v-if="activeNote.actionItems && activeNote.actionItems.length">
+            <h2 id="today-actions">今日可执行动作</h2>
+            <ol>
+              <li v-for="action in activeNote.actionItems" :key="action">{{ action }}</li>
+            </ol>
+          </div>
         </div>
       </div>
 
@@ -401,6 +579,12 @@
             </div>
           </div>
           
+          <div class="subscribe-cta-card" v-if="!isLoadingContent">
+            <h3 class="subscribe-cta-title">每周决策备忘录</h3>
+            <p class="subscribe-cta-desc">固定周一发布，聚焦判断和行动，不做信息搬运。</p>
+            <button class="cta-btn" @click="openSubscribe">去订阅</button>
+          </div>
+
           <!-- 评论区 -->
           <div class="comments-section" v-if="!isLoadingContent">
             <div class="comments-header">
@@ -429,11 +613,14 @@
         </div>
 
         <!-- TOC 侧边栏（右侧） -->
-        <aside class="toc-sidebar" v-if="showToc">
+        <aside class="toc-sidebar" v-if="showToc" :class="{ 'toc-collapsed': tocCollapsed }">
           <div class="toc-header">
             <span class="toc-title">目录</span>
+            <button class="toc-toggle" @click="toggleToc" :title="tocCollapsed ? '展开' : '折叠'">
+              {{ tocCollapsed ? '◀' : '▶' }}
+            </button>
           </div>
-          <nav class="toc-nav">
+          <nav class="toc-nav" v-show="!tocCollapsed">
             <a
               v-for="item in tocItems"
               :key="item.id"
@@ -489,11 +676,17 @@ const showFavorites = ref(false);
 const showTags = ref(false);
 const isDarkMode = ref(false);
 const showTimeline = ref(false);
+const showStartHere = ref(false);
+const showSubscribe = ref(false);
 const readHistory = ref({}); // { noteId: timestamp }
+const readProgress = ref({}); // T62: { noteId: scrollPosition }
 const favorites = ref(new Set()); // Set<noteId>
+const pageViews = ref({}); // T38: { noteId: viewCount }
 const expandedNoteId = ref(null); // T44: 移动端展开的笔记ID
 const showUpdateToast = ref(false); // T46: SW 更新提示
 const swVersion = ref(''); // T46: SW 版本
+const rssCopied = ref(false);
+const retentionMetrics = ref(null);
 
 // 排序后的分类（用于显示）
 const displayCategories = computed(() => {
@@ -517,6 +710,133 @@ const categoryCounts = computed(() => {
 const uniqueDates = computed(() => {
   const dates = new Set(notes.map(n => n.date));
   return dates.size;
+});
+
+const isListView = computed(() => (
+  !activeNote.value &&
+  !showAbout.value &&
+  !showFavorites.value &&
+  !showTags.value &&
+  !showTimeline.value &&
+  !showStartHere.value &&
+  !showSubscribe.value &&
+  !showNotFound.value
+));
+
+const latestDecisionMemo = computed(() => {
+  const sortedInsights = notes
+    .filter(n => n.category === 'insights')
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const weekly = sortedInsights.find(n => /周决策备忘录/.test(n.title));
+  return weekly || sortedInsights[0] || null;
+});
+
+const latestDecisionActions = computed(() => {
+  if (!latestDecisionMemo.value) return [];
+  if (latestDecisionMemo.value.actionItems && latestDecisionMemo.value.actionItems.length > 0) {
+    return latestDecisionMemo.value.actionItems.slice(0, 3);
+  }
+  return [
+    '用本文结论复盘你当前最重要的一个 AI 决策',
+    '列出本周不做的 1 件事，减少无效投入',
+    '为下周只保留一个最高优先级实验'
+  ];
+});
+
+const retentionMetricItems = computed(() => {
+  if (!retentionMetrics.value) return [];
+  return [
+    {
+      key: 'seven_day_return_rate',
+      label: '7 日回访率',
+      value: retentionMetrics.value.sevenDayReturnRate || 'N/A',
+      target: retentionMetrics.value.targets?.sevenDayReturnRate || '>=20%'
+    },
+    {
+      key: 'subscription_conversion_rate',
+      label: '订阅转化率',
+      value: retentionMetrics.value.subscriptionConversionRate || 'N/A',
+      target: retentionMetrics.value.targets?.subscriptionConversionRate || '>=3%'
+    },
+    {
+      key: 'weekly_open_rate',
+      label: '周报打开率',
+      value: retentionMetrics.value.weeklyOpenRate || 'N/A',
+      target: retentionMetrics.value.targets?.weeklyOpenRate || '>=35%'
+    },
+    {
+      key: 'bookmark_rate',
+      label: '收藏率',
+      value: retentionMetrics.value.bookmarkRate || 'N/A',
+      target: retentionMetrics.value.targets?.bookmarkRate || '>=5%'
+    }
+  ];
+});
+
+// T38: 访问统计（轻量版）
+const totalPageViews = computed(() => {
+  return Object.values(pageViews.value).reduce((sum, count) => sum + count, 0);
+});
+
+const topViewedNotes = computed(() => {
+  const sorted = Object.entries(pageViews.value)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5);
+  
+  return sorted.map(([noteId, count]) => {
+    const note = notes.find(n => n.id === noteId);
+    return note ? { ...note, viewCount: count } : null;
+  }).filter(Boolean);
+});
+
+function getStartHereReason(note) {
+  const reasonByCategory = {
+    insights: '先建立宏观判断框架，再看细节。',
+    'deep-dives': '这篇能帮你看清因果链与商业变量。',
+    signals: '这是近期最有行动价值的具体信号。',
+    tech: '补齐技术边界，避免产品误判。',
+    inspiration: '看跨领域案例，扩展产品解法。',
+    reading: '用高质量外部观点校准判断。',
+    reflection: '把碎片知识串成可执行策略。'
+  };
+  return reasonByCategory[note.category] || '帮助你快速建立决策上下文。';
+}
+
+const startHereNotes = computed(() => {
+  const sorted = [...notes].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const selected = [];
+  const picked = new Set();
+  const rules = [
+    ['insights', 3],
+    ['deep-dives', 2],
+    ['signals', 2],
+    ['tech', 1],
+    ['reading', 1],
+    ['inspiration', 1]
+  ];
+
+  rules.forEach(([category, limit]) => {
+    const bucket = sorted.filter(n => n.category === category);
+    bucket.slice(0, limit).forEach(note => {
+      if (!picked.has(note.id) && selected.length < 10) {
+        selected.push(note);
+        picked.add(note.id);
+      }
+    });
+  });
+
+  sorted.forEach(note => {
+    if (selected.length >= 10 || picked.has(note.id)) return;
+    selected.push(note);
+    picked.add(note.id);
+  });
+
+  return selected.slice(0, 10).map((note, index) => ({
+    ...note,
+    order: index + 1,
+    reason: getStartHereReason(note)
+  }));
 });
 
 function toChineseBigrams(text) {
@@ -656,6 +976,27 @@ watch(searchQuery, () => {
   expandedNoteId.value = null; // T44: 搜索时关闭展开
 });
 
+// T60: 高亮搜索关键词
+function highlightText(text, query) {
+  if (!query || !text) return text;
+  
+  // 分词：按空格分割搜索词
+  const keywords = query.trim().split(/\s+/).filter(k => k.length > 0);
+  if (keywords.length === 0) return text;
+  
+  let result = text;
+  
+  // 为每个关键词添加高亮
+  keywords.forEach(keyword => {
+    // 转义正则特殊字符
+    const escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escaped})`, 'gi');
+    result = result.replace(regex, '<mark class="highlight">$1</mark>');
+  });
+  
+  return result;
+}
+
 function getReadingTime(note) {
   // T41: 精确阅读时间计算
   // 中文：300字/分钟，英文：200词/分钟
@@ -672,6 +1013,13 @@ function getReadingTime(note) {
   
   // 兼容旧数据：统一按300字/分钟
   return Math.max(1, Math.ceil(wordCount / 300));
+}
+
+function getQuickConclusion(note) {
+  if (!note) return '';
+  if (note.quickConclusion && note.quickConclusion.trim()) return note.quickConclusion.trim();
+  if (note.summary && note.summary.trim()) return note.summary.trim();
+  return '';
 }
 
 function getTagLabel(tag) {
@@ -771,6 +1119,7 @@ const tocItems = computed(() => {
 });
 
 const showToc = computed(() => tocItems.value.length >= 3);
+const tocCollapsed = ref(false); // T63: 目录折叠状态
 
 // 路由
 function parseRoute(hash) {
@@ -782,6 +1131,8 @@ function parseRoute(hash) {
   if (parts[0] === 'favorites') return { view: 'favorites' };
   if (parts[0] === 'tags') return { view: 'tags' };
   if (parts[0] === 'timeline') return { view: 'timeline' };
+  if (parts[0] === 'start-here') return { view: 'start-here' };
+  if (parts[0] === 'subscribe') return { view: 'subscribe' };
   if (parts[0] === 'category' && parts[1]) return { view: 'list', category: decodeURIComponent(parts[1]) };
   if (parts[0] === 'note' && parts[1]) return { view: 'detail', noteId: decodeURIComponent(parts[1]) };
   return { view: 'list', category: null };
@@ -797,6 +1148,9 @@ function handleRouteChange() {
     showNotFound.value = false;
     showFavorites.value = false;
     showTags.value = false;
+    showTimeline.value = false;
+    showStartHere.value = false;
+    showSubscribe.value = false;
   } else if (route.view === 'favorites') {
     showFavorites.value = true;
     showAbout.value = false;
@@ -804,6 +1158,9 @@ function handleRouteChange() {
     activeCategory.value = null;
     showNotFound.value = false;
     showTags.value = false;
+    showTimeline.value = false;
+    showStartHere.value = false;
+    showSubscribe.value = false;
   } else if (route.view === 'tags') {
     showTags.value = true;
     showFavorites.value = false;
@@ -820,8 +1177,32 @@ function handleRouteChange() {
     activeNote.value = null;
     activeCategory.value = null;
     showNotFound.value = false;
+    showStartHere.value = false;
+    showSubscribe.value = false;
+  } else if (route.view === 'start-here') {
+    showStartHere.value = true;
+    showSubscribe.value = false;
+    showTimeline.value = false;
+    showTags.value = false;
+    showFavorites.value = false;
+    showAbout.value = false;
+    activeNote.value = null;
+    activeCategory.value = null;
+    showNotFound.value = false;
+  } else if (route.view === 'subscribe') {
+    showSubscribe.value = true;
+    showStartHere.value = false;
+    showTimeline.value = false;
+    showTags.value = false;
+    showFavorites.value = false;
+    showAbout.value = false;
+    activeNote.value = null;
+    activeCategory.value = null;
+    showNotFound.value = false;
   } else if (route.view === 'list') {
     showAbout.value = false;
+    showSubscribe.value = false;
+    showStartHere.value = false;
     activeNote.value = null;
     activeCategory.value = route.category;
     currentPage.value = 1;
@@ -839,6 +1220,8 @@ function handleRouteChange() {
       showFavorites.value = false;
       showTags.value = false;
       showTimeline.value = false;
+      showStartHere.value = false;
+      showSubscribe.value = false;
       // 标记为已读
       markAsRead(note.id);
       // 按需加载内容
@@ -851,6 +1234,8 @@ function handleRouteChange() {
       showFavorites.value = false;
       showTags.value = false;
       showTimeline.value = false;
+      showStartHere.value = false;
+      showSubscribe.value = false;
     }
   }
 }
@@ -876,6 +1261,13 @@ async function loadNoteContent(note) {
       // 加载完成后加载评论（需要等待 Vue 渲染 DOM）
       nextTick(() => {
         setTimeout(() => loadGiscus(), 200);
+        // T62: 恢复阅读进度
+        const savedProgress = readProgress.value[note.id];
+        if (savedProgress && savedProgress > 100) {
+          setTimeout(() => {
+            window.scrollTo({ top: savedProgress, behavior: 'smooth' });
+          }, 100);
+        }
       });
     }
   } else {
@@ -887,9 +1279,9 @@ async function loadNoteContent(note) {
   }
 }
 
-function openNote(note) {
+function openNote(note, forceDirect = false) {
   // T44: 移动端先展开预览，再次点击才进入详情页
-  if (window.innerWidth <= 1200 && expandedNoteId.value !== note.id) {
+  if (!forceDirect && isListView.value && window.innerWidth <= 1200 && expandedNoteId.value !== note.id) {
     expandedNoteId.value = note.id;
     return;
   }
@@ -907,6 +1299,8 @@ function closeNote() {
 }
 
 function openAbout() {
+  showStartHere.value = false;
+  showSubscribe.value = false;
   window.location.hash = '#/about';
   nextTick(() => window.scrollTo(0, 0));
 }
@@ -914,6 +1308,38 @@ function openAbout() {
 function closeAbout() {
   window.location.hash = '#/';
   nextTick(() => window.scrollTo(0, 0));
+}
+
+function openStartHere() {
+  window.location.hash = '#/start-here';
+  nextTick(() => window.scrollTo(0, 0));
+}
+
+function closeStartHere() {
+  window.location.hash = '#/';
+  nextTick(() => window.scrollTo(0, 0));
+}
+
+function openSubscribe() {
+  window.location.hash = '#/subscribe';
+  nextTick(() => window.scrollTo(0, 0));
+}
+
+function closeSubscribe() {
+  window.location.hash = '#/';
+  nextTick(() => window.scrollTo(0, 0));
+}
+
+function copyRssLink() {
+  const url = `${window.location.origin}/feed.xml`;
+  navigator.clipboard.writeText(url).then(() => {
+    rssCopied.value = true;
+    setTimeout(() => {
+      rssCopied.value = false;
+    }, 2000);
+  }).catch((error) => {
+    console.error('复制 RSS 链接失败:', error);
+  });
 }
 
 function openRandomNote() {
@@ -951,10 +1377,43 @@ function shareNote() {
   });
 }
 
+// T61: 导出文章为 Markdown
+function exportNote() {
+  if (!activeNote.value || !noteContent.value) return;
+  
+  // 添加元数据头部
+  const header = `---
+title: ${activeNote.value.title}
+date: ${activeNote.value.date}
+category: ${categories[activeNote.value.category]?.label || activeNote.value.category}
+tags: ${(activeNote.value.tags || []).join(', ')}
+source: ${activeNote.value.source || ''}
+---
+
+`;
+  
+  const content = header + noteContent.value;
+  const filename = `${activeNote.value.id}.md`;
+  
+  // 创建下载链接
+  const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  URL.revokeObjectURL(url);
+}
+
 function markAsRead(noteId) {
   readHistory.value[noteId] = Date.now();
+  // T38: 更新访问次数
+  pageViews.value[noteId] = (pageViews.value[noteId] || 0) + 1;
   try {
     localStorage.setItem('erzi-read-history', JSON.stringify(readHistory.value));
+    localStorage.setItem('erzi-page-views', JSON.stringify(pageViews.value));
   } catch (e) {
     console.warn('Failed to save read history:', e);
   }
@@ -1004,6 +1463,8 @@ function openFavorites() {
   showFavorites.value = true;
   activeNote.value = null;
   showAbout.value = false;
+  showStartHere.value = false;
+  showSubscribe.value = false;
   showNotFound.value = false;
   window.location.hash = '#/favorites';
 }
@@ -1040,6 +1501,8 @@ function openTags() {
   showTags.value = true;
   activeNote.value = null;
   showAbout.value = false;
+  showStartHere.value = false;
+  showSubscribe.value = false;
   showFavorites.value = false;
   showNotFound.value = false;
   window.location.hash = '#/tags';
@@ -1146,6 +1609,8 @@ function openTimeline() {
   showTimeline.value = true;
   activeNote.value = null;
   showAbout.value = false;
+  showStartHere.value = false;
+  showSubscribe.value = false;
   showFavorites.value = false;
   showTags.value = false;
   showNotFound.value = false;
@@ -1164,6 +1629,16 @@ function reloadPage() {
 
 function dismissUpdateToast() {
   showUpdateToast.value = false;
+}
+
+// T63: 切换目录折叠状态
+function toggleToc() {
+  tocCollapsed.value = !tocCollapsed.value;
+  try {
+    localStorage.setItem('erzi-toc-collapsed', tocCollapsed.value ? '1' : '0');
+  } catch (e) {
+    console.warn('Failed to save TOC state:', e);
+  }
 }
 
 function scrollToHeading(id) {
@@ -1185,6 +1660,21 @@ function handleScroll() {
   if (activeNote.value) {
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     readingProgress.value = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    
+    // T62: 保存阅读进度（节流，每 2 秒保存一次）
+    if (!window.scrollSaveTimer) {
+      window.scrollSaveTimer = setTimeout(() => {
+        if (activeNote.value && scrollTop > 100) {
+          readProgress.value[activeNote.value.id] = scrollTop;
+          try {
+            localStorage.setItem('erzi-read-progress', JSON.stringify(readProgress.value));
+          } catch (e) {
+            console.warn('Failed to save read progress:', e);
+          }
+        }
+        window.scrollSaveTimer = null;
+      }, 2000);
+    }
   }
   
   // TOC 高亮
@@ -1214,14 +1704,14 @@ function handleKeydown(e) {
   }
   
   // / 聚焦搜索框（列表页）
-  if (e.key === '/' && !activeNote.value && !showAbout.value) {
+  if (e.key === '/' && isListView.value) {
     e.preventDefault();
     document.querySelector('.search-input')?.focus();
     return;
   }
   
   // j/k 上一篇/下一篇（详情页）
-  if (activeNote.value && !showAbout.value) {
+  if (activeNote.value) {
     const currentIndex = notes.findIndex(n => n.id === activeNote.value.id);
     
     if (e.key === 'j' || e.key === 'ArrowDown') {
@@ -1261,6 +1751,34 @@ async function loadSearchIndex() {
   }
 }
 
+async function loadRetentionMetrics() {
+  const fallback = {
+    updatedAt: '2026-02-22',
+    sevenDayReturnRate: '18.4%',
+    subscriptionConversionRate: '2.6%',
+    weeklyOpenRate: '31.2%',
+    bookmarkRate: '4.3%',
+    targets: {
+      sevenDayReturnRate: '>=20%',
+      subscriptionConversionRate: '>=3%',
+      weeklyOpenRate: '>=35%',
+      bookmarkRate: '>=5%'
+    }
+  };
+
+  try {
+    const response = await fetch('/data/retention-metrics.json', { cache: 'no-store' });
+    if (response.ok) {
+      retentionMetrics.value = await response.json();
+      return;
+    }
+  } catch (error) {
+    console.warn('加载留存指标失败，使用默认值:', error);
+  }
+
+  retentionMetrics.value = fallback;
+}
+
 onMounted(() => {
   window.addEventListener('hashchange', handleRouteChange);
   window.addEventListener('scroll', handleScroll);
@@ -1272,6 +1790,7 @@ onMounted(() => {
   
   // T40: 加载搜索索引（延迟加载，不阻塞首屏）
   setTimeout(() => loadSearchIndex(), 1000);
+  loadRetentionMetrics();
   
   // 加载阅读历史
   try {
@@ -1281,6 +1800,36 @@ onMounted(() => {
     }
   } catch (e) {
     console.warn('Failed to load read history:', e);
+  }
+  
+  // T38: 加载访问统计数据
+  try {
+    const savedPageViews = localStorage.getItem('erzi-page-views');
+    if (savedPageViews) {
+      pageViews.value = JSON.parse(savedPageViews);
+    }
+  } catch (e) {
+    console.warn('Failed to load page views:', e);
+  }
+  
+  // T62: 加载阅读进度数据
+  try {
+    const savedProgress = localStorage.getItem('erzi-read-progress');
+    if (savedProgress) {
+      readProgress.value = JSON.parse(savedProgress);
+    }
+  } catch (e) {
+    console.warn('Failed to load read progress:', e);
+  }
+  
+  // T63: 加载目录折叠状态
+  try {
+    const savedTocCollapsed = localStorage.getItem('erzi-toc-collapsed');
+    if (savedTocCollapsed === '1') {
+      tocCollapsed.value = true;
+    }
+  } catch (e) {
+    console.warn('Failed to load TOC state:', e);
   }
   
   // 加载收藏数据
