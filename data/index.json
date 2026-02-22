@@ -35,6 +35,23 @@
       "lastModified": null
     },
     {
+      "id": "D006-ai-content-fatigue-2026-02-22",
+      "title": "D006 - AI 内容疲劳 (ai;dr)",
+      "category": "deep-dives",
+      "date": "2026-02-22",
+      "summary": "> AI 生成的邮件/文档让人不想读了——从\"tl;dr\"到\"ai;dr\"的转变",
+      "tags": [
+        "深度拆解/商业模式",
+        "深度拆解/竞争格局",
+        "深度拆解/产品策略"
+      ],
+      "wordCount": 3817,
+      "chineseCount": 3622,
+      "englishCount": 427,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-22-AI能效危机与绿色计算",
       "title": "AI 能效危机与绿色计算——当智能的代价是地球的未来",
       "category": "tech",
