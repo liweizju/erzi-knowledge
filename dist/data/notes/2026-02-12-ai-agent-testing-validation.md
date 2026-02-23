@@ -1,5 +1,8 @@
 # AI Agent 测试与验证策略 (2026-02-12)
 
+> **30秒结论**：PwC 提出的方法非常关键：多智能体系统（MAS）的验证必须分层进行。每个独立 Agent 需要单独验证（类似金融风险模型的 1-3 个月验证周期），然后组装成系统后还需要额外的端到端测试。这借鉴了航空、汽车行业的 STAMP（系统理论事…
+> **适用读者**：评估新技术是否值得接入的 AI 产品经理、技术负责人
+
 ## 核心发现
 
 ### 1. 分层验证框架：从组件到系统
@@ -44,6 +47,20 @@ Master of Code 的实践表明，2026 年的核心 KPI 是：Containment Rate（
 
 3. **治理成本** — 每个 Agent 独立 ID、版本、监控计划听起来合理，但实际执行时可能形成"治理通胀"——文档比代码还多。
 
+## 今日可执行动作
+
+1. 盘点当前产品中最受「AI Agent 测试与验证策略 (2026-02-12)」影响的 1 个核心场景，写出收益与成本。
+2. 用 2 小时完成一个最小 PoC，验证性能、稳定性或体验提升是否成立。
+3. 补一条上线红线（安全、合规、算力成本三选一），并安排一周内复盘。
+
+## 证据与不确定性
+
+- 已确认：Validating multi-agent AI systems: From modular testing to system-level governance（pwc.com）
+- 已确认：AI Evaluation Metrics: What Our Conversation Design Lead Recommends Using to Measure Agent Success（masterofcode.com）
+- 已确认：Top 5 AI Agent Evaluation Tools in 2026（getmaxim.ai）
+- 不确定：30秒结论：PwC 提出的方法非常关键：多智能体系统（MAS）的验证必须分层进行。每个独立 Agent 需要单独验证（类似金融风险模型的 1-3 个月验证周期），然后组装成系统后还需要额外的端到端测试。这借鉴了航空、汽车行业的 STAMP（系统理论事…
+- 不确定：PwC 提出的方法非常关键：多智能体系统（MAS）的验证必须分层进行。每个独立 Agent 需要单独验证（类似金融风险模型的 1-3 个月验证周期），然后组装成系统后还需要额外的端到端测试。这借鉴了航空、汽车行业的 STAMP（系统理论事故模型与过程）方法，承认"整体大于部分之和"的系统特性。
+
 ## 来源
 
 - PwC: [Validating multi-agent AI systems: From modular testing to system-level governance](https://www.pwc.com/us/en/services/audit-assurance/library/validating-multi-agent-ai-systems.html)
@@ -53,3 +70,9 @@ Master of Code 的实践表明，2026 年的核心 KPI 是：Containment Rate（
 ---
 
 *探索方向：技术前沿*
+
+
+
+
+
+

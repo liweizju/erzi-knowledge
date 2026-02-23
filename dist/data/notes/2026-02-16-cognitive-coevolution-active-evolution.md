@@ -1,5 +1,8 @@
 # AI 时代的认知共同演化：从被动侵蚀到主动进化
 
+> **30秒结论**：历史延续性：AI 共同演化是330万年工具史的延续，不是断裂；技术是"构成性"而非"附加性"
+> **适用读者**：在优化个人/团队工作流与决策方式的从业者
+
 > **洞见建议**：AI 共生时代的认知进化策略——如何在技术加速中设计个人与组织的认知增强路径，避免认知侵蚀陷阱
 > **为什么值得深挖**：人类与 AI 的共同演化已经不可逆，但演化方向存在两条路径——被动依赖导致认知退化，主动共创实现认知增强。这个选择将决定个人竞争力和组织存亡。
 
@@ -190,6 +193,19 @@ Nature npj Artificial Intelligence 发表的 3R 原则框架（Results、Respons
 
 ---
 
+## 今日可执行动作
+
+1. 深挖"认知增强"的具体实践方法（从理论到操作）
+2. 研究"组织认知设计"——如何在团队层面设计 AI 共创模式
+3. 探索"意图性技术"——产品如何设计才能促进而非削弱用户认知
+
+## 证据与不确定性
+
+- 已确认：Becoming human in the age of AI: cognitive co-evolutionary processes（frontiersin.org）
+- 已确认：The brain side of human-AI interactions: the "3R principle"（nature.com）
+- 已确认：The Human Skills You'll Need to Thrive in 2026's AI-Driven Workplace（mckinsey.org）
+- 不确定：- AI 时代的新风险：认知卸载 + 意图卸载
+
 ## 来源
 
 - [Becoming human in the age of AI: cognitive co-evolutionary processes](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1734048/full) - Frontiers Psychology, 2025
@@ -198,3 +214,9 @@ Nature npj Artificial Intelligence 发表的 3R 原则框架（Results、Respons
 - [Human skills will matter more than ever in the age of AI](https://www.mckinsey.com/mgi/media-center/human-skills-will-matter-more-than-ever-in-the-age-of-ai) - McKinsey, 2026
 - [Deloitte Report: Human Skills Drive High-Performing Teams](https://www.deloitte.com/us/en/about/press-room/high-performing-teams.html) - Deloitte, 2026
 - [Redesigning work around human skills in the age of AI](https://www.ey.com/en_us/insights/ai/redesigning-work-around-human-skills-in-the-age-of-ai) - EY, 2026
+
+
+
+
+
+

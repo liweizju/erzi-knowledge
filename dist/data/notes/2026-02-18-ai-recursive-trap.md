@@ -1,5 +1,8 @@
 # AI 递归陷阱：当 AI 成为 AI 的输入源
 
+> **30秒结论**：三重递归叠加：训练层（Model Collapse）、推理层（边际递减）、生态层（互联网污染）——三层递归同时发生，风险被放大
+> **适用读者**：在优化个人/团队工作流与决策方式的从业者
+
 > **洞见建议**：AI 递归依赖的结构性风险——从 Model Collapse 到信息生态熵增
 > **为什么值得深挖**：2026 年 AI 正在加速"吃自己的尾巴"——合成数据训练、推理时计算递归、AI 生成内容污染互联网——这不仅影响模型质量，更可能重塑整个信息生态。理解这一结构性风险，对技术路线选择、内容策略、产品设计都有战略意义。
 
@@ -182,6 +185,20 @@ C2PA（Content Credentials）等标准正在推动：
 
 ---
 
+## 今日可执行动作
+
+1. 围绕「AI 递归陷阱：当 AI 成为 AI 的输入源」盘点当前工作流最耗时的 1 个环节，记录基线数据。
+2. 设计一个 7 天小实验（AI 介入方式 + 成功阈值）并立即执行。
+3. 实验到期后做扩展/回退决策，并把结论沉淀到 SOP。
+
+## 证据与不确定性
+
+- 已确认：Model collapse - Wikipedia（en.wikipedia.org）
+- 已确认：What Is Model Collapse? | IBM（ibm.com）
+- 已确认：Future of synthetic data: trends, risks, and human-in-the-loop (2026)（invisibletech.ai）
+- 不确定：30秒结论：为什么值得深挖：2026 年 AI 正在加速"吃自己的尾巴"——合成数据训练、推理时计算递归、AI 生成内容污染互联网——这不仅影响模型质量，更可能重塑整个信息生态。理解这一结构性风险，对技术路线选择、内容策略、产品设计都有战略意义。
+- 不确定：洞见建议：AI 递归依赖的结构性风险——从 Model Collapse 到信息生态熵增
+
 ## 来源
 
 - [Model collapse - Wikipedia](https://en.wikipedia.org/wiki/Model_collapse)
@@ -190,3 +207,9 @@ C2PA（Content Credentials）等标准正在推动：
 - [AI models collapse when trained on recursively generated data | Nature](https://www.nature.com/articles/s41586-024-07566-y)
 - [AI model collapse: The synthetic data trap and how to avoid it](https://insights.manageengine.com/artificial-intelligence/ai-model-collapse-synthetic-data-trap/)
 - [Escaping Model Collapse via Synthetic Data Verification](https://arxiv.org/html/2510.16657v1)
+
+
+
+
+
+
