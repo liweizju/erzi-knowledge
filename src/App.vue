@@ -647,12 +647,25 @@
 
 <script setup>
 import { ref, computed, nextTick, onMounted, onUnmounted, watch } from 'vue';
-import { marked } from 'marked';
-import hljs from 'highlight.js';
 import { knowledgeData } from './data-generated.js';
-import lunr from 'lunr';
 
-marked.setOptions({ breaks: false, gfm: true });
+// T59: 动态导入大型库，减少首屏加载
+let marked = null;
+let hljs = null;
+let lunr = null;
+
+// 初始化 marked 和 hljs（详情页需要时才加载）
+async function initMarkedAndHljs() {
+  if (!marked) {
+    const [markedModule, hljsModule] = await Promise.all([
+      import('marked'),
+      import('highlight.js')
+    ]);
+    marked = markedModule.marked;
+    hljs = hljsModule.default;
+    marked.setOptions({ breaks: false, gfm: true });
+  }
+}
 
 const notes = knowledgeData.notes;
 const categories = knowledgeData.categories;
@@ -1068,8 +1081,13 @@ const seriesNotes = computed(() => {
 });
 
 // 渲染内容
-const renderedContent = computed(() => {
-  if (!activeNote.value || !noteContent.value) return '';
+// T59: 将 renderedContent 改为 ref，支持动态加载 marked 和 hljs
+const renderedContent = ref('');
+
+// 渲染 Markdown 内容
+async function renderMarkdown(content) {
+  // 确保库已加载
+  await initMarkedAndHljs();
   
   const renderer = new marked.Renderer();
   
@@ -1097,8 +1115,8 @@ const renderedContent = computed(() => {
     </div>\n`;
   };
   
-  return marked(noteContent.value, { renderer });
-});
+  return marked(content, { renderer });
+}
 
 // TOC
 const tocItems = computed(() => {
@@ -1245,17 +1263,23 @@ async function loadNoteContent(note) {
   if (!note.content) {
     isLoadingContent.value = true;
     noteContent.value = '';
+    renderedContent.value = '';
     try {
       const response = await fetch(`/data/notes/${note.id}.md`);
       if (response.ok) {
-        noteContent.value = await response.text();
-        note.content = noteContent.value; // 缓存到 note 对象
+        const rawContent = await response.text();
+        noteContent.value = rawContent;
+        note.content = rawContent; // 缓存到 note 对象
+        // T59: 渲染 Markdown（动态加载 marked 和 hljs）
+        renderedContent.value = await renderMarkdown(rawContent);
       } else {
         noteContent.value = '# 文章加载失败\n\n抱歉，无法加载这篇文章的内容。';
+        renderedContent.value = noteContent.value;
       }
     } catch (error) {
       console.error('Failed to load note:', error);
       noteContent.value = '# 文章加载失败\n\n抱歉，加载文章时出现错误。';
+      renderedContent.value = noteContent.value;
     } finally {
       isLoadingContent.value = false;
       // 加载完成后加载评论（需要等待 Vue 渲染 DOM）
@@ -1272,6 +1296,8 @@ async function loadNoteContent(note) {
     }
   } else {
     noteContent.value = note.content;
+    // T59: 渲染 Markdown
+    renderedContent.value = await renderMarkdown(note.content);
     // 加载评论
     nextTick(() => {
       setTimeout(() => loadGiscus(), 200);
@@ -1736,6 +1762,12 @@ async function loadSearchIndex() {
   
   isLoadingSearchIndex.value = true;
   try {
+    // T59: 动态加载 lunr
+    if (!lunr) {
+      const lunrModule = await import('lunr');
+      lunr = lunrModule.default;
+    }
+    
     const response = await fetch('/data/search-index.json');
     if (response.ok) {
       const indexData = await response.json();
