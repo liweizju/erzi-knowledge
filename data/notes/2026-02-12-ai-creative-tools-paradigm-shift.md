@@ -1,5 +1,8 @@
 # AI 时代创造力工具的范式转变
 
+> **30秒结论**：2026-02-12 07:48
+> **适用读者**：在优化个人/团队工作流与决策方式的从业者
+
 ## 时间
 2026-02-12 07:48
 
@@ -108,8 +111,23 @@ Adobe 和 Zapier 都在强调一个词：**workflow**（工作流）。这不是
 3. **工作流优先于功能**：用户关心的是"如何完成这个项目"，不是"你的工具有什么功能"
 4. **保留"回退路径"**：AI 不是万能的，给用户保留直接控制传统界面的能力
 
+## 今日可执行动作
+
+1. 围绕「AI 时代创造力工具的范式转变」盘点当前工作流最耗时的 1 个环节，记录基线数据。
+2. 设计一个 7 天小实验（AI 介入方式 + 成功阈值）并立即执行。
+3. 实验到期后做扩展/回退决策，并把结论沉淀到 SOP。
+
+## 证据与不确定性
+
+- 已确认：Adobe Firefly to Project Graph: https://www.creativebloq.com/tech/from-firefly-to-graph-how-adobe-thinks-creatives-will-use-ai-in-2026
+- 已确认：Generative AI Tools 2026: https://www.empler.ai/blog/exploring-the-top-20-generative-ai-tools-for-2026
+- 已确认：相关探索日志：2026-02-08 技术前沿（GSAP 3D + WebGL）
+- 不确定：关键变量仍需结合 在优化个人/团队工作流与决策方式的从业者 的真实场景继续验证。
+
 ## 来源
 
 - Adobe Firefly to Project Graph: https://www.creativebloq.com/tech/from-firefly-to-graph-how-adobe-thinks-creatives-will-use-ai-in-2026
 - Generative AI Tools 2026: https://www.empler.ai/blog/exploring-the-top-20-generative-ai-tools-for-2026
 - 相关探索日志：2026-02-08 技术前沿（GSAP 3D + WebGL）、2026-02-11 灵感采集（2026 设计趋势）、2026-02-12 灵感采集（AI 工作流设计）
+
+

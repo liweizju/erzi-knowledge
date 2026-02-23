@@ -1,5 +1,8 @@
 # Agentic RAG 范式革命：从静态检索到自主智能体的知识访问
 
+> **30秒结论**：范式革命的标志：从"检索即工具"到"检索即对话"——模型不再被动接受检索结果，而是主动设计检索策略
+> **适用读者**：评估新技术是否值得接入的 AI 产品经理、技术负责人
+
 > **洞见建议**：Agentic RAG 对企业知识基础设施的战略影响
 > **为什么值得深挖**：RAG 是企业 AI 落地的核心技术栈，2026 年从"静态检索"到"自主智能体"的范式转变将重塑企业知识管理的竞争格局——谁能率先部署 Agentic RAG，谁就能在复杂查询场景（法律、医疗、金融）获得显著优势。这不是技术微调，是架构革命。
 
@@ -184,9 +187,29 @@ Agentic RAG 的优势：
 
 ---
 
+## 今日可执行动作
+
+1. 盘点当前产品中最受「Agentic RAG 范式革命：从静态检索到自主智能体的知识访问」影响的 1 个核心场景，写出收益与成本。
+2. 用 2 小时完成一个最小 PoC，验证性能、稳定性或体验提升是否成立。
+3. 补一条上线红线（安全、合规、算力成本三选一），并安排一周内复盘。
+
+## 证据与不确定性
+
+- 已确认：A-RAG: Scaling Agentic Retrieval-Augmented Generation via Hierarchical Retrieval Interfaces（arxiv.org）
+- 已确认：Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG（arxiv.org）
+- 已确认：A-RAG GitHub Repository（github.com）
+- 不确定：- 药物交互：查询多个知识源，综合判断风险
+- 不确定：- 风险评估：整合市场数据、新闻、财报
+
 ## 来源
 
 - [A-RAG: Scaling Agentic Retrieval-Augmented Generation via Hierarchical Retrieval Interfaces](https://arxiv.org/abs/2602.03442) — USTC + Metastone, 2026-02-03
 - [Agentic Retrieval-Augmented Generation: A Survey on Agentic RAG](https://arxiv.org/abs/2501.09136) — Cleveland State University, 2025-01
 - [A-RAG GitHub Repository](https://github.com/Ayanami0730/arag)
 - [Agentic RAG Survey GitHub](https://github.com/asinghcsu/AgenticRAG-Survey)
+
+
+
+
+
+

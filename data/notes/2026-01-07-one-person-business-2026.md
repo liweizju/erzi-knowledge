@@ -1,5 +1,8 @@
 # How I'd build a one-person business if I started over in 2026
 
+> **30秒结论**：Your AI doesn't replace you as the teacher. It's yet another way to 'build once, sell twice' but on a more impactful sc…
+> **适用读者**：一人公司经营者、内容创业者、个人品牌建设者
+
 **来源**：Dan Koe Newsletter
 **日期**：2026-01-07
 **原文**：https://letters.thedankoe.com/p/how-id-build-a-one-person-business
@@ -120,3 +123,15 @@ Dan Koe 的具体例子（假设他重新做 2 Hour Writer 课程）：
 ---
 
 _整理时间: 2026-02-22_
+
+## 今日可执行动作
+
+1. 围绕「How I'd build a one-person business if I started over in 2026」定义 1 个可复用的方法论，并标明适用边界。
+2. 在下一个真实项目中试用该方法，并记录投入产出比。
+3. 根据试用结果决定是否沉淀为长期工作流模板。
+
+## 证据与不确定性
+
+- 已确认：来源：Dan Koe Newsletter
+- 不确定：关键变量仍需结合 一人公司经营者、内容创业者、个人品牌建设者 的真实场景继续验证。
+

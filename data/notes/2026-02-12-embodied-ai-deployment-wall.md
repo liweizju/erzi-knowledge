@@ -1,5 +1,8 @@
 # 具身智能 2026：从 Demo 到现实的"部署墙"
 
+> **30秒结论**：探索时间： 2026-02-12 08:48
+> **适用读者**：评估新技术是否值得接入的 AI 产品经理、技术负责人
+
 **探索时间：** 2026-02-12 08:48
 **方向：** 技术前沿
 **主题：** 具身智能（Embodied AI）——AI 走向物理世界的转折点
@@ -137,3 +140,19 @@ Sim2Real（Simulation-to-Reality Transfer）是具身智能的"圣杯"：
 - **多模态感知**：视觉+触觉+语言的融合技术
 - **世界模型**：JEPA、Video Diffusion 等预测架构
 - **机器人计算硬件**：边缘 AI、专用加速器
+
+## 今日可执行动作
+
+1. 盘点当前产品中最受「具身智能 2026：从 Demo 到现实的部署墙」影响的 1 个核心场景，写出收益与成本。
+2. 用 2 小时完成一个最小 PoC，验证性能、稳定性或体验提升是否成立。
+3. 补一条上线红线（安全、合规、算力成本三选一），并安排一周内复盘。
+
+## 证据与不确定性
+
+- 已确认：12 Predictions for Embodied AI and Robotics in 2026（dtsbourg.me）
+- 已确认：What's next in AI? - Microsoft Research（microsoft.com）
+- 已确认：EmbodieDreamer: Advancing Real2Sim2Real Transfer（arxiv.org）
+- 不确定：LLM 训练在数万亿 token 上，文本带宽低但密度极高
+- 不确定：4 岁儿童通过视觉处理的数据是最大 LLM 文本数据的 50 倍，但视觉数据冗余度极高（相邻帧只是像素差异）
+
+
