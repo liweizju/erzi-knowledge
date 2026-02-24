@@ -1265,19 +1265,18 @@ async function loadNoteContent(note) {
     noteContent.value = '';
     renderedContent.value = '';
     try {
-      const response = await fetch(`/data/notes/${note.id}.md`);
-      if (response.ok) {
-        const rawContent = await response.text();
-        noteContent.value = rawContent;
-        note.content = rawContent; // 缓存到 note 对象
+      const rawContent = await fetchNoteMarkdown(note.id);
+      noteContent.value = rawContent;
+      note.content = rawContent; // 缓存到 note 对象
+      try {
         // T59: 渲染 Markdown（动态加载 marked 和 hljs）
         renderedContent.value = await renderMarkdown(rawContent);
-      } else {
-        noteContent.value = '# 文章加载失败\n\n抱歉，无法加载这篇文章的内容。';
-        renderedContent.value = noteContent.value;
+      } catch (error) {
+        console.error('Failed to render note:', note.id, error);
+        renderedContent.value = renderMarkdownFallback(rawContent);
       }
     } catch (error) {
-      console.error('Failed to load note:', error);
+      console.error('Failed to load note:', note.id, error);
       noteContent.value = '# 文章加载失败\n\n抱歉，加载文章时出现错误。';
       renderedContent.value = noteContent.value;
     } finally {
@@ -1296,13 +1295,71 @@ async function loadNoteContent(note) {
     }
   } else {
     noteContent.value = note.content;
-    // T59: 渲染 Markdown
-    renderedContent.value = await renderMarkdown(note.content);
+    try {
+      // T59: 渲染 Markdown
+      renderedContent.value = await renderMarkdown(note.content);
+    } catch (error) {
+      console.error('Failed to render cached note:', note.id, error);
+      renderedContent.value = renderMarkdownFallback(note.content);
+    }
     // 加载评论
     nextTick(() => {
       setTimeout(() => loadGiscus(), 200);
     });
   }
+}
+
+function buildNoteFetchCandidates(noteId) {
+  const raw = String(noteId || '').trim();
+  if (!raw) return [];
+
+  const ids = new Set([raw]);
+  try {
+    ids.add(decodeURIComponent(raw));
+  } catch {
+    // ignore invalid uri component
+  }
+  ids.add(raw.normalize('NFC'));
+  ids.add(raw.normalize('NFD'));
+
+  const urls = [];
+  ids.forEach((id) => {
+    urls.push(`/data/notes/${encodeURIComponent(id)}.md`);
+    urls.push(`/data/notes/${id}.md`);
+  });
+  return [...new Set(urls)];
+}
+
+async function fetchNoteMarkdown(noteId) {
+  const candidates = buildNoteFetchCandidates(noteId);
+  let lastError = null;
+
+  for (const url of candidates) {
+    try {
+      const response = await fetch(url, { cache: 'no-store' });
+      if (response.ok) {
+        return await response.text();
+      }
+      lastError = new Error(`HTTP ${response.status} for ${url}`);
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error(`No available note path for ${noteId}`);
+}
+
+function escapeHtml(text) {
+  return String(text || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function renderMarkdownFallback(content) {
+  return `<pre>${escapeHtml(content)}</pre>`;
 }
 
 function openNote(note, forceDirect = false) {
