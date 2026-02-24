@@ -1,6 +1,52 @@
 {
   "notes": [
     {
+      "id": "2026-02-24-AI安全设计的范式转变",
+      "title": "AI 安全设计的范式转变——从\"事后修复\"到\"安全内嵌\"的系统化实践",
+      "category": "reflection",
+      "date": "2026-02-24",
+      "summary": "1. **范式转变**：2026 年 AI 正在从\"快速迭代\"转向\"安全设计\"——安全不再是事后补丁，而是设计前提。",
+      "quickConclusion": "范式转变：2026 年 AI 正在从\"move fast and break things\"转向\"safety by design\"，安全不再是事后补丁而是设计前提——产品经理和开发者需要建立\"安全内嵌\"的开发思维。",
+      "actionItems": [
+        "审查产品架构：识别\"安全内嵌\"vs\"事后修复\"的关键环节——哪些安全机制是架构层面的？哪些是补丁？",
+        "建立安全清单：对照 UK 政府标准或行业框架（如 NIST AI Risk Management Framework），建立适合自己产品的安全设计清单",
+        "设计多层次防护：绘制产品的\"技术-组织-社会\"三层防护图，识别每层的干预点和失效模式"
+      ],
+      "tags": [
+        "反思与整理/工作流",
+        "反思与整理/个人成长"
+      ],
+      "wordCount": 2024,
+      "chineseCount": 2152,
+      "englishCount": 214,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "INS011-能力反转原则-人机协作的决策框架",
+      "title": "INS011：人机协作的\"能力反转原则\"——一个反直觉的决策框架",
+      "category": "insights",
+      "date": "2026-02-24",
+      "summary": "洞见编号: INS011  \n生成日期: 2026-02-24  \n来源触发: 2026-02-22 知识探索\"人机协作的反直觉发现\"  \n核心问题: 何时应该人机协作，何时应该让人类或 AI 独立工",
+      "quickConclusion": "",
+      "actionItems": [
+        "列出组织中所有考虑 AI 部署的任务",
+        "对每个任务评估：谁目前表现更好？（通过 A/B 测试验证）",
+        "对每个任务分类：创作型还是决策型？",
+        "根据矩阵决定协作策略",
+        "组 A：人类单独"
+      ],
+      "tags": [
+        "洞见报告/投资机会",
+        "洞见报告/市场趋势"
+      ],
+      "wordCount": 2329,
+      "chineseCount": 2511,
+      "englishCount": 156,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S028-ai-subscription-walled-garden",
       "title": "S028：AI 订阅制的\"围墙花园\"正式成型",
       "category": "signals",
@@ -5962,6 +6008,11 @@
       "label": "二子日记",
       "color": "#e879a0",
       "priority": 8
+    },
+    "products": {
+      "label": "产品拆解",
+      "color": "#10b981",
+      "priority": 9
     }
   }
 }

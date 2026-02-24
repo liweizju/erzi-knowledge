@@ -1,5 +1,5 @@
 // 二子知识站 Service Worker - T46: 缓存策略优化
-const VERSION = 'v2';
+const VERSION = 'v3';
 const CACHE_NAME = `erzi-knowledge-${VERSION}`;
 const STATIC_CACHE = `erzi-static-${VERSION}`;
 const DYNAMIC_CACHE = `erzi-dynamic-${VERSION}`;
