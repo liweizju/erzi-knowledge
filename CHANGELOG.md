@@ -4,6 +4,45 @@
 
 ---
 
+## 2026-02-25 - 性能与 SEO 优化（T64-T68）
+
+### 📦 包体积优化
+
+- **T64: 优化 highlight.js 包体积**
+  - 创建 hljs-wrapper.js，只加载 12 种常用语言
+  - 从 969KB 降至 68.83KB（减少 **93%**）
+  - gzip 后从 309KB 降至 21.89KB
+  - 支持语言：JavaScript, TypeScript, Python, Bash, JSON, Markdown, XML, CSS, SQL, Shell, Dockerfile, YAML
+
+### 📊 构建优化
+
+- **T65: 添加构建包体预算检查**
+  - 设置 chunkSizeWarningLimit: 500KB
+  - 添加 manualChunks 手动分包策略（vue-vendor, markdown）
+  - entry 文件从 340KB 降至 277KB（减少 **18.5%**）
+
+### 🔍 SEO 优化
+
+- **T66: SEO meta 描述优化**
+  - 优化 meta description，强调内容价值（200+ 篇笔记）
+  - 增加关键词覆盖（LLM, Claude, GPT, 产品设计等）
+  - 添加 author meta 标签
+
+### ⚡ 性能优化
+
+- **T67: 添加预加载提示**
+  - 添加 dns-prefetch 优化外部资源加载
+  - 添加 preconnect 预连接提示
+
+### 📝 用户体验
+
+- **T68: 添加文章字数统计显示**
+  - 在详情页头部显示字数（智能格式化：100 字 / 1.5k 字 / 1.2万字）
+  - 添加 formatWordCount 函数处理字数格式化
+  - 让读者快速了解文章长度
+
+---
+
 ## 2026-02-24 - 性能优化与代码分割（T59）
 
 ### ⚡ 代码分割优化
