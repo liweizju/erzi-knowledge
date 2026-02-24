@@ -921,6 +921,11 @@ html.dark .analytics-top-rank {
   color: var(--color-text-tertiary);
 }
 
+.note-word-count {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+}
+
 .note-read-badge {
   font-size: 0.7rem;
   color: var(--color-reading);

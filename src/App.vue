@@ -503,6 +503,7 @@
           </span>
           <span class="note-date">{{ activeNote.date }}</span>
           <span class="note-reading-time">{{ getReadingTime(activeNote) }} 分钟</span>
+          <span class="note-word-count">{{ formatWordCount(activeNote.wordCount) }}</span>
           <span v-if="getLastRead(activeNote.id)" class="note-last-read">上次阅读：{{ getLastRead(activeNote.id) }}</span>
           <span v-if="activeNote.lastModified && activeNote.lastModified !== activeNote.date" class="note-last-modified">
             最后更新：{{ formatDate(activeNote.lastModified) }}
@@ -1017,16 +1018,24 @@ function getReadingTime(note) {
   const chineseCount = note.chineseCount || 0;
   const englishCount = note.englishCount || 0;
   const wordCount = note.wordCount || 0;
-  
+
   // 如果有详细数据，按比例计算
   if (chineseCount > 0 || englishCount > 0) {
     const chineseTime = chineseCount / 300; // 中文字数/300
     const englishTime = englishCount / 200; // 英文词数/200
     return Math.max(1, Math.ceil(chineseTime + englishTime));
   }
-  
+
   // 兼容旧数据：统一按300字/分钟
   return Math.max(1, Math.ceil(wordCount / 300));
+}
+
+// T68: 格式化字数显示
+function formatWordCount(wordCount) {
+  if (!wordCount) return '0 字';
+  if (wordCount < 1000) return `${wordCount} 字`;
+  if (wordCount < 10000) return `${(wordCount / 1000).toFixed(1)}k 字`;
+  return `${(wordCount / 10000).toFixed(1)}万字`;
 }
 
 function getQuickConclusion(note) {
