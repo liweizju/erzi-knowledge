@@ -655,11 +655,12 @@ let hljs = null;
 let lunr = null;
 
 // 初始化 marked 和 hljs（详情页需要时才加载）
+// T64: 使用自定义的 hljs-wrapper，只加载常用语言
 async function initMarkedAndHljs() {
   if (!marked) {
     const [markedModule, hljsModule] = await Promise.all([
       import('marked'),
-      import('highlight.js')
+      import('./hljs-wrapper.js')
     ]);
     marked = markedModule.marked;
     hljs = hljsModule.default;
