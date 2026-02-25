@@ -1442,6 +1442,24 @@ html.dark .mark.highlight {
   font-size: 0.875em;
 }
 
+.note-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 24px auto;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+/* 图片说明文字：图片所在 <p> 的下一个 <p>（仅含 <em>，即 *caption*） */
+.note-content p:has(> img) + p:has(> em:only-child) {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary, #888);
+  margin-top: -16px;
+  margin-bottom: 24px;
+}
+
 /* ========== T52: 骨架屏 ========== */
 .skeleton-screen {
   padding: 20px 0;
@@ -2527,5 +2545,312 @@ html.dark .timeline-btn:hover {
 
   .comments-title {
     font-size: 1.1rem;
+  }
+}
+
+/* ============================================
+   P0: Obsidian 风格布局 (App Shell + Sidebar)
+   ============================================ */
+
+.app-shell {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* 左侧边栏 */
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: #1e1e2e;
+  color: #cdd6f4;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid #313244;
+  z-index: 100;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px 14px;
+  border-bottom: 1px solid #313244;
+  flex-shrink: 0;
+}
+
+.sidebar-logo {
+  font-size: 18px;
+}
+
+.sidebar-brand {
+  font-size: 15px;
+  font-weight: 600;
+  color: #cdd6f4;
+  letter-spacing: 0.02em;
+}
+
+.sidebar-search {
+  padding: 12px 10px 6px;
+  flex-shrink: 0;
+}
+
+.sidebar-search-input {
+  width: 100%;
+  padding: 7px 10px;
+  background: #313244;
+  border: 1px solid #45475a;
+  border-radius: 6px;
+  color: #cdd6f4;
+  font-size: 13px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.sidebar-search-input::placeholder {
+  color: #6c7086;
+}
+
+.sidebar-search-input:focus {
+  border-color: #89b4fa;
+  background: #2a2a3e;
+}
+
+.sidebar-nav {
+  padding: 6px 8px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 7px 10px;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #a6adc8;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  margin-bottom: 2px;
+}
+
+.sidebar-nav-item:hover {
+  background: #2a2a3e;
+  color: #cdd6f4;
+}
+
+.sidebar-nav-item.active {
+  background: #313244;
+  color: #cdd6f4;
+}
+
+.sidebar-nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sidebar-nav-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-nav-count {
+  font-size: 11px;
+  color: #6c7086;
+  flex-shrink: 0;
+}
+
+.sidebar-nav-item.active .sidebar-nav-count {
+  color: #89b4fa;
+}
+
+.sidebar-footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 12px;
+  border-top: 1px solid #313244;
+  flex-shrink: 0;
+}
+
+.sidebar-tool-btn {
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.15s, background 0.15s;
+  flex: 1;
+}
+
+.sidebar-tool-btn:hover {
+  opacity: 1;
+  background: #2a2a3e;
+}
+
+/* 主内容区 */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  padding: 24px 32px 40px;
+  max-width: 800px;
+}
+
+/* P1: 密码保护 */
+.password-gate {
+  position: fixed;
+  inset: 0;
+  background: #1e1e2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.password-card {
+  background: #252535;
+  border: 1px solid #313244;
+  border-radius: 12px;
+  padding: 40px 48px;
+  text-align: center;
+  width: 100%;
+  max-width: 340px;
+}
+
+.password-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.password-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #cdd6f4;
+  margin: 0 0 6px;
+}
+
+.password-sub {
+  font-size: 13px;
+  color: #6c7086;
+  margin: 0 0 24px;
+}
+
+.password-input {
+  width: 100%;
+  padding: 11px 14px;
+  background: #313244;
+  border: 1px solid #45475a;
+  border-radius: 8px;
+  color: #cdd6f4;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  text-align: center;
+  letter-spacing: 4px;
+}
+
+.password-input:focus {
+  border-color: #89b4fa;
+}
+
+.password-error {
+  font-size: 13px;
+  color: #f38ba8;
+  margin: 0 0 8px;
+}
+
+.password-btn {
+  width: 100%;
+  padding: 11px;
+  background: #89b4fa;
+  border: none;
+  border-radius: 8px;
+  color: #1e1e2e;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 4px;
+}
+
+.password-btn:hover {
+  background: #a6c8ff;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-right: none;
+    border-bottom: 1px solid #313244;
+  }
+
+  .sidebar-header {
+    padding: 12px 16px;
+    border-bottom: none;
+    flex-shrink: 0;
+  }
+
+  .sidebar-search {
+    display: none;
+  }
+
+  .sidebar-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 6px 12px;
+    flex: 1;
+    overflow-x: auto;
+  }
+
+  .sidebar-nav-item {
+    flex-shrink: 0;
+    width: auto;
+    padding: 5px 10px;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
+  .sidebar-nav-count {
+    display: none;
+  }
+
+  .sidebar-footer {
+    border-top: none;
+    padding: 6px 12px;
+    flex-shrink: 0;
+  }
+
+  .main-content {
+    padding: 16px;
   }
 }

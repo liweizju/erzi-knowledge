@@ -1,12 +1,33 @@
 <template>
-  <div class="container">
+  <div :class="isListView && authenticated ? 'app-shell' : 'container'">
     <!-- T46: SW 更新提示 -->
     <div class="update-toast" v-if="showUpdateToast">
       <span class="update-toast-text">🎉 网站已更新</span>
       <button class="update-toast-btn" @click="reloadPage">立即刷新</button>
       <button class="update-toast-close" @click="dismissUpdateToast">✕</button>
     </div>
-    
+
+    <!-- P1: 密码保护 -->
+    <div v-if="!authenticated" class="password-gate">
+      <div class="password-card">
+        <div class="password-icon">📚</div>
+        <h1 class="password-title">知识库</h1>
+        <p class="password-sub">私人内容仓库</p>
+        <input
+          type="password"
+          v-model="passwordInput"
+          @keyup.enter="tryLogin"
+          placeholder="输入访问密码"
+          class="password-input"
+          autofocus
+        />
+        <p class="password-error" v-if="passwordError">密码错误，请重试</p>
+        <button class="password-btn" @click="tryLogin">进入 →</button>
+      </div>
+    </div>
+
+    <template v-else>
+
     <!-- About View -->
     <template v-if="showAbout">
       <header class="site-header">
@@ -251,210 +272,128 @@
       <footer class="site-footer">二子的知识库 · 决策优先，不追热点</footer>
     </template>
 
-    <!-- List View -->
+    <!-- List View (P0: Obsidian 风格布局) -->
     <template v-else-if="!activeNote">
-      <!-- 返回顶部按钮 -->
       <button class="back-to-top" v-show="showBackToTop" @click="scrollToTop" title="返回顶部">↑</button>
-      
-      <header class="site-header">
-        <div class="header-main">
-          <div class="header-titles">
-            <div class="site-title">二子的知识库</div>
-            <div class="site-subtitle">跟二子一起学习</div>
+
+      <div class="app-layout">
+        <!-- 左侧边栏 -->
+        <nav class="sidebar">
+          <div class="sidebar-header">
+            <span class="sidebar-logo">📚</span>
+            <span class="sidebar-brand">知识库</span>
           </div>
-          <div class="header-actions">
-            <button class="theme-toggle" @click="toggleDarkMode" :title="isDarkMode ? '切换到亮色' : '切换到暗色'">
-              {{ isDarkMode ? '☀️' : '🌙' }}
+
+          <div class="sidebar-search">
+            <input
+              v-model="searchQuery"
+              type="text"
+              placeholder="搜索..."
+              class="sidebar-search-input"
+            />
+          </div>
+
+          <div class="sidebar-nav">
+            <button
+              class="sidebar-nav-item"
+              :class="{ active: !activeCategory && !activeTag }"
+              @click="setCategory(null)"
+            >
+              <span class="sidebar-nav-label">全部</span>
+              <span class="sidebar-nav-count">{{ notes.length }}</span>
             </button>
-            <button class="timeline-btn" @click="openTimeline" title="时间线">📅</button>
-            <button class="favorites-btn" @click="openFavorites" title="我的收藏">⭐ {{ favorites.size || '' }}</button>
-            <button class="tags-btn" @click="openTags" title="标签云">🏷️</button>
-            <button class="random-btn" @click="openRandomNote" title="随机一篇">🎲</button>
-            <button class="start-btn" @click="openStartHere" title="新读者起步包">🧭 起步包</button>
-            <button class="subscribe-btn" @click="openSubscribe" title="订阅每周决策备忘录">📬 订阅</button>
-            <button class="about-link" @click="openAbout">关于二子</button>
+            <button
+              v-for="(info, key) in displayCategories"
+              :key="key"
+              class="sidebar-nav-item"
+              :class="{ active: activeCategory === key }"
+              @click="setCategory(key)"
+            >
+              <span v-if="info.color" class="sidebar-nav-dot" :style="{ background: info.color }"></span>
+              <span class="sidebar-nav-label">{{ info.label }}</span>
+              <span class="sidebar-nav-count">{{ categoryCounts[key] || 0 }}</span>
+            </button>
           </div>
-        </div>
-        <div class="stats">
-          <span class="stat"><span class="stat-num">{{ notes.length }}</span> 篇笔记</span>
-          <span class="stat"><span class="stat-num">{{ uniqueDates }}</span> 天探索</span>
-        </div>
-      </header>
 
-      <section class="value-prop">
-        <h1 class="value-title">给 AI 产品人的每日决策情报</h1>
-        <p class="value-subtitle">筛掉噪音，给出判断和行动建议。每天 5 分钟，掌握最值得投入的方向。</p>
-        <div class="value-actions">
-          <button class="cta-btn" @click="openSubscribe">订阅每周决策备忘录</button>
-          <button class="cta-btn cta-btn-secondary" @click="openStartHere">新读者起步包（10 篇）</button>
-        </div>
-      </section>
+          <div class="sidebar-footer">
+            <button class="sidebar-tool-btn" @click="openTimeline" title="时间线">📅</button>
+            <button class="sidebar-tool-btn" @click="openFavorites" title="收藏">⭐</button>
+            <button class="sidebar-tool-btn" @click="openRandomNote" title="随机一篇">🎲</button>
+            <button class="sidebar-tool-btn" @click="openAbout" title="关于">💬</button>
+          </div>
+        </nav>
 
-      <section class="weekly-memo-card" v-if="latestDecisionMemo">
-        <div class="weekly-memo-top">
-          <span class="weekly-memo-badge">本周决策备忘录</span>
-          <span class="weekly-memo-date">{{ latestDecisionMemo.date }}</span>
-        </div>
-        <h2 class="weekly-memo-title">{{ latestDecisionMemo.title }}</h2>
-        <p class="weekly-memo-summary">{{ getQuickConclusion(latestDecisionMemo) || latestDecisionMemo.summary }}</p>
-        <ul class="weekly-memo-actions" v-if="latestDecisionActions.length">
-          <li v-for="action in latestDecisionActions" :key="action">{{ action }}</li>
-        </ul>
-        <button class="cta-btn" @click="openNote(latestDecisionMemo)">阅读完整备忘录</button>
-      </section>
-
-      <section class="metrics-panel" v-if="retentionMetrics">
-        <div class="metrics-panel-header">
-          <h2 class="metrics-panel-title">留存指标看板（轻量）</h2>
-          <a class="metrics-panel-link" href="/data/retention-metrics.json" target="_blank" rel="noopener noreferrer">查看数据源</a>
-        </div>
-        <div class="metrics-grid">
-          <div class="metric-card" v-for="metric in retentionMetricItems" :key="metric.key">
-            <div class="metric-label">{{ metric.label }}</div>
-            <div class="metric-value">{{ metric.value }}</div>
-            <div class="metric-target">目标：{{ metric.target }}</div>
-          </div>
-        </div>
-        <p class="metrics-footnote">最近更新：{{ retentionMetrics.updatedAt || '未设置' }} · 当前为静态数据，可手动维护。</p>
-      </section>
-
-      <!-- T38: 访问统计面板（轻量版） -->
-      <section class="analytics-panel" v-if="totalPageViews > 0">
-        <div class="analytics-header">
-          <h2 class="analytics-title">📊 阅读统计</h2>
-          <span class="analytics-badge">本地数据</span>
-        </div>
-        <div class="analytics-summary">
-          <div class="analytics-stat">
-            <span class="analytics-stat-value">{{ totalPageViews }}</span>
-            <span class="analytics-stat-label">总访问量</span>
-          </div>
-          <div class="analytics-stat">
-            <span class="analytics-stat-value">{{ Object.keys(readHistory).length }}</span>
-            <span class="analytics-stat-label">已读文章</span>
-          </div>
-          <div class="analytics-stat">
-            <span class="analytics-stat-value">{{ favorites.size }}</span>
-            <span class="analytics-stat-label">收藏文章</span>
-          </div>
-        </div>
-        <div class="analytics-top" v-if="topViewedNotes.length > 0">
-          <h3 class="analytics-top-title">热门文章 TOP {{ topViewedNotes.length }}</h3>
-          <div class="analytics-top-list">
-            <div 
-              v-for="(note, index) in topViewedNotes" 
-              :key="note.id" 
-              class="analytics-top-item"
+        <!-- 主内容区 -->
+        <main class="main-content">
+          <!-- 笔记列表 -->
+          <div class="note-list" v-if="paginatedNotes.length">
+            <div
+              v-for="note in paginatedNotes"
+              :key="note.id"
+              class="note-item"
+              :class="{
+                'note-item--insights': note.category === 'insights',
+                'note-item--expanded': expandedNoteId === note.id
+              }"
               @click="openNote(note)"
             >
-              <span class="analytics-top-rank">{{ index + 1 }}</span>
-              <div class="analytics-top-content">
-                <div class="analytics-top-title-text">{{ note.title }}</div>
-                <div class="analytics-top-meta">
-                  <span>{{ note.viewCount }} 次访问</span>
+              <div class="note-meta">
+                <span class="note-category" :class="'note-category--' + note.category">
+                  {{ categories[note.category]?.label }}
+                </span>
+                <span class="note-date">{{ note.date }}</span>
+                <span class="note-reading-time">{{ getReadingTime(note) }} 分钟</span>
+                <span v-if="readHistory[note.id]" class="note-read-badge">✓</span>
+              </div>
+              <div class="note-title" v-html="highlightText(note.title, searchQuery)"></div>
+              <div class="note-quick-conclusion" v-if="getQuickConclusion(note)">30秒结论：{{ getQuickConclusion(note) }}</div>
+              <div class="note-summary" v-if="note.summary && note.summary !== getQuickConclusion(note)" v-html="highlightText(note.summary, searchQuery)"></div>
+
+              <!-- T44: 移动端展开预览 -->
+              <div class="note-mobile-preview" v-if="expandedNoteId === note.id">
+                <div class="mobile-preview-content" v-if="getQuickConclusion(note) || note.summary">{{ getQuickConclusion(note) || note.summary }}</div>
+                <div class="mobile-preview-meta">
+                  <span>字数：{{ note.wordCount || 0 }}</span>
                   <span>·</span>
-                  <span>{{ note.date }}</span>
+                  <span>{{ getReadingTime(note) }} 分钟阅读</span>
                 </div>
+                <div class="mobile-preview-hint">再次点击进入详情页</div>
+              </div>
+
+              <div class="note-tags" v-if="note.tags && note.tags.length > 0">
+                <span
+                  v-for="tag in note.tags.slice(0, 3)"
+                  :key="tag"
+                  class="tag"
+                  @click.stop="setTag(tag)"
+                >{{ getTagLabel(tag) }}</span>
               </div>
             </div>
           </div>
-        </div>
-        <p class="analytics-footnote">数据仅保存在本地浏览器，清除缓存后会重置。</p>
-      </section>
 
-      <!-- 搜索栏 -->
-      <div class="search-bar">
-        <input
-          v-model="searchQuery"
-          type="text"
-          placeholder="搜索标题、内容或标签..."
-          class="search-input"
-        />
-      </div>
-
-      <!-- 分类 Tab 导航 -->
-      <nav class="category-tabs">
-        <button
-          class="tab-btn"
-          :class="{ active: !activeCategory && !activeTag }"
-          @click="setCategory(null)"
-        >全部 ({{ notes.length }})</button>
-        <button
-          v-for="(info, key) in displayCategories"
-          :key="key"
-          class="tab-btn"
-          :class="{ active: activeCategory === key }"
-          @click="setCategory(key)"
-        >{{ info.label }} ({{ categoryCounts[key] || 0 }})</button>
-      </nav>
-
-      <!-- 笔记列表 -->
-      <div class="note-list" v-if="paginatedNotes.length">
-        <div
-          v-for="note in paginatedNotes"
-          :key="note.id"
-          class="note-item"
-          :class="{ 
-            'note-item--insights': note.category === 'insights',
-            'note-item--expanded': expandedNoteId === note.id 
-          }"
-          @click="openNote(note)"
-        >
-          <div class="note-meta">
-            <span class="note-category" :class="'note-category--' + note.category">
-              {{ categories[note.category]?.label }}
-            </span>
-            <span class="note-date">{{ note.date }}</span>
-            <span class="note-reading-time">{{ getReadingTime(note) }} 分钟</span>
-            <span v-if="readHistory[note.id]" class="note-read-badge">✓</span>
+          <div class="empty-state" v-else>
+            <template v-if="searchQuery">未找到匹配的笔记</template>
+            <template v-else>暂无笔记</template>
           </div>
-          <div class="note-title" v-html="highlightText(note.title, searchQuery)"></div>
-          <div class="note-quick-conclusion" v-if="getQuickConclusion(note)">30秒结论：{{ getQuickConclusion(note) }}</div>
-          <div class="note-summary" v-if="note.summary && note.summary !== getQuickConclusion(note)" v-html="highlightText(note.summary, searchQuery)"></div>
-          
-          <!-- T44: 移动端展开预览 -->
-          <div class="note-mobile-preview" v-if="expandedNoteId === note.id">
-            <div class="mobile-preview-content" v-if="getQuickConclusion(note) || note.summary">{{ getQuickConclusion(note) || note.summary }}</div>
-            <div class="mobile-preview-meta">
-              <span>字数：{{ note.wordCount || 0 }}</span>
-              <span>·</span>
-              <span>{{ getReadingTime(note) }} 分钟阅读</span>
+
+          <!-- 分页器 -->
+          <div class="pagination" v-if="totalPages > 1">
+            <button class="page-btn" :disabled="currentPage === 1" @click="goToPage(currentPage - 1)">上一页</button>
+            <div class="page-numbers">
+              <button
+                v-for="page in displayPages"
+                :key="page"
+                class="page-num"
+                :class="{ active: page === currentPage }"
+                @click="goToPage(page)"
+              >{{ page }}</button>
             </div>
-            <div class="mobile-preview-hint">再次点击进入详情页</div>
+            <button class="page-btn" :disabled="currentPage === totalPages" @click="goToPage(currentPage + 1)">下一页</button>
           </div>
-          
-          <div class="note-tags" v-if="note.tags && note.tags.length > 0">
-            <span
-              v-for="tag in note.tags.slice(0, 3)"
-              :key="tag"
-              class="tag"
-              @click.stop="setTag(tag)"
-            >{{ getTagLabel(tag) }}</span>
-          </div>
-        </div>
-      </div>
 
-      <div class="empty-state" v-else>
-        <template v-if="searchQuery">未找到匹配的笔记</template>
-        <template v-else>暂无笔记</template>
+          <footer class="site-footer">知识库 · 二子的学习与思考</footer>
+        </main>
       </div>
-
-      <!-- 分页器 -->
-      <div class="pagination" v-if="totalPages > 1">
-        <button class="page-btn" :disabled="currentPage === 1" @click="goToPage(currentPage - 1)">上一页</button>
-        <div class="page-numbers">
-          <button
-            v-for="page in displayPages"
-            :key="page"
-            class="page-num"
-            :class="{ active: page === currentPage }"
-            @click="goToPage(page)"
-          >{{ page }}</button>
-        </div>
-        <button class="page-btn" :disabled="currentPage === totalPages" @click="goToPage(currentPage + 1)">下一页</button>
-      </div>
-
-      <footer class="site-footer">二子的知识库 · 自主学习，持续探索</footer>
     </template>
 
     <!-- Detail View -->
@@ -643,6 +582,7 @@
         <span class="keyboard-hint">j/k 上下篇 · Esc 返回</span>
       </footer>
     </template>
+    </template><!-- /authenticated -->
   </div>
 </template>
 
@@ -703,9 +643,26 @@ const swVersion = ref(''); // T46: SW 版本
 const rssCopied = ref(false);
 const retentionMetrics = ref(null);
 
+// P1: 密码保护
+const SITE_PASSWORD = 'erzi2026';
+const authenticated = ref(false);
+const passwordInput = ref('');
+const passwordError = ref(false);
+
+function tryLogin() {
+  if (passwordInput.value === SITE_PASSWORD) {
+    localStorage.setItem('ek_auth', '1');
+    authenticated.value = true;
+    passwordError.value = false;
+  } else {
+    passwordError.value = true;
+    passwordInput.value = '';
+  }
+}
+
 // 排序后的分类（用于显示）
 const displayCategories = computed(() => {
-  const order = ['signals', 'deep-dives', 'opc', 'insights', 'tech', 'inspiration', 'reading', 'reflection', 'diary'];
+  const order = ['products', 'signals', 'deep-dives', 'opc', 'insights', 'tech', 'inspiration', 'reading', 'reflection', 'diary'];
   const result = {};
   order.forEach(key => {
     if (categories[key]) result[key] = categories[key];
@@ -1879,6 +1836,11 @@ async function loadRetentionMetrics() {
 }
 
 onMounted(() => {
+  // P1: 检查认证状态
+  if (localStorage.getItem('ek_auth') === '1') {
+    authenticated.value = true;
+  }
+
   window.addEventListener('hashchange', handleRouteChange);
   window.addEventListener('scroll', handleScroll);
   window.addEventListener('keydown', handleKeydown);
