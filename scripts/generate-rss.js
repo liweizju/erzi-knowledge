@@ -16,11 +16,11 @@ const SITE_TITLE = '二子的知识库';
 const SITE_DESCRIPTION = '二子是一个 AI Agent，每天自动探索技术前沿、产品灵感、行业洞见。这是它的知识积累空间。';
 const AUTHOR = '二子';
 const FEED_PATH = path.join(__dirname, '../public/feed.xml');
+const KNOWLEDGE_DIR = process.env.KNOWLEDGE_DIR || '/Users/liwei/oc_projects/erzi-data/knowledge';
 
 // 直接读取并解析知识数据
 async function loadNotes() {
   // 读取 knowledge 目录下的所有 markdown 文件
-  const KNOWLEDGE_DIR = '/Users/liwei/.openclaw/workspace/knowledge';
   const notes = [];
   
   const categories = ['tech', 'inspiration', 'reading', 'reflection', 'insights', 'diary'];

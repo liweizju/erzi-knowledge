@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 const SITE_URL = 'https://knowledge.erzi.site';
 const SITEMAP_PATH = path.join(__dirname, '../public/sitemap.xml');
-const KNOWLEDGE_DIR = '/Users/liwei/.openclaw/workspace/knowledge';
+const KNOWLEDGE_DIR = process.env.KNOWLEDGE_DIR || '/Users/liwei/oc_projects/erzi-data/knowledge';
 
 async function generateSitemap() {
   const urls = [];

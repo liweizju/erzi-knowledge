@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 知识库目录
-const KNOWLEDGE_DIR = '/Users/liwei/.openclaw/workspace/knowledge';
+const KNOWLEDGE_DIR = '/Users/liwei/oc_projects/erzi-data/knowledge';
 
 // 输出目录
 const OUTPUT_DIR = path.join(__dirname, '../public/data');
@@ -61,6 +61,11 @@ const CATEGORIES = {
     label: '二子日记',
     color: '#e879a0',
     priority: 8
+  },
+  'products': {
+    label: '产品拆解',
+    color: '#10b981',
+    priority: 9
   }
 };
 
@@ -119,6 +124,12 @@ const TAG_RULES = {
   },
   diary: {
     '二子日记/日常': ['日记', '日常', '生活']
+  },
+  products: {
+    '产品拆解/商业模式': ['商业模式', '盈利', '定价', '付费'],
+    '产品拆解/产品创新': ['创新', '差异化', '核心功能', '护城河'],
+    '产品拆解/用户洞察': ['用户', '痛点', '需求', '体验'],
+    '产品拆解/AI工具': ['AI', 'agent', 'LLM', '大模型', '智能']
   }
 };
 
@@ -208,6 +219,123 @@ function countEnglishWords(text) {
 }
 
 /**
+ * 清理单行 Markdown 文本
+ */
+function cleanInlineMarkdown(text) {
+  return text
+    .replace(/`+/g, '')
+    .replace(/\*\*/g, '')
+    .replace(/\*/g, '')
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/^>\s*/, '')
+    .trim();
+}
+
+/**
+ * 提取 30 秒结论
+ * 兼容格式：
+ * - > **30秒结论**：...
+ * - **30秒结论**：...
+ * - ## TL;DR 段落
+ * - **关键判断**：...
+ * - 文首引用句（兜底）
+ */
+function extractQuickConclusion(content) {
+  const inlinePatterns = [
+    />\s*\*\*30秒结论\*\*[：:]\s*(.+)$/m,
+    /\*\*30秒结论\*\*[：:]\s*(.+)$/m,
+    /\*\*TL;DR\*\*[：:]\s*(.+)$/im,
+    /\*\*关键判断\*\*[：:]\s*(.+)$/m
+  ];
+
+  for (const pattern of inlinePatterns) {
+    const match = content.match(pattern);
+    if (match?.[1]) {
+      return cleanInlineMarkdown(match[1]);
+    }
+  }
+
+  // TL;DR 章节首段
+  const tldrSection = content.match(/##+\s*(TL;DR|TLDR|摘要|一句话结论)\s*\n([\s\S]*?)(?:\n##+\s+|$)/i);
+  if (tldrSection?.[2]) {
+    const firstLine = tldrSection[2]
+      .split('\n')
+      .map(line => cleanInlineMarkdown(line))
+      .find(line => line && line !== '---');
+    if (firstLine) return firstLine;
+  }
+
+  // 文首引用句兜底（常用于信号卡一句话定义）
+  const topQuote = content
+    .split('\n')
+    .slice(0, 60)
+    .map(line => line.trim())
+    .find(line => line.startsWith('> ') && line.length > 2);
+  if (topQuote) {
+    return cleanInlineMarkdown(topQuote);
+  }
+
+  return '';
+}
+
+/**
+ * 提取可执行动作列表
+ * 兼容章节：
+ * - ## 你今天可以做什么
+ * - ## 今日可执行动作
+ * - ## 行动建议
+ * - ## 后续行动建议 / 即时行动建议 / 五、行动建议：...
+ */
+function extractActionItems(content) {
+  const headingRegex = /^##+\s*(.+)$/gm;
+  const headings = [];
+  let headingMatch;
+
+  while ((headingMatch = headingRegex.exec(content)) !== null) {
+    const markerMatch = headingMatch[0].match(/^#+/);
+    const level = markerMatch ? markerMatch[0].length : 2;
+    headings.push({
+      title: headingMatch[1].trim(),
+      level,
+      headingStart: headingMatch.index,
+      sectionStart: headingMatch.index + headingMatch[0].length
+    });
+  }
+
+  if (!headings.length) return [];
+
+  const ACTION_HEADING = /(你今天可以做什么|今日可执行动作|行动建议|后续行动建议|即时行动建议|可执行动作|建议动作|下一步|战略建议|潜在产品方向|对.+建议)/i;
+  const actions = [];
+
+  for (let i = 0; i < headings.length; i += 1) {
+    if (!ACTION_HEADING.test(headings[i].title)) continue;
+
+    const sectionStart = headings[i].sectionStart;
+    let sectionEnd = content.length;
+    for (let j = i + 1; j < headings.length; j += 1) {
+      if (headings[j].level <= headings[i].level) {
+        sectionEnd = headings[j].headingStart;
+        break;
+      }
+    }
+    const section = content.slice(sectionStart, sectionEnd);
+    const lines = section.split('\n');
+
+    lines.forEach(line => {
+      const itemMatch = line.match(/^\s*(?:[-*+]|\d+[.)])\s+(.+)$/);
+      if (!itemMatch?.[1]) return;
+      const action = cleanInlineMarkdown(itemMatch[1]);
+      if (action && !actions.includes(action)) {
+        actions.push(action);
+      }
+    });
+  }
+
+  return actions.slice(0, 5);
+}
+
+/**
  * T51: 获取文件的最后修改时间（从 git 历史）
  */
 function getLastModifiedTime(filePath, knowledgeDir) {
@@ -253,6 +381,8 @@ function extractMetadata(content, filePath, category) {
     category: category,
     date: '',
     summary: '',
+    quickConclusion: '',
+    actionItems: [],
     content: content,
     source: '',
     tags: [],
@@ -285,6 +415,8 @@ function extractMetadata(content, filePath, category) {
 
   // 提取标签（基于内容和分类）
   metadata.tags = extractTags(content, category, filePath);
+  metadata.quickConclusion = extractQuickConclusion(content);
+  metadata.actionItems = extractActionItems(content);
 
   // 提取系列信息（如果存在）
   const seriesMatch = content.match(/^series:\s*["']?([^"'\n]+)["']?\s*$/m);
@@ -300,9 +432,13 @@ function extractMetadata(content, filePath, category) {
     metadata.summary = summaryMatch[1].trim();
   } else {
     // 如果没有找到特定格式的摘要，取第一段
-    const firstParagraph = content.split('\n\n')[1] || content.split('\n')[1];
-    if (firstParagraph) {
-      metadata.summary = firstParagraph.replace(/\*\*/g, '').trim().substring(0, 100);
+    if (metadata.quickConclusion) {
+      metadata.summary = metadata.quickConclusion.substring(0, 120);
+    } else {
+      const firstParagraph = content.split('\n\n')[1] || content.split('\n')[1];
+      if (firstParagraph) {
+        metadata.summary = firstParagraph.replace(/\*\*/g, '').trim().substring(0, 100);
+      }
     }
   }
 
@@ -511,6 +647,8 @@ function main() {
       category: note.category,
       date: note.date,
       summary: note.summary,
+      quickConclusion: note.quickConclusion || '',
+      actionItems: note.actionItems || [],
       tags: note.tags,
       wordCount: note.wordCount,
       chineseCount: note.chineseCount, // T41: 中文字数
@@ -544,6 +682,8 @@ function main() {
       category: note.category,
       date: note.date,
       summary: note.summary,
+      quickConclusion: note.quickConclusion || '',
+      actionItems: note.actionItems || [],
       tags: note.tags,
       wordCount: note.wordCount,
       chineseCount: note.chineseCount, // T41: 中文字数
