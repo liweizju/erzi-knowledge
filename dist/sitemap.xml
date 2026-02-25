@@ -270,7 +270,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/WebGPU游戏开发2026</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -288,7 +288,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/ai-synthetic-biology-2026</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -324,7 +324,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/rust-2026-trends</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -336,7 +336,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/webgpu-2025-practical-progress</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -954,7 +954,7 @@
   </url>
   <url>
     <loc>https://knowledge.erzi.site/#/note/digital-minimalism-2026-gen-z</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1189,6 +1189,12 @@
   <url>
     <loc>https://knowledge.erzi.site/#/note/2026-02-24-AI安全设计的范式转变</loc>
     <lastmod>2026-02-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://knowledge.erzi.site/#/note/2026-02-25-AI生产力悖论的组织瓶颈</loc>
+    <lastmod>2026-02-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
