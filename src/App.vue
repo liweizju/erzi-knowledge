@@ -1082,7 +1082,9 @@ async function renderMarkdown(content) {
     </div>\n`;
   };
   
-  return marked(content, { renderer });
+  // 剥离 YAML frontmatter（--- ... --- 块）
+  const stripped = content.replace(/^---\n[\s\S]*?\n---\n?/, '');
+  return marked(stripped, { renderer });
 }
 
 // TOC
