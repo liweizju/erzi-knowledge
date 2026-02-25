@@ -23,3 +23,9 @@ startup-ideas/
 timeline/
 gh-pages/
 .clawhub/
+
+# local tool/cache folders
+.preview/
+.serena/
+.claude/
+.cache/
