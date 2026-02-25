@@ -1,5 +1,8 @@
 # S012: Human Authorship Proof（人类作者证明）
 
+> **30秒结论**：AI 检测工具的误报让无辜学生/作者被指控使用 AI，催生了"证明自己是人类写作"的工具需求。
+> **适用读者**：AI 产品经理、独立开发者、小团队创业者（尤其在做选题和需求验证的人）
+
 ## 元数据
 - **编号**: S012
 - **类型**: 消费者产品信号 / 教育工具信号
@@ -48,3 +51,22 @@ AI 检测工具的误报让无辜学生/作者被指控使用 AI，催生了"证
 - https://www.grammarly.com/authorship
 - https://paperpal.com/tools/ai-detector
 - https://www.browse-ai.tools/blog/how-to-detect-ai-generated-content-in-academic-work
+
+## 今日可执行动作
+
+1. 访谈 3 位目标用户，验证「S012: Human Authorship Proof（人类作者证明）」是否真实影响付费、留存或转化。
+2. 在本周待办中安排一个 48 小时验证实验（访谈、原型或落地页三选一）。
+3. 定义继续投入门槛（例如：至少 5 条强证据），再决定是否进入深度拆解。
+
+## 证据与不确定性
+
+- 已确认：OKhuman（okhuman.com）
+- 已确认：Grammarly Authorship（grammarly.com）
+- 已确认：Paperpal AI Detector（paperpal.com）
+- 不确定：关键变量仍需结合 AI 产品经理、独立开发者、小团队创业者（尤其在做选题和需求验证的人） 的真实场景继续验证。
+
+
+
+
+
+

@@ -1,5 +1,8 @@
 # S010: AI Fatigue / AI Burnout
 
+> **30秒结论**：AI 工具带来的"新型倦怠"：生产力工具反而让工作者更累，上下文切换、等待焦虑、期望膨胀导致心流消失。
+> **适用读者**：AI 产品经理、独立开发者、小团队创业者（尤其在做选题和需求验证的人）
+
 ## 元数据
 - **编号**: S010
 - **类型**: 消费者产品信号 / 开发者工具信号
@@ -47,3 +50,22 @@ AI 工具带来的"新型倦怠"：生产力工具反而让工作者更累，上
 - https://news.ycombinator.com/item?id=46934404
 - https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/
 - https://www.businessinsider.com/ai-fatigue-burnout-software-engineer-essay-siddhant-khare-2026-2
+
+## 今日可执行动作
+
+1. 访谈 3 位目标用户，验证「S010: AI Fatigue / AI Burnout」是否真实影响付费、留存或转化。
+2. 在本周待办中安排一个 48 小时验证实验（访谈、原型或落地页三选一）。
+3. 定义继续投入门槛（例如：至少 5 条强证据），再决定是否进入深度拆解。
+
+## 证据与不确定性
+
+- 已确认：HN: AI fatigue is real and nobody talks about it（news.ycombinator.com）
+- 已确认：TechCrunch: The first signs of burnout are coming from the people who embrace AI the most（techcrunch.com）
+- 已确认：Business Insider: AI fatigue is real and nobody talks about it（businessinsider.com）
+- 不确定：1. AI 工具没有考虑工作边界：设计假设是"用得越多越好"
+
+
+
+
+
+

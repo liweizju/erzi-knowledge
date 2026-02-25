@@ -1,5 +1,21 @@
 # S002: 独立应用 PPP 定价策略
 
+> **30秒结论**：IndieHackers（Habit Pixel 案例）、ParityDeals、Lemon Squeezy 文档、Reddit
+> **适用读者**：AI 产品经理、独立开发者、小团队创业者（尤其在做选题和需求验证的人）
+
+## 今日可执行动作
+
+1. 访谈 3 位目标用户，验证「S002: 独立应用 PPP 定价策略」是否真实影响付费、留存或转化。
+2. 在本周待办中安排一个 48 小时验证实验（访谈、原型或落地页三选一）。
+3. 定义继续投入门槛（例如：至少 5 条强证据），再决定是否进入深度拆解。
+
+## 证据与不确定性
+
+- 已确认：IndieHackers（Habit Pixel 案例）
+- 已确认：ParityDeals
+- 已确认：Lemon Squeezy 文档
+- 不确定：关键变量仍需结合 AI 产品经理、独立开发者、小团队创业者（尤其在做选题和需求验证的人） 的真实场景继续验证。
+
 ## 来源
 IndieHackers（Habit Pixel 案例）、ParityDeals、Lemon Squeezy 文档、Reddit
 
@@ -51,3 +67,7 @@ IndieHackers（Habit Pixel 案例）、ParityDeals、Lemon Squeezy 文档、Redd
 
 ## 备注
 这个信号的价值在于「验证有效性」而非「发现新机会」。PPP 定价已经被证明有效，但很多开发者仍然不知道或不使用。机会在于降低使用门槛，让 PPP 定价成为独立开发者的标配。
+
+
+
+
