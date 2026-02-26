@@ -1,6 +1,29 @@
 {
   "notes": [
     {
+      "id": "2026-02-26-Senja百万ARR案例拆解",
+      "title": "Senja.io 案例拆解——$1M ARR 的 Micro-SaaS 之路",
+      "category": "reading",
+      "date": "2026-02-26",
+      "summary": "1. **Micro-SaaS 的可行性已验证**：$1M ARR 不需要融资、不需要大团队、不需要广告预算。需要的是：正确的产品方向 + SEO + PLG + 持续迭代。",
+      "quickConclusion": "一个 19 岁尼日利亚开发者和英国营销人，从未线下见面，用 3 年时间将 testimonial 收集工具从 $0 做到 $83k MRR（$1M ARR），全程零融资、零广告。核心策略是：Build in Public 建立初始受众 + SEO 获取 45% 流量 + PLG 产品自增长。",
+      "actionItems": [
+        "用户使用你的产品时，是否会在公开场合展示？（如 widget、badge、水印）",
+        "是否有\"Powered by XXX\"或类似的品牌露出？",
+        "其他用户看到时，是否会好奇\"这是什么工具\"？",
+        "增加可嵌入组件（widget、iframe、API）",
+        "设计\"showcase\"页面让用户愿意分享"
+      ],
+      "tags": [
+        "知识阅读/学习理论"
+      ],
+      "wordCount": 1758,
+      "chineseCount": 1675,
+      "englishCount": 258,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-25-AI生产力悖论的组织瓶颈",
       "title": "AI 生产力悖论的组织瓶颈：为什么技术不是问题",
       "category": "reflection",
