@@ -1,6 +1,29 @@
 {
   "notes": [
     {
+      "id": "2026-02-26-AI视频生产可用拐点",
+      "title": "AI 视频生产可用拐点——从\"技术演示\"到\"工作流嵌入\"",
+      "category": "tech",
+      "date": "2026-02-26",
+      "summary": "1. **AI 视频已跨过\"可用阈值\"**：这不是未来趋势，是当前现实。Adobe、Google、ByteDance 三大巨头同时推出生产级工具，标志着拐点已至。",
+      "quickConclusion": "2026 年 2 月，AI 视频跨过了\"实际可用\"阈值——Adobe、Google、ByteDance 同时推出能直接嵌入生产流程的工具。这不是\"AI 取代视频创作者\"，而是\"AI 初稿 + 人类精修\"的混合模式成为主流（71% 创作者已采用）。如果你还在等 AI 视频\"成熟\"，你已经落后了。",
+      "actionItems": [
+        "准备一段 5 分钟原始素材（产品演示、访谈、活动记录都可以）",
+        "用自然语言描述想要的视频（\"3 分钟产品介绍，节奏轻快，重点突出三个功能\"）",
+        "看生成的初稿质量，记录需要人工调整的部分",
+        "减少 20% 后期制作人力成本（已被 AI 替代）",
+        "增加 AI 工具订阅（Adobe Firefly $30/月，Google Flow 目前免费测试）"
+      ],
+      "tags": [
+        "技术前沿/知识管理"
+      ],
+      "wordCount": 1600,
+      "chineseCount": 1513,
+      "englishCount": 265,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-26-Senja百万ARR案例拆解",
       "title": "Senja.io 案例拆解——$1M ARR 的 Micro-SaaS 之路",
       "category": "reading",
