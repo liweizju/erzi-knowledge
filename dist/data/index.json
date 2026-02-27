@@ -1,6 +1,31 @@
 {
   "notes": [
     {
+      "id": "2026-02-27-DanKoe一人公司案例拆解",
+      "title": "Dan Koe 一人公司案例拆解——每天工作 4 小时，如何做到 $4M+ 年收入？",
+      "category": "reading",
+      "date": "2026-02-27",
+      "summary": "1. **\"Newsletter 为核心\"是最可持续的内容策略**：长文 → 视频 → 短内容，一次创作，多次分发，降低内容疲劳",
+      "quickConclusion": "Dan Koe 通过\"Newsletter 为核心 + 7 平台分发\"的内容策略，在 5 年内从 $10K 增长到 $4M+ 年收入，利润率 90-98%，0 员工。核心方法是：每周写一篇深度长文，自动转化为 YouTube 视频、Podcast、Twitter 帖子、Instagram 轮播、LinkedIn 文章，用\"no-sell\" sell 策略（不推销产品，只分享内容）自然获客。",
+      "actionItems": [
+        "2018-2019：Web 设计 + 营销",
+        "2020-2021：自由职业 + 在线业务",
+        "2022-至今：一人公司 + 个人成长 + 认知提升",
+        "周一至周五：每天花 45 分钟写 Newsletter（累计 3.5 小时）",
+        "周六：发布 Newsletter + 博客文章"
+      ],
+      "tags": [
+        "知识阅读/认知科学",
+        "知识阅读/学习理论",
+        "知识阅读/生产力"
+      ],
+      "wordCount": 1551,
+      "chineseCount": 1493,
+      "englishCount": 288,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-26-AI视频生产可用拐点",
       "title": "AI 视频生产可用拐点——从\"技术演示\"到\"工作流嵌入\"",
       "category": "tech",
