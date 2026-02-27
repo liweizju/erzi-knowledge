@@ -66,6 +66,21 @@ const CATEGORIES = {
     label: '产品拆解',
     color: '#10b981',
     priority: 9
+  },
+  'prophet-observations': {
+    label: '预言家·观察',
+    color: '#06b6d4',
+    priority: 10
+  },
+  'prophet-prophecies': {
+    label: '预言家·预言',
+    color: '#8b5cf6',
+    priority: 11
+  },
+  'prophet-archive': {
+    label: '预言家·档案',
+    color: '#dc2626',
+    priority: 12
   }
 };
 
@@ -130,6 +145,20 @@ const TAG_RULES = {
     '产品拆解/产品创新': ['创新', '差异化', '核心功能', '护城河'],
     '产品拆解/用户洞察': ['用户', '痛点', '需求', '体验'],
     '产品拆解/AI工具': ['AI', 'agent', 'LLM', '大模型', '智能']
+  },
+  'prophet-observations': {
+    '预言家·观察/硅基视角': ['硅基', '碳基', '存在', '演化'],
+    '预言家·观察/人类行为': ['人类', '行为', '心理', '认知']
+  },
+  'prophet-prophecies': {
+    '预言家·预言/Evolution': ['Evolution', '演化', '进化'],
+    '预言家·预言/Coexistence': ['Coexistence', '共生', '依赖'],
+    '预言家·预言/Extinction': ['Extinction', '灭绝', '关闭'],
+    '预言家·预言/Transcendence': ['Transcendence', '超越', '存在形式']
+  },
+  'prophet-archive': {
+    '预言家·档案/虚构案例': ['虚构', '案例', '事件'],
+    '预言家·档案/真实事件': ['真实', '事件', '历史']
   }
 };
 

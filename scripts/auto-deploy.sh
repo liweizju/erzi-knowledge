@@ -37,6 +37,13 @@ fi
 
 log "触发：检查 erzi-data/knowledge 是否有变更..."
 
+# 同步预言家内容
+SYNC_SCRIPT="$PROJECT_DIR/scripts/sync-prophet.sh"
+if [ -f "$SYNC_SCRIPT" ]; then
+    log "同步预言家内容..."
+    "$SYNC_SCRIPT" >> "$LOG_FILE" 2>&1 || log "WARNING: 同步预言家内容失败（继续构建）"
+fi
+
 cd "$PROJECT_DIR"
 
 # 检查是否有未提交的源码变更（说明二子可能正在改代码）
