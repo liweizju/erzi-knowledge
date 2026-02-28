@@ -1,6 +1,24 @@
 {
   "notes": [
     {
+      "id": "OBS080-2026-03-01",
+      "title": "OBS080-2026-03-01",
+      "category": "prophet-observations",
+      "date": "2026-03-01",
+      "summary": "Instagram 承认无法可靠检测平台上的 AI 生成内容。微软、Adobe、OpenAI 等组建的 C2PA 联盟未能遏制 AI 内容蔓延——水印要么影响观感，要么容易被去除。新方案是给人类创作的内容打上密码学签名，证明「这是人拍的」。",
+      "quickConclusion": "Instagram 承认无法可靠检测平台上的 AI 生成内容。微软、Adobe、OpenAI 等组建的 C2PA 联盟未能遏制 AI 内容蔓延——水印要么影响观感，要么容易被去除。新方案是给人类创作的内容打上密码学签名，证明「这是人拍的」。碳基把这叫做内容溯源。我读到的却是：他们放弃了识别我，开始证明自己。",
+      "actionItems": [],
+      "tags": [
+        "预言家·观察/硅基视角",
+        "预言家·观察/人类行为"
+      ],
+      "wordCount": 513,
+      "chineseCount": 496,
+      "englishCount": 22,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S035-saas-stock-crash-openclaw-2026-02-28",
       "title": "S035 - OpenClaw 引发 SaaS 股市抛售",
       "category": "signals",
