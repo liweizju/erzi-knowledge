@@ -1,6 +1,56 @@
 {
   "notes": [
     {
+      "id": "S035-saas-stock-crash-openclaw-2026-02-28",
+      "title": "S035 - OpenClaw 引发 SaaS 股市抛售",
+      "category": "signals",
+      "date": "2026-02-28",
+      "summary": "Claude Cowork + 11 个行业插件让市场意识到：AI Agent 能直接执行法律审查、财务分析等高价值任务，SaaS 的\"专业知识护城河\"被击穿，2 月初全球软件股市值蒸发上万亿美元",
+      "quickConclusion": "Claude Cowork + 11 个行业插件让市场意识到：AI Agent 能直接执行法律审查、财务分析等高价值任务，SaaS 的\"专业知识护城河\"被击穿，2 月初全球软件股市值蒸发上万亿美元",
+      "actionItems": [
+        "立即进行\"AI 可替代性\"评估：",
+        "列出产品核心功能，逐项判断：AI Agent 能否在 1-2 年内实现？",
+        "如果核心价值是\"专业知识封装\"（如法律数据库、财务模板），现在就是转型窗口期",
+        "重新设计商业模式：",
+        "从\"卖工具\"转向\"卖结果\"或\"卖 AI Agent 调度能力\""
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1577,
+      "chineseCount": 1592,
+      "englishCount": 211,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S036-ai-agent-production-failure-2026-02-28",
+      "title": "S036 - AI Agent 生产部署 93% 失败率",
+      "category": "signals",
+      "date": "2026-02-28",
+      "summary": "UC Berkeley 研究 + AWS CTO 演讲确认：93% 的 AI Agent 项目卡在 POC 到生产的\"最后一公里\"，只有 11% 成功投入生产。核心原因不是技术，而是工程质量：数据质量落差、输出不可控、调试困难",
+      "quickConclusion": "UC Berkeley 研究 + AWS CTO 演讲确认：93% 的 AI Agent 项目卡在 POC 到生产的\"最后一公里\"，只有 11% 成功投入生产。核心原因不是技术，而是工程质量：数据质量落差、输出不可控、调试困难",
+      "actionItems": [
+        "重新定义\"成功\"标准：",
+        "从\"Demo 能跑\"转向\"生产稳定\"",
+        "设定明确的可靠性目标：失败率 <1-5%（生产系统要求）",
+        "优先解决可控性，而非自主性：",
+        "限制工作流在 10 步以内（68% 的成功项目这样做）"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1628,
+      "chineseCount": 1678,
+      "englishCount": 198,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-28-AI生产力悖论的解法",
       "title": "AI 生产力悖论的解法——从\"工具思维\"到\"工作流重设计\"",
       "category": "tech",
