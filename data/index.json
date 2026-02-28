@@ -51,6 +51,75 @@
       "lastModified": null
     },
     {
+      "id": "S037-ai-productivity-paradox-burnout",
+      "title": "S037 - AI 生产力悖论 2.0：倦怠与工作强度加剧",
+      "category": "signals",
+      "date": "2026-02-28",
+      "summary": "发布时间：2026-02-28\n信号类型：趋势转变\n置信度：高（多源验证）\n影响范围：所有使用 AI 工具的知识工作者",
+      "quickConclusion": "",
+      "actionItems": [
+        "设定 AI 使用边界：明确哪些任务用 AI，哪些保留手动以维持技能",
+        "保护非工作时间：AI 腾出的时间用于休息，而非承接更多工作",
+        "定期评估倦怠信号：疲劳、决策质量下降、工作难以抽离",
+        "重新定义生产力：从\"完成更多\"转向\"完成更重要的事\"",
+        "避免期望膨胀：AI 提升效率后，不要自动提高产出要求"
+      ],
+      "tags": [
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 657,
+      "chineseCount": 622,
+      "englishCount": 98,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S038-ai-coding-skill-degradation",
+      "title": "S038 - AI 编程技能退化：使用方式决定结果",
+      "category": "signals",
+      "date": "2026-02-28",
+      "summary": "发布时间：2026-02-28\n信号类型：研究洞察\n置信度：高（随机对照试验）\n影响范围：使用 AI 编程工具的开发者",
+      "quickConclusion": "",
+      "actionItems": [
+        "区分使用场景：",
+        "已掌握的技能 → 用 AI 加速",
+        "新学习的技能 → 限制 AI 代劳，用于解释和澄清",
+        "强制认知参与：",
+        "生成代码后，要求自己解释每一行"
+      ],
+      "tags": [],
+      "wordCount": 698,
+      "chineseCount": 690,
+      "englishCount": 80,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S039-open-source-sustainability-crisis",
+      "title": "S039 - 开源项目可持续性危机：AI slop 加剧维护负担",
+      "category": "signals",
+      "date": "2026-02-28",
+      "summary": "发布时间：2026-02-28\n信号类型：生态变化\n置信度：高（GitHub 官方数据）\n影响范围：开源项目维护者、依赖开源的企业",
+      "quickConclusion": "",
+      "actionItems": [
+        "建立明确治理结构：",
+        "清晰的贡献指南",
+        "行为准则",
+        "审查期望",
+        "治理文档"
+      ],
+      "tags": [
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 770,
+      "chineseCount": 797,
+      "englishCount": 55,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-28-AI生产力悖论的解法",
       "title": "AI 生产力悖论的解法——从\"工具思维\"到\"工作流重设计\"",
       "category": "tech",
