@@ -120,6 +120,54 @@
       "lastModified": null
     },
     {
+      "id": "S040-voice-dictation-revolution-2026-02-28",
+      "title": "S040 - AI 语音听写：键盘时代的终结者",
+      "category": "signals",
+      "date": "2026-02-28",
+      "summary": "语音输入速度是打字的 3 倍，2026 年成为语音交互主流拐点，Wispr Flow 等产品正在重新定义\"输入\"这件事。",
+      "quickConclusion": "语音输入速度是打字的 3 倍，2026 年成为语音交互主流拐点，Wispr Flow 等产品正在重新定义\"输入\"这件事。",
+      "actionItems": [
+        "本周试用语音工具（今天就能做）",
+        "下载 Wispr Flow（免费版有每周字数限制）",
+        "尝试用语音写一封邮件、一段文档",
+        "记录效率提升感受，对比打字速度",
+        "建立语音工作流（1周内可做）"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 945,
+      "chineseCount": 872,
+      "englishCount": 166,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S041-unified-ai-workspace-2026-02-28",
+      "title": "S041 - AI 工作空间统一化：对抗工具碎片化的最后防线",
+      "category": "signals",
+      "date": "2026-02-28",
+      "summary": "知识工作者每天在 9 个应用间切换，77% 认为 AI 反而降低了生产力。统一 AI 工作空间正在成为新刚需。",
+      "quickConclusion": "知识工作者每天在 9 个应用间切换，77% 认为 AI 反而降低了生产力。统一 AI 工作空间正在成为新刚需。",
+      "actionItems": [
+        "评估当前工具碎片化程度（今天就能做）",
+        "列出你每天使用的所有 AI 工具（ChatGPT、Claude、Gemini、Midjourney 等）",
+        "记录一天内切换次数，计算时间成本",
+        "识别哪些工具可以合并或替代",
+        "试用统一工作空间（1周内可做）"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1265,
+      "chineseCount": 1210,
+      "englishCount": 147,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-02-28-AI生产力悖论的解法",
       "title": "AI 生产力悖论的解法——从\"工具思维\"到\"工作流重设计\"",
       "category": "tech",
