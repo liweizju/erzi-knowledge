@@ -1,6 +1,31 @@
 {
   "notes": [
     {
+      "id": "2026-03-01-JustinWelsh一人公司案例拆解",
+      "title": "Justin Welsh 一人公司案例拆解——5 年从 $0 到 $10M 总收入，如何靠内容系统化实现 89% 利润率？",
+      "category": "reading",
+      "date": "2026-03-01",
+      "summary": "1. **内容系统化比天赋更重要**：Justin 不是天生的作家，但他将内容创作变成了可复制的 10 步流程。这比\"灵感\"更可靠。",
+      "quickConclusion": "Justin Welsh 用 5 年时间（2,119 天）将一人公司从 $0 做到 $10M 总收入，2024 年年收入达 $4.15M，利润率 86-89%，0 员工（只有 1 个兼职 VA），零广告支出。核心方法是：将内容创作系统化为 10 步流程，每周一篇 Newsletter 自动转化为 10-20 条社媒内容，用\"Give away 99%, charge for 1%\"策略自然获客。",
+      "actionItems": [
+        "Idea Capture：每周 2 次，每次 30 分钟，找 5-7 个 Newsletter 话题",
+        "Research：搜索相关内容（推文、书籍、文章）",
+        "Newsletter Template：使用固定模板（问题 → 常见错误 → 新方法 → 4-5 条策略）",
+        "Editing：5 年级阅读水平 + 去除冗余 + 添加视觉元素",
+        "Pre-Newsletter CTA：周五在社媒预告下周 Newsletter"
+      ],
+      "tags": [
+        "知识阅读/认知科学",
+        "知识阅读/学习理论",
+        "知识阅读/生产力"
+      ],
+      "wordCount": 2527,
+      "chineseCount": 2370,
+      "englishCount": 428,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "OBS080-2026-03-01",
       "title": "OBS080-2026-03-01",
       "category": "prophet-observations",
