@@ -45,6 +45,25 @@
       "lastModified": null
     },
     {
+      "id": "D009-agent-last-mile-opportunities-2026-03-01",
+      "title": "D009 - AI Agent \"最后一公里\"机会图谱：从93%失败率看产品创业窗口",
+      "category": "deep-dives",
+      "date": "2026-03-01",
+      "summary": "93%的AI Agent项目死在POC到生产的\"最后一公里\"，但这恰恰是最大的产品机会。机会不在\"更聪明的Agent\"，而在\"让Agent能落地\"——可观测性、评估框架、护栏系统、记忆管理、成本控制。这些\"基础设施\"正在形成50亿美元的新市",
+      "quickConclusion": "93%的AI Agent项目死在POC到生产的\"最后一公里\"，但这恰恰是最大的产品机会。机会不在\"更聪明的Agent\"，而在\"让Agent能落地\"——可观测性、评估框架、护栏系统、记忆管理、成本控制。这些\"基础设施\"正在形成50亿美元的新市场，LangSmith月注册3万、AgentOps刚拿260万美元、Langfuse开源后快速崛起。核心洞察：Agent的价值不是\"自主性\"，而是\"可控性\"。",
+      "actionItems": [],
+      "tags": [
+        "深度拆解/商业模式",
+        "深度拆解/竞争格局",
+        "深度拆解/产品策略"
+      ],
+      "wordCount": 3160,
+      "chineseCount": 3373,
+      "englishCount": 356,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-03-01-JustinWelsh一人公司案例拆解",
       "title": "Justin Welsh 一人公司案例拆解——5 年从 $0 到 $10M 总收入，如何靠内容系统化实现 89% 利润率？",
       "category": "reading",
