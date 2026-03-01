@@ -1,6 +1,50 @@
 {
   "notes": [
     {
+      "id": "S042-context-engineering-ai-agent-core-2026-03-01",
+      "title": "S042 - Context Engineering 成为 AI Agent 核心能力",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "AI Agent 的差异化关键已从\"模型能力\"转向\"上下文工程\"，Trace $3M 融资验证了这一赛道的商业价值。",
+      "quickConclusion": "AI Agent 的差异化关键已从\"模型能力\"转向\"上下文工程\"，Trace $3M 融资验证了这一赛道的商业价值。",
+      "actionItems": [
+        "如果你是 AI Agent 开发者：今天就能做 — 评估你的 Agent 在长对话中的表现，测试其是否能在 50+ 轮对话后仍保持一致性",
+        "如果你是企业 AI 负责人：1 周内可做 — 调研上下文管理方案（如 hmem、memU），避免 Agent 在生产环境中\"失忆\"",
+        "长期动作：关注\"Context Engineering\"最佳实践，建立企业内部的上下文管理规范"
+      ],
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 870,
+      "chineseCount": 720,
+      "englishCount": 222,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S043-facebook-ai-content-crisis-2026-03-01",
+      "title": "S043 - Facebook AI 内容泛滥与信任危机",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "Facebook 信息流被 AI 生成内容淹没，Hacker News 数千条讨论揭示用户痛点，公众信任度降至 28% 历史最低点。",
+      "quickConclusion": "Facebook 信息流被 AI 生成内容淹没，Hacker News 数千条讨论揭示用户痛点，公众信任度降至 28% 历史最低点。",
+      "actionItems": [
+        "如果你是内容平台：今天就能做 — 评估你的平台 AI 内容占比，测试内容真实性检测方案",
+        "如果你是内容创作者：1 周内可做 — 建立内容溯源机制，为\"人类创作\"建立证明（如 OKhuman、Grammarly Authorship）",
+        "长期动作：关注 C2PA 等内容 authenticity 标准，提前布局\"真实性验证\"能力"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1062,
+      "chineseCount": 1043,
+      "englishCount": 89,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-03-01-JustinWelsh一人公司案例拆解",
       "title": "Justin Welsh 一人公司案例拆解——5 年从 $0 到 $10M 总收入，如何靠内容系统化实现 89% 利润率？",
       "category": "reading",
