@@ -158,6 +158,80 @@
       "lastModified": null
     },
     {
+      "id": "S049-ai-fatigue-developer-burnout-2026-03-01",
+      "title": "S049 - AI 疲劳：效率悖论下的开发者倦怠危机",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "AI 提效 10 倍但开发者反而更累——认知负荷从\"创造\"转向\"纠错\"，决策负担指数级增加，硅谷工程师出现\"瞌睡攻击\"现象，AI 工作流管理工具是产品机会。",
+      "quickConclusion": "AI 提效 10 倍但开发者反而更累——认知负荷从\"创造\"转向\"纠错\"，决策负担指数级增加，硅谷工程师出现\"瞌睡攻击\"现象，AI 工作流管理工具是产品机会。",
+      "actionItems": [
+        "调研\"认知负荷监控\"类工具：追踪开发者的 AI 使用频率、上下文切换次数、决策密度，提供\"该休息了\"的提醒",
+        "关注 AI 工作流可持续性方案：",
+        "\"AI 实践\"框架：有意识地暂停评估工作流，减少 AI 造成的碎片化",
+        "边界设定工具：限制每日 AI 请求次数、强制休息间隔",
+        "评估\"AI 辅助决策\"而非\"AI 替代决策\"：让 AI 提供选项和建议，但保留人类最终决策权，减少\"审核疲劳\""
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1338,
+      "chineseCount": 1313,
+      "englishCount": 102,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S050-cloudflare-markdown-agents-2026-03-01",
+      "title": "S050 - Cloudflare Markdown for Agents：互联网为 AI 重构的基础设施革命",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "Cloudflare 推出\"Markdown for Agents\"，互联网从\"为人眼设计\"转向\"为 AI 眼设计\"——Token 成本降 80%、上下文窗口塞进 5 倍内容，2026 年是\"为 Agent 构建基础设施\"元年。",
+      "quickConclusion": "Cloudflare 推出\"Markdown for Agents\"，互联网从\"为人眼设计\"转向\"为 AI 眼设计\"——Token 成本降 80%、上下文窗口塞进 5 倍内容，2026 年是\"为 Agent 构建基础设施\"元年。",
+      "actionItems": [
+        "评估网站/产品的\"Agent 可访问性\"：",
+        "是否支持 Markdown 输出？",
+        "是否暴露原生 API（而非只能通过 UI 操作）？",
+        "是否支持 MCP 协议（Google Chrome 的 WebMCP）？",
+        "关注\"Agent SEO\"：未来的流量入口从\"搜索引擎\"转向\"AI crawler 与 agent\"，需要让 Agent 能正确读取内容"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 1138,
+      "chineseCount": 1054,
+      "englishCount": 162,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S051-ai-tool-subscription-fatigue-2026-03-01",
+      "title": "S051 - AI 工具订阅疲劳：用户开始\"断舍离\"",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "AI 工具订阅遭遇\"健身房效应\"——用户平均使用工具数从 4.2 个降至 3.5 个，52% 认可是投资但 48% 担忧过度消费，Usage-based 和 Freemium 是突围方向。",
+      "quickConclusion": "AI 工具订阅遭遇\"健身房效应\"——用户平均使用工具数从 4.2 个降至 3.5 个，52% 认可是投资但 48% 担忧过度消费，Usage-based 和 Freemium 是突围方向。",
+      "actionItems": [
+        "评估 Usage-based 定价模式：对低频用户更友好，避免\"健身房效应\"（买了不用）",
+        "设计\"低频用户友好\"方案：",
+        "免费层：基础功能免费，吸引尝鲜用户",
+        "按需付费：单次使用付费，降低订阅门槛",
+        "分层订阅：轻量版（低价）+ 专业版（高价）"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1213,
+      "chineseCount": 1221,
+      "englishCount": 66,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "D009-agent-last-mile-opportunities-2026-03-01",
       "title": "D009 - AI Agent \"最后一公里\"机会图谱：从93%失败率看产品创业窗口",
       "category": "deep-dives",
