@@ -112,6 +112,52 @@
       "lastModified": null
     },
     {
+      "id": "S047-openclaw-security-crisis-2026-03-01",
+      "title": "S047 - OpenClaw 安全危机：AI Agent 的\"裸奔\"时代",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "史上增长最快的开源 AI Agent 正在安全漏洞上\"裸奔\"，13.5 万实例暴露公网、150 万 Token 泄露，企业禁用潮已开始——这是 AI Agent 安全工具的创业窗口期。",
+      "quickConclusion": "史上增长最快的开源 AI Agent 正在安全漏洞上\"裸奔\"，13.5 万实例暴露公网、150 万 Token 泄露，企业禁用潮已开始——这是 AI Agent 安全工具的创业窗口期。",
+      "actionItems": [
+        "立即调研 AI Agent 安全工具市场：关注 SecureClaw（开源安全分支）、ClawHub Skill Scanner（Cisco 开源）、VirusTotal 集成方案",
+        "评估\"AI Agent 安全顾问\"服务机会：企业需要专业团队帮助部署隔离方案、审计技能、建立安全基线",
+        "关注 Anthropic Claude Cowork 的安全路径：沙盒隔离虚拟机 + 限制网络访问，可能是企业级 AI Agent 的安全范式"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1084,
+      "chineseCount": 1009,
+      "englishCount": 167,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S048-ai-customer-service-trust-crisis-2026-03-01",
+      "title": "S048 - AI 客服信任危机：\"人工智障\"正在逼走用户",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "AI 客服部署加速但体验未跟上，2024 年投诉增长 50%、三成用户默默流失，\"转人工难\"成最大痛点——人工/AI 混合方案、情绪识别触发转接是产品机会。",
+      "quickConclusion": "AI 客服部署加速但体验未跟上，2024 年投诉增长 50%、三成用户默默流失，\"转人工难\"成最大痛点——人工/AI 混合方案、情绪识别触发转接是产品机会。",
+      "actionItems": [
+        "调研\"情绪触发转人工\"方案：AI 客服 + 实时情绪识别，一旦检测到不耐烦/愤怒立即转人工",
+        "关注 AI 客服体验优化工具：用户行为分析（反复修改资料却不提交 → 流程太复杂）、对话质量评估、CSAT 预测",
+        "评估\"AI 辅助人工\"模式：AI 不直接面对用户，而是辅助人工坐席快速检索信息、生成回复草稿"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1144,
+      "chineseCount": 1143,
+      "englishCount": 101,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "D009-agent-last-mile-opportunities-2026-03-01",
       "title": "D009 - AI Agent \"最后一公里\"机会图谱：从93%失败率看产品创业窗口",
       "category": "deep-dives",
