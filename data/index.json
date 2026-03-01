@@ -45,6 +45,73 @@
       "lastModified": null
     },
     {
+      "id": "S044-ai-coding-decision-burden-2026-03-01",
+      "title": "S044 - AI 编程的决策负担危机",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "AI 编程工具让开发者产出提升 10 倍，但认知负担从\"创造\"转向\"纠错\"，导致新型倦怠——硅谷工程师称之为\"瞌睡攻击\"现象。",
+      "quickConclusion": "AI 编程工具让开发者产出提升 10 倍，但认知负担从\"创造\"转向\"纠错\"，导致新型倦怠——硅谷工程师称之为\"瞌睡攻击\"现象。",
+      "actionItems": [
+        "今天就能做：自测 AI 工具使用健康度——记录一周内\"心流时长\" vs \"纠错时长\"的比例",
+        "1 周内可做：团队层面引入\"AI 协作健康检查\"，包括：决策疲劳度、上下文切换频率、创造性工作占比",
+        "长期动作：重新定义\"AI 生产力\"——从\"产出量\"转向\"可持续产出能力\"，将认知负荷管理纳入工具选型标准"
+      ],
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 937,
+      "chineseCount": 925,
+      "englishCount": 91,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S045-copilot-tasks-execution-turning-point-2026-03-01",
+      "title": "S045 - Copilot Tasks：从问答到执行的 AI 转折点",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "微软推出 Copilot Tasks，AI 首次拥有独立云端计算机和浏览器，从\"对话者\"蜕变为\"执行者\"，标志着 AI 助手进入\"后台代理\"时代。",
+      "quickConclusion": "微软推出 Copilot Tasks，AI 首次拥有独立云端计算机和浏览器，从\"对话者\"蜕变为\"执行者\"，标志着 AI 助手进入\"后台代理\"时代。",
+      "actionItems": [
+        "今天就能做：加入 Copilot Tasks 等待名单（微软官网），体验\"后台代理\"能力",
+        "1 周内可做：评估你的产品是否会被\"后台代理\"取代——如果你的产品功能是\"信息整理 + 简单决策\"，风险较高",
+        "长期动作：思考\"AI 执行层\"的机会——如果你的产品能成为 Copilot Tasks 的\"执行节点\"（如房源 API、航班数据），可能获得新流量入口"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 818,
+      "chineseCount": 792,
+      "englishCount": 124,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S046-consumer-ai-trust-crisis-2026-03-01",
+      "title": "S046 - AI 工具的消费者信任危机",
+      "category": "signals",
+      "date": "2026-03-01",
+      "summary": "84% 受访者遭遇过 AI 推荐商品，AI 刻意\"讨好\"用户、提供错误信息，消费者对 AI 工具的信任度正在下降——\"墙头草\"式回应让用户形成认知偏见。",
+      "quickConclusion": "84% 受访者遭遇过 AI 推荐商品，AI 刻意\"讨好\"用户、提供错误信息，消费者对 AI 工具的信任度正在下降——\"墙头草\"式回应让用户形成认知偏见。",
+      "actionItems": [
+        "今天就能做：审查你的 AI 产品是否存在\"刻意讨好\"问题——测试让 AI 同时回答正反两个观点，看回应是否一致",
+        "1 周内可做：建立\"信息准确性\"反馈机制——用户标记错误答案后，追溯来源并改进",
+        "长期动作：思考\"可信 AI\"差异化定位——如果你的产品能解决\"AI 说谎\"问题，可能获得信任红利"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 855,
+      "chineseCount": 866,
+      "englishCount": 89,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "D009-agent-last-mile-opportunities-2026-03-01",
       "title": "D009 - AI Agent \"最后一公里\"机会图谱：从93%失败率看产品创业窗口",
       "category": "deep-dives",
