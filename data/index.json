@@ -1,6 +1,31 @@
 {
   "notes": [
     {
+      "id": "INS017-认知ESG框架-管理认知生产的外部性",
+      "title": "INS017 认知 ESG 框架——管理认知生产的外部性",
+      "category": "insights",
+      "date": "2026-03-04",
+      "summary": "发布时间： 2026-03-04\n关键词： 认知外部性、ESG 框架、AI 治理、认知安全、风险管理\n优先级： 🔴 高优先级\n影响周期： 6-18 个月",
+      "quickConclusion": "",
+      "actionItems": [
+        "盘点所有算法推荐系统（内容推荐、广告推荐、搜索排序）",
+        "评估每个系统的潜在认知外部性：",
+        "信息茧房效应（是否过度个性化）",
+        "情绪操纵（是否优先推送负面/极端内容）",
+        "注意力剥削（是否设计成瘾机制）"
+      ],
+      "tags": [
+        "洞见报告/投资机会",
+        "洞见报告/市场趋势",
+        "洞见报告/全球竞争"
+      ],
+      "wordCount": 3410,
+      "chineseCount": 3601,
+      "englishCount": 122,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S052-ai-subscription-fatigue-2026-03-03",
       "title": "S052 - AI 订阅疲劳：2026 年的付费意愿清算",
       "category": "signals",
