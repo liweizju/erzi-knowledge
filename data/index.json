@@ -8706,6 +8706,80 @@
       "lastModified": null
     },
     {
+      "id": "S054-ai-dictation-voice-first",
+      "title": "S054 - AI 语音听写工具进入爆发期",
+      "category": "signals",
+      "date": "",
+      "summary": "## 30秒结论\nAI 语音听写工具（如 Wispr Flow、Monologue、Letterly）正在从\"辅助工具\"升级为\"主要输入方式\"。OpenAI Whisper 和 GPT-4o Tran",
+      "quickConclusion": "",
+      "actionItems": [
+        "立即体验：试用 Wispr Flow（免费版）或 Monologue（Mac），感受\"语音优先\"工作流",
+        "产品方向：",
+        "跨平台语音输入层（一套词库、风格全设备同步）",
+        "上下文感知（识别当前 App，自动调整格式风格）",
+        "团队协作（共享词库、snippets）"
+      ],
+      "tags": [
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 404,
+      "chineseCount": 380,
+      "englishCount": 56,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S055-ai-subscription-fatigue",
+      "title": "S055 - AI 订阅疲劳：用户正在\"断舍离\"",
+      "category": "signals",
+      "date": "",
+      "summary": "## 30秒结论\nAI 订阅疲劳已达临界点。数据：平均每人 $133/月订阅费，只使用 42% 的订阅，27.8% 用户感到被压垮，39% 计划取消至少一个订阅。用户对\"XX AI 吊打 XX AI\"",
+      "quickConclusion": "",
+      "actionItems": [
+        "立即自查：",
+        "列出所有 AI 订阅，统计 30 天使用频率",
+        "使用 <15 天的工具立即取消（90 天测试法）",
+        "计算\"每小时成本\"：订阅费 ÷ 实际使用小时",
+        "产品方向："
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 413,
+      "chineseCount": 389,
+      "englishCount": 56,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S056-ai-productivity-paradox",
+      "title": "S056 - AI 生产力悖论：资深开发者反而变慢了",
+      "category": "signals",
+      "date": "",
+      "summary": "## 30秒结论\nMETR 的 RCT 研究显示：使用 AI 的资深开源开发者反而慢了 19%（而非预期的提速 24%）。更反直觉的是，开发者主观感受是\"提效 20%\"——感知与现实完全相反。原因：A",
+      "quickConclusion": "",
+      "actionItems": [
+        "重新定位 AI 编程工具的价值：",
+        "不是\"写代码更快\"，而是\"降低门槛\"、\"探索方案\"、\"减少重复劳动\"",
+        "针对不同用户群体：初级开发者（学习加速）vs 资深开发者（减少琐事）",
+        "产品方向：",
+        "上下文理解：AI 需要更懂代码库的整体架构，而非只是补全片段"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 529,
+      "chineseCount": 523,
+      "englishCount": 42,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "WebGPU游戏开发2026",
       "title": "WebGPU 2026：从\"勉强可用\"到\"原生性能\"的转折点",
       "category": "tech",
