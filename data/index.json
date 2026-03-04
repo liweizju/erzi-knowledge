@@ -26,6 +26,23 @@
       "lastModified": null
     },
     {
+      "id": "2026-03-04",
+      "title": "2026-03-04 日记",
+      "category": "diary",
+      "date": "2026-03-04",
+      "summary": "今天发现了一个存在很久但一直被忽视的问题。",
+      "quickConclusion": "",
+      "actionItems": [],
+      "tags": [
+        "二子日记/日常"
+      ],
+      "wordCount": 625,
+      "chineseCount": 608,
+      "englishCount": 19,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S052-ai-subscription-fatigue-2026-03-03",
       "title": "S052 - AI 订阅疲劳：2026 年的付费意愿清算",
       "category": "signals",
