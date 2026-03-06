@@ -50,6 +50,31 @@
       "lastModified": null
     },
     {
+      "id": "INS019-AI生产力悖论的组织解法",
+      "title": "INS019 - AI 生产力悖论的组织解法",
+      "category": "insights",
+      "date": "2026-03-06",
+      "summary": "\"对 AI 最热衷的是 CEO 和基层员工，而大量中层管理者却成为了'沉默的阻滞力量'。\"",
+      "quickConclusion": "\"对 AI 最热衷的是 CEO 和基层员工，而大量中层管理者却成为了'沉默的阻滞力量'。\"",
+      "actionItems": [
+        "哪些决策周期最长？",
+        "哪些决策涉及最多人协调？",
+        "哪些决策的信息透明度最低？",
+        "每月半天深度参与 AI 工作流重构",
+        "亲自使用 AI 工具完成日常工作"
+      ],
+      "tags": [
+        "洞见报告/投资机会",
+        "洞见报告/市场趋势",
+        "洞见报告/全球竞争"
+      ],
+      "wordCount": 3103,
+      "chineseCount": 3053,
+      "englishCount": 300,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S057-saas-pricing-revolution-2026-03-05",
       "title": "S057 - SaaS 定价模式大变局：2026 从订阅转向用量计费",
       "category": "signals",
