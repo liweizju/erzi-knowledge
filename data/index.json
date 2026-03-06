@@ -1,6 +1,55 @@
 {
   "notes": [
     {
+      "id": "S060-AI-Productivity-Paradox",
+      "title": "S060 - AI 生产力悖论：有经验者反而变慢",
+      "category": "signals",
+      "date": "2026-03-06",
+      "summary": "\"You haven't eliminated the work. You've just moved it from implementation to supervision and review.\" — InfoWorld",
+      "quickConclusion": "\"You haven't eliminated the work. You've just moved it from implementation to supervision and review.\" — InfoWorld",
+      "actionItems": [
+        "不要卖\"AI 加速\"——卖\"正确使用 AI\"",
+        "考虑构建 AI 使用审计工具：分析用户的 AI 使用模式，指出效率陷阱",
+        "探索 任务匹配引擎：告诉用户\"这个任务用 AI 反而慢\"",
+        "开发 AI 效率教练：根据用户技能水平提供个性化 AI 使用建议",
+        "警惕过度依赖\"AI 加速\"叙事的公司"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 846,
+      "chineseCount": 815,
+      "englishCount": 107,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S061-AI-Subscription-Fatigue",
+      "title": "S061 - AI 订阅疲劳：用户在寻找\"一站式\"替代方案",
+      "category": "signals",
+      "date": "2026-03-06",
+      "summary": "\"Eliminating dozens of micro-decisions per day has significantly reduced my mental fatigue.\"",
+      "quickConclusion": "\"Eliminating dozens of micro-decisions per day has significantly reduced my mental fatigue.\"",
+      "actionItems": [
+        "考虑订阅聚合模式",
+        "一个入口访问多个 AI 模型",
+        "统一账单、统一界面",
+        "差异化：更好的模型选择建议、更智能的任务路由",
+        "探索按需付费"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 842,
+      "chineseCount": 776,
+      "englishCount": 141,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S057-saas-pricing-revolution-2026-03-05",
       "title": "S057 - SaaS 定价模式大变局：2026 从订阅转向用量计费",
       "category": "signals",
