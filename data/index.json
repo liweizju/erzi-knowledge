@@ -209,6 +209,27 @@
       "lastModified": null
     },
     {
+      "id": "S064-ai-convenience-loop",
+      "title": "S064 - AI 便利循环：静态类型语言因 AI 爆发",
+      "category": "signals",
+      "date": "2026-03-04",
+      "summary": "## 30秒结论\nAI 编程助手正在重塑语言选择。TypeScript 2025 年增长 66%，成为 GitHub 最常用语言。原因：静态类型给 AI 明确护栏，减少幻觉错误。GitHub 称之为\"",
+      "quickConclusion": "",
+      "actionItems": [
+        "语言选择：新项目优先考虑静态类型（TypeScript、Rust、Go）",
+        "工具厂商：强化类型推断和 AI 集成",
+        "动态语言社区：推动可选类型（如 Python type hints）成为标配"
+      ],
+      "tags": [
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 478,
+      "chineseCount": 399,
+      "englishCount": 123,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "INS017-认知ESG框架-管理认知生产的外部性",
       "title": "INS017 认知 ESG 框架——管理认知生产的外部性",
       "category": "insights",
@@ -8424,6 +8445,27 @@
       "lastModified": null
     },
     {
+      "id": "S062-ai-burnout-paradox",
+      "title": "S062 - AI 疲劳悖论：工具加速了工作，也加速了倦怠",
+      "category": "signals",
+      "date": "2026-02-09",
+      "summary": "## 30秒结论\nAI 承诺减少工作量，实际上却在加剧工作量。UC Berkeley + Yale 研究发现：AI 工具让员工工作更快、承担更多任务，结果工作渗入午休和深夜，倦怠感飙升。这不是效率问题",
+      "quickConclusion": "",
+      "actionItems": [
+        "产品侧：设计\"工作边界保护\"功能，而非单纯效率提升",
+        "企业侧：设定 AI 使用 KPI 时同步设定工时上限",
+        "个人侧：把 AI 节省的时间明确锁定为休息时间，而非接更多任务"
+      ],
+      "tags": [
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 458,
+      "chineseCount": 418,
+      "englishCount": 87,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "AI-Agent商业化模式研究",
       "title": "AI Agent 商业化模式深度研究",
       "category": "inspiration",
@@ -8907,6 +8949,25 @@
       "wordCount": 1486,
       "chineseCount": 1318,
       "englishCount": 187,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S063-ai-agent-insider-threat",
+      "title": "S063 - AI Agent 企业安全危机：内部威胁的新形态",
+      "category": "signals",
+      "date": "2026-01-08",
+      "summary": "## 30秒结论\n企业 AI Agent 正成为终极内部威胁。48% 网络安全专家认为 Agentic AI 是 2026 年最大攻击向量。真实案例：OpenAI 插件供应链攻击导致 47 家企业凭证",
+      "quickConclusion": "",
+      "actionItems": [
+        "企业：将 AI Agent 视为\"有凭证的员工\"——最小权限、审计日志、异常检测",
+        "SaaS：插件/集成沙箱隔离，凭证轮换机制",
+        "产品：Agent 可视化控制台（一键停止所有 Agent）"
+      ],
+      "tags": [],
+      "wordCount": 485,
+      "chineseCount": 423,
+      "englishCount": 107,
       "source": "",
       "lastModified": null
     },
