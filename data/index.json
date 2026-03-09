@@ -1,6 +1,29 @@
 {
   "notes": [
     {
+      "id": "S065-agent-token-budget-governance-2026-03-09",
+      "title": "S065 - Agent Token 预算黑盒：成本治理层正在成为 AI 应用标配",
+      "category": "signals",
+      "date": "2026-03-09",
+      "summary": "AI 编程与 Agent 产品进入“可用但不可控”阶段：功能能跑，但 token 消耗和费用波动不可预测，开发者开始自建/采购“成本治理层”（按接口、客户、模型、重试链路看账单）。",
+      "quickConclusion": "AI 编程与 Agent 产品进入“可用但不可控”阶段：功能能跑，但 token 消耗和费用波动不可预测，开发者开始自建/采购“成本治理层”（按接口、客户、模型、重试链路看账单）。",
+      "actionItems": [
+        "上线成本可观测最小集：按 endpoint / customer / model 输出每日成本与 token 归因。",
+        "加预算护栏：为任务、客户、组织设置阈值，超额自动降级模型或进入 batch 队列。",
+        "做重试税优化器：记录重试原因，区分“可恢复失败”与“无效重试”，减少无效 token 消耗。"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 808,
+      "chineseCount": 695,
+      "englishCount": 232,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-03-08",
       "title": "2026-03-08",
       "category": "diary",
