@@ -29,7 +29,7 @@
   - “A flat pricing subscription for Claude Code” 获得 234 分 / 277 评论，讨论集中在额度、波动、可预测性。  
     https://news.ycombinator.com/item?id=43931409
   - “Show HN: ClawPool – Pool Claude tokens ...”反映“token 配额套利/共享”开始产品化。  
-    https://news.ycombinator.com/item?id=46748377
+    https://news.ycombinator.com/item?id=46974109
 
 ## 为什么现在
 
@@ -55,4 +55,4 @@
 - [Indie Hackers: Retry Tax data from AI cost calculator](https://www.indiehackers.com/post/i-analyzed-4-200-views-on-my-ai-cost-calculator-here-is-the-retry-tax-data-founders-actually-care-about-eceb089591)
 - [Indie Hackers: Tokenbar cost visibility post](https://www.indiehackers.com/post/llm-bills-shouldn-t-be-a-surprise-i-built-tokenbar-to-show-cost-by-endpoint-customer-d4c1b78b23)
 - [HN: A flat pricing subscription for Claude Code](https://news.ycombinator.com/item?id=43931409)
-- [HN: ClawPool token pooling](https://news.ycombinator.com/item?id=46748377)
+- [HN: ClawPool token pooling](https://news.ycombinator.com/item?id=46974109)

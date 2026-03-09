@@ -24,6 +24,29 @@
       "lastModified": null
     },
     {
+      "id": "S066-mcp-permission-trust-layer-2026-03-09",
+      "title": "S066 - MCP 信任与权限层：Agent 生态的“Cloudflare 时刻”",
+      "category": "signals",
+      "date": "2026-03-09",
+      "summary": "MCP 正在成为 Agent 连接外部世界的事实标准，但“谁能调用什么、调用后泄露什么”仍高度裸奔。机会不在再做一个 Agent，而在做 Agent 之上的权限代理 + 信任评分 + 安全扫描基础设施。",
+      "quickConclusion": "MCP 正在成为 Agent 连接外部世界的事实标准，但“谁能调用什么、调用后泄露什么”仍高度裸奔。机会不在再做一个 Agent，而在做 Agent 之上的权限代理 + 信任评分 + 安全扫描基础设施。",
+      "actionItems": [
+        "做 MCP Permission Proxy：按 server/tool/action 维度做 allow/deny，默认最小权限。",
+        "加数据外泄防线：对 SQL/tool 返回结果做敏感字段识别与脱敏，超策略直接阻断。",
+        "输出信任评分：把签名、静态扫描、行为回放、调用审计汇总成“技能/服务可信分”。"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 754,
+      "chineseCount": 652,
+      "englishCount": 184,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-03-08",
       "title": "2026-03-08",
       "category": "diary",
