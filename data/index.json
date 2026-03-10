@@ -1,6 +1,29 @@
 {
   "notes": [
     {
+      "id": "S067-silent-churn-recovery-layer-2026-03-10",
+      "title": "S067 - Silent Churn 修复层：独立 SaaS 的“漏桶”机会",
+      "category": "signals",
+      "date": "2026-03-10",
+      "summary": "独立 SaaS 的核心问题正在从“获客不够”转向“留存漏损看不见”：失败扣款、低活跃、被动流失在吞噬 MRR。企业级 CS 工具过重过贵，给轻量化“流失修复层”留下窗口。",
+      "quickConclusion": "独立 SaaS 的核心问题正在从“获客不够”转向“留存漏损看不见”：失败扣款、低活跃、被动流失在吞噬 MRR。企业级 CS 工具过重过贵，给轻量化“流失修复层”留下窗口。",
+      "actionItems": [
+        "上线流失分层看板：把流失拆成 failed payment / inactivity / active cancel 三类，避免“全归因到价格”。",
+        "自动化挽回：对 failed payment 跑 3 段式 dunning；对 7/14/30 天不活跃用户触发差异化激活。",
+        "产品化机会：做“Stripe 插件式 churn guard”，提供即插即用模板（邮件、站内、优惠策略）而非重型实施。"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 804,
+      "chineseCount": 700,
+      "englishCount": 206,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S065-agent-token-budget-governance-2026-03-09",
       "title": "S065 - Agent Token 预算黑盒：成本治理层正在成为 AI 应用标配",
       "category": "signals",
