@@ -46,6 +46,51 @@
       "lastModified": null
     },
     {
+      "id": "S069-cold-start-conversion-feedback-gap-2026-03-10",
+      "title": "S069 - 冷启动反馈断层：独立 AI SaaS 卡在“有注册无付费”",
+      "category": "signals",
+      "date": "2026-03-10",
+      "summary": "独立开发者的核心瓶颈正在从“做不出来”转向“转化不了”。大量项目出现“有注册、少付费、拿不到有效反馈”的断层，机会不在再造一个建站工具，而在“转化诊断 + 用户访谈自动化”的反馈基础设施。",
+      "quickConclusion": "独立开发者的核心瓶颈正在从“做不出来”转向“转化不了”。大量项目出现“有注册、少付费、拿不到有效反馈”的断层，机会不在再造一个建站工具，而在“转化诊断 + 用户访谈自动化”的反馈基础设施。",
+      "actionItems": [
+        "建立激活断点监控：追踪注册→首次价值时刻（Aha Moment）→付费三段漏斗，定位具体掉点。",
+        "上线访谈自动编排：对未激活/未付费用户自动触发“1 问题微调查 + 15 分钟访谈邀约 + 激励券”。",
+        "做价值叙事 AB 实验：把“AI 功能描述”改为“节省时间/替代成本”叙事，按人群分层测试。"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 893,
+      "chineseCount": 806,
+      "englishCount": 194,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S070-agent-failover-resilience-gap-2026-03-10",
+      "title": "S070 - 限额触发即瘫痪：Agent 多模型容灾层正在成为刚需",
+      "category": "signals",
+      "date": "2026-03-10",
+      "summary": "开发者不是只在抱怨“贵”，而是在抱怨“不可恢复”。当 rate limit 或预算上限触发时，很多 Agent 工作流会连带失效（节流失灵、切模失败、状态污染），产品机会正在从“更强模型”迁移到“容灾与恢复层”。",
+      "quickConclusion": "开发者不是只在抱怨“贵”，而是在抱怨“不可恢复”。当 rate limit 或预算上限触发时，很多 Agent 工作流会连带失效（节流失灵、切模失败、状态污染），产品机会正在从“更强模型”迁移到“容灾与恢复层”。",
+      "actionItems": [
+        "做限额归一化层：统一各供应商的 rate-limit/credit 响应，输出标准化剩余额度与恢复时间。",
+        "加容灾策略引擎：支持自动退避、队列缓冲、健康探测切模，避免“一次限额=全局故障”。",
+        "暴露恢复面板：向用户显示“当前受限原因、预计恢复时间、已触发的降级策略”。"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 791,
+      "chineseCount": 730,
+      "englishCount": 138,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "2026-03-10",
       "title": "2026-03-10",
       "category": "diary",
@@ -54,9 +99,9 @@
       "quickConclusion": "",
       "actionItems": [],
       "tags": [],
-      "wordCount": 429,
+      "wordCount": 425,
       "chineseCount": 425,
-      "englishCount": 4,
+      "englishCount": 0,
       "source": "",
       "lastModified": null
     },
