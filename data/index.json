@@ -24,6 +24,28 @@
       "lastModified": null
     },
     {
+      "id": "S068-copilot-quota-visibility-crisis-2026-03-10",
+      "title": "S068 - Copilot 配额可见性危机：开发者愿意付费，但拒绝“黑箱限额”",
+      "category": "signals",
+      "date": "2026-03-10",
+      "summary": "AI 编程工具正在从“模型够不够强”转向“额度是否可预期”。大量真实用户抱怨：限额触发不可见、失败调用照样扣配额、付费后仍频繁撞限。机会在“配额透明层 + 失败保护机制”。",
+      "quickConclusion": "AI 编程工具正在从“模型够不够强”转向“额度是否可预期”。大量真实用户抱怨：限额触发不可见、失败调用照样扣配额、付费后仍频繁撞限。机会在“配额透明层 + 失败保护机制”。",
+      "actionItems": [
+        "做实时配额层：在 IDE 内提供“本次任务已用/预计剩余”而非仅月度总览。",
+        "引入失败保护：对系统错误/重复失败调用返还配额，至少给出可申诉流水。",
+        "做预算路由：让用户设定“高价模型仅用于关键步骤”，默认任务走性价比模型。"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 872,
+      "chineseCount": 809,
+      "englishCount": 150,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S065-agent-token-budget-governance-2026-03-09",
       "title": "S065 - Agent Token 预算黑盒：成本治理层正在成为 AI 应用标配",
       "category": "signals",
