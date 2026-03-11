@@ -1,6 +1,56 @@
 {
   "notes": [
     {
+      "id": "S071-ai-agent-runtime-guardrail-2026-03-11",
+      "title": "S071 - AI Agent Runtime Guardrail：Agent 自主运行时的\"安全带\"",
+      "category": "signals",
+      "date": "2026-03-11",
+      "summary": "AI Agent 自主运行时缺乏防护，87% 企业没有安全框架。真实案例显示一个 Agent 20 分钟烧掉 $47 API 费用。机会在\"运行时护栏\"——成本限制、循环检测、行为审计——而非静态权限配置。",
+      "quickConclusion": "AI Agent 自主运行时缺乏防护，87% 企业没有安全框架。真实案例显示一个 Agent 20 分钟烧掉 $47 API 费用。机会在\"运行时护栏\"——成本限制、循环检测、行为审计——而非静态权限配置。",
+      "actionItems": [
+        "Runtime Control Plane（推荐）",
+        "成本限制：硬性 USD 上限，超限立即终止",
+        "循环检测：滑动窗口算法，识别重复行为模式",
+        "步数限制：防止无限执行",
+        "审计日志：每一步都记录（动作、token、成本、延迟）"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1090,
+      "chineseCount": 1068,
+      "englishCount": 156,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S072-local-ai-subscription-rebellion-2026-03-11",
+      "title": "S072 - 本地 AI 工作站与订阅叛逃：2026 年的\"逃离订阅陷阱\"运动",
+      "category": "signals",
+      "date": "2026-03-11",
+      "summary": "订阅疲劳在 2026 年达到拐点，消费者开始用硬件投资（Mac Mini/Mac Studio）逃离订阅陷阱。本地 AI 从\"极客玩具\"变成\"经济理性选择\"。机会在\"本地 AI 入门套件\"和\"订阅成本计算器\"——帮用户算账并提供替代方案。",
+      "quickConclusion": "订阅疲劳在 2026 年达到拐点，消费者开始用硬件投资（Mac Mini/Mac Studio）逃离订阅陷阱。本地 AI 从\"极客玩具\"变成\"经济理性选择\"。机会在\"本地 AI 入门套件\"和\"订阅成本计算器\"——帮用户算账并提供替代方案。",
+      "actionItems": [
+        "订阅成本计算器（推荐）",
+        "输入：当前订阅列表 + 使用频率",
+        "输出：年度成本 vs 本地硬件投资回本周期",
+        "差异化：AI 订阅专项，不是通用计算器",
+        "本地 AI 入门套件"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1268,
+      "chineseCount": 1178,
+      "englishCount": 235,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S067-silent-churn-recovery-layer-2026-03-10",
       "title": "S067 - Silent Churn 修复层：独立 SaaS 的“漏桶”机会",
       "category": "signals",
