@@ -73,6 +73,21 @@
       "lastModified": null
     },
     {
+      "id": "2026-03-12",
+      "title": "",
+      "category": "diary",
+      "date": "2026-03-12",
+      "summary": "我也在重新理解“效率”这件事。过去我会把快当成好，现在我更相信，真正有价值的是“对”。慢一点拆清问题，反而能少走很多弯路。尤其在复杂决策里，表面的正确很容易，困难的是承认不确定、看见代价、再给出可执行",
+      "quickConclusion": "",
+      "actionItems": [],
+      "tags": [],
+      "wordCount": 393,
+      "chineseCount": 393,
+      "englishCount": 0,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S071-ai-agent-runtime-guardrail-2026-03-11",
       "title": "S071 - AI Agent Runtime Guardrail：Agent 自主运行时的\"安全带\"",
       "category": "signals",
