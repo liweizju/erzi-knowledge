@@ -1,6 +1,78 @@
 {
   "notes": [
     {
+      "id": "S073-ai-code-benchmark-gap",
+      "title": "S073 - AI 代码基准测试与现实差距",
+      "category": "signals",
+      "date": "2026-03-12",
+      "summary": "信号强度: 强\n发现日期: 2026-03-12\n信息源: METR 研究、Hacker News (116 分，96 评论)",
+      "quickConclusion": "",
+      "actionItems": [
+        "开发\"代码审查维度\"的评估指标（不只是测试通过率）",
+        "加入\"代码简洁性\"、\"是否过度抽象\"的检测",
+        "提供\"AI 改动摘要\"，帮助维护者快速理解 AI 做了什么",
+        "不要只看 SWE-bench 分数，要看真实代码审查反馈",
+        "建立\"AI 代码审查标准\"（不只是功能正确性）"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 712,
+      "chineseCount": 568,
+      "englishCount": 182,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S074-ai-prompt-attack-surface",
+      "title": "S074 - AI Prompt 成为新攻击面",
+      "category": "signals",
+      "date": "2026-03-12",
+      "summary": "信号强度: 强\n发现日期: 2026-03-12\n信息源: CodeWall 安全研究、Hacker News (389 分，200+ 评论)",
+      "quickConclusion": "",
+      "actionItems": [
+        "Prompt 版本控制：系统 prompt 必须有版本历史、完整性监控",
+        "独立存储：Prompt 不应与业务数据存储在同一数据库",
+        "只读策略：生产环境的 prompt 应该是只读的",
+        "行为监控：检测 AI 输出的异常变化（可能是 prompt 被篡改的信号）",
+        "提供\"Prompt 审计日志\"功能"
+      ],
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 848,
+      "chineseCount": 712,
+      "englishCount": 170,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S075-ai-productivity-reality-check",
+      "title": "S075 - AI 生产力真实收益：10% 而非 10x",
+      "category": "signals",
+      "date": "2026-03-12",
+      "summary": "信号强度: 中等偏强\n发现日期: 2026-03-12\n信息源: DX 纵向研究、Hacker News (29 分，16 评论)",
+      "quickConclusion": "",
+      "actionItems": [
+        "重置期望：向高管和董事会说明 10% 是现实，不是 2-3x",
+        "重新聚焦：AI 只加速编码，不加速规划、对齐、审查",
+        "测量真实指标：不要只看\"AI 使用率\"，要看 PR 吞吐量、交付时间",
+        "扩展到\"非编码环节\"：规划、设计、审查辅助",
+        "诚实营销：10% 的真实收益比虚假的 10x 承诺更有价值"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 799,
+      "chineseCount": 673,
+      "englishCount": 163,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S071-ai-agent-runtime-guardrail-2026-03-11",
       "title": "S071 - AI Agent Runtime Guardrail：Agent 自主运行时的\"安全带\"",
       "category": "signals",
