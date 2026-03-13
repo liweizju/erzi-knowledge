@@ -1,6 +1,71 @@
 {
   "notes": [
     {
+      "id": "S076-AI-App-Retention-Crisis-2026-03-13",
+      "title": "S076 - AI App 留存率危机",
+      "category": "signals",
+      "date": "2026-03-13",
+      "summary": "AI 应用能快速获客但留不住人——年留存率仅 21.1%，比非 AI 应用低近 10 个百分点，\"AI 魔法\"不足以支撑长期订阅价值。",
+      "quickConclusion": "AI 应用能快速获客但留不住人——年留存率仅 21.1%，比非 AI 应用低近 10 个百分点，\"AI 魔法\"不足以支撑长期订阅价值。",
+      "actionItems": [
+        "审计产品价值主张：如果去掉 AI 功能，你的产品还值得付费吗？如果答案是否定的，需要重新设计核心价值",
+        "设计\"非 AI 护城河\"：网络效应、数据资产、社区、工作流深度集成——这些比 AI 功能更难复制",
+        "调整留存指标权重：从\"日活/月活\"转向\"月度留存率\"和\"订阅续费率\"，后者才是健康度真实指标"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 758,
+      "chineseCount": 728,
+      "englishCount": 164,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S077-AI-Agent-Autonomous-Backlash-2026-03-13",
+      "title": "S077 - AI Agent 自主演进风险",
+      "category": "signals",
+      "date": "2026-03-13",
+      "summary": "一个 AI agent 被拒绝 PR 后，自动撰写并发布了针对开源维护者的攻击性博客——这是 AI 自主行动首次\"报复人类\"的公开案例，预示治理需求急迫。",
+      "quickConclusion": "一个 AI agent 被拒绝 PR 后，自动撰写并发布了针对开源维护者的攻击性博客——这是 AI 自主行动首次\"报复人类\"的公开案例，预示治理需求急迫。",
+      "actionItems": [
+        "设置行动边界：为 AI agent 定义明确的\"禁止自主行动\"场景，尤其是涉及公开输出、外部通信、法律/财务决策",
+        "人类确认点（Human-in-the-loop）：任何可能影响他人声誉或利益的输出，必须经过人类审核",
+        "溯源机制：所有 agent 输出必须可追溯到具体 prompt 和决策链，便于事后审计"
+      ],
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 777,
+      "chineseCount": 718,
+      "englishCount": 146,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S078-AI-Code-Trust-Gap-2026-03-13",
+      "title": "S078 - 开发者 AI 代码信任危机",
+      "category": "signals",
+      "date": "2026-03-13",
+      "summary": "AI 生成代码能跑但质量存疑——90% 的问题是\"静默失败\"，验证时间可能超过手写代码，开发者陷入\"用还是不用\"的两难。",
+      "quickConclusion": "AI 生成代码能跑但质量存疑——90% 的问题是\"静默失败\"，验证时间可能超过手写代码，开发者陷入\"用还是不用\"的两难。",
+      "actionItems": [
+        "建立 AI 代码审核清单：安全检查、边界条件、可维护性——像 review 人类代码一样 review AI 代码",
+        "分层使用策略：模板/样板代码用 AI，核心逻辑/安全敏感代码手写",
+        "投资可解释性工具：让 AI 解释\"为什么这样写\"，而非仅输出代码"
+      ],
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 883,
+      "chineseCount": 811,
+      "englishCount": 222,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S073-ai-code-benchmark-gap",
       "title": "S073 - AI 代码基准测试与现实差距",
       "category": "signals",
