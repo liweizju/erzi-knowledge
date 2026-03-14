@@ -1,6 +1,79 @@
 {
   "notes": [
     {
+      "id": "S079-AI-App-Retention-Crisis",
+      "title": "S079 - AI App Retention Crisis",
+      "category": "signals",
+      "date": "2026-03-14",
+      "summary": "发现时间: 2026-03-14\n信号类型: 产品机会\n置信度: 高",
+      "quickConclusion": "",
+      "actionItems": [
+        "投资记忆系统 - 构建用户数据护城河，让用户\"离不开\"",
+        "优化 Day 0 体验 - 在首次会话内完成价值交付",
+        "设计离开成本 - 数据积累、个性化配置、社交绑定",
+        "不要只追技术 - 相同模型的产品没有留存优势",
+        "专注垂直场景 - 深度 > 广度，场景化粘性 > 功能堆叠"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 715,
+      "chineseCount": 723,
+      "englishCount": 72,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S080-AI-Coding-Productivity-Paradox",
+      "title": "S080 - AI Coding Productivity Paradox",
+      "category": "signals",
+      "date": "2026-03-14",
+      "summary": "### 1. 感知与现实差距（39%）",
+      "quickConclusion": "",
+      "actionItems": [
+        "先修组织，再上工具 - AI 放大流程缺陷，先优化审查/测试/协作流程",
+        "建立 AI 代码审查标准 - \"把每个 AI 代码片段当成可疑协作者的 PR\"",
+        "监控质量指标 - 不只看速度，看事故率/漏洞率/技术债务",
+        "投资培训 - AI 编程是技能，不是\"即插即用\"",
+        "培养\"AI 协作技能\" - 提示工程、代码审查、质量判断"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 937,
+      "chineseCount": 910,
+      "englishCount": 131,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S081-MCP-Integration-Standard",
+      "title": "S081 - MCP 成为 AI 集成标准",
+      "category": "signals",
+      "date": "2026-03-14",
+      "summary": "发现时间: 2026-03-14\n信号类型: 技术趋势\n置信度: 高",
+      "quickConclusion": "",
+      "actionItems": [
+        "立即学习 MCP - 官方文档: modelcontextprotocol.io",
+        "构建第一个 MCP Server - 从简单场景开始（如读取文件、调用 API）",
+        "使用 MCP Inspector - 验证实现正确性",
+        "加入社区 - GitHub Model Context Protocol 组织",
+        "评估 MCP 作为集成层 - 与传统 API 集成方案对比"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 927,
+      "chineseCount": 809,
+      "englishCount": 219,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S076-AI-App-Retention-Crisis-2026-03-13",
       "title": "S076 - AI App 留存率危机",
       "category": "signals",
