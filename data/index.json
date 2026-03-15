@@ -75,6 +75,52 @@
       "lastModified": null
     },
     {
+      "id": "S085-micro-saas-vertical-opportunity-2026-03-15",
+      "title": "S085 - Micro SaaS 垂直机会爆发",
+      "category": "signals",
+      "date": "2026-03-15",
+      "summary": "Micro SaaS 市场以 30% 年增长扩张，独立开发者通过超垂直定位实现 $5K-$50K MRR。\"手术刀而非瑞士军刀\"成为 2026 年成功公式。",
+      "quickConclusion": "Micro SaaS 市场以 30% 年增长扩张，独立开发者通过超垂直定位实现 $5K-$50K MRR。\"手术刀而非瑞士军刀\"成为 2026 年成功公式。",
+      "actionItems": [
+        "今天就能做：列出 3 个你熟悉的职业，找出他们\"用 30 分钟做一件本该 1 分钟完成的事\"",
+        "1 周内可做：在 Indie Hackers / Reddit 搜索该职业的抱怨，验证是否真实痛点",
+        "长期动作：用 no-code 或 AI 在 4-8 周内构建 MVP，通过 founding member 定价（50% off forever）获取前 10 个付费用户"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 730,
+      "chineseCount": 681,
+      "englishCount": 131,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S086-ai-org-readiness-gap-2026-03-15",
+      "title": "S086 - AI 组织准备度鸿沟",
+      "category": "signals",
+      "date": "2026-03-15",
+      "summary": "121,000 开发者调研显示，AI 对生产力提升停在 10%，但组织差异巨大——有些公司事故减半，有些翻倍。核心变量不是工具，是组织是否\"准备好\"。",
+      "quickConclusion": "121,000 开发者调研显示，AI 对生产力提升停在 10%，但组织差异巨大——有些公司事故减半，有些翻倍。核心变量不是工具，是组织是否\"准备好\"。",
+      "actionItems": [
+        "今天就能做：如果你是企业 AI 决策者，评估组织的 CI/CD、代码审查、文档流程是否成熟",
+        "1 周内可做：构建\"AI 组织准备度自检清单\"（5-10 个问题），在目标客户中测试",
+        "长期动作：开发\"AI 转型诊断服务\"，帮助组织识别\"为什么 AI 在我们这里没效果\""
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 799,
+      "chineseCount": 765,
+      "englishCount": 106,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S079-AI-App-Retention-Crisis",
       "title": "S079 - AI App Retention Crisis",
       "category": "signals",
