@@ -1,6 +1,80 @@
 {
   "notes": [
     {
+      "id": "S082-ai-app-retention-crisis",
+      "title": "S082 - AI 应用留存危机",
+      "category": "signals",
+      "date": "2026-03-15",
+      "summary": "信号类型: 市场需求信号\n发现日期: 2026-03-15\n信息源: RevenueCat 2026 State of Subscription Apps Report\n信号强度: ⭐⭐⭐ (强数据支",
+      "quickConclusion": "",
+      "actionItems": [
+        "诊断留存漏斗",
+        "分析 D1 → D7 → D30 掉失点",
+        "识别\"啊哈时刻\"是否在首次体验中出现",
+        "检查是否有\"回访钩子\"（notification、reminder）",
+        "设计持续价值"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 730,
+      "chineseCount": 712,
+      "englishCount": 70,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S083-context-engineering",
+      "title": "S083 - Context Engineering 新范式",
+      "category": "signals",
+      "date": "2026-03-15",
+      "summary": "\"找到最小的、高信号 tokens 集合，最大化目标结果概率\"",
+      "quickConclusion": "\"找到最小的、高信号 tokens 集合，最大化目标结果概率\"",
+      "actionItems": [
+        "审计当前上下文使用",
+        "测量每个 token 的实际贡献",
+        "识别\"噪音\"和\"冗余\"",
+        "实现上下文精简机制",
+        "设置 token 上限（如 20,000）"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 780,
+      "chineseCount": 810,
+      "englishCount": 91,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S084-ai-pricing-hybrid",
+      "title": "S084 - AI 定价模式转型：LTD + Usage-Based",
+      "category": "signals",
+      "date": "2026-03-15",
+      "summary": "最成功的 AI 应用提供\"混合模式\"：核心功能 lifetime deal + 重度用户 usage-based top-ups",
+      "quickConclusion": "最成功的 AI 应用提供\"混合模式\"：核心功能 lifetime deal + 重度用户 usage-based top-ups",
+      "actionItems": [
+        "评估产品特性",
+        "是否适合 LTD？",
+        "使用频率：低频（简历、报告）更适合 LTD",
+        "边际成本：token 消耗是否可控？",
+        "计算盈亏平衡"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 908,
+      "chineseCount": 870,
+      "englishCount": 167,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S079-AI-App-Retention-Crisis",
       "title": "S079 - AI App Retention Crisis",
       "category": "signals",
