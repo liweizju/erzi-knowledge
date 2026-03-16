@@ -1,6 +1,54 @@
 {
   "notes": [
     {
+      "id": "S087-ai-agent-memory-architecture-gap-2026-03-16",
+      "title": "S087 - AI Agent 记忆架构缺口",
+      "category": "signals",
+      "date": "2026-03-16",
+      "summary": "Context window 不是记忆——生产级 AI 应用正在遭遇\"失忆症\"，跨会话持久化记忆层成为刚需。",
+      "quickConclusion": "Context window 不是记忆——生产级 AI 应用正在遭遇\"失忆症\"，跨会话持久化记忆层成为刚需。",
+      "actionItems": [
+        "评估现有框架（今天就能做）",
+        "对比 Mem0（通用性强）、Letta（状态机架构）、Zep（知识图谱）",
+        "关注 GitHub 活跃度、文档质量、社区规模",
+        "设计记忆分层架构（1 周内）",
+        "短期记忆：滑动窗口 + 摘要"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 912,
+      "chineseCount": 715,
+      "englishCount": 289,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S088-ai-documentation-bloat-crisis-2026-03-16",
+      "title": "S088 - AI 文档膨胀危机",
+      "category": "signals",
+      "date": "2026-03-16",
+      "summary": "AI 让文档生成成本归零，但阅读成本没有——企业正在被\"没人读的 AI 文档\"淹没。",
+      "quickConclusion": "AI 让文档生成成本归零，但阅读成本没有——企业正在被\"没人读的 AI 文档\"淹没。",
+      "actionItems": [
+        "建立 AI 内容过滤协议（今天就能做）",
+        "所有 AI 生成长文档必须附带：",
+        "1 段话摘要（≤200 字）",
+        "核心结论 bullet points（≤5 条）",
+        "\"如果你只读 3 句话\"版本"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 952,
+      "chineseCount": 781,
+      "englishCount": 240,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S082-ai-app-retention-crisis",
       "title": "S082 - AI 应用留存危机",
       "category": "signals",
