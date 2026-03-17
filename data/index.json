@@ -1,6 +1,79 @@
 {
   "notes": [
     {
+      "id": "S089-ai-brain-fry-crisis-2026-03-17",
+      "title": "S089: AI Brain Fry 危机 — 14% 员工出现\"AI 大脑烧毁\"症状",
+      "category": "signals",
+      "date": "2026-03-17",
+      "summary": "信号编号: S089",
+      "quickConclusion": "信号编号: S089",
+      "actionItems": [
+        "在 Twitter/Reddit 搜索\"AI fatigue\"和\"brain fry\"讨论，验证用户真实痛点",
+        "找 5-10 个 Marketing/HR 从业者访谈，了解他们如何使用 AI、什么让他们感到疲劳",
+        "轻量版：Chrome Extension 监测用户的 AI 交互模式，提示\"该休息了\"",
+        "中等版：统一上下文管理器，让多个 AI 工具共享\"我知道你在做什么\"",
+        "完整版：AI-native 工作流平台，彻底替代\"外挂式\"AI 工具"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 953,
+      "chineseCount": 863,
+      "englishCount": 185,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S090-ai-tool-fragmentation-2026-03-17",
+      "title": "S090: AI 工具碎片化危机 — 15 个工具还是找不到文件",
+      "category": "signals",
+      "date": "2026-03-17",
+      "summary": "信号编号: S090",
+      "quickConclusion": "信号编号: S090",
+      "actionItems": [
+        "在 Twitter/Reddit 搜索\"too many AI tools\"和\"AI tool fatigue\"，验证用户真实痛点",
+        "访谈 5-10 个知识工作者，了解他们使用了哪些 AI 工具、如何切换、痛点在哪",
+        "轻量版：Chrome Extension 整合 ChatGPT/Claude/Gemini，提供统一界面",
+        "中等版：统一上下文管理器，让用户存储\"工作上下文\"，所有 AI 工具都能访问",
+        "完整版：AI 工作流编排平台，自动调用不同工具完成任务"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 908,
+      "chineseCount": 840,
+      "englishCount": 161,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S091-indie-hacker-failure-narrative-2026-03-17",
+      "title": "S091: Indie Hacker 失败叙事 — Twitter 成功故事背后的 5 次失败",
+      "category": "signals",
+      "date": "2026-03-17",
+      "summary": "信号编号: S091",
+      "quickConclusion": "信号编号: S091",
+      "actionItems": [
+        "在 Indie Hackers/Reddit 发帖，询问\"你是否想看真实的失败案例\"，测试需求",
+        "访谈 5-10 个失败后成功的 indie hacker，了解他们是否愿意分享失败经历",
+        "轻量版：Newsletter，每周分享 1 个\"失败→成功\"的真实故事（带时间线、收入曲线）",
+        "中等版：案例库网站，用户提交自己的失败/成功案例，获得社区反馈",
+        "完整版：Bootstrap 创业者社区 + 验证工具 + 案例库"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 953,
+      "chineseCount": 939,
+      "englishCount": 121,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S087-ai-agent-memory-architecture-gap-2026-03-16",
       "title": "S087 - AI Agent 记忆架构缺口",
       "category": "signals",
