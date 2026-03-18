@@ -1,6 +1,28 @@
 {
   "notes": [
     {
+      "id": "S092-small-web-discovery-gap-2026-03-18",
+      "title": "S092 - Small Web 发现工具缺口",
+      "category": "signals",
+      "date": "2026-03-18",
+      "summary": "Kagi Small Web 证明用户渴望\"小网站发现\"，但其定义（必须有 RSS、7 天内更新）排除了真正的小网站——专家网站、单功能网站、neocities、web experiments。机会：做真正的 Small Web 发现工具。",
+      "quickConclusion": "Kagi Small Web 证明用户渴望\"小网站发现\"，但其定义（必须有 RSS、7 天内更新）排除了真正的小网站——专家网站、单功能网站、neocities、web experiments。机会：做真正的 Small Web 发现工具。",
+      "actionItems": [
+        "今天就能做：用 GitHub Pages + 手工收录 50-100 个\"真正的 Small Web\"网站，做一个简单的随机跳转工具",
+        "1 周内可做：添加社区提交功能，让用户推荐网站，用 GitHub Issues 作为后端",
+        "长期动作：开发自动化发现机制（扫描 neocities、glitch、repl.it 等），结合社区筛选"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 872,
+      "chineseCount": 810,
+      "englishCount": 121,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S089-ai-brain-fry-crisis-2026-03-17",
       "title": "S089: AI Brain Fry 危机 — 14% 员工出现\"AI 大脑烧毁\"症状",
       "category": "signals",
