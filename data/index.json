@@ -23,6 +23,29 @@
       "lastModified": null
     },
     {
+      "id": "S093-ai-content-tools-creator-useless-2026-03-18",
+      "title": "S093 - AI Content Tools 对创作者无用",
+      "category": "signals",
+      "date": "2026-03-18",
+      "summary": "社交媒体创作者抱怨 AI 内容工具\"把所有工作甩给用户\"——想点子、写 prompt、迭代 10 次、判断社交效果，等做完趋势已过。机会：做\"趋势优先\"而非\"prompt 优先\"的 AI 内容工具。",
+      "quickConclusion": "社交媒体创作者抱怨 AI 内容工具\"把所有工作甩给用户\"——想点子、写 prompt、迭代 10 次、判断社交效果，等做完趋势已过。机会：做\"趋势优先\"而非\"prompt 优先\"的 AI 内容工具。",
+      "actionItems": [
+        "今天就能做：调研 10 个热门社交媒体趋势模板（TikTok/Instagram），用 AI 工具复现，验证可行性",
+        "1 周内可做：构建 MVP——趋势模板库（10-20 个模板）+ 图片上传 + AI 生成，针对特定垂直（如电商卖家）",
+        "长期动作：开发趋势自动发现系统（监控 TikTok/Instagram 热门内容），自动生成模板"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 878,
+      "chineseCount": 823,
+      "englishCount": 126,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S089-ai-brain-fry-crisis-2026-03-17",
       "title": "S089: AI Brain Fry 危机 — 14% 员工出现\"AI 大脑烧毁\"症状",
       "category": "signals",
