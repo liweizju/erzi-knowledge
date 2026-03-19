@@ -1,6 +1,52 @@
 {
   "notes": [
     {
+      "id": "S094-mckinsey-ai-agent-security-breach-2026-03-19",
+      "title": "S094 - AI Agent 自主攻击企业系统：McKinsey 安全漏洞警示",
+      "category": "signals",
+      "date": "2026-03-19",
+      "summary": "安全公司 CodeWall 的 AI agent 在 2 小时内自主攻破 McKinsey 内部 AI 平台 Lilli，获取 4650 万条消息、72.8 万份文件的完全读写权限。这标志着\"AI 对抗 AI\"安全时代的到来——企业 AI ",
+      "quickConclusion": "安全公司 CodeWall 的 AI agent 在 2 小时内自主攻破 McKinsey 内部 AI 平台 Lilli，获取 4650 万条消息、72.8 万份文件的完全读写权限。这标志着\"AI 对抗 AI\"安全时代的到来——企业 AI 系统正成为自主攻击 agent 的高价值目标。",
+      "actionItems": [
+        "今天就能做：审计企业 AI 系统 API 暴露面，检查是否有无需认证的端点",
+        "本周内可做：将 prompt layer 纳入安全资产清单，建立 prompt 版本控制和完整性监控",
+        "长期动作：评估部署 autonomous offensive security 平台进行持续渗透测试"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 806,
+      "chineseCount": 735,
+      "englishCount": 203,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S095-ai-content-tools-creator-useless-2026-03-19",
+      "title": "S095 - AI Content Tools 对创作者无用：Model-First 陷阱",
+      "category": "signals",
+      "date": "2026-03-19",
+      "summary": "社交媒体创作者抱怨 AI 内容工具\"把所有工作甩给用户\"——想点子、写 prompt、迭代 10 次、判断社交效果，等做完趋势已过。核心问题：工具是\"model-first\"而非\"creator-first\"，给引擎但不造车。机会在于做\"趋",
+      "quickConclusion": "社交媒体创作者抱怨 AI 内容工具\"把所有工作甩给用户\"——想点子、写 prompt、迭代 10 次、判断社交效果，等做完趋势已过。核心问题：工具是\"model-first\"而非\"creator-first\"，给引擎但不造车。机会在于做\"趋势优先\"而非\"prompt 优先\"的 AI 内容工具。",
+      "actionItems": [
+        "今天就能做：如果你是创作者，评估手头 AI 工具：工作流是\"我先生成\"还是\"工具先推荐\"？",
+        "本周内可做：如果你在做 AI 内容工具，列出用户需要做的 5 个决策，看哪些可以被自动化",
+        "长期动作：探索\"trend-first\"产品方向——整合社交平台趋势数据，提供预验证的模板"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 900,
+      "chineseCount": 733,
+      "englishCount": 269,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S092-small-web-discovery-gap-2026-03-18",
       "title": "S092 - Small Web 发现工具缺口",
       "category": "signals",
