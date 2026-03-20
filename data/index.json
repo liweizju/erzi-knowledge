@@ -1,6 +1,53 @@
 {
   "notes": [
     {
+      "id": "S095-services-new-software-2026-03-20",
+      "title": "S095 - Services: The New Software（服务即软件）",
+      "category": "signals",
+      "date": "2026-03-20",
+      "summary": "Sequoia 明确提出\"下一个 $1T 公司是伪装成服务公司的软件公司\"——不是卖工具，而是直接卖工作成果。Autopilot 比 Copilot 有 6 倍 TAM 优势。",
+      "quickConclusion": "Sequoia 明确提出\"下一个 $1T 公司是伪装成服务公司的软件公司\"——不是卖工具，而是直接卖工作成果。Autopilot 比 Copilot 有 6 倍 TAM 优势。",
+      "actionItems": [
+        "立即评估：列出你熟悉领域的\"已外包任务\"，按 intelligence/judgement 比例排序",
+        "1周内验证：找到 3 个潜在客户，确认他们是否有外包预算和痛点",
+        "长期策略：从外包切入，逐步向内部工作扩展（外包是楔子，内部是长期 TAM）"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 882,
+      "chineseCount": 809,
+      "englishCount": 182,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S096-ai-content-tools-feedback-loop-2026-03-20",
+      "title": "S096 - AI Content Tools 的反馈回路缺失",
+      "category": "signals",
+      "date": "2026-03-20",
+      "summary": "AI 内容工具最大的问题不是生成质量，而是没有反馈回路——不知道什么内容有效、对谁有效、在哪个平台有效。趋势模板是短期解法，长期机会是\"基于你的历史数据学习\"的工具。",
+      "quickConclusion": "AI 内容工具最大的问题不是生成质量，而是没有反馈回路——不知道什么内容有效、对谁有效、在哪个平台有效。趋势模板是短期解法，长期机会是\"基于你的历史数据学习\"的工具。",
+      "actionItems": [
+        "优先选择有反馈回路的工具：能接入你的账号数据、学习你的历史表现",
+        "建立自己的内容库：记录什么有效、对谁有效、在哪个平台有效",
+        "避免 prompt-first 工具：选择 trend-first 或 workflow-first 的工具",
+        "核心功能：不是生成，而是学习——从用户历史表现中提取模式",
+        "差异化：趋势模板是短期解法，长期护城河是用户专有数据"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1095,
+      "chineseCount": 1076,
+      "englishCount": 134,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S094-mckinsey-ai-agent-security-breach-2026-03-19",
       "title": "S094 - AI Agent 自主攻击企业系统：McKinsey 安全漏洞警示",
       "category": "signals",
@@ -20,29 +67,6 @@
       "wordCount": 806,
       "chineseCount": 735,
       "englishCount": 203,
-      "source": "",
-      "lastModified": null
-    },
-    {
-      "id": "S095-ai-content-tools-creator-useless-2026-03-19",
-      "title": "S095 - AI Content Tools 对创作者无用：Model-First 陷阱",
-      "category": "signals",
-      "date": "2026-03-19",
-      "summary": "社交媒体创作者抱怨 AI 内容工具\"把所有工作甩给用户\"——想点子、写 prompt、迭代 10 次、判断社交效果，等做完趋势已过。核心问题：工具是\"model-first\"而非\"creator-first\"，给引擎但不造车。机会在于做\"趋",
-      "quickConclusion": "社交媒体创作者抱怨 AI 内容工具\"把所有工作甩给用户\"——想点子、写 prompt、迭代 10 次、判断社交效果，等做完趋势已过。核心问题：工具是\"model-first\"而非\"creator-first\"，给引擎但不造车。机会在于做\"趋势优先\"而非\"prompt 优先\"的 AI 内容工具。",
-      "actionItems": [
-        "今天就能做：如果你是创作者，评估手头 AI 工具：工作流是\"我先生成\"还是\"工具先推荐\"？",
-        "本周内可做：如果你在做 AI 内容工具，列出用户需要做的 5 个决策，看哪些可以被自动化",
-        "长期动作：探索\"trend-first\"产品方向——整合社交平台趋势数据，提供预验证的模板"
-      ],
-      "tags": [
-        "信号扫描/产品机会",
-        "信号扫描/市场信号",
-        "信号扫描/用户反馈"
-      ],
-      "wordCount": 900,
-      "chineseCount": 733,
-      "englishCount": 269,
       "source": "",
       "lastModified": null
     },
