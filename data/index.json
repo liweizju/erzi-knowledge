@@ -1,6 +1,31 @@
 {
   "notes": [
     {
+      "id": "S097-ai-coding-agent-quality-crisis-2026-03-21",
+      "title": "S097 - AI Coding Agent 质量危机",
+      "category": "signals",
+      "date": "2026-03-21",
+      "summary": "AI coding agent 市场爆发式增长（OpenCode 120K GitHub stars, 5M 月活），但用户发现这些工具本身存在严重质量问题：高频率发布破坏功能、资源浪费、安全漏洞。AI 生成的代码让\"shipping fa",
+      "quickConclusion": "AI coding agent 市场爆发式增长（OpenCode 120K GitHub stars, 5M 月活），但用户发现这些工具本身存在严重质量问题：高频率发布破坏功能、资源浪费、安全漏洞。AI 生成的代码让\"shipping fast is the moat\"，但代价是质量。",
+      "actionItems": [
+        "短期（今天可做）：调研 AI coding agent 用户对\"稳定版\"的需求",
+        "中期（1 周内）：开发\"AI 编程工具质量审计\"工具或服务",
+        "长期：做\"AI 编程工具的 LTS（Long Term Support）版本\"",
+        "AI 编程工具质量审计",
+        "自动检测 AI coding agent 的资源使用、安全漏洞"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 822,
+      "chineseCount": 606,
+      "englishCount": 300,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S095-services-new-software-2026-03-20",
       "title": "S095 - Services: The New Software（服务即软件）",
       "category": "signals",
