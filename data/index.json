@@ -26,6 +26,31 @@
       "lastModified": null
     },
     {
+      "id": "S098-low-price-vs-market-gap-2026-03-21",
+      "title": "S098 - 低价策略 vs 市场空隙：SaaS 定价的新洞察",
+      "category": "signals",
+      "date": "2026-03-21",
+      "summary": "Youform 用 $29/月 的低价策略做到 $18K MRR，但成功关键不是\"低价\"，而是\"找到市场空隙\"——Typeform 涨价后用户寻找替代品。这与 S014（低价策略导致 churn 陷阱）形成对比：低价策略成功的关键是\"市场空",
+      "quickConclusion": "Youform 用 $29/月 的低价策略做到 $18K MRR，但成功关键不是\"低价\"，而是\"找到市场空隙\"——Typeform 涨价后用户寻找替代品。这与 S014（低价策略导致 churn 陷阱）形成对比：低价策略成功的关键是\"市场空隙\"而非\"价格战\"。",
+      "actionItems": [
+        "短期（今天可做）：列出主流 SaaS 的涨价历史，寻找\"价格敏感用户\"空隙",
+        "中期（1 周内）：验证目标用户是否在搜索\"XX alternative\"关键词",
+        "长期：开发低价替代品，定位为\"affordable [主流产品] alternative\"",
+        "关键词搜索量：使用 Google Trends 或 Ahrefs 查询 \"[产品名] alternative\" 搜索量",
+        "社交媒体监听：在 Twitter/Reddit 搜索 \"[产品名] pricing\" 或 \"[产品名] expensive\""
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 945,
+      "chineseCount": 816,
+      "englishCount": 258,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S095-services-new-software-2026-03-20",
       "title": "S095 - Services: The New Software（服务即软件）",
       "category": "signals",
