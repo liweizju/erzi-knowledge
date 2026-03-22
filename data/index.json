@@ -1,6 +1,72 @@
 {
   "notes": [
     {
+      "id": "S099-ai-customer-service-revolution-2026-03-22",
+      "title": "S099 - AI 客服革命：从\"规模业务\"到\"礼宾业务\"",
+      "category": "signals",
+      "date": "2026-03-22",
+      "summary": "a16z 提出\"互联网毁了客服，AI 可以拯救它\"——从 ticket queue 转向 concierge 模式，让每个客户获得礼宾级服务。每天 366 个人类生命周期浪费在客服上，AI agent 让\"专注服务\"首次可规模化。",
+      "quickConclusion": "a16z 提出\"互联网毁了客服，AI 可以拯救它\"——从 ticket queue 转向 concierge 模式，让每个客户获得礼宾级服务。每天 366 个人类生命周期浪费在客服上，AI agent 让\"专注服务\"首次可规模化。",
+      "actionItems": [
+        "研究\"礼宾业务\"特征：分析 Hermès、Porsche、Luxury Hotel 如何组织客户服务，提炼可规模化的元素",
+        "设计 AI agent 驱动的客服体验：不是\"用 AI 做 IVR\"，而是\"用 AI 做 concierge\"——记住偏好、主动关怀、无缝切换",
+        "验证消费者接受度：在细分场景（如 DTC 品牌）测试\"AI concierge\"vs\"传统客服\"的满意度差异"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 920,
+      "chineseCount": 812,
+      "englishCount": 191,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S100-behavioral-health-ai-os-2026-03-22",
+      "title": "S100 - 行为医疗 AI 原生操作系统",
+      "category": "signals",
+      "date": "2026-03-22",
+      "summary": "Ease Health 获得 a16z + General Catalyst 领投的 $41M Series A，打造行为医疗领域的 AI 原生操作系统（CRM + EHR + RCM 一体化）。已处理 $2.5B+ 理赔、1100 万+ ",
+      "quickConclusion": "Ease Health 获得 a16z + General Catalyst 领投的 $41M Series A，打造行为医疗领域的 AI 原生操作系统（CRM + EHR + RCM 一体化）。已处理 $2.5B+ 理赔、1100 万+ 保险索赔，证明产品市场匹配。垂直 AI OS 是 2026 年的 SaaS 2.0 机会。",
+      "actionItems": [
+        "研究\"碎片化 → AI 原生一体化\"模式：在法律、会计、教育等其他垂直领域，是否存在类似痛点？",
+        "分析垂直 AI OS 的关键能力：Ease 的成功要素（行业 know-how + AI 原生设计 + 一体化）是否可复制？",
+        "寻找\"低技术密度 + 高重复性\"垂直：行为医疗的文档工作高度重复，其他行业是否有类似场景？"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 890,
+      "chineseCount": 791,
+      "englishCount": 161,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S101-ai-audit-automation-2026-03-22",
+      "title": "S101 - AI 审计自动化：SOX/AML 合规的 80% 时间节省",
+      "category": "signals",
+      "date": "2026-03-22",
+      "summary": "Denki 获得 Y Combinator + Base10 Partners 投资，用 AI agent 自动化内部审计的三大痛点：控制映射、连续测试、交易追踪。声称节省 80% 审计时间，客户包括 McKinsey、PwC 背景团队。A",
+      "quickConclusion": "Denki 获得 Y Combinator + Base10 Partners 投资，用 AI agent 自动化内部审计的三大痛点：控制映射、连续测试、交易追踪。声称节省 80% 审计时间，客户包括 McKinsey、PwC 背景团队。AI 合规是 2026 年企业刚需，但需要行业 know-how 护城河。",
+      "actionItems": [
+        "研究\"证据收集 + 连续监控 + 异常检测\"模式：在税务、环保、安全等其他合规场景是否可复制？",
+        "分析合规 AI 的信任建立路径：Denki 如何说服客户信任 AI 审计结果？是否有可学习的 GTM 策略？",
+        "寻找\"高重复性 + 高风险\"垂直：审计的特征是\"重复性高 + 错误后果严重\"，其他行业是否有类似场景？"
+      ],
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 899,
+      "chineseCount": 836,
+      "englishCount": 121,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S097-ai-coding-agent-quality-crisis-2026-03-21",
       "title": "S097 - AI Coding Agent 质量危机",
       "category": "signals",
