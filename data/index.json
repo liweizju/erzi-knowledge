@@ -1,6 +1,54 @@
 {
   "notes": [
     {
+      "id": "S102-landing-page-outcome-vs-technology-2026-03-23",
+      "title": "S102 - Landing Page 的 \"Outcome vs Technology\" 陷阱",
+      "category": "signals",
+      "date": "2026-03-23",
+      "summary": "独立开发者最容易犯的错误是在 Landing Page 讲\"技术\"而不是\"结果\"。一个真实案例：改标题从 32 signups/week → 0 → 8/night，仅仅因为从\"技术导向\"改成\"结果导向\"。",
+      "quickConclusion": "独立开发者最容易犯的错误是在 Landing Page 讲\"技术\"而不是\"结果\"。一个真实案例：改标题从 32 signups/week → 0 → 8/night，仅仅因为从\"技术导向\"改成\"结果导向\"。",
+      "actionItems": [
+        "今天就能做：检查你的 Landing Page 标题，问自己\"这是在讲技术还是在讲结果？\"如果是技术导向，立刻改写",
+        "本周内：A/B 测试至少 3 个不同版本的结果导向标题，优先尝试\"具体时间承诺\"格式（如\"30 秒完成 X\"）",
+        "长期：建立\"用户语言\"库，收集用户描述产品价值时使用的词汇，用于优化文案"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 696,
+      "chineseCount": 636,
+      "englishCount": 135,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S103-vibe-coding-precision-illusion-2026-03-23",
+      "title": "S103 - Vibe Coding 的精确性幻觉",
+      "category": "signals",
+      "date": "2026-03-23",
+      "summary": "\"Vibe coding\"（用自然语言让 AI 写代码）给人精确性的幻觉，但英语规格天生不精确。Dan Shipper 的 vibe-coded app 爆火后崩溃就是典型案例——\"实时协作\"听起来精确，实际极其复杂。",
+      "quickConclusion": "\"Vibe coding\"（用自然语言让 AI 写代码）给人精确性的幻觉，但英语规格天生不精确。Dan Shipper 的 vibe-coded app 爆火后崩溃就是典型案例——\"实时协作\"听起来精确，实际极其复杂。",
+      "actionItems": [
+        "如果你是 AI 编程工具用户：",
+        "不要完全依赖\"vibe\"，在关键功能上仍需理解底层逻辑",
+        "使用 AI 帮助你建立更好的抽象，而不是完全替代你思考",
+        "如果你在做 AI 编程工具：",
+        "重点不是\"让用户用自然语言写代码\"，而是\"帮助用户建立更好的抽象层\""
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 823,
+      "chineseCount": 749,
+      "englishCount": 134,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S099-ai-customer-service-revolution-2026-03-22",
       "title": "S099 - AI 客服革命：从\"规模业务\"到\"礼宾业务\"",
       "category": "signals",
