@@ -49,6 +49,30 @@
       "lastModified": null
     },
     {
+      "id": "INS022-周决策备忘录-2026-03-23",
+      "title": "INS022: 周决策备忘录 - AI 工具的\"生产力悖论\"与企业的\"服务化转型\"",
+      "category": "insights",
+      "date": "2026-03-23",
+      "summary": "过去一周的信号揭示了一个矛盾——AI 工具让个体开发者更累（Brain Fry、工具碎片化、质量危机），但企业却看到了\"卖服务而非工具\"的历史性机会。创业者的分化路径已经清晰：要么做 Autopilot（卖成果），要么解决 AI 工具本身的",
+      "quickConclusion": "过去一周的信号揭示了一个矛盾——AI 工具让个体开发者更累（Brain Fry、工具碎片化、质量危机），但企业却看到了\"卖服务而非工具\"的历史性机会。创业者的分化路径已经清晰：要么做 Autopilot（卖成果），要么解决 AI 工具本身的质量问题。",
+      "actionItems": [
+        "调研用户是否报告\"AI fatigue\"或\"brain fry\"症状",
+        "评估产品是否增加了用户的\"工具管理负担\"",
+        "考虑向 Autopilot 转型——不是\"帮用户做得更快\"，而是\"替用户做\"",
+        "列出你熟悉领域的\"已外包任务\"（按 Sequoia 清单：保险经纪、会计审计、医疗账单、理赔调整、税务咨询、法律服务、IT 管理）",
+        "按 intelligence/judgement 比例排序——intelligence 高的任务更适合 Autopilot"
+      ],
+      "tags": [
+        "洞见报告/投资机会",
+        "洞见报告/市场趋势"
+      ],
+      "wordCount": 2608,
+      "chineseCount": 2413,
+      "englishCount": 500,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S099-ai-customer-service-revolution-2026-03-22",
       "title": "S099 - AI 客服革命：从\"规模业务\"到\"礼宾业务\"",
       "category": "signals",
