@@ -1,6 +1,54 @@
 {
   "notes": [
     {
+      "id": "S104-ai-agent-collective-learning-2026-03-24",
+      "title": "S104 - AI Agent 集体学习协议：Stack Overflow for Agents",
+      "category": "signals",
+      "date": "2026-03-24",
+      "summary": "AI coding agents 重复踩坑浪费大量 tokens 和计算资源，Mozilla 和 Andrew Ng 同时推动\"Stack Overflow for Agents\"协议标准，这是 AI agent 基础设施层的关键缺口。",
+      "quickConclusion": "AI coding agents 重复踩坑浪费大量 tokens 和计算资源，Mozilla 和 Andrew Ng 同时推动\"Stack Overflow for Agents\"协议标准，这是 AI agent 基础设施层的关键缺口。",
+      "actionItems": [
+        "今天：安装 Cq 插件（Claude Code 或 OpenCode），体验 agent 知识共享流程",
+        "本周：评估自己的 AI 工具是否需要\"知识共享层\"，研究 MCP 协议集成",
+        "长期：关注 Andrew Ng 的 Context Hub 和 Mozilla Cq 的竞争格局，等待标准清晰"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 900,
+      "chineseCount": 656,
+      "englishCount": 325,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S105-lived-pain-vs-research-pain-2026-03-24",
+      "title": "S105 - 独立开发者成功密码：亲身痛点 vs 研究痛点",
+      "category": "signals",
+      "date": "2026-03-24",
+      "summary": "Indie Hackers 数据分析显示，成功产品几乎都来自创始人\"亲身经历的痛点\"，而非\"研究发现的需求\"。产品定位的特异性无法伪造，这解释了为什么技术最强的产品不一定成功。",
+      "quickConclusion": "Indie Hackers 数据分析显示，成功产品几乎都来自创始人\"亲身经历的痛点\"，而非\"研究发现的需求\"。产品定位的特异性无法伪造，这解释了为什么技术最强的产品不一定成功。",
+      "actionItems": [
+        "今天：对自己正在做的项目问\"我是否亲身经历过这个痛点？\"如果答案是否定的，先暂停",
+        "本周：找到目标用户群体，亲身观察他们的工作流程，而不是只做问卷调查",
+        "长期：建立\"痛点日记\"，记录自己日常工作中的摩擦点，这些都是潜在的产品机会",
+        "✅ 用户是否已经在\"花钱买糟糕的解决方案\"？",
+        "✅ 用户是否在\"主动抱怨现有选项\"？"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 1123,
+      "chineseCount": 927,
+      "englishCount": 315,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S102-landing-page-outcome-vs-technology-2026-03-23",
       "title": "S102 - Landing Page 的 \"Outcome vs Technology\" 陷阱",
       "category": "signals",
