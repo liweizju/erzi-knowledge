@@ -1,6 +1,54 @@
 {
   "notes": [
     {
+      "id": "S106-ai-decision-fatigue-2026-03-25",
+      "title": "S106 - AI 决策疲劳： 微决策杀手",
+      "category": "signals",
+      "date": "2026-03-25",
+      "summary": "AI 时代的新型倦怠不是工具疲劳，而是决策疲劳——每天数百个低风险选择消耗认知带宽",
+      "quickConclusion": "AI 时代的新型倦怠不是工具疲劳，而是决策疲劳——每天数百个低风险选择消耗认知带宽",
+      "actionItems": [
+        "调研目标用户的日常决策类型（工作、生活、健康等领域），选择一个高频场景切入",
+        "构建简单的 MVP，核心功能：记录用户偏好、自动推荐选项、追踪决策结果",
+        "测试用户是否愿意为\"决策外包\"付费（freemium → premium 转化路径）"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 664,
+      "chineseCount": 568,
+      "englishCount": 211,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S107-thinking-tools-gap-2026-03-25",
+      "title": "S107 - Thinking Tools Gap: 探索工具市场空缺",
+      "category": "signals",
+      "date": "2026-03-25",
+      "summary": "所有 AI 工具都在帮用户\"做\"（执行），但没有人帮用户\"想\"（探索）。这是一个被忽视的市场空缺。",
+      "quickConclusion": "所有 AI 工具都在帮用户\"做\"（执行），但没有人帮用户\"想\"（探索）。这是一个被忽视的市场空缺。",
+      "actionItems": [
+        "调研目标用户（产品经理、创业者、战略决策者）的思考工作流程，识别高频思考场景",
+        "构建垂直领域 MVP，核心功能：",
+        "思维导图/概念地图生成",
+        "假设推演工具（\"如果...会怎样...\"场景分析）",
+        "决策框架可视化"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 732,
+      "chineseCount": 660,
+      "englishCount": 139,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S104-ai-agent-collective-learning-2026-03-24",
       "title": "S104 - AI Agent 集体学习协议：Stack Overflow for Agents",
       "category": "signals",
