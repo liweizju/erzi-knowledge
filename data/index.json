@@ -1,6 +1,49 @@
 {
   "notes": [
     {
+      "id": "S108-ai-coding-security-guardrails-2026-03-26",
+      "title": "S108 - AI Coding Security Guardrails",
+      "category": "signals",
+      "date": "2026-03-26",
+      "summary": "AI coding tools 有广泛的文件系统和网络访问，但开发者对其行为完全不可见——AgentHopper 攻击通过 git 传播感染下一个开发者的 AI agent，SpAIware 通过内存文件持续窃取数据，CVE-2025-55",
+      "quickConclusion": "AI coding tools 有广泛的文件系统和网络访问，但开发者对其行为完全不可见——AgentHopper 攻击通过 git 传播感染下一个开发者的 AI agent，SpAIware 通过内存文件持续窃取数据，CVE-2025-55284 通过 DNS exfiltrate API keys。OS 层安全监控工具是刚需。",
+      "actionItems": [
+        "今天：如果你是开发者，检查你的 AI coding tools 有什么权限——读 ~/.ssh、访问 .env、git push 权限",
+        "本周：评估 Agent Shield（开源）或其他 runtime security 工具，部署监控",
+        "长期：如果你在构建开发者工具，做 AI coding security——跨平台支持（Linux/Windows）、企业功能（合规审计、centralized management）"
+      ],
+      "tags": [
+        "信号扫描/产品机会"
+      ],
+      "wordCount": 881,
+      "chineseCount": 663,
+      "englishCount": 318,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S109-regulated-industries-ai-os-2026-03-26",
+      "title": "S109 - Regulated Industries AI Operating System",
+      "category": "signals",
+      "date": "2026-03-26",
+      "summary": "受监管行业（保险、金融、医疗）需要 AI agent，但现有工具是\"黑盒\"——无法审计、无法控制、无法满足合规要求。Notch 从保险产品内部工具演变成\"受监管行业 AI 操作系统\"，$30M Series A，Lightspeed、Hea",
+      "quickConclusion": "受监管行业（保险、金融、医疗）需要 AI agent，但现有工具是\"黑盒\"——无法审计、无法控制、无法满足合规要求。Notch 从保险产品内部工具演变成\"受监管行业 AI 操作系统\"，$30M Series A，Lightspeed、Headline 等顶级 VC 押注。Bessemer 预测 Vertical AI 将在 10 年内产生 300+ 独角兽。",
+      "actionItems": [
+        "如果你是 B2B 从业者：关注你所在行业的 AI 合规要求——保险、金融、医疗、法律各有不同标准",
+        "如果你在构建 B2B 产品：不要只做 chatbot，做\"可审计的 workflow automation\"——audit trail、hard limits、escalation rules",
+        "长期：垂直行业 AI 是 10 年 300+ 独角兽的机会（Bessemer 预测），但需要行业 know-how"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 906,
+      "chineseCount": 655,
+      "englishCount": 374,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S106-ai-decision-fatigue-2026-03-25",
       "title": "S106 - AI 决策疲劳： 微决策杀手",
       "category": "signals",
