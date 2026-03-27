@@ -24,6 +24,29 @@
       "lastModified": null
     },
     {
+      "id": "S111-creator-burnout-ai-tools-2026-03-27",
+      "title": "S111 - 内容创作者倦怠与 AI 工具简化需求",
+      "category": "signals",
+      "date": "2026-03-27",
+      "summary": "62% 创作者在 2026 年面临倦怠，内容需求无休止，但 AI 工具太多反而增加负担——需要\"少即是多\"的简化方案，而非\"更多工具\"。",
+      "quickConclusion": "62% 创作者在 2026 年面临倦怠，内容需求无休止，但 AI 工具太多反而增加负担——需要\"少即是多\"的简化方案，而非\"更多工具\"。",
+      "actionItems": [
+        "今天就能做：审计你的 AI 工具订阅——哪些工具实际在用？哪些工具只是\"以防万一\"？",
+        "1 周内可做：评估\"一站式\"替代方案（如 Canva Magic Studio、Simplified AI）是否能替代 3-5 个单独工具",
+        "长期动作：如果你是开发者，考虑做\"AI 工具整合层\"——帮创作者把 5 个工具整合成 1 个工作流"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 866,
+      "chineseCount": 736,
+      "englishCount": 239,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S108-ai-coding-security-guardrails-2026-03-26",
       "title": "S108 - AI Coding Security Guardrails",
       "category": "signals",
