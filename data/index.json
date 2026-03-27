@@ -1,6 +1,29 @@
 {
   "notes": [
     {
+      "id": "S110-bootstrapped-ai-apps-rise-2026-03-27",
+      "title": "S110 - Bootstrapped AI Apps 崛起：48% Top 100 无需融资",
+      "category": "signals",
+      "date": "2026-03-27",
+      "summary": "a16z 最新报告显示，Top 100 Gen AI Consumer Apps 中 48% 是 bootstrapped（无外部融资），15% 融资超 $50M。AI 消费者应用不再是\"烧钱游戏\"，独立开发者可以在没有 VC 的情况下成功",
+      "quickConclusion": "a16z 最新报告显示，Top 100 Gen AI Consumer Apps 中 48% 是 bootstrapped（无外部融资），15% 融资超 $50M。AI 消费者应用不再是\"烧钱游戏\"，独立开发者可以在没有 VC 的情况下成功。",
+      "actionItems": [
+        "研究 bootstrapped AI app 清单：从 a16z 报告中筛选 bootstrapped 公司，分析其共同特征（垂直场景、定价策略、增长渠道）",
+        "停止\"融资优先\"思维：如果做的是垂直 AI 应用，先验证 PMF 再考虑融资；融资不是必要条件",
+        "关注\"legacy + AI\"机会：传统应用（Canva、Notion、CapCut）通过 AI 功能重新获得增长，这个模式可以被复制到其他传统工具"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 864,
+      "chineseCount": 744,
+      "englishCount": 235,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S108-ai-coding-security-guardrails-2026-03-26",
       "title": "S108 - AI Coding Security Guardrails",
       "category": "signals",
