@@ -1,6 +1,28 @@
 {
   "notes": [
     {
+      "id": "S112-amazon-ai-agent-failure-crisis-2026-03-28",
+      "title": "S112 - Amazon AI Agent Deployment Failure Crisis",
+      "category": "signals",
+      "date": "2026-03-28",
+      "summary": "Amazon 强制使用 AI 编码工具导致 630 万订单丢失，AI 代理部署失败率成为企业级产品机会窗口",
+      "quickConclusion": "Amazon 强制使用 AI 编码工具导致 630 万订单丢失，AI 代理部署失败率成为企业级产品机会窗口",
+      "actionItems": [
+        "立即启动安全框架评估：本周内完成现有 AI 工具部署的安全风险评估，识别成本监控、循环检测、审计日志缺失点",
+        "建立分层授权机制：按系统风险等级建立 AI 工具使用权限，高风险系统强制人工审核 + AI 代码静态分析",
+        "开发部署护栏工具：构建运行时护栏系统，包括成本限制、循环检测、异常行为监控，90 天内可落地 MVP"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 824,
+      "chineseCount": 778,
+      "englishCount": 151,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S110-bootstrapped-ai-apps-rise-2026-03-27",
       "title": "S110 - Bootstrapped AI Apps 崛起：48% Top 100 无需融资",
       "category": "signals",
