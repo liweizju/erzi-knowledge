@@ -23,6 +23,52 @@
       "lastModified": null
     },
     {
+      "id": "S113-small-web-discovery-gap-2026-03-28",
+      "title": "S113 - Small Web Discovery Tool Gap",
+      "category": "signals",
+      "date": "2026-03-28",
+      "summary": "Kagi Small Web 定义过窄，排除了专家网站、单功能网站、web 实验，真正的 Small Web 发现工具市场空白",
+      "quickConclusion": "Kagi Small Web 定义过窄，排除了专家网站、单功能网站、web 实验，真正的 Small Web 发现工具市场空白",
+      "actionItems": [
+        "建立分层分类系统：将 Small Web 分为专家网站、单功能网站、web 实验、粉丝网站、个人博客等类别，每个类别独立索引",
+        "开发智能发现算法：结合内容质量、更新频率、用户互动等多维度，而非简单的 RSS 更新要求",
+        "构建社区驱动的审核机制：允许用户推荐优质小众网站，建立社区投票机制确保内容质量"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 758,
+      "chineseCount": 710,
+      "englishCount": 140,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S114-indie-hacker-reality-check-2026-03-28",
+      "title": "S114 - Indie Hacker Revenue Reality Check",
+      "category": "signals",
+      "date": "2026-03-28",
+      "summary": "5,079 个独立项目中位数收入仅 $169/月，AI 项目数量最多但盈利能力最低，真实成功需 4-5 年",
+      "quickConclusion": "5,079 个独立项目中位数收入仅 $169/月，AI 项目数量最多但盈利能力最低，真实成功需 4-5 年",
+      "actionItems": [
+        "建立现实的时间预期：将独立开发成功时间预期从 6-12 个月调整为 4-5 年，避免因短期结果放弃",
+        "聚焦高利润赛道：优先考虑市场places、销售工具等盈利能力更高的赛道，而非盲目追逐 AI",
+        "构建复合收入模式：单一项目收入不稳定，考虑构建互补收入来源，分散风险",
+        "建立真实社区：减少社交媒体比较，建立基于真实收入和可持续发展的创业者社区"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号"
+      ],
+      "wordCount": 734,
+      "chineseCount": 718,
+      "englishCount": 140,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S110-bootstrapped-ai-apps-rise-2026-03-27",
       "title": "S110 - Bootstrapped AI Apps 崛起：48% Top 100 无需融资",
       "category": "signals",
