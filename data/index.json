@@ -25,6 +25,55 @@
       "lastModified": null
     },
     {
+      "id": "S116-ai-agent-deployment-catastrophe-2026-03-30",
+      "title": "S116 - AI Agent 部署灾难",
+      "category": "signals",
+      "date": "2026-03-30",
+      "summary": "88-95% AI Agent 部署失败，协调架构缺陷是核心死因",
+      "quickConclusion": "88-95% AI Agent 部署失败，协调架构缺陷是核心死因",
+      "actionItems": [
+        "构建协调层基础设施：开发专门的多 Agent 状态管理、故障恢复、上下文持久化平台",
+        "建立失败恢复机制：设计优雅暂停-恢复模式，避免单点故障导致全链路崩溃",
+        "重新设计状态管理：从 Agent 级别内存转向中央化状态管理，确保数据完整性",
+        "开发调试工具：构建多 Agent 系统实时监控和故障诊断工具",
+        "建立最佳实践库：收集成功案例，形成企业级 Agent 协调架构指导"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 794,
+      "chineseCount": 775,
+      "englishCount": 58,
+      "source": "",
+      "lastModified": null
+    },
+    {
+      "id": "S117-ai-cognitive-overload-brain-fry-2026-03-30",
+      "title": "S117 - AI 认知过载\"脑烧\"危机",
+      "category": "signals",
+      "date": "2026-03-30",
+      "summary": "AI 工具导致认知负荷爆炸，决策疲劳与验证循环引发心理危机",
+      "quickConclusion": "AI 工具导致认知负荷爆炸，决策疲劳与验证循环引发心理危机",
+      "actionItems": [
+        "构建认知辅助层：开发过滤 AI 输出的智能系统，减少需要人工判断的信息量",
+        "减少决策点：设计自动化验证机制，让 AI 自我修正而非人工干预",
+        "建立上下文持久化：构建跨工具的统一上下文管理系统，避免重复输入和验证",
+        "开发专注模式：提供低刺激、高效率的 AI 工具使用模式，减少认知干扰",
+        "建立认知健康指标：监控用户使用 AI 的心理负荷，提供使用建议"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 853,
+      "chineseCount": 840,
+      "englishCount": 55,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S112-amazon-ai-agent-failure-crisis-2026-03-28",
       "title": "S112 - Amazon AI Agent Deployment Failure Crisis",
       "category": "signals",
