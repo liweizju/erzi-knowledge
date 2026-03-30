@@ -1,6 +1,30 @@
 {
   "notes": [
     {
+      "id": "S115-ai-subscription-fatigue-crisis-2026-03-30",
+      "title": "S115 - AI 订阅疲劳危机",
+      "category": "signals",
+      "date": "2026-03-30",
+      "summary": "AI 应用 30% 更快流失用户，订阅模式遭遇信任清算",
+      "quickConclusion": "AI 应用 30% 更快流失用户，订阅模式遭遇信任清算",
+      "actionItems": [
+        "推出混合定价模式：基础功能永久免费 + 高级功能按需付费，降低尝试门槛",
+        "开发本地版本：提供离线使用选项，满足用户对数据主权和成本控制需求",
+        "建立透明度指标：公开 AI 功能使用效率数据，让用户看到真实价值",
+        "创建社区版本：免费版本支持基本需求，降低用户流失风险"
+      ],
+      "tags": [
+        "信号扫描/产品机会",
+        "信号扫描/市场信号",
+        "信号扫描/用户反馈"
+      ],
+      "wordCount": 717,
+      "chineseCount": 698,
+      "englishCount": 59,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S112-amazon-ai-agent-failure-crisis-2026-03-28",
       "title": "S112 - Amazon AI Agent Deployment Failure Crisis",
       "category": "signals",
