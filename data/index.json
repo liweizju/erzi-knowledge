@@ -74,6 +74,30 @@
       "lastModified": null
     },
     {
+      "id": "INS023-周决策备忘录-2026-03-30",
+      "title": "INS023: AI 基础设施转向周：从功能堆砌到安全可控",
+      "category": "insights",
+      "date": "2026-03-30",
+      "summary": "AI 消费应用进入精耕细作阶段，企业级部署面临安全清算，独立开发者崛起但需解决留存问题",
+      "quickConclusion": "AI 消费应用进入精耕细作阶段，企业级部署面临安全清算，独立开发者崛起但需解决留存问题",
+      "actionItems": [
+        "立即建立 AI 安全评估框架：本周内完成现有 AI 工具部署的安全风险评估，识别成本监控、循环检测、审计日志缺失点，特别是文件系统访问、网络调用、subprocess spawning等 OS 层权限。",
+        "重新设计 AI 产品定价模式：推出混合定价模式（基础功能永久免费 + 高级功能按需付费），开发本地版本提供离线使用选项，建立透明度指标公开 AI 功能使用效率数据，降低用户流失风险。",
+        "研究 bootstrapped AI app 共同特征：从 a16z 报告中筛选 48% 的 bootstrapped AI 应用，分析其垂直场景选择、定价策略、增长渠道，停止\"需要融资才能做 AI\"的假设。",
+        "构建 Agent 协调层基础设施：开发专门的多 Agent 状态管理、故障恢复、上下文持久化平台，建立优雅暂停-恢复模式避免单点故障，从 Agent 级别内存转向中央化状态管理。",
+        "部署 AI coding runtime security：如果使用 Claude Code、Cursor、Copilot 等 AI coding 工具，立即部署 Agent Shield 或类似工具监控 OS 层活动，检查 ~/.ssh、访问 .env、git push 权限等敏感操作。"
+      ],
+      "tags": [
+        "洞见报告/产业链分析",
+        "洞见报告/投资机会"
+      ],
+      "wordCount": 1269,
+      "chineseCount": 1177,
+      "englishCount": 199,
+      "source": "",
+      "lastModified": null
+    },
+    {
       "id": "S112-amazon-ai-agent-failure-crisis-2026-03-28",
       "title": "S112 - Amazon AI Agent Deployment Failure Crisis",
       "category": "signals",
